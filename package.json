@@ -1,0 +1,33 @@
+{
+  "name": "stevejobs-class-managing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/app.js",
+  "scripts": {
+    "start": "node build/app.js",
+    "dev": "nodemon src/app.ts",
+    "build": "tsc -p ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corradodiba/stevejobs-class-managing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/corradodiba/stevejobs-class-managing/issues"
+  },
+  "homepage": "https://github.com/corradodiba/stevejobs-class-managing#readme",
+  "dependencies": {
+    "@types/mongoose": "^5.5.32",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.12"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "@types/node": "^12.12.11",
+    "nodemon": "^2.0.0",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  }
+}

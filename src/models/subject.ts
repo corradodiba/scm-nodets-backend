@@ -56,7 +56,7 @@ export const add = async (subj: Subject) => {
     await subject.save();
     return subject;
   } catch (err) {
-    return new Error("Impossible to save subject!");
+    return new Error(err + " Impossible to save subject!");
   }
 };
 

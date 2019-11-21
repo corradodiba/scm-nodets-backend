@@ -4,12 +4,15 @@ import mongoose from "mongoose";
 import teachersRouter from "./routes/teachers";
 import studentsRouter from "./routes/students";
 import subjectsRouter from "./routes/subjects";
+import bodyParse from "body-parser";
 
 const PORT = 3000;
 const MONGO_CLUSTER_URL =
   "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
 
 const app = express();
+
+app.use(bodyParse.json());
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

@@ -41,7 +41,7 @@ export const getById = async (id: string) => {
 
 export const deleteOneById = async (id: string) => {
   try {
-    const deletedSubj = await SubjectModel.deleteOne({ _id: id });
+    const deletedSubj = await SubjectModel.findByIdAndRemove({ _id: id });
     return deletedSubj === null
       ? new Error("No subject found for deletion!")
       : deletedSubj;

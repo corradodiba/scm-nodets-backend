@@ -32,11 +32,13 @@ app.use("/students", studentsRouter);
 app.use("/subjects", subjectsRouter);
 
 app.listen(PORT, async () => {
-  console.log(`🚀 Server ready at http://localhost:${PORT}`);
+  console.log(`🚀 Server ready at http://localhost:${PORT} 🚀`);
   try {
     await mongoose.connect(MONGO_CLUSTER_URL, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
     });
     console.log("Database: connected successfully!");
   } catch (err) {

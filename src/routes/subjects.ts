@@ -1,6 +1,5 @@
 import express from "express";
-import { SubjectModel, getAll, getById, deleteOneById, add, edit } from "../models/subject";
-import Subject from "../models/interfaces/subject";
+import { Subject, SubjectModel, getAll, getById, deleteOneById, add, edit } from "../models/subject";
 
 const router = express.Router();
 router.get("/", async (req, res, next) => {

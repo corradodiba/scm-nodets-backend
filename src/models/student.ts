@@ -2,7 +2,6 @@ import mongoose, { Schema } from "mongoose";
 import uniqueValidator from "mongoose-unique-validator";
 import fiscalCodeSchema from "./helpers/person.schema";
 import personSchema from "./helpers/person.schema";
-import Student from "./interfaces/student";
 
 const studentSchema = new Schema({
   ...personSchema
@@ -60,3 +59,10 @@ export const getStudentById = async (id: string) => {
     return new Error(`Error: ${err}`);
   }
 };
+
+export interface Student {
+  fiscalCode: string;
+  name: string;
+  surname: string;
+  dateOfBirth: Date;
+}

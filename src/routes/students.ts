@@ -1,6 +1,6 @@
 import express from "express";
-import { StudentModel, getAll, add, deleteStudent, modifyStudent, getStudentById } from "../models/student";
-import Student from "../models/interfaces/student";
+import { Student, getAll, add, deleteStudent, modifyStudent, getStudentById } from "../models/student";
+
 
 const router = express.Router();
 

@@ -2,8 +2,8 @@ import mongoose, { Schema } from "mongoose";
 import uniqueValidator from "mongoose-unique-validator";
 
 import personSchema from "./helpers/person.schema";
-import Teacher from './interfaces/teacher';
 
+import { Subject } from "./subject";
 
 const teacherSchema = new Schema({
   ...personSchema,
@@ -77,4 +77,11 @@ export const updateTeacherById = async (id: string, teacher: Teacher) => {
   }
 };
 
-
+// It was Student, I think by mistake, now it's Teacher
+export interface Teacher {
+  fiscalCode: string;
+  name: string;
+  surname: string;
+  dateOfBirth: Date;
+  subjects?: Subject[];
+}

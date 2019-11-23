@@ -1,7 +1,6 @@
 import express from "express";
-import { getAll, create, getTeacherById, deleteTeacherById, updateTeacherById } from '../models/teacher';
-import Subject from '../models/interfaces/subject';
-import Teacher from '../models/interfaces/teacher';
+import { Teacher, getAll, create, getTeacherById, deleteTeacherById, updateTeacherById } from '../models/teacher';
+import {Subject} from '../models/subject';
 const router = express();
 
 router.get("/", async (req, res, next) => {

@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import uniqueValidator from "mongoose-unique-validator";
 
-import Subject from "./interfaces/subject";
 
 const subjectSchema = new Schema({
   name: {
@@ -70,3 +69,8 @@ export const edit = async (id: string, subject: Subject) => {
     return new Error(`Error: ${err}`);
   }
 };
+
+export interface Subject {
+  name: string;
+  hours: number;
+}

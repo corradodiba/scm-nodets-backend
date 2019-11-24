@@ -8,7 +8,9 @@ const teacherSchema = new Schema({
   ...personSchema,
   subjects: [
     {
-      type: mongoose.Schema.Types.ObjectId
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Subject",
+      default: []
     }
   ]
 });
@@ -20,11 +22,18 @@ export interface Teacher extends Document {
   name: string;
   surname: string;
   dateOfBirth: Date;
-  subjects?: Subject[];
+  subjects?: Subject["_id"][];
 }
 
 export const TeacherModel = mongoose.model<Teacher>("Teacher", teacherSchema);
 
-export { getAll, getById, add, edit, deleteById } from "./teacher.methods";
+export {
+  getAll,
+  getById,
+  add,
+  edit,
+  deleteById,
+  addSubject
+} from "./teacher.methods";
 
 export { CreateTeacher } from "./teacher.constructor";

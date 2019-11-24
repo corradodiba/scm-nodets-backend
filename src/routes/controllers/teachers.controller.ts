@@ -9,6 +9,7 @@ import {
   edit,
   deleteById
 } from "../../models/teacher/teacher.model";
+import { addSubject } from "../../models/teacher/teacher.methods";
 
 export const getAllTeachers = async (req: Request, res: Response) => {
   try {
@@ -75,5 +76,18 @@ export const editTeacherById = async (req: Request, res: Response) => {
     });
   } catch (err) {
     return res.status(404).json({ message: err });
+  }
+};
+
+export const addSubjectsOfTeacher = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { subjects } = req.body;
+    const teacher = await addSubject(id, subjects);
+    return res.status(201).json(teacher);
+  } catch (err) {
+    return res.status(500).json({
+      message: err
+    });
   }
 };

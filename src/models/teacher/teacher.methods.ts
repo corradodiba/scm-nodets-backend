@@ -1,9 +1,10 @@
 import { TeacherModel, Teacher } from "./teacher.model";
-import { Subject } from "../subject/subject.model";
+import { Types } from "mongoose";
+import { SubjectModel } from "../subject/subject.model";
 
 export const getAll = async () => {
   try {
-    const teachers = await TeacherModel.find();
+    const teachers = await TeacherModel.find().populate("subjects");
     if (!teachers) {
       throw "No subject found!";
     }
@@ -15,7 +16,9 @@ export const getAll = async () => {
 
 export const getById = async (id: string) => {
   try {
-    const teacher = await TeacherModel.findOne({ _id: id });
+    const teacher = await TeacherModel.findOne({ _id: id }).populate(
+      "subjects"
+    );
     if (!teacher) {
       throw `No teacher with this id(${id}) found!`;
     }
@@ -35,7 +38,9 @@ export const add = async (teacher: Teacher) => {
 
 export const deleteById = async (id: string) => {
   try {
-    const teacherToDelete = await TeacherModel.findByIdAndRemove({ _id: id });
+    const teacherToDelete = await TeacherModel.findByIdAndRemove({
+      _id: id
+    }).populate("subjects");
     if (!teacherToDelete) {
       throw "No teacher found for deletion!";
     }
@@ -49,8 +54,7 @@ export const edit = async (id: string, teacher: Teacher): Promise<Teacher> => {
   try {
     const updatedTeacher = await TeacherModel.findByIdAndUpdate(id, {
       teacher
-    });
-    console.log(updatedTeacher);
+    }).populate("subjects");
     if (!updatedTeacher || updatedTeacher instanceof Error) {
       throw "No teacher found for editing!";
     }
@@ -60,18 +64,19 @@ export const edit = async (id: string, teacher: Teacher): Promise<Teacher> => {
   }
 };
 
-export const addSubject = async (id: string, subject: Subject[]) => {
+export const addSubject = async (id: string, subject: Types.ObjectId[]) => {
   try {
-    const teacher = await TeacherModel.updateOne(
+    const teacher = await TeacherModel.findOneAndUpdate(
       { _id: id },
       {
-        $push: {
+        $addToSet: {
           subjects: {
             $each: subject
           }
         }
-      }
-    );
+      },
+      { new: true }
+    ).populate("subjects");
     if (!teacher) {
       throw "Impossible to update subjects teacher";
     }

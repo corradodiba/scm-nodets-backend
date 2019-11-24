@@ -1,93 +1,41 @@
 import express from "express";
+
 import {
-  Teacher,
-  getAll,
-  create,
+  getAllTeachers,
   getTeacherById,
   deleteTeacherById,
-  updateTeacherById
-} from "../models/teacher";
-import { Subject } from "../models/subject/subject.model";
+  addTeacher,
+  editTeacherById
+} from "./controllers/teachers.controller";
+import { addSubject } from "../models/teacher/teacher.methods";
+import { CreateSubject, Subject } from "../models/subject/subject.model";
+
 const router = express();
 
-router.get("/", async (req, res, next) => {
-  const teachers = await getAll();
-  return res.status(200).json(teachers);
-});
+router.get("/", getAllTeachers);
 
-router.get("/:id", async (req, res, next) => {
-  const id = req.params.id;
+router.get("/:id", getTeacherById);
+
+router.delete("/:id", deleteTeacherById);
+
+router.post("/", addTeacher);
+
+router.put("/:id", editTeacherById);
+
+router.post("/:id/subjects", async (req, res) => {
   try {
-    const teacher = await getTeacherById(id);
-    return res.status(200).json(teacher);
+    const { id } = req.params;
+    const { subjects } = req.body;
+    let subjs: Subject[] = [];
+    for (let subj of subjects) {
+      subjs.push(subj);
+    }
+    const teacher = await addSubject(id, subjs);
+    return res.status(201).json(teacher);
   } catch (err) {
-    return res.status(404).json({ message: err });
-  }
-});
-
-router.get("/:id/subjects", (req, res, next) => {
-  const id = req.params.id;
-  try {
-    getTeacherById(id).then((teacher) => {
-      res.status(200).json({ teacher: teacher });
+    return res.status(500).json({
+      message: err
     });
-  } catch (err) {
-    return res.status(404).json({ message: err });
-  }
-});
-
-router.delete("/:id", async (req, res, next) => {
-  const id = req.params.id;
-  try {
-    const teacher = await deleteTeacherById(id);
-    return res.status(200).json(teacher);
-  } catch (err) {
-    return res.status(404).json({ message: err });
-  }
-});
-
-router.post("/", async (req, res, next) => {
-  try {
-    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const teacher: Teacher = {
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects
-    };
-    const fetchedTeacher = await create(teacher);
-    console.log(teacher);
-    return res.status(200).json(fetchedTeacher);
-  } catch (err) {
-    return res.status(404).json({ message: err });
-  }
-});
-
-// Still to do: accessing subject
-router.get("/:id/:subject", (req, res, next) => {
-  res.status(200).json();
-});
-
-router.put("/:id", async (req, res, next) => {
-  const id = req.params.id;
-  try {
-    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const modifiedTeacher: Teacher = {
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects
-    };
-    const updatedTeacher: any = await updateTeacherById(id, modifiedTeacher);
-    return res.status(200).json({
-      message: "Teacher successfully edited!",
-      before: updatedTeacher,
-      after: modifiedTeacher
-    });
-  } catch (err) {
-    return res.status(404).json({ message: err });
   }
 });
 

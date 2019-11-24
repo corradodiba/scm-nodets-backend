@@ -1,21 +1,21 @@
 export = {
   fiscalCode: {
     type: String,
-    require: true,
+    required: true,
     unique: true,
     maxlength: 16,
     minlength: 16
   },
   name: {
     type: String,
-    require: true
+    required: true
   },
   surname: {
     type: String,
-    require: true
+    required: true
   },
   dateOfBirth: {
     type: Date,
-    require: true
+    required: true
   }
 };

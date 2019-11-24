@@ -1,6 +1,13 @@
 import express from "express";
-import { Teacher, getAll, create, getTeacherById, deleteTeacherById, updateTeacherById } from '../models/teacher';
-import {Subject} from '../models/subject';
+import {
+  Teacher,
+  getAll,
+  create,
+  getTeacherById,
+  deleteTeacherById,
+  updateTeacherById
+} from "../models/teacher";
+import { Subject } from "../models/subject/subject.model";
 const router = express();
 
 router.get("/", async (req, res, next) => {
@@ -11,7 +18,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   try {
-    const teacher = await getTeacherById(id)
+    const teacher = await getTeacherById(id);
     return res.status(200).json(teacher);
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -22,8 +29,8 @@ router.get("/:id/subjects", (req, res, next) => {
   const id = req.params.id;
   try {
     getTeacherById(id).then((teacher) => {
-      res.status(200).json({ "teacher": teacher });
-    })
+      res.status(200).json({ teacher: teacher });
+    });
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -41,13 +48,7 @@ router.delete("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const {
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects
-    } = req.body;
+    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
     const teacher: Teacher = {
       fiscalCode,
       name,
@@ -72,7 +73,13 @@ router.put("/:id", async (req, res, next) => {
   const id = req.params.id;
   try {
     const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const modifiedTeacher: Teacher = { fiscalCode, name, surname, dateOfBirth, subjects };
+    const modifiedTeacher: Teacher = {
+      fiscalCode,
+      name,
+      surname,
+      dateOfBirth,
+      subjects
+    };
     const updatedTeacher: any = await updateTeacherById(id, modifiedTeacher);
     return res.status(200).json({
       message: "Teacher successfully edited!",

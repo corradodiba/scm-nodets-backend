@@ -6,9 +6,10 @@ import studentsRouter from "./routes/students";
 import subjectsRouter from "./routes/subjects";
 import bodyParse from "body-parser";
 
-const PORT = 3050;
+const PORT = 3000;
 const MONGO_CLUSTER_URL =
-  "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
+  // "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
+  "mongodb://localhost:27017/class-managing";
 
 const app = express();
 

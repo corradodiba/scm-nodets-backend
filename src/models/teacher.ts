@@ -1,9 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 import uniqueValidator from "mongoose-unique-validator";
 
-import personSchema from "./helpers/person.schema";
+import personSchema from "./person.schema";
 
-import { Subject } from "./subject";
+import { Subject } from "./subject/subject.model";
 
 const teacherSchema = new Schema({
   ...personSchema,
@@ -24,7 +24,7 @@ export const getAll = async () => {
   } catch (err) {
     return new Error(`Error: ${err}`);
   }
-}
+};
 
 export const create = async (teachDoc: Teacher) => {
   try {
@@ -34,7 +34,7 @@ export const create = async (teachDoc: Teacher) => {
   } catch (err) {
     return new Error(err + " Impossible to save teacher!");
   }
-}
+};
 
 export const getTeacherById = async (id: string) => {
   try {
@@ -45,15 +45,12 @@ export const getTeacherById = async (id: string) => {
   } catch (err) {
     return new Error(`Error: ${err}`);
   }
-}
+};
 
 export const getSubjectsByTeacherId = async (teacher: Teacher) => {
   try {
-
-  } catch (error) {
-
-  }
-}
+  } catch (error) {}
+};
 
 export const deleteTeacherById = async (id: string) => {
   try {

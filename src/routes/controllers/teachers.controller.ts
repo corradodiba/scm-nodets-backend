@@ -9,7 +9,11 @@ import {
   edit,
   deleteById
 } from "../../models/teacher/teacher.model";
-import { addSubject } from "../../models/teacher/teacher.methods";
+import {
+  addSubject,
+  getSubjects,
+  deleteSubjects
+} from "../../models/teacher/teacher.methods";
 
 export const getAllTeachers = async (req: Request, res: Response) => {
   try {
@@ -27,6 +31,18 @@ export const getTeacherById = async (req: Request, res: Response) => {
     return res.status(200).json(teacher);
   } catch (err) {
     return res.status(404).json({ message: err });
+  }
+};
+
+export const getSubjectsOfTeacher = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const subjects = await getSubjects(id);
+    return res.status(200).json(subjects);
+  } catch (err) {
+    return res.status(404).json({
+      messagge: err
+    });
   }
 };
 
@@ -57,6 +73,19 @@ export const addTeacher = async (req: Request, res: Response) => {
   }
 };
 
+export const addSubjectsOfTeacher = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const { subjects } = req.body;
+    const teacher = await addSubject(id, subjects);
+    return res.status(201).json(teacher);
+  } catch (err) {
+    return res.status(500).json({
+      message: err
+    });
+  }
+};
+
 export const editTeacherById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
@@ -79,15 +108,15 @@ export const editTeacherById = async (req: Request, res: Response) => {
   }
 };
 
-export const addSubjectsOfTeacher = async (req: Request, res: Response) => {
+export const deleteSubjectsOfTeacher = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const { subjects } = req.body;
-    const teacher = await addSubject(id, subjects);
-    return res.status(201).json(teacher);
+    const { id, idSubject } = req.params;
+    const subjects = await deleteSubjects(id, idSubject);
+    if (!subjects) {
+      throw "ciao";
+    }
+    res.json(subjects);
   } catch (err) {
-    return res.status(500).json({
-      message: err
-    });
+    return res.status(404).json({ message: err });
   }
 };

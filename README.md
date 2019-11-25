@@ -5,7 +5,11 @@ This product is a **management software** developed by five of Steve Jobs Academ
 
 The **APIs** used are structured in **REST Architecture**, and the Database used is **MONGODB**.
 
-
+  # _NPM commands:_
+    
+   * Run `npm start` to start the distributed server
+   * Run `npm run dev` to start the server in developer mode
+   * Run `npm run build`to compile and distribute the application
 
  # The following list shows how we structured the file system:
 

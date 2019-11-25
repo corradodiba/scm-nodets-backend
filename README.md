@@ -15,7 +15,7 @@ The **APIs** used are structured in **REST Architecture**, and the Database used
   * tests folder
   * apps.ts files
   
- `codice atteso da manuel e matteo`
+ 
   
   
 ### The _***models***_ folder contains:

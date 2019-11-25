@@ -1,3 +1,5 @@
+# STEVE JOBS CLASS MANAGEMENT
+
 This product is a **management software** developed by five of Steve Jobs Academy's students, with the intent of **automate all of the usual operations** used by the Steve Jobs Academy regarding the **managing** of all the students, the teachers, the subjects and the grades.
 
 

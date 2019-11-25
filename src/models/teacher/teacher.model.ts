@@ -1,5 +1,4 @@
 import mongoose, { Schema, Document } from "mongoose";
-import uniqueValidator from "mongoose-unique-validator";
 
 import personSchema from "../person.schema";
 import { Subject } from "../subject/subject.model";
@@ -15,8 +14,6 @@ const teacherSchema = new Schema({
   ]
 });
 
-teacherSchema.plugin(uniqueValidator);
-
 export interface Teacher extends Document {
   fiscalCode: string;
   name: string;
@@ -30,10 +27,12 @@ export const TeacherModel = mongoose.model<Teacher>("Teacher", teacherSchema);
 export {
   getAll,
   getById,
+  getSubjects,
   add,
+  addSubject,
   edit,
   deleteById,
-  addSubject
+  deleteSubjects
 } from "./teacher.methods";
 
 export { CreateTeacher } from "./teacher.constructor";

@@ -1,19 +1,19 @@
 import { Response, Request } from "express";
 
 import {
-  Teacher,
-  CreateTeacher,
   getAll,
   getById,
-  add,
-  edit,
-  deleteById
-} from "../../models/teacher/teacher.model";
-import {
-  addSubject,
   getSubjects,
-  deleteSubjects
-} from "../../models/teacher/teacher.methods";
+  add,
+  addSubject,
+  edit,
+  deleteById,
+  deleteSubjects,
+  Teacher,
+  CreateTeacher
+} from "../../models/teacher/teacher.model";
+
+import * as GradesModel from "../../models/grades/grades.model";
 
 export const getAllTeachers = async (req: Request, res: Response) => {
   try {
@@ -42,6 +42,18 @@ export const getSubjectsOfTeacher = async (req: Request, res: Response) => {
   } catch (err) {
     return res.status(404).json({
       messagge: err
+    });
+  }
+};
+
+export const getAllGrades = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const grades: GradesModel.Grades[] = await GradesModel.getAll(id);
+    return res.status(200).json(grades);
+  } catch (err) {
+    return res.json(404).json({
+      message: err
     });
   }
 };
@@ -86,6 +98,24 @@ export const addSubjectsOfTeacher = async (req: Request, res: Response) => {
   }
 };
 
+export const addGradeOfTeacher = async (req: Request, res: Response) => {
+  try {
+    const { grade, student, subject } = req.body;
+    const { id } = req.params;
+    const addedGrade = await GradesModel.add(
+      Number(grade),
+      student,
+      subject,
+      id
+    );
+    return res.status(201).json(addedGrade);
+  } catch (err) {
+    return res.json(404).json({
+      message: err
+    });
+  }
+};
+
 export const editTeacherById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
@@ -108,15 +138,44 @@ export const editTeacherById = async (req: Request, res: Response) => {
   }
 };
 
+export const editGradeById = async (req: Request, res: Response) => {
+  try {
+    const { id, idGrade } = req.params;
+    const { grade } = req.body;
+    const updatedGrade = await GradesModel.editGrade(
+      id,
+      idGrade,
+      Number(grade)
+    );
+    return res.status(201).json(updatedGrade);
+  } catch (err) {
+    return res.status(404).json({
+      message: err
+    });
+  }
+};
+
 export const deleteSubjectsOfTeacher = async (req: Request, res: Response) => {
   try {
     const { id, idSubject } = req.params;
     const subjects = await deleteSubjects(id, idSubject);
     if (!subjects) {
-      throw "ciao";
+      throw "No teacher for deleting!";
     }
     res.json(subjects);
   } catch (err) {
     return res.status(404).json({ message: err });
+  }
+};
+
+export const deleteGradeById = async (req: Request, res: Response) => {
+  try {
+    const { idGrade, idTeacher } = req.params;
+    const deletedGrade = await GradesModel.deleteById(idGrade, idTeacher);
+    return res.status(201).json(deletedGrade);
+  } catch (err) {
+    return res.status(404).json({
+      message: err
+    });
   }
 };

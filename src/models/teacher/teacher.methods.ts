@@ -1,5 +1,6 @@
 import { TeacherModel, Teacher } from "./teacher.model";
 import { Subject } from "../subject/subject.model";
+import { GradesModel } from "../grades/grades.model";
 
 export const getAll = async () => {
   try {

@@ -46,7 +46,7 @@ export const deleteById = async (id: string): Promise<Student> => {
 
 export const edit = async (id: string, student: Student): Promise<Student> => {
   try {
-    const stud = await StudentModel.findByIdAndUpdate(id, { student });
+    const stud = await StudentModel.findByIdAndUpdate(id, student);
     if (!stud) {
       throw `No subject found for edited!`;
     }

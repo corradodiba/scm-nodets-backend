@@ -53,8 +53,8 @@ export const addSubject = async (req: Request, res: Response) => {
 export const editSubjectById = async (req: Request, res: Response) => {
   try {
     const { name, hours } = req.body;
-    const subj: Subject = CreateSubject({ name, hours });
-    const result: Subject = await edit(req.params.id, subj);
+    const subj = { name, hours };
+    const result: Subject = await edit(req.params.id, subj as Subject);
     return res.status(200).json({
       message: "Subject successfully edited!",
       before: result,

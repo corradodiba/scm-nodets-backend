@@ -46,7 +46,7 @@ export const deleteById = async (id: string): Promise<Subject> => {
 
 export const edit = async (id: string, subject: Subject): Promise<Subject> => {
   try {
-    const editedSubject = await SubjectModel.findByIdAndUpdate(id, { subject });
+    const editedSubject = await SubjectModel.findByIdAndUpdate(id, subject);
     if (!editedSubject) {
       throw "No subject found for editing!";
     }

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/app.js",
     "dev": "nodemon src/app.ts",
-    "test": "mocha -r ts-node/register src/tests/*.spec.ts",
+    "test": "mocha -r ts-node/register src/tests/*.spec.ts --timeout 0",
     "build": "tsc -p ."
   },
   "repository": {

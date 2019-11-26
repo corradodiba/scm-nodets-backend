@@ -2,12 +2,12 @@ import mongoose, { Document, Schema } from "mongoose";
 import { Student } from "../student/student.model";
 import { Subject } from "../subject/subject.model";
 import { Teacher } from "../teacher/teacher.model";
-import { CreateGrade } from "./grades.costructor";
 
 const GradesSchema: Schema = new Schema({
   grade: {
     type: Number,
     required: true,
+    minlength: 0,
     maxlength: 10
   },
   student: {
@@ -36,6 +36,6 @@ export interface Grades extends Document {
 
 export const GradesModel = mongoose.model<Grades>("Grades", GradesSchema);
 
-export { getAll, add, deleteById, editGrade } from "./grades.methods";
+export { getAll, getAllStudentGrades, add, deleteById, editGrade } from "./grades.methods";
 
 export { CreateGrade } from "./grades.costructor";

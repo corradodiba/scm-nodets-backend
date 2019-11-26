@@ -9,13 +9,13 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
 
   # _NPM commands:_
     
-   :loop: Run `npm start` to start the distributed server :loop:
+   :loop: Run `npm start` to start the distributed server 
    
-   :computer: Run `npm run dev` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files. :computer:
+   :computer: Run `npm run dev` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files. 
    
-   :nut_and_bolt: Run `npm run build` to build the project. The build artifacts will be stored in the /build directory. :nut_and_bolt:
+   :hammer: Run `npm run build` to build the project. The build artifacts will be stored in the /build directory. 
    
-   :mag_right: Run `npm test` to execute the unit tests via Mocha. :mag:
+   :mag_right: Run `npm test` to execute the unit tests via Mocha. 
    
 
  # The following list shows how we structured the file system:

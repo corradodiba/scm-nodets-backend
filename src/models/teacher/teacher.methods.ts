@@ -113,9 +113,10 @@ export const deleteSubjects = async (idTeacher: string, idSubject: string) => {
 
 export const edit = async (id: string, teacher: Teacher): Promise<Teacher> => {
   try {
-    const updatedTeacher = await TeacherModel.findByIdAndUpdate(id, {
+    const updatedTeacher = await TeacherModel.findByIdAndUpdate(
+      id,
       teacher
-    }).populate("subjects");
+    ).populate("subjects");
     if (!updatedTeacher || updatedTeacher instanceof Error) {
       throw "No teacher or subjects found for editing!";
     }

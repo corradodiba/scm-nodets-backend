@@ -120,14 +120,14 @@ export const editTeacherById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const modifiedTeacher: Teacher = CreateTeacher({
+    const modifiedTeacher = {
       fiscalCode,
       name,
       surname,
       dateOfBirth,
       subjects
-    });
-    const updatedTeacher: Teacher = await edit(id, modifiedTeacher);
+    };
+    const updatedTeacher: Teacher = await edit(id, modifiedTeacher as Teacher);
     return res.status(200).json({
       message: "Teacher successfully edited!",
       before: updatedTeacher,

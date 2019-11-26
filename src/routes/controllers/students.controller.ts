@@ -70,14 +70,14 @@ export const editStudentById = async (req: Request, res: Response) => {
   try {
     const { fiscalCode, name, surname, dateOfBirth } = req.body;
 
-    const stud: Student = CreateStudent({
+    const stud = {
       fiscalCode,
       name,
       surname,
       dateOfBirth
-    });
+    };
 
-    const result: Student = await edit(req.params.id, stud);
+    const result: Student = await edit(req.params.id, stud as Student);
 
     return res.status(201).json({
       message: "Subject successfully edited!",

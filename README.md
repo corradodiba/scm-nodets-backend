@@ -3,13 +3,15 @@
 This product is a **management software** developed by five of Steve Jobs Academy's students, with the intent of **automate all of the usual operations** used by the Steve Jobs Academy regarding the **managing** of all the students, the teachers, the subjects and the grades.
 
 
-The **APIs** used are structured in **REST Architecture**, and the Database used is **MONGODB**.
+The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
 
   # _NPM commands:_
     
    * Run `npm start` to start the distributed server
-   * Run `npm run dev` to start the server in developer mode
-   * Run `npm run build`to compile and distribute the application
+   * Run `npm run dev` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
+   * Run `npm run build` to build the project. The build artifacts will be stored in the /build directory.
+   * Run `npm test` to execute the unit tests via Mocha.
+   
 
  # The following list shows how we structured the file system:
 
@@ -17,7 +19,7 @@ The **APIs** used are structured in **REST Architecture**, and the Database used
   * models folder
   * routes folder
   * tests folder
-  * apps.ts files
+  * app.ts files
   
  
   
@@ -79,8 +81,8 @@ The **APIs** used are structured in **REST Architecture**, and the Database used
 
 On your search bar, type:
 
-` localhost:3050/students` to see the *students*.
+` localhost:3000/students` to see the *students*.
 
-` localhost:3050/teachers` to see the *teachers*.
+` localhost:3000/teachers` to see the *teachers*.
 
-` localhost:3050/subjects` to see the *subjects*.
+` localhost:3000/subjects` to see the *subjects*.

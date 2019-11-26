@@ -17,7 +17,7 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
    
    :hammer: Run `npm run build` to build the project. The build artifacts will be stored in the /build directory. 
    
-   :mag_right: Run `npm test` to execute the unit tests via Mocha. 
+   :bug: Run `npm test` to execute the unit tests via Mocha. 
    
 
  # The following list shows how we structured the file system:
@@ -27,7 +27,7 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
   
   :file_folder: routes folder 
   
-  :bug: tests folder 
+  :file_folder: tests folder 
   
   :page_with_curl: app.ts files 
   

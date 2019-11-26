@@ -1,33 +1,22 @@
 import express from "express";
+import {
+  getAllStudents,
+  getStudentById,
+  deleteStudentById,
+  addStudent,
+  editStudentById
+} from "./controllers/students.controller";
 
 const router = express.Router();
 
-const dummyStundets: Object[] = [
-  {
-    name: "Gaetano",
-    surname: "Carfì",
-    age: "21"
-  }
-];
+router.get("/", getAllStudents);
 
-router.get("/", (req, res, next) => {
-  res.status(200).json();
-});
+router.get("/:id", getStudentById);
 
-router.get("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.delete("/:id", deleteStudentById);
 
-router.delete("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.post("/", addStudent);
 
-router.post("/", (req, res, next) => {
-  res.status(200).json();
-});
-
-router.put("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.put("/:id", editStudentById);
 
 export default router;

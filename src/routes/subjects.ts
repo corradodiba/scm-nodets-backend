@@ -1,31 +1,21 @@
 import express from "express";
+import {
+  getAllSubjects,
+  getSubjectById,
+  deleteSubjectById,
+  addSubject,
+  editSubjectById
+} from "./controllers/subjects.controller";
 
 const router = express.Router();
+router.get("/", getAllSubjects);
 
-const dummySubjects: Object[] = [
-  {
-    name: "Back-end"
-  }
-];
+router.get("/:id", getSubjectById);
 
-router.get("/", (req, res, next) => {
-  res.status(200).json();
-});
+router.delete("/:id", deleteSubjectById);
 
-router.get("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.post("/", addSubject);
 
-router.delete("/:id", (req, res, next) => {
-  res.status(200).json();
-});
-
-router.post("/", (req, res, next) => {
-  res.status(200).json();
-});
-
-router.put("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.put("/:id", editSubjectById);
 
 export default router;

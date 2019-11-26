@@ -1,41 +1,44 @@
 import express from "express";
 
-const router = express.Router();
+import {
+  getAllTeachers,
+  getTeacherById,
+  getSubjectsOfTeacher,
+  deleteTeacherById,
+  deleteSubjectsOfTeacher,
+  addTeacher,
+  editTeacherById,
+  addSubjectsOfTeacher,
+  addGradeOfTeacher,
+  getAllGrades,
+  editGradeById,
+  deleteGradeById
+} from "./controllers/teachers.controller";
 
-const dummyTeachers: Object[] = [
-  {
-    name: "Letizia",
-    surname: "Carfì",
-    age: "39"
-  }
-];
+const router = express();
 
-router.get("/", (req, res, next) => {
-  res.status(200).json();
-});
+router.get("/", getAllTeachers);
 
-router.get("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.get("/:id", getTeacherById);
 
-router.get("/:id/subjects", (req, res, next) => {
-  res.status(200).json();
-});
+router.get("/:id/subjects", getSubjectsOfTeacher);
 
-router.delete("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.get("/:id/grades", getAllGrades);
 
-router.post("/", (req, res, next) => {
-  res.status(200).json();
-});
+router.delete("/:id", deleteTeacherById);
 
-router.get("/:id/:subject", (req, res, next) => {
-  res.status(200).json();
-});
+router.delete("/:id/subjects/:idSubject", deleteSubjectsOfTeacher);
 
-router.put("/:id", (req, res, next) => {
-  res.status(200).json();
-});
+router.delete("/:id/grades/:idGrade", deleteGradeById);
+
+router.post("/", addTeacher);
+
+router.post("/:id/subjects", addSubjectsOfTeacher);
+
+router.post("/:id/grades", addGradeOfTeacher);
+
+router.put("/:id", editTeacherById);
+
+router.put("/:id/grades/:idGrade", editGradeById);
 
 export default router;

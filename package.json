@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/corradodiba/stevejobs-class-managing#readme",
   "dependencies": {
+    "@types/body-parser": "^1.17.1",
     "@types/chai-http": "^4.2.0",
     "@types/mongoose": "^5.5.32",
     "@types/mongoose-unique-validator": "^1.0.3",

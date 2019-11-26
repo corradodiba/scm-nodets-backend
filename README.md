@@ -1,4 +1,4 @@
-# STEVE JOBS CLASS MANAGEMENT 
+   #  STEVE JOBS: CLASS MANAGEMENT
 
 <p align=center>
   <img src=https://i.imgur.com/nUnIWCS.jpg alt=SteveJobs Academy>

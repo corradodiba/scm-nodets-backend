@@ -1,4 +1,6 @@
-# STEVE JOBS CLASS MANAGEMENT
+# STEVE JOBS CLASS MANAGEMENT 
+
+![alt text](https://pbs.twimg.com/profile_images/894570719127928833/8I-xlHzY_400x400.jpg)
 
 This product is a **management software** developed by five of Steve Jobs Academy's students, with the intent of **automate all of the usual operations** used by the Steve Jobs Academy regarding the **managing** of all the students, the teachers, the subjects and the grades.
 
@@ -19,9 +21,9 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
  # The following list shows how we structured the file system:
 
  ## The _**source**_ folder (_**src**_): :notebook_with_decorative_cover:
-  * models folder :ledger:
-  * routes folder :ledger:
-  * tests folder :ledger:
+  * models folder ::file_folder:
+  * routes folder :file_folder:
+  * tests folder :file_folder:
   * app.ts files :page_with_curl:
   
  
@@ -36,26 +38,21 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
   
     It is a typescript construct, and containes the interfaces of every single teacher, subject and student.
   * _**And four files**_:
-    * students
-    * teachers
-    * subjects
-    * grades
+    * students :bow:
+    * teachers :man:
+    * subjects :blue_book: :orange_book:
+    * grades :100:
     
-  `codice atteso da manuel e matteo`
+ 
     
 ### The _***routes***_ folder contains the APIs management that have been used for:
-   * students
-   * teachers
-   * subjects
+   * students :bow:
+   * teachers :man:
+   * subjects :blue_book: :orange_book:
    
-   `codice atteso da manuel e matteo`
    
-### The _***tests***_ folder contains the tests that have been made to every resource:
-`codice atteso da manuel e matteo`
-
-`codice atteso da manuel e matteo`
-
-`codice atteso da manuel e matteo`
+   
+### The _***tests***_ folder contains the tests that have been made to every resource
 
 # List of _NPM_ modules used for this project:
    * @types/mongoose 
@@ -82,7 +79,7 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
 
 # Access method to the software:
 
-On your search bar, type:
+:mag: On your search bar, type:
 
 ` localhost:3000/students` to see the *students*.
 

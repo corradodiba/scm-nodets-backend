@@ -11,7 +11,7 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
 
   # _NPM commands:_
     
-   :loop: Run `npm start` to start the distributed server 
+   :arrow_forward: Run `npm start` to start the distributed server 
    
    :computer: Run `npm run dev` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files. 
    
@@ -22,11 +22,14 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
 
  # The following list shows how we structured the file system:
 
- ## The _**source**_ folder (_**src**_): :notebook_with_decorative_cover:
-  * models folder ::file_folder:
-  * routes folder :file_folder:
-  * tests folder :file_folder:
-  * app.ts files :page_with_curl:
+ ## :notebook_with_decorative_cover: The _**source**_ folder (_**src**_): 
+  :file_folder: models folder 
+  
+  :file_folder: routes folder 
+  
+  :bug: tests folder 
+  
+  :page_with_curl: app.ts files 
   
  
   
@@ -41,16 +44,16 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
     It is a typescript construct, and containes the interfaces of every single teacher, subject and student.
   * _**And four files**_:
     * students :bow:
-    * teachers :man:
-    * subjects :blue_book: :orange_book:
+    * teachers :mortar_board:	
+    * subjects :blue_book: 
     * grades :100:
     
  
     
 ### The _***routes***_ folder contains the APIs management that have been used for:
    * students :bow:
-   * teachers :man:
-   * subjects :blue_book: :orange_book:
+   * teachers :mortar_board:	
+   * subjects :blue_book: 
    
    
    

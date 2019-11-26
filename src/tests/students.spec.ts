@@ -3,7 +3,7 @@ import chaiHttp = require("chai-http");
 import "mocha";
 import { ObjectID } from "bson";
 
-const PATH = "http://localhost:3050/students";
+const PATH = "http://localhost:3000/students";
 
 chai.use(chaiHttp);
 
@@ -17,7 +17,7 @@ describe(`GET/`, () => {
       .end((err, data) => {
         expect(err).to.be.null;
         expect(data).to.have.status(200);
-        expect(data.body).to.be.a('array');
+        expect(data.body).to.be.a("array");
         done();
       });
   });
@@ -26,14 +26,22 @@ describe(`GET/`, () => {
 describe(`GET/:id `, () => {
   let id: ObjectID;
   before(async () => {
-    const result = await chai.request(PATH).post("/").send({ fiscalCode: "HTGIII05N67B342G", name: "Pippo", surname: "Franco", dateOfBirth: "1995-05-20" })
-    id = result.body._id
+    const result = await chai
+      .request(PATH)
+      .post("/")
+      .send({
+        fiscalCode: "HTGIII05N67B342G",
+        name: "Pippo",
+        surname: "Franco",
+        dateOfBirth: "1995-05-20"
+      });
+    id = result.body._id;
   });
   after(() => {
     chai
       .request(PATH)
       .delete(`/${id}`)
-      .end()
+      .end();
   });
   it(" should return status 200 and a single JSON", (done) => {
     chai
@@ -68,8 +76,13 @@ describe("POST/", () => {
     chai
       .request(PATH)
       .post("/")
-      .send({ fiscalCode: "HTGORI05N67B342G", name: "Prova", surname: "Post", dateOfBirth: "1995-04-20" })
-      .set('Content-Type', 'application/json')
+      .send({
+        fiscalCode: "HTGORI05N67B342G",
+        name: "Prova",
+        surname: "Post",
+        dateOfBirth: "1995-04-20"
+      })
+      .set("Content-Type", "application/json")
       .end((err, data) => {
         expect(data).to.have.status(201);
         id = data.body._id;
@@ -81,8 +94,16 @@ describe("POST/", () => {
 describe("PUT/:id", () => {
   let id: ObjectID;
   before(async () => {
-    const result = await chai.request(PATH).post("/").send({ fiscalCode: "HTGILI05B67B342G", name: "Prova", surname: "Put", dateOfBirth: "1995-03-20" })
-    id = result.body._id
+    const result = await chai
+      .request(PATH)
+      .post("/")
+      .send({
+        fiscalCode: "HTGILI05B67B342G",
+        name: "Prova",
+        surname: "Put",
+        dateOfBirth: "1995-03-20"
+      });
+    id = result.body._id;
   });
   after(() => {
     chai
@@ -94,12 +115,17 @@ describe("PUT/:id", () => {
     chai
       .request(PATH)
       .put(`/${id}`)
-      .send({ fiscalCode: "HTGIII05N67B342G", name: "Ciccio", surname: "Franco", dateOfBirth: "1995-05-20" })
+      .send({
+        fiscalCode: "HTGIII05N67B342G",
+        name: "Ciccio",
+        surname: "Franco",
+        dateOfBirth: "1995-05-20"
+      })
       .end((err, data) => {
         expect(data).to.have.status(201);
-        expect(data.body.before).to.have.property('surname');
+        expect(data.body.before).to.have.property("surname");
         expect(data.body.before.name).to.be.string;
-        expect(data.body.before.name).to.be.a('string');
+        expect(data.body.before.name).to.be.a("string");
         done();
       });
   });
@@ -108,14 +134,22 @@ describe("PUT/:id", () => {
 describe("DELETE/:id", () => {
   let id: ObjectID;
   before(async () => {
-    const result = await chai.request(PATH).post("/").send({ fiscalCode: "HTGAAA05N67B342G", name: "Prova", surname: "Delete", dateOfBirth: "1995-09-20" })
-    id = result.body._id
+    const result = await chai
+      .request(PATH)
+      .post("/")
+      .send({
+        fiscalCode: "HTGAAA05N67B342G",
+        name: "Prova",
+        surname: "Delete",
+        dateOfBirth: "1995-09-20"
+      });
+    id = result.body._id;
   });
   after(() => {
     chai
       .request(PATH)
       .delete(`/${id}`)
-      .end()
+      .end();
   });
   it("should delete a test obj, status 201", (done) => {
     chai

@@ -7,25 +7,28 @@ The **APIs** use the RESTful approach, and the Database used is **MONGODB**.
 
   # _NPM commands:_
     
-   * Run `npm start` to start the distributed server
-   * Run `npm run dev` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files.
-   * Run `npm run build` to build the project. The build artifacts will be stored in the /build directory.
-   * Run `npm test` to execute the unit tests via Mocha.
+   :loop: Run `npm start` to start the distributed server :loop:
+   
+   :computer: Run `npm run dev` for a dev server. Navigate to http://localhost:3000/. The app will automatically reload if you change any of the source files. :computer:
+   
+   :nut_and_bolt: Run `npm run build` to build the project. The build artifacts will be stored in the /build directory. :nut_and_bolt:
+   
+   :mag_right: Run `npm test` to execute the unit tests via Mocha. :mag:
    
 
  # The following list shows how we structured the file system:
 
- ## The _**source**_ folder (_**src**_):
-  * models folder
-  * routes folder
-  * tests folder
-  * app.ts files
+ ## The _**source**_ folder (_**src**_): :notebook_with_decorative_cover:
+  * models folder :ledger:
+  * routes folder :ledger:
+  * tests folder :ledger:
+  * app.ts files :page_with_curl:
   
  
   
   
 ### The _***models***_ folder contains:
-  * _**Helpers**_ folder:
+  * _**Helpers**_ folder: :man: :woman:
   
     Inside helpers folder you can find the scheme of every single person, that includes **personal data**.
     This helps us structure both students and teachers 

@@ -13,6 +13,19 @@ export const getAll = async (idTeacher: string) => {
     throw err;
   }
 };
+export const getAllStudentGrades = async (idStudent: string) => {
+  try {
+    const grades: Grades[] = await GradesModel.find({
+      student: idStudent
+    }).populate("student subject teacher");
+    if (!grades) {
+      throw "No grades found!";
+    }
+    return grades;
+  } catch (err) {
+    throw err;
+  }
+};
 
 export const add = async (
   grade: Number,

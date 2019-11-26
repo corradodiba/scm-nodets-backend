@@ -72,7 +72,7 @@ describe(`Testing ${PATH}`, () => {
         id = result.body._id;
       });
       after(async () => {
-        await chai.request(PATH).delete(`/${id}`)
+        await chai.request(PATH).delete(`/${id}`);
       });
       it(" should return status 200 and a single JSON", async () => {
         const student = await chai.request(PATH).get(`/${id}`);
@@ -80,15 +80,12 @@ describe(`Testing ${PATH}`, () => {
         resolve();
       });
       it(" should return status 404", async () => {
-        const student = await chai
-          .request(PATH)
-          .get("/hello");
+        const student = await chai.request(PATH).get("/hello");
         expect(student).to.have.status(404);
         resolve();
       });
     });
   });
-
 
   describe("POST/", () => {
     let id: string;
@@ -126,11 +123,9 @@ describe(`Testing ${PATH}`, () => {
             name: "Prova",
             surname: "Put",
             dateOfBirth: new Date().toDateString()
-          });
+          })
+          .set("Content-Type", "application/json");
         id = result.body._id;
-      });
-      after(async () => {
-        await chai.request(PATH).delete(`/${id}`);
       });
       it("should modifiy data, status 201 and return a json body", async () => {
         const student = await chai
@@ -146,6 +141,9 @@ describe(`Testing ${PATH}`, () => {
         expect(student.body.before).to.have.property("surname");
         expect(student.body.before.name).to.be.string;
         resolve();
+      });
+      after(async () => {
+        await chai.request(PATH).delete(`/${id}`);
       });
     });
   });

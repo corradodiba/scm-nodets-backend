@@ -45,9 +45,8 @@ app.use("/subjects", subjectsRoutes);
   
 ### _**Routes**_ folder
    It contains the APIs management that have been used for.
-    * (CRUDS) Students :bow: /students
-    * (CRUD) Teachers :mortar_board:	 /teachers
-    * (CRUD) Subjects :blue_book:  /subjects
+   
+
   ```
   import express from "express";
 import {

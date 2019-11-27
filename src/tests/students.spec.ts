@@ -1,8 +1,10 @@
 import chai from "chai";
 import chaiHttp = require("chai-http");
 import "mocha";
+import { PORT } from "../app";
+import { CreateStudent, Student, deleteById, add } from "../models/student/student.model";
 
-const PATH = "http://localhost:3000/students";
+const PATH = `http://localhost:${PORT}/students`;
 
 chai.use(chaiHttp);
 
@@ -10,48 +12,40 @@ let expect = chai.expect;
 
 describe(`Testing ${PATH}`, () => {
   describe(`GET/`, () => {
-    it("should return an array, status code 200", () => {
-      return new Promise(async (resolve) => {
+    it("should return an array, status code 200", async () => {
         const students = await chai.request(PATH).get("/");
         expect(students.error).to.be.false;
         expect(students).to.have.status(200);
         expect(students.body).to.be.a("array");
-        resolve();
-      });
     });
   });
 
   describe(`GET/:id `, () => {
     let id: string;
-    return new Promise(async (resolve) => {
-      before(async () => {
-        const result = await chai
-          .request(PATH)
-          .post("/")
-          .send({
-            fiscalCode: "HTGIII05N67B342G",
-            name: "Pippo",
-            surname: "Franco",
-            dateOfBirth: new Date().toDateString()
-          });
-        id = result.body._id;
-      });
-      after(async () => {
-        await chai.request(PATH).delete(`/${id}`);
-      });
-      it(" should return status 200 and a single JSON", async () => {
-        const student = await chai.request(PATH).get(`/${id}`);
-        expect(student).to.have.status(200);
-        expect(student.body).to.have.property("fiscalCode");
-        expect(student.body).to.have.property("name");
-        expect(student.body).to.have.property("surname");
-        expect(student.body).to.have.property("dateOfBirth");
-      });
-      it(" should return status 404", async () => {
-        const student = await chai.request(PATH).get("/hello");
-        expect(student).to.have.status(404);
-        resolve();
-      });
+    const props = {
+      fiscalCode: "HTGIII05N67B342G",
+      name: "Pippo",
+      surname: "Franco",
+      dateOfBirth: new Date()
+    }
+    before(async () => {
+      const result = await add(CreateStudent(props));
+      id = result._id;
+    });
+    after(async () => {
+      await deleteById(id);
+    });
+    it(" should return status 200 and a single JSON", async () => {
+      const student = await chai.request(PATH).get(`/${id}`);
+      expect(student).to.have.status(200);
+      expect(student.body).to.have.property("fiscalCode", props.fiscalCode);
+      expect(student.body).to.have.property("name", props.name);
+      expect(student.body).to.have.property("surname", props.surname);
+      expect(student.body).to.have.property("dateOfBirth", props.dateOfBirth);
+    });
+    it(" should return status 404", async () => {
+      const student = await chai.request(PATH).get("/hello");
+      expect(student).to.have.status(404);
     });
   });
 
@@ -74,11 +68,13 @@ describe(`Testing ${PATH}`, () => {
       after(async () => {
         await chai.request(PATH).delete(`/${id}`);
       });
+      // TODO QUESTO TEST è UN DOPPIONE 
       it(" should return status 200 and a single JSON", async () => {
         const student = await chai.request(PATH).get(`/${id}`);
         expect(student).to.have.status(200);
         resolve();
       });
+      // TODO QUESTO TEST è UN DOPPIONE
       it(" should return status 404", async () => {
         const student = await chai.request(PATH).get("/hello");
         expect(student).to.have.status(404);
@@ -106,6 +102,7 @@ describe(`Testing ${PATH}`, () => {
           .set("Content-Type", "application/json");
         expect(student).to.have.status(201);
         id = student.body._id;
+        // TODO verificare inoltre esistenza e valore degli altri campi
         resolve();
       });
     });
@@ -138,6 +135,7 @@ describe(`Testing ${PATH}`, () => {
             dateOfBirth: new Date().toDateString()
           });
         expect(student).to.have.status(201);
+        // TODO verificare che il nuovo valore sia corretto
         expect(student.body.before).to.have.property("surname");
         expect(student.body.before.name).to.be.string;
         resolve();
@@ -164,11 +162,12 @@ describe(`Testing ${PATH}`, () => {
         id = result.body._id;
       });
       after(async () => {
-        await chai.request(PATH).delete(`/${id}`);
+        // await chai.request(PATH).delete(`/${id}`);
       });
       it("should delete a test obj, status 201", async () => {
         const student = await chai.request(PATH).delete(`/${id}`);
         expect(student).to.have.status(201);
+        // 201 è per la creazione, 200
         resolve();
       });
     });

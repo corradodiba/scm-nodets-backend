@@ -1,8 +1,9 @@
 import chai from "chai";
 import chaiHttp = require("chai-http");
 import "mocha";
+import { PORT } from "../app";
 
-const PATH = "http://localhost:3000/subjects";
+const PATH = `http://localhost:${PORT}/subjects`;
 let expect = chai.expect;
 chai.use(chaiHttp);
 describe(`Testing ${PATH} `, () => {

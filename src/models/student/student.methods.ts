@@ -12,11 +12,11 @@ export const getAll = async (): Promise<Student[]> => {
   }
 };
 
-export const getById = async (id: string): Promise<Student> => {
+export const getById = async (_id: string): Promise<Student> => {
   try {
-    const student = await StudentModel.findOne({ _id: id });
+    const student = await StudentModel.findOne({ _id });
     if (!student) {
-      throw `Not student with this id(${id}) found!`;
+      throw `Not student with this id(${_id}) found!`;
     }
     return student;
   } catch (err) {

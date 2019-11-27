@@ -1,9 +1,9 @@
 import chai from "chai";
 import chaiHttp from "chai-http";
 import "mocha";
-import { ETIME } from "constants";
+import { PORT } from "../app";
 
-const PATH = "http://localhost:3000/teachers";
+const PATH = `http://localhost:${PORT}/teachers`;
 let expect = chai.expect;
 chai.use(chaiHttp);
 describe(`Testing ${PATH} `, () => {

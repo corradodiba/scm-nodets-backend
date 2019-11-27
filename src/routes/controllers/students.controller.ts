@@ -14,13 +14,13 @@ import { Grades } from "../../models/grades/grades.model";
 
 export const getAllStudents = async (req: Request, res: Response) => {
   try {
-    const result: Student[] = await getAll();
+    const students: Student[] = await getAll();
 
-    if (result instanceof Error) {
-      throw result;
+    if (students instanceof Error) {
+      throw students;
     }
 
-    return res.status(200).json(result);
+    return res.status(200).json(students);
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -38,8 +38,8 @@ export const getStudentById = async (req: Request, res: Response) => {
 
 export const getAllGradesByStudentId = async (req: Request, res: Response) => {
   try {
-    const result: Grades[] = await getAllStudentGrades(req.params.id);
-    return res.status(200).json(result);
+    const grades: Grades[] = await getAllStudentGrades(req.params.id);
+    return res.status(200).json(grades);
   } catch (err) {
     return res.status(404).json({ message: err });
   }

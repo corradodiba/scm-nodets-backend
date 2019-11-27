@@ -13,10 +13,10 @@ export const getAll = async (idTeacher: string) => {
     throw err;
   }
 };
-export const getAllStudentGrades = async (idStudent: string) => {
+export const getAllStudentGrades = async (student: string) => {
   try {
     const grades: Grades[] = await GradesModel.find({
-      student: idStudent
+      student
     }).populate("student subject teacher");
     if (!grades) {
       throw "No grades found!";

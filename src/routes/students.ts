@@ -19,6 +19,6 @@ router.delete("/:id", deleteStudentById);
 
 router.post("/", addStudent);
 
-router.put("/:id",  );
+router.put("/:id", editStudentById);
 
 export default router;

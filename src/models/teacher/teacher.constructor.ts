@@ -1,28 +1,15 @@
 import { Teacher, TeacherModel } from "./teacher.model";
+import { CreatePersonInput } from "../person/person.interface";
 
-interface CreateTeacherInput {
-  fiscalCode: Teacher["fiscalCode"];
-  name: Teacher["name"];
-  surname: Teacher["surname"];
-  dateOfBirth: Teacher["dateOfBirth"];
+interface CreateTeacherInput extends CreatePersonInput {
   subjects?: Teacher["subjects"];
 }
 
 export const CreateTeacher = ({
-  fiscalCode,
-  name,
-  surname,
-  dateOfBirth,
-  subjects
+  ...studentFields
 }: CreateTeacherInput): Teacher => {
   try {
-    return new TeacherModel({
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects
-    });
+    return new TeacherModel({ ...studentFields });
   } catch (err) {
     throw err;
   }

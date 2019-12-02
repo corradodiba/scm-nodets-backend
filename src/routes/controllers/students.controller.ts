@@ -60,13 +60,22 @@ export const deleteStudentById = async (req: Request, res: Response) => {
 
 export const addStudent = async (req: Request, res: Response) => {
   try {
-    const { fiscalCode, name, surname, dateOfBirth } = req.body;
+    const {
+      fiscalCode,
+      name,
+      surname,
+      dateOfBirth,
+      email,
+      password
+    } = req.body;
 
     const stud = CreateStudent({
       fiscalCode,
       name,
       surname,
-      dateOfBirth
+      dateOfBirth,
+      email,
+      password
     });
 
     const result: Student = await add(stud);

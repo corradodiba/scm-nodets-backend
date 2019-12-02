@@ -70,13 +70,23 @@ export const deleteTeacherById = async (req: Request, res: Response) => {
 
 export const addTeacher = async (req: Request, res: Response) => {
   try {
-    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
+    const {
+      fiscalCode,
+      name,
+      surname,
+      dateOfBirth,
+      subjects,
+      email,
+      password
+    } = req.body;
     const teacher: Teacher = CreateTeacher({
       fiscalCode,
       name,
       surname,
       dateOfBirth,
-      subjects
+      subjects,
+      email,
+      password
     });
     const fetchedTeacher = await add(teacher);
     return res.status(200).json(fetchedTeacher);

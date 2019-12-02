@@ -1,10 +1,11 @@
-import mongoose, { Schema, Document } from "mongoose";
+import mongoose, { Schema } from "mongoose";
+import uniqueValidator from "mongoose-unique-validator";
 
-import personSchema from "../person.schema";
+import { Person, schema } from "../person/person.interface";
 import { Subject } from "../subject/subject.model";
 
-const teacherSchema = new Schema({
-  ...personSchema,
+const TeacherSchema = new Schema({
+  ...schema,
   subjects: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -14,15 +15,13 @@ const teacherSchema = new Schema({
   ]
 });
 
-export interface Teacher extends Document {
-  fiscalCode: string;
-  name: string;
-  surname: string;
-  dateOfBirth: Date;
+TeacherSchema.plugin(uniqueValidator);
+
+export interface Teacher extends Person {
   subjects?: Subject["_id"][];
 }
 
-export const TeacherModel = mongoose.model<Teacher>("Teacher", teacherSchema);
+export const TeacherModel = mongoose.model<Teacher>("Teacher", TeacherSchema);
 
 export {
   getAll,

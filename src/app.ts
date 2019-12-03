@@ -5,6 +5,7 @@ import bodyParse from "body-parser";
 import teachersRoutes from "./routes/teachers";
 import studentsRoutes from "./routes/students";
 import subjectsRoutes from "./routes/subjects";
+import authRoutes from "./routes/auth";
 
 export const PORT = 3001 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
 app.use("/teachers", teachersRoutes);
 app.use("/students", studentsRoutes);
 app.use("/subjects", subjectsRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(PORT, async () => {
   console.log(`🚀 Server ready at http://localhost:${PORT} 🚀`);

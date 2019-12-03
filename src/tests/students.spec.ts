@@ -16,6 +16,14 @@ chai.use(chaiHttp);
 let expect = chai.expect;
 
 describe(`Testing ${PATH}`, () => {
+  const props = {
+    fiscalCode: "HTGIII05N67B342G",
+    name: "Pippo",
+    surname: "Franco",
+    dateOfBirth: new Date(),
+    email: "test@test.it",
+    password: "test"
+  };
   describe(`GET/`, () => {
     it("should return an array, status code 200", async () => {
       const students = await chai.request(PATH).get("/");
@@ -27,14 +35,8 @@ describe(`Testing ${PATH}`, () => {
 
   describe(`GET/id`, () => {
     let id: string;
-    const props = {
-      fiscalCode: "HTGIII05N67B342G",
-      name: "Pippo",
-      surname: "Franco",
-      dateOfBirth: new Date()
-    };
     before(async () => {
-      const student = await add(CreateStudent(props));
+      const student = await add(await CreateStudent(props));
       id = student._id;
     });
     it(" should return status 200 and a single JSON", async () => {
@@ -73,12 +75,7 @@ describe(`Testing ${PATH}`, () => {
       const student = await chai
         .request(PATH)
         .post("/")
-        .send({
-          fiscalCode: "HTGORI05N67B342G",
-          name: "Prova",
-          surname: "Post",
-          dateOfBirth: new Date().toDateString()
-        })
+        .send({ ...props })
         .set("Content-Type", "application/json");
       expect(student).to.have.status(201);
       id = student.body._id;
@@ -92,12 +89,7 @@ describe(`Testing ${PATH}`, () => {
       const result = await chai
         .request(PATH)
         .post("/")
-        .send({
-          fiscalCode: "HTGILI05B67B342G",
-          name: "Prova",
-          surname: "Put",
-          dateOfBirth: new Date().toDateString()
-        })
+        .send({ ...props })
         .set("Content-Type", "application/json");
       id = result.body._id;
     });
@@ -105,12 +97,7 @@ describe(`Testing ${PATH}`, () => {
       const student = await chai
         .request(PATH)
         .put(`/${id}`)
-        .send({
-          fiscalCode: "HTGIII05N67B342G",
-          name: "Ciccio",
-          surname: "Franco",
-          dateOfBirth: new Date().toDateString()
-        });
+        .send({ ...props });
       expect(student).to.have.status(201);
       // TODO verificare che il nuovo valore sia corretto
       expect(student.body.before).to.have.property("surname");
@@ -127,12 +114,7 @@ describe(`Testing ${PATH}`, () => {
       const result = await chai
         .request(PATH)
         .post("/")
-        .send({
-          fiscalCode: "HTGAAA05N67B342G",
-          name: "Prova",
-          surname: "Delete",
-          dateOfBirth: new Date().toDateString()
-        });
+        .send({ ...props });
       id = result.body._id;
     });
     after(async () => {

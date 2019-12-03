@@ -24,6 +24,18 @@ export const getById = async (_id: string): Promise<Student> => {
   }
 };
 
+export const getByEmail = async (email: string): Promise<Student> => {
+  try {
+    const student = await StudentModel.findOne({ email });
+    if (!student) {
+      throw `Not student with this email(${email}) found!`;
+    }
+    return student;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const add = async (stud: Student): Promise<Student> => {
   try {
     return await stud.save();

@@ -28,6 +28,18 @@ export const getById = async (id: string) => {
   }
 };
 
+export const getByEmail = async (email: string) => {
+  try {
+    const teacher = await TeacherModel.findOne({ email }).populate("subjects");
+    if (!teacher) {
+      throw `No teacher with this email(${email}) found!`;
+    }
+    return teacher;
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const getSubjects = async (id: string): Promise<Subject[]> => {
   try {
     const teacher = await TeacherModel.findOne({ _id: id }).populate(

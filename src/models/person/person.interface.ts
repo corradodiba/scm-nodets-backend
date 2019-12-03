@@ -5,8 +5,8 @@ export interface Person extends Document {
   name: string;
   surname: string;
   dateOfBirth: Date;
-  email?: string;
-  password?: string;
+  email: string;
+  password: string;
 }
 
 export const schema = {

@@ -79,7 +79,7 @@ export const addTeacher = async (req: Request, res: Response) => {
       email,
       password
     } = req.body;
-    const teacher: Teacher = CreateTeacher({
+    const teacher: Teacher = await CreateTeacher({
       fiscalCode,
       name,
       surname,

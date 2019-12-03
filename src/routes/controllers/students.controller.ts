@@ -69,7 +69,7 @@ export const addStudent = async (req: Request, res: Response) => {
       password
     } = req.body;
 
-    const stud = CreateStudent({
+    const stud = await CreateStudent({
       fiscalCode,
       name,
       surname,

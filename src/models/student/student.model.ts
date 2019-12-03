@@ -18,6 +18,13 @@ export interface Student extends Person {
 
 export const StudentModel = mongoose.model<Student>("Student", StudentSchema);
 
-export { getAll, getById, add, edit, deleteById } from "./student.methods";
+export {
+  getAll,
+  getById,
+  getByEmail,
+  add,
+  edit,
+  deleteById
+} from "./student.methods";
 
 export { CreateStudent } from "./student.costructor";

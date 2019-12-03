@@ -27,6 +27,7 @@ export {
   getAll,
   getById,
   getSubjects,
+  getByEmail,
   add,
   addSubject,
   edit,

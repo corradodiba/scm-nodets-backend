@@ -8,6 +8,14 @@ let expect = chai.expect;
 chai.use(chaiHttp);
 
 describe(`Testing ${PATH} `, () => {
+  const props = {
+    fiscalCode: "HTGIII05N67B342G",
+    name: "Pippo",
+    surname: "Franco",
+    dateOfBirth: new Date(),
+    email: "test@test.it",
+    password: "test"
+  };
   describe(`GET / `, () => {
     it(" should return an array w/status code 200", async () => {
       const teacher = await chai.request(PATH).get("/");
@@ -23,12 +31,7 @@ describe(`Testing ${PATH} `, () => {
       const subject = await chai
         .request(PATH)
         .post("/")
-        .send({
-          name: "test",
-          surname: "testagain",
-          fiscalCode: "NOBODYOFSORA2000",
-          dateOfBirth: "2019-11-26T11:34:00.729Z"
-        });
+        .send({ ...props });
       id = subject.body._id;
     });
     after(async () => {
@@ -48,12 +51,7 @@ describe(`Testing ${PATH} `, () => {
       const teacher = await chai
         .request(PATH)
         .post("/")
-        .send({
-          name: "test",
-          surname: "testagain",
-          fiscalCode: "NOBODYOFSORA2000",
-          dateOfBirth: "2019-11-26T11:34:00.729Z"
-        })
+        .send({ ...props })
         .set("Content-Type", "application/json");
       expect(teacher).to.have.status(200);
       id = teacher.body._id;
@@ -69,12 +67,7 @@ describe(`Testing ${PATH} `, () => {
       const subject = await chai
         .request(PATH)
         .post("/")
-        .send({
-          fiscalCode: "1234567890000000",
-          name: "test",
-          surname: "testagain",
-          dateOfBirth: "2019-11-26T11:34:00.729Z"
-        })
+        .send({ ...props })
         .set("Content-Type", "application/json");
       id = subject.body._id;
     });
@@ -92,12 +85,7 @@ describe(`Testing ${PATH} `, () => {
       const teacher = await chai
         .request(PATH)
         .post("/")
-        .send({
-          name: "Matteo",
-          surname: "Di Cara",
-          fiscalCode: "NOBODYOFSORA1992",
-          dateOfBirth: "2019-11-26T11:34:00.729Z"
-        })
+        .send({ ...props })
         .set("Content-Type", "application/json");
       id = teacher.body._id;
     });
@@ -105,12 +93,7 @@ describe(`Testing ${PATH} `, () => {
       const teacher = await chai
         .request(PATH)
         .put(`/${id}`)
-        .send({
-          name: "testput",
-          surname: "testagain",
-          fiscalCode: "NOBODYOFSORA2000",
-          dateOfBirth: "2019-11-26T11:34:00.729Z"
-        });
+        .send({ ...props });
       expect(teacher).to.have.status(200);
     });
     after(async () => {

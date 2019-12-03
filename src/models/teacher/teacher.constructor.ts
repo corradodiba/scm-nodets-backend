@@ -1,3 +1,5 @@
+import { hashedPwd } from "../../helpers/hashPwd.helper";
+
 import { Teacher, TeacherModel } from "./teacher.model";
 import { CreatePersonInput } from "../person/person.interface";
 
@@ -5,11 +7,18 @@ interface CreateTeacherInput extends CreatePersonInput {
   subjects?: Teacher["subjects"];
 }
 
-export const CreateTeacher = ({
+export const CreateTeacher = async ({
   ...studentFields
-}: CreateTeacherInput): Teacher => {
+}: CreateTeacherInput): Promise<Teacher> => {
   try {
-    return new TeacherModel({ ...studentFields });
+    if (!studentFields.password) {
+      throw "Password missing";
+    }
+    const hashPwd = await hashedPwd(studentFields.password);
+    return new TeacherModel({
+      ...studentFields,
+      password: hashPwd
+    });
   } catch (err) {
     throw err;
   }

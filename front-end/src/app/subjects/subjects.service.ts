@@ -1,16 +1,18 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Subjects } from './subjects.component';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+import { environment } from "../../environments/environment";
+
+import Subject from "./subject.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SubjectsService {
+  constructor(private httpClient: HttpClient) {}
+  apiURL = `${environment.apiUrl}${environment.subjectsPath}`;
 
-  constructor(private httpClient: HttpClient) { }
-  apiURL: string = `http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com/`;
-
-  public getSubjects() {
-    return this.httpClient.get<Subjects[]>(`${this.apiURL}subjects`).toPromise();
+  getSubjects() {
+    return this.httpClient.get<Subject[]>(`${this.apiURL}`).toPromise();
   }
 }

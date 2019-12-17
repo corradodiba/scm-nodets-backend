@@ -1,17 +1,17 @@
 import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-
+import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
+
+import { MatToolbarModule, MatCardModule } from "@angular/material";
+
 import { AppComponent } from "./app.component";
 import { AuthComponent } from "./auth/auth.component";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
-
-import { MatToolbarModule, MatCardModule } from "@angular/material";
 import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
-import { HttpClientModule } from '@angular/common/http';
+import { SubjectsComponent } from "./subjects/subjects.component";
 
 @NgModule({
   declarations: [
@@ -19,15 +19,16 @@ import { HttpClientModule } from '@angular/common/http';
     AuthComponent,
     NavbarComponent,
     UsersListsComponent,
-    UserComponent
+    UserComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatToolbarModule,
-    MatCardModule,
-    HttpClientModule
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

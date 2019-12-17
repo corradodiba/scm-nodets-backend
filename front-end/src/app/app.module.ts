@@ -7,9 +7,11 @@ import { AuthComponent } from "./auth/auth.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
+
 import { MatToolbarModule, MatCardModule } from "@angular/material";
 import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { UserComponent } from "./users/user/user.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

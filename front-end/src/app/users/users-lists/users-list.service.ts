@@ -13,7 +13,7 @@ export class UsersListService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getUsers(): Promise<User[]> {
+  getUsers(): Promise<User[]> {
     return this.httpClient.get<User[]>(`${this.apiURL}`).toPromise();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import Student from "../user.model";
+import User from "../user.model";
 import { UsersListService } from "./users-list.service";
 
 @Component({
@@ -8,11 +8,11 @@ import { UsersListService } from "./users-list.service";
   styleUrls: ["./users-lists.component.scss"]
 })
 export class UsersListsComponent implements OnInit {
-  students: Student[] = [];
+  users: User[] = [];
 
   constructor(private userService: UsersListService) {}
 
   async ngOnInit() {
-    this.students = await this.userService.getStudents();
+    this.users = await this.userService.getUsers();
   }
 }

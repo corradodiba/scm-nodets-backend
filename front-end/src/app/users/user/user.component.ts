@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 import { UserService } from "./user.service";
-import Student from "../user.model";
+import User from "../user.model";
 
 @Component({
   selector: "app-user",
@@ -9,11 +9,11 @@ import Student from "../user.model";
   styleUrls: ["./user.component.scss"]
 })
 export class UserComponent implements OnInit {
-  students: Student[] = [];
+  user: User;
 
   constructor(private userService: UserService) {}
 
   async ngOnInit() {
-    this.students = await this.userService.getStudents();
+    this.user = await this.userService.getUserById("5ddd72a4501cc403f43bf61d");
   }
 }

@@ -1,4 +1,4 @@
-export default interface Student {
+export default interface User {
   fiscalCode: string;
   name: string;
   surname: string;

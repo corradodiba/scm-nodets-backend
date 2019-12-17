@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // API's PATH
+  apiUrl:
+    "http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com" ||
+    "http://localhost:3000",
+  usersPath: "/teachers",
+  subjectsPath: "/subjects"
 };
 
 /*

@@ -1,18 +1,22 @@
 <mat-card class="example-card">
-    <mat-card-header>
-      <!-- <div mat-card-avatar class="user-header-image"></div> -->
-      <mat-card-title>{{student.name}} {{student.surname}}</mat-card-title>
-      <mat-card-subtitle>Student</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <p>Fiscalcode: {{student.fiscalCode}}</p>
-      <p>Name: {{student.name}}</p>
-      <p>Surname: {{student.surname}}</p>
-      <p>Date of birthday: {{student.dateOfBirth}}</p>
-    </mat-card-content>
-    <!-- <mat-card-actions>
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="user-header-image"></div> -->
+    <mat-card-title>{{ user.name }} {{ user.surname }}</mat-card-title>
+    <mat-card-subtitle>Student</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+    alt="Photo of a Shiba Inu"
+  />
+  <mat-card-content>
+    <p>Fiscalcode: {{ user.fiscalCode }}</p>
+    <p>Name: {{ user.name }}</p>
+    <p>Surname: {{ user.surname }}</p>
+    <p>Date of birthday: {{ user.dateOfBirth }}</p>
+  </mat-card-content>
+  <!-- <mat-card-actions>
       <button mat-button>pKE</button>
       <button mat-button>SHARE</button>
     </mat-card-actions> -->
-  </mat-card>
+</mat-card>

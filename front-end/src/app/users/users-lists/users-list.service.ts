@@ -1,18 +1,19 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import Student from "../user.model";
+import { environment } from "../../../environments/environment";
+
+import User from "../user.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class UsersListService {
-  apiURL =
-    "http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com/students";
+  apiURL = `${environment.apiUrl}${environment.usersPath}`;
 
   constructor(private httpClient: HttpClient) {}
 
-  public getStudents(): Promise<Student[]> {
-    return this.httpClient.get<Student[]>(`${this.apiURL}`).toPromise();
+  public getUsers(): Promise<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiURL}`).toPromise();
   }
 }

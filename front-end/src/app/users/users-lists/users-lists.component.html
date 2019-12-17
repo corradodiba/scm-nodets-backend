@@ -4,8 +4,8 @@
     <mat-card-title>{{ user.name }} {{ user.surname }}</mat-card-title>
     <mat-card-subtitle>{{ user.fiscalCode }}</mat-card-subtitle>
   </mat-card-header>
-  <!-- <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
-  </mat-card-actions> -->
+  <mat-card-actions>
+    <button mat-button (click)="onShowUser(user._id)">Show</button>
+    <!-- <button mat-button>SHARE</button> -->
+  </mat-card-actions>
 </mat-card>

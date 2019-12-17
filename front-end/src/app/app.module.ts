@@ -4,7 +4,11 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 
-import { MatToolbarModule, MatCardModule } from "@angular/material";
+import {
+  MatToolbarModule,
+  MatCardModule,
+  MatButtonModule
+} from "@angular/material";
 
 import { AppComponent } from "./app.component";
 import { AuthComponent } from "./auth/auth.component";
@@ -28,7 +32,8 @@ import { SubjectsComponent } from "./subjects/subjects.component";
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

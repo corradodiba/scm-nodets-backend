@@ -1,0 +1,31 @@
+<div class="options">
+    <mat-form-field>
+        <mat-label>Subject</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let subject of subjects">
+                {{subject.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <!-- </mat-form-field>
+    <mat-card class="flex-row" [hidden]="subjects.lenght===0">
+        <div class="flex-column" *ngFor="let subject of subjects">
+            {{subject.name}} :
+            {{subject.hours}} h
+        </div>
+    </mat-card>
+    <div> 
+        <mat-button-toggle mat-button (change)="show()" [checked]="isHidden">Remove
+        </mat-button-toggle>
+        <div class="subjects" [hidden]="isHidden">
+            <mat-form-field class="chip-list">
+                <mat-chip-list #chipList aria-label="Subjects selection">
+                    <mat-chip *ngFor="let subject of subjects" [selectable]="selectable" [removable]="removable">
+                        {{subject.name}}
+                        <mat-icon (click)="remove(subject)" matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                </mat-chip-list>
+            </mat-form-field>
+        </div>
+</div>-->
+</div>

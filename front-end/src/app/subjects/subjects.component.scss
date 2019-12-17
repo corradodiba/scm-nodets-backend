@@ -1,0 +1,30 @@
+$everything_color: #680000;
+$background_color:  #00cfcf;
+.mat-chip {
+  background-color:burlywood;
+
+}
+.mat-button-toggle, .mat-card{
+  height: fit-content;
+  width: fit-content;
+}
+.mat-button-toggle, .mat-chip {
+  color:$everything_color;
+}
+.chip-list {
+  width: auto;
+  }
+.options{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  }
+.options>mat-card {
+  justify-self: center;
+}
+.options>.mat-card{
+  width: fit-content;
+  height: fit-content;
+}

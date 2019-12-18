@@ -3,7 +3,7 @@ import { ParamMap, ActivatedRoute } from "@angular/router";
 
 import { UserService } from "./user.service";
 
-import User from "../user.model";
+import User from "../../interfaces/user.model";
 
 @Component({
   selector: "app-user",
@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   constructor(
     private userService: UserService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {

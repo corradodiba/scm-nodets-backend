@@ -3,7 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { UsersListService } from "./users-list.service";
 import { UsersService } from "../users.service";
 
-import User from "../user.model";
+import User from "../../interfaces/user.model";
 
 @Component({
   selector: "app-users-lists",
@@ -16,7 +16,7 @@ export class UsersListsComponent implements OnInit {
   constructor(
     private userService: UsersListService,
     private usersService: UsersService
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.users = await this.userService.getUsers();

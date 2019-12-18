@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { environment } from "../../environments/environment";
 
-import Subject from "./subject.model";
+import Subject from "../interfaces/subject.model";
 
 @Injectable({
   providedIn: "root"

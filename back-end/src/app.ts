@@ -3,8 +3,6 @@ import mongoose from "mongoose";
 import bodyParse from "body-parser";
 
 import usersRoutes from "./routes/users";
-import teachersRoutes from "./routes/teachers";
-import studentsRoutes from "./routes/students";
 import subjectsRoutes from "./routes/subjects";
 
 const PORT = 3000 || process.env.PORT;
@@ -30,8 +28,6 @@ app.use((req, res, next) => {
 });
 
 app.use("/users", usersRoutes);
-app.use("/teachers", teachersRoutes);
-app.use("/students", studentsRoutes);
 app.use("/subjects", subjectsRoutes);
 
 app.listen(PORT, async () => {

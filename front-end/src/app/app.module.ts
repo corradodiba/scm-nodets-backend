@@ -7,7 +7,16 @@ import { AppRoutingModule } from "./app-routing.module";
 import {
   MatToolbarModule,
   MatCardModule,
-  MatButtonModule
+  MatButtonModule,
+  MatGridListModule,
+  MatFormFieldModule,
+  MatChipsModule,
+  MatIconModule,
+  MatButtonToggleModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatOptionModule,
+  MatSelectModule
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -16,6 +25,7 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
 import { SubjectsComponent } from "./subjects/subjects.component";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,9 +43,23 @@ import { SubjectsComponent } from "./subjects/subjects.component";
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule,
+    MatToolbarModule,
+    MatCardModule,
+    HttpClientModule,
+    MatButtonModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatChipsModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

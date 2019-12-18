@@ -14,5 +14,8 @@ import { SubjectsService } from "./subjects.service";
 export class SubjectsComponent {
   subjects: Subject[] = [];
 
-  constructor(private subjectsService: SubjectsService) {}
+  constructor(private subjectsService: SubjectsService) { }
+  async ngOnInit() {
+    this.subjects = await this.subjectsService.getSubjects();
+  }
 }

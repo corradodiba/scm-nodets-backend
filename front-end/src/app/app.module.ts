@@ -16,7 +16,13 @@ import {
   MatSidenavModule,
   MatSnackBarModule,
   MatOptionModule,
-  MatSelectModule
+  MatSelectModule,
+  MatStepperModule,
+  MatDialogModule,
+  MatInputModule,
+  MatTableModule,
+  MatMenuModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -26,6 +32,7 @@ import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
 import { SubjectsComponent } from "./subjects/subjects.component";
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -57,7 +64,14 @@ import { FormsModule } from '@angular/forms';
     MatSidenavModule,
     MatSnackBarModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatStepperModule,
+    CommonModule,
+    MatDialogModule,
+    MatInputModule, 
+    MatTableModule,
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

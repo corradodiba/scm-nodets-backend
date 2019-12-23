@@ -3,9 +3,11 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
+import { AuthComponent } from './auth/auth.component';
 
 const routes: Routes = [
-  { path: "", component: UsersListsComponent },
+  { path: "", component: AuthComponent },
+  { path: "user", component: UsersListsComponent },
   { path: ":userId", component: UserComponent }
 ];
 

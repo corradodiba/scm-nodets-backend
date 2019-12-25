@@ -2,23 +2,23 @@ import { Grades, GradesModel } from "./grades.model";
 
 interface CreateGradesInput {
   grade: Grades["grade"];
-  student: Grades["student"];
+  //student: Grades["student"];
   subject: Grades["subject"];
-  teacher: Grades["teacher"];
+  user: Grades["user"];
 }
 
 export const CreateGrade = ({
   grade,
-  student,
+  //student,
   subject,
-  teacher
+  user
 }: CreateGradesInput): Grades => {
   try {
     return new GradesModel({
       grade,
-      student,
+      //student,
       subject,
-      teacher
+      user
     });
   } catch (err) {
     throw err;

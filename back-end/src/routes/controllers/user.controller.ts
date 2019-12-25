@@ -9,32 +9,34 @@ import {
   edit,
   deleteById,
   deleteSubjects,
-  Teacher,
-  CreateTeacher
-} from "../../models/teacher/teacher.model";
+  User,
+  CreateUser
+} from "../../models/user/user.model";
 
 import * as GradesModel from "../../models/grades/grades.model";
 
-export const getAllTeachers = async (req: Request, res: Response) => {
+const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
+
+export const getAllUsers = async (req: Request, res: Response) => {
   try {
-    const teachers = await getAll();
-    return res.status(200).json(teachers);
+    const users = await getAll();
+    return res.status(200).json(users);
   } catch (err) {
     return res.status(404).json({ message: err });
   }
 };
 
-export const getTeacherById = async (req: Request, res: Response) => {
+export const getUsersById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
-    const teacher = await getById(id);
-    return res.status(200).json(teacher);
+    const user = await getById(id);
+    return res.status(200).json(user);
   } catch (err) {
     return res.status(404).json({ message: err });
   }
 };
 
-export const getSubjectsOfTeacher = async (req: Request, res: Response) => {
+export const getSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const subjects = await getSubjects(id);
@@ -58,39 +60,22 @@ export const getAllGrades = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteTeacherById = async (req: Request, res: Response) => {
+export const deleteUserById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
-    const teacher = await deleteById(id);
-    return res.status(200).json(teacher);
+    const user = await deleteById(id);
+    return res.status(200).json(user);
   } catch (err) {
     return res.status(404).json({ message: err });
   }
 };
 
-export const addTeacher = async (req: Request, res: Response) => {
-  try {
-    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const teacher: Teacher = CreateTeacher({
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects
-    });
-    const fetchedTeacher = await add(teacher);
-    return res.status(200).json(fetchedTeacher);
-  } catch (err) {
-    return res.status(404).json({ message: err });
-  }
-};
-
-export const addSubjectsOfTeacher = async (req: Request, res: Response) => {
+export const addSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { subjects } = req.body;
-    const teacher = await addSubject(id, subjects);
-    return res.status(201).json(teacher);
+    const user = await addSubject(id, subjects);
+    return res.status(201).json(user);
   } catch (err) {
     return res.status(500).json({
       message: err
@@ -98,7 +83,7 @@ export const addSubjectsOfTeacher = async (req: Request, res: Response) => {
   }
 };
 
-export const addGradeOfTeacher = async (req: Request, res: Response) => {
+export const addGradeOfUser = async (req: Request, res: Response) => {
   try {
     const { grade, student, subject } = req.body;
     const { id } = req.params;
@@ -116,22 +101,22 @@ export const addGradeOfTeacher = async (req: Request, res: Response) => {
   }
 };
 
-export const editTeacherById = async (req: Request, res: Response) => {
+export const editUserById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const modifiedTeacher = {
+    const modifiedUser = {
       fiscalCode,
       name,
       surname,
       dateOfBirth,
       subjects
     };
-    const updatedTeacher: Teacher = await edit(id, modifiedTeacher as Teacher);
+    const updatedUser: User = await edit(id, modifiedUser as User);
     return res.status(200).json({
-      message: "Teacher successfully edited!",
-      before: updatedTeacher,
-      after: modifiedTeacher
+      message: "User successfully edited!",
+      before: updatedUser,
+      after: modifiedUser
     });
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -155,12 +140,12 @@ export const editGradeById = async (req: Request, res: Response) => {
   }
 };
 
-export const deleteSubjectsOfTeacher = async (req: Request, res: Response) => {
+export const deleteSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id, idSubject } = req.params;
     const subjects = await deleteSubjects(id, idSubject);
     if (!subjects) {
-      throw "No teacher for deleting!";
+      throw "No user for deleting!";
     }
     res.json(subjects);
   } catch (err) {
@@ -170,8 +155,8 @@ export const deleteSubjectsOfTeacher = async (req: Request, res: Response) => {
 
 export const deleteGradeById = async (req: Request, res: Response) => {
   try {
-    const { idGrade, idTeacher } = req.params;
-    const deletedGrade = await GradesModel.deleteById(idGrade, idTeacher);
+    const { idGrade, idUser } = req.params;
+    const deletedGrade = await GradesModel.deleteById(idGrade, idUser);
     return res.status(201).json(deletedGrade);
   } catch (err) {
     return res.status(404).json({

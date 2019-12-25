@@ -37,7 +37,11 @@ const userSchema = new Schema({
       ref: "Subject",
       default: []
     }
-  ]
+  ],
+  imagePath: {
+    type: String,
+    required: true
+  },
 });
 
 export interface User extends Document {
@@ -48,6 +52,7 @@ export interface User extends Document {
   surname: string;
   dateOfBirth: Date;
   subjects?: Subject["_id"][];
+  imagePath: String;
 }
 
 export const UserModel = mongoose.model<User>("User", userSchema);

@@ -104,13 +104,14 @@ export const addGradeOfUser = async (req: Request, res: Response) => {
 export const editUserById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
-    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
+    const { fiscalCode, name, surname, dateOfBirth, subjects, imagePath } = req.body;
     const modifiedUser = {
       fiscalCode,
       name,
       surname,
       dateOfBirth,
-      subjects
+      subjects,
+      imagePath
     };
     const updatedUser: User = await edit(id, modifiedUser as User);
     return res.status(200).json({

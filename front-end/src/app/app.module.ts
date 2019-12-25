@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
 
 import {
   MatToolbarModule,
@@ -26,18 +28,18 @@ import {
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
-import { AuthComponent } from "./auth/auth.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
 import { SubjectsComponent } from "./subjects/subjects.component";
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { LoginComponent } from "./auth/login/login.component";
+import { SignupComponent } from "./auth/signup/signup.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
+    LoginComponent,
+    SignupComponent,
     NavbarComponent,
     UsersListsComponent,
     UserComponent,
@@ -68,7 +70,7 @@ import { CommonModule } from '@angular/common';
     MatStepperModule,
     CommonModule,
     MatDialogModule,
-    MatInputModule, 
+    MatInputModule,
     MatTableModule,
     MatMenuModule,
     MatProgressSpinnerModule
@@ -76,4 +78,4 @@ import { CommonModule } from '@angular/common';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

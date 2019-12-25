@@ -10,6 +10,6 @@ export class UsersService {
   constructor(private router: Router) {}
 
   showUser(id: string) {
-    this.router.navigate([`/${id}`]);
+    this.router.navigate([`${this.URL}/${id}`]);
   }
 }

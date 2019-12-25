@@ -8,9 +8,9 @@ import User from "../../interfaces/user.model";
   providedIn: "root"
 })
 export class UserService {
-  apiURL = `${environment.apiUrl}${environment.usersPath}`;
+  apiURL = `${environment.apiUrl}/${environment.usersPath}`;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
   public getUserById(id: string): Promise<User> {
     return this.httpClient.get<User>(`${this.apiURL}/${id}`).toPromise();

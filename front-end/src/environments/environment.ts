@@ -8,7 +8,7 @@ export const environment = {
   apiUrl:
     "http://localhost:3000" ||
     "http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com",
-  usersPath: "/teachers",
+  usersPath: "users",
   subjectsPath: "/subjects"
 };
 

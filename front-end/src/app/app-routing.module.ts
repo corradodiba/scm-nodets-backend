@@ -3,12 +3,16 @@ import { Routes, RouterModule } from "@angular/router";
 
 import { UsersListsComponent } from "./users/users-lists/users-lists.component";
 import { UserComponent } from "./users/user/user.component";
-import { AuthComponent } from './auth/auth.component';
+import { SignupComponent } from "./auth/signup/signup.component";
+import { LoginComponent } from "./auth/login/login.component";
 
 const routes: Routes = [
-  { path: "", component: AuthComponent },
-  { path: "user", component: UsersListsComponent },
-  { path: ":userId", component: UserComponent }
+  // Authentication Pages
+  { path: "auth/login", component: LoginComponent },
+  { path: "auth/signup", component: SignupComponent },
+
+  { path: "users", component: UsersListsComponent },
+  { path: "users/:userId", component: UserComponent }
 ];
 
 @NgModule({

@@ -1,9 +1,10 @@
 import { Response, Request } from "express";
 import bcrypt from "bcryptjs";
 
-import { User, CreateUser, add } from "../../models/user/user.model";
+import { User, CreateUser, add } from "../../../models/user/user.model";
+import { authentication, generateToken } from "./authentication";
 
-export const signup = async (req: Request, res: Response) => {
+export const createUser = async (req: Request, res: Response) => {
   try {
     const {
       email,
@@ -31,5 +32,16 @@ export const signup = async (req: Request, res: Response) => {
     return res.status(200).json(fetchedUser);
   } catch (err) {
     return res.status(404).json({ message: err });
+  }
+};
+
+export const userLogin = async (req: Request, res: Response) => {
+  try {
+    const { email, password } = req.body;
+    const userAuthenticated = await authentication(email, password);
+    const token = await generateToken(userAuthenticated);
+    return res.status(200).json(token);
+  } catch (err) {
+    throw "Not authenticated!";
   }
 };

@@ -24,7 +24,8 @@ import {
   MatInputModule,
   MatTableModule,
   MatMenuModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatToolbarRow
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -54,7 +55,6 @@ import { SignupComponent } from "./auth/signup/signup.component";
     MatCardModule,
     MatButtonModule,
     FormsModule,
-    MatToolbarModule,
     MatCardModule,
     HttpClientModule,
     MatButtonModule,

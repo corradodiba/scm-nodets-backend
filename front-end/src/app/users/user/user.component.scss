@@ -1,11 +1,16 @@
 .example-card {
-    max-width: 250px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
+  max-width: 250px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
-  
+
+.user-profile-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
 // .user-header-image {
 // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
 // background-size: cover;

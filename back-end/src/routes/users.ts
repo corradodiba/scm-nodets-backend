@@ -6,7 +6,6 @@ import {
   getSubjectsOfUser,
   deleteUserById,
   deleteSubjectsOfUser,
-  addUser,
   editUserById,
   addSubjectsOfUser,
   addGradeOfUser,
@@ -30,8 +29,6 @@ router.delete("/:id", deleteUserById);
 router.delete("/:id/subjects/:idSubject", deleteSubjectsOfUser);
 
 router.delete("/:id/grades/:idGrade", deleteGradeById);
-
-router.post("/", addUser);
 
 router.post("/:id/subjects", addSubjectsOfUser);
 

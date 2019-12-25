@@ -2,6 +2,16 @@ import mongoose, { Schema, Document } from "mongoose";
 import { Subject } from "../subject/subject.model";
 
 const userSchema = new Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  password: {
+    type: String,
+    required: true,
+    unique: true
+  },
   fiscalCode: {
     type: String,
     required: true,
@@ -31,6 +41,8 @@ const userSchema = new Schema({
 });
 
 export interface User extends Document {
+  email: string;
+  password: string;
   fiscalCode: string;
   name: string;
   surname: string;

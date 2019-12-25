@@ -15,6 +15,8 @@ import {
 
 import * as GradesModel from "../../models/grades/grades.model";
 
+const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
+
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await getAll();
@@ -63,23 +65,6 @@ export const deleteUserById = async (req: Request, res: Response) => {
   try {
     const user = await deleteById(id);
     return res.status(200).json(user);
-  } catch (err) {
-    return res.status(404).json({ message: err });
-  }
-};
-
-export const addUser = async (req: Request, res: Response) => {
-  try {
-    const { fiscalCode, name, surname, dateOfBirth, subjects } = req.body;
-    const user: User = CreateUser({
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects
-    });
-    const fetchedUser = await add(user);
-    return res.status(200).json(fetchedUser);
   } catch (err) {
     return res.status(404).json({ message: err });
   }

@@ -5,6 +5,7 @@ import bodyParse from "body-parser";
 import usersRoutes from "./routes/users";
 import subjectsRoutes from "./routes/subjects";
 import authRoutes from "./routes/auth";
+import coursesRoutes from "./routes/courses";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -28,6 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use("/courses", coursesRoutes);
 app.use("/users", usersRoutes);
 app.use("/subjects", subjectsRoutes);
 app.use("/auth", authRoutes);

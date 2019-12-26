@@ -18,7 +18,7 @@ import { isAuth } from "../middlewares/isAuth";
 
 const router = express();
 
-router.get("/", isAuth, getAllUsers);
+router.get("/", getAllUsers);
 
 // router.get("/:id", getUsersById);
 

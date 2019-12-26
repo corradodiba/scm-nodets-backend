@@ -13,7 +13,9 @@ export const createUser = async (req: Request, res: Response) => {
       name,
       surname,
       dateOfBirth,
-      subjects
+      subjects,
+      imagePath,
+      type
     } = req.body;
 
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -25,7 +27,9 @@ export const createUser = async (req: Request, res: Response) => {
       name,
       surname,
       dateOfBirth,
-      subjects
+      subjects,
+      imagePath,
+      type
     });
 
     const fetchedUser = await add(user);

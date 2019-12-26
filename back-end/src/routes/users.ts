@@ -14,28 +14,30 @@ import {
   deleteGradeById
 } from "./controllers/user.controller";
 
+import { isAuth } from "../middlewares/isAuth";
+
 const router = express();
 
-router.get("/", getAllUsers);
+router.get("/", isAuth, getAllUsers);
 
-router.get("/:id", getUsersById);
+// router.get("/:id", getUsersById);
 
-router.get("/:id/subjects", getSubjectsOfUser);
+// router.get("/:id/subjects", getSubjectsOfUser);
 
-router.get("/:id/grades", getAllGrades);
+// router.get("/:id/grades", getAllGrades);
 
-router.delete("/:id", deleteUserById);
+// router.delete("/:id", deleteUserById);
 
-router.delete("/:id/subjects/:idSubject", deleteSubjectsOfUser);
+// router.delete("/:id/subjects/:idSubject", deleteSubjectsOfUser);
 
-router.delete("/:id/grades/:idGrade", deleteGradeById);
+// router.delete("/:id/grades/:idGrade", deleteGradeById);
 
-router.post("/:id/subjects", addSubjectsOfUser);
+// router.post("/:id/subjects", addSubjectsOfUser);
 
-router.post("/:id/grades", addGradeOfUser);
+// router.post("/:id/grades", addGradeOfUser);
 
-router.put("/:id", editUserById);
+// router.put("/:id", editUserById);
 
-router.put("/:id/grades/:idGrade", editGradeById);
+// router.put("/:id/grades/:idGrade", editGradeById);
 
 export default router;

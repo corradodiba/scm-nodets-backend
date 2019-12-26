@@ -8,6 +8,8 @@ interface CreateUserInput {
   surname: User["surname"];
   dateOfBirth: User["dateOfBirth"];
   subjects?: User["subjects"];
+  imagePath?: User["imagePath"];
+  type: User["type"];
 }
 
 export const CreateUser = ({
@@ -17,7 +19,9 @@ export const CreateUser = ({
   name,
   surname,
   dateOfBirth,
-  subjects
+  subjects,
+  imagePath,
+  type
 }: CreateUserInput): User => {
   try {
     return new UserModel({
@@ -27,7 +31,9 @@ export const CreateUser = ({
       name,
       surname,
       dateOfBirth,
-      subjects
+      subjects,
+      imagePath,
+      type
     });
   } catch (err) {
     throw err;

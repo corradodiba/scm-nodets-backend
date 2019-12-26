@@ -25,7 +25,8 @@ export const generateToken = async (user: User) => {
     const token = jwt.sign(
       {
         email: user.email,
-        id: user._id
+        id: user._id,
+        type: user.type
       },
       buffer,
       { expiresIn: "1h" }

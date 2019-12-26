@@ -39,9 +39,14 @@ const userSchema = new Schema({
     }
   ],
   imagePath: {
-    type: String,
-    required: true
+    type: String
   },
+  type: {
+    type: String,
+    enum: ["Admin", "Student", "Teacher"],
+    required: true,
+    index: true
+  }
 });
 
 export interface User extends Document {
@@ -53,6 +58,7 @@ export interface User extends Document {
   dateOfBirth: Date;
   subjects?: Subject["_id"][];
   imagePath: String;
+  type: "Admin" | "Student" | "Teacher";
 }
 
 export const UserModel = mongoose.model<User>("User", userSchema);

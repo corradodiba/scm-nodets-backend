@@ -2,14 +2,14 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
 
-import teachersRoutes from "./routes/teachers";
-import studentsRoutes from "./routes/students";
+import usersRoutes from "./routes/users";
 import subjectsRoutes from "./routes/subjects";
+import authRoutes from "./routes/auth";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
-  "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
-// "mongodb://localhost:27017/class-managing";
+  // "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
+  "mongodb://localhost:27017/class-managing";
 
 const app = express();
 
@@ -28,9 +28,9 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/teachers", teachersRoutes);
-app.use("/students", studentsRoutes);
+app.use("/users", usersRoutes);
 app.use("/subjects", subjectsRoutes);
+app.use("/auth", authRoutes);
 
 app.listen(PORT, async () => {
   console.log(`🚀 Server ready at http://localhost:${PORT} 🚀`);

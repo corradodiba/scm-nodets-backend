@@ -1,40 +1,75 @@
 <div class="container justify-center">
   <div class="row">
     <div class="col">
-      <form [formGroup]="firstFormGroup" #signupForm="ngForm">
+      <form [formGroup]="personalDate" #signupForm="ngForm">
         <mat-horizontal-stepper *ngIf="!isLoading">
-
-          <mat-step [stepControl]="firstFormGroup">
+          <mat-step>
             <ng-template matStepLabel>Contact Info</ng-template>
             <mat-form-field>
               <mat-label>User</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let type of userTypes" [value]="type"> {{type}}</mat-option>
+              <mat-select formControlName="type">
+                <mat-option *ngFor="let type of userTypes" [value]="type">
+                  {{ type }}</mat-option
+                >
               </mat-select>
             </mat-form-field>
-            <br>
-            <mat-form-field><input matInput placeholder="Name" formControlName="firstCtrl" required> </mat-form-field>
-            <br>
-            <mat-form-field><input matInput placeholder="Surname" formControlName="firstCtrl" required></mat-form-field>
-            <br>
-            <mat-form-field><input matInput placeholder="Date of Birth" formControlName="firstCtrl" required>
+            <br />
+            <mat-form-field
+              ><input
+                matInput
+                placeholder="Name"
+                formControlName="name"
+                required
+              />
             </mat-form-field>
-            <br>
-            <mat-form-field><input matInput placeholder="Fiscal code" formControlName="firstCtrl" required>
+            <br />
+            <mat-form-field
+              ><input
+                matInput
+                placeholder="Surname"
+                formControlName="surname"
+                required
+            /></mat-form-field>
+            <br />
+            <mat-form-field
+              ><input
+                matInput
+                placeholder="Date of Birth"
+                formControlName="dateOfBirth"
+                required
+              />
+            </mat-form-field>
+            <br />
+            <mat-form-field
+              ><input
+                matInput
+                placeholder="Fiscal code"
+                formControlName="fiscalCode"
+                required
+              />
             </mat-form-field>
             <div>
               <button mat-button matStepperNext>Next</button>
             </div>
           </mat-step>
-          <mat-step [stepControl]="firstFormGroup">
+          <mat-step>
             <ng-template matStepLabel>Authentication</ng-template>
             <mat-form-field>
-              <input matInput placeholder="Email" formControlName="firstCtrl" required>
+              <input
+                matInput
+                placeholder="Email"
+                formControlName="email"
+                required
+              />
             </mat-form-field>
 
             <mat-form-field>
-
-              <input matInput placeholder="Password" formControlName="firstCtrl" required>
+              <input
+                matInput
+                placeholder="Password"
+                formControlName="password"
+                required
+              />
             </mat-form-field>
             <div>
               <button mat-button matStepperPrevious>Back</button>
@@ -46,7 +81,7 @@
             You are now done.
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button (click)="stepper.reset()">Reset</button>
+              <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
               <button mat-button (click)="onSignUp(signupForm)">Sign Up</button>
             </div>
           </mat-step>

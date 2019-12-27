@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { AuthService } from '../auth.service';
-import { AuthData } from '../auth-data.model';
+import { Component } from "@angular/core";
+import { NgForm } from "@angular/forms";
+import { AuthService } from "../auth.service";
+import { LoginData } from "../authData.model";
 
 @Component({
-  templateUrl: './login.component.html'
+  templateUrl: "./login.component.html"
 })
-
 export class LoginComponent {
   isLoading = false;
 
@@ -16,7 +15,7 @@ export class LoginComponent {
     if (form.invalid) {
       return;
     }
-    const authData: AuthData = {
+    const authData: LoginData = {
       email: form.value.email,
       password: form.value.password
     };

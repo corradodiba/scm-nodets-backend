@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";
 
-import { SignupData } from "../authData.model";
+import { SignupData, LoginData } from "../authData.model";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 
 @Component({
@@ -19,11 +19,12 @@ import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
   personalData: FormGroup;
+  authData: FormGroup;
   userTypes = ["Student", "Teacher"];
   private authStatusSub: Subscription;
 
   constructor(
-    public authService: AuthService,
+    private authService: AuthService,
     private formBuilder: FormBuilder
   ) {}
 
@@ -38,7 +39,9 @@ export class SignupComponent implements OnInit, OnDestroy {
       surname: ["", Validators.required],
       dateOfBirth: ["", Validators.required],
       fiscalCode: ["", Validators.required],
-      type: ["", Validators.required],
+      type: ["", Validators.required]
+    });
+    this.authData = this.formBuilder.group({
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
@@ -49,15 +52,15 @@ export class SignupComponent implements OnInit, OnDestroy {
       return;
     }
 
+    console.log(this.authData);
     const {
       name,
       surname,
       dateOfBirth,
       fiscalCode,
-      type,
-      email,
-      password
-    } = form.value;
+      type
+    }: SignupData = this.personalData.value;
+    const { email, password }: LoginData = this.authData.value;
     const authData: SignupData = {
       name,
       surname,

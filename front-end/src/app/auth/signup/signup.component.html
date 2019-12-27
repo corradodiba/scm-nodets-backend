@@ -2,55 +2,104 @@
   <div class="row">
     <div class="col">
       <form [formGroup]="personalData" #signupForm="ngForm">
-        <mat-horizontal-stepper *ngIf="!isLoading">
-          <mat-step [stepControl]="personalData" errorMessage="All fields are required.">
-            <ng-template matStepLabel>Contact Info</ng-template>
-            <mat-form-field>
-              <mat-label>User</mat-label>
-              <mat-select formControlName="type">
-                <mat-option *ngFor="let type of userTypes" [value]="type">
-                  {{ type }}</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <br />
-            <mat-form-field><input matInput placeholder="Name" formControlName="name" completed required />
-            </mat-form-field>
-            <br />
-            <mat-form-field><input matInput placeholder="Surname" formControlName="surname" completed required />
-            </mat-form-field>
-            <br />
-            <mat-form-field>
-              <input matInput [matDatepicker]="picker" placeholder="Choose a date" formControlName="dateOfBirth">
-              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <br />
-            <mat-form-field><input matInput placeholder="Fiscal code" formControlName="fiscalCode" required />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperNext>Next</button>
-            </div>
-          </mat-step>
-          <mat-step [stepControl]="personalData" errorMessage="All fields are required.">
-            <ng-template matStepLabel>Authentication</ng-template>
-            <mat-form-field>
-              <input matInput placeholder="Email" formControlName="email" required />
-            </mat-form-field>
+        <mat-horizontal-stepper *ngIf="!isLoading" [linear]="true" #stepper>
+          <mat-step
+            [stepControl]="personalData"
+            errorMessage="All fields are required."
+          >
+            <form [formGroup]="personalData">
+              <ng-template matStepLabel>Contact Info</ng-template>
+              <mat-form-field>
+                <mat-label>User</mat-label>
+                <mat-select formControlName="type">
+                  <mat-option *ngFor="let type of userTypes" [value]="type">
+                    {{ type }}</mat-option
+                  >
+                </mat-select>
+              </mat-form-field>
 
-            <mat-form-field>
-              <input matInput placeholder="Password" formControlName="password" required />
-            </mat-form-field>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
-            </div>
+              <mat-form-field
+                ><input
+                  matInput
+                  placeholder="Name"
+                  formControlName="name"
+                  completed
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field
+                ><input
+                  matInput
+                  placeholder="Surname"
+                  formControlName="surname"
+                  completed
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  placeholder="Choose a date"
+                  formControlName="dateOfBirth"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field
+                ><input
+                  matInput
+                  placeholder="Fiscal code"
+                  formControlName="fiscalCode"
+                  required
+                />
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step
+            [stepControl]="authData"
+            errorMessage="All fields are required."
+          >
+            <form [formGroup]="authData">
+              <ng-template matStepLabel>Authentication</ng-template>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Email"
+                  formControlName="email"
+                  required
+                />
+              </mat-form-field>
+
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Password"
+                  formControlName="password"
+                  required
+                />
+              </mat-form-field>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext>Next</button>
+              </div>
+            </form>
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             You are now done.
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+              <button mat-button (click)="stepper.reset()">Reset</button>
               <button mat-button (click)="onSignUp(signupForm)">Sign Up</button>
             </div>
           </mat-step>

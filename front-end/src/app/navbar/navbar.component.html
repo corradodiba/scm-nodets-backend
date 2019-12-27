@@ -16,13 +16,16 @@
 
     <mat-toolbar-row class="item-spacer">
       <div class="navbar-items">
-        <a mat-button href="auth/login">Login</a>
+        <a mat-button href="auth/signup">Signup</a>
       </div>
     </mat-toolbar-row>
 
     <mat-toolbar-row class="item-spacer">
-      <div class="navbar-items">
-        <a mat-button href="auth/signup">Signup</a>
+      <div *ngIf="!isAuthenticated" class="navbar-items">
+        <a mat-button href="auth/login">Login</a>
+      </div>
+      <div *ngIf="isAuthenticated" class="navbar-items">
+        <button mat-button (click)="onLogout()">Logout</button>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>

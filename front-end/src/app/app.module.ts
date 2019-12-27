@@ -3,7 +3,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 
 import {
@@ -25,7 +25,6 @@ import {
   MatTableModule,
   MatMenuModule,
   MatProgressSpinnerModule,
-  MatToolbarRow
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -51,6 +50,7 @@ import { SignupComponent } from "./auth/signup/signup.component";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
@@ -78,4 +78,4 @@ import { SignupComponent } from "./auth/signup/signup.component";
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

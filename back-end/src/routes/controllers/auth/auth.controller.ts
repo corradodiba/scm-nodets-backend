@@ -35,7 +35,7 @@ export const createUser = async (req: Request, res: Response) => {
     const fetchedUser = await add(user);
     return res.status(200).json(fetchedUser);
   } catch (err) {
-    return res.status(404).json({ message: err });
+    return res.status(400).json({ message: err });
   }
 };
 

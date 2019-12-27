@@ -1,35 +1,57 @@
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form *ngIf="!isLoading" (submit)="onSignUp(signupForm)" #signupForm="ngForm">
-    <mat-form-field>
-      <input
-        matInput
-        name="email"
-        type="email"
-        placeholder="Your E-Mail"
-        #emailField="ngModel"
-        ngModel
-        required
-        email>
-      <mat-error *ngIf="emailField.invalid">Please enter a valid email.</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        type="password"
-        name="password"
-        placeholder="Your Password"
-        #passwordField="ngModel"
-        ngModel
-        matInput
-        required>
-      <mat-error *ngIf="passwordField.invalid">Please enter a valid password.</mat-error>
-    </mat-form-field>
-    <div class="controller-actions">
-        <button
-        mat-raised-button
-        color="accent"
-        type="submit">Sign Up
-      </button>
+<div class="container justify-center">
+  <div class="row">
+    <div class="col">
+      <form [formGroup]="firstFormGroup" #signupForm="ngForm">
+        <mat-horizontal-stepper *ngIf="!isLoading">
+
+          <mat-step [stepControl]="firstFormGroup">
+            <ng-template matStepLabel>Contact Info</ng-template>
+            <mat-form-field>
+              <mat-label>User</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let type of userTypes" [value]="type"> {{type}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field><input matInput placeholder="Name" formControlName="firstCtrl" required> </mat-form-field>
+            <br>
+            <mat-form-field><input matInput placeholder="Surname" formControlName="firstCtrl" required></mat-form-field>
+            <br>
+            <mat-form-field><input matInput placeholder="Date of Birth" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field><input matInput placeholder="Fiscal code" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step [stepControl]="firstFormGroup">
+            <ng-template matStepLabel>Authentication</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Email" formControlName="firstCtrl" required>
+            </mat-form-field>
+
+            <mat-form-field>
+
+              <input matInput placeholder="Password" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button matStepperNext>Next</button>
+            </div>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done.
+            <div>
+              <button mat-button matStepperPrevious>Back</button>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+              <button mat-button (click)="onSignUp(signupForm)">Sign Up</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+      </form>
     </div>
-  </form>
-</mat-card>
+  </div>
+</div>

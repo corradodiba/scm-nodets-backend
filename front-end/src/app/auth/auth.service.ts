@@ -60,7 +60,6 @@ export class AuthService {
       )
       .subscribe(response => {
         const token = response.token;
-        const id = response.id;
         this.token = token;
         this.authStatusListener.next(true);
         if (token) {
@@ -73,7 +72,7 @@ export class AuthService {
             timeStamp.getTime() + response.expiresIn * 1000
           );
           this.storeAuthData(token, expirationDate, this.userId);
-          this.router.navigate(["/"]);
+          this.router.navigate(["/users"]);
         }
       });
   }

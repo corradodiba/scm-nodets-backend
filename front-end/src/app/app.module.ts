@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
@@ -24,7 +24,7 @@ import {
   MatInputModule,
   MatTableModule,
   MatMenuModule,
-  MatProgressSpinnerModule,
+  MatProgressSpinnerModule
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -34,6 +34,7 @@ import { UserComponent } from "./users/user/user.component";
 import { SubjectsComponent } from "./subjects/subjects.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
+import { AuthInterceptor } from "./auth/auth-interceptor";
 
 @NgModule({
   declarations: [
@@ -75,7 +76,9 @@ import { SignupComponent } from "./auth/signup/signup.component";
     MatMenuModule,
     MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

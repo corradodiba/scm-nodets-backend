@@ -11,12 +11,12 @@ import User from "../../interfaces/user.model";
   styleUrls: ["./users-lists.component.scss"]
 })
 export class UsersListsComponent implements OnInit {
-  users: User[] = [];
+  users: any = [];
 
   constructor(
     private userService: UsersListService,
     private usersService: UsersService
-  ) { }
+  ) {}
 
   async ngOnInit() {
     this.users = await this.userService.getUsers();

@@ -3,7 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 
-import { LoginData, SignupData } from "./authData.model";
+import { LoginData, SignupData } from "../interfaces/auth.model";
 
 import { environment } from "../../environments/environment";
 import User from "../interfaces/user.model";

@@ -1,15 +1,21 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
+import User from "../interfaces/user.model";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class UsersService {
-  URL = `${environment.usersPath}`;
-  constructor(private router: Router) {}
+  apiURL = `${environment.apiUrl}/${environment.usersPath}`;
+  constructor(private httpClient: HttpClient) {}
 
-  showUser(id: string) {
-    this.router.navigate([`${this.URL}/${id}`]);
+  getUsers(): Promise<User[]> {
+    return this.httpClient.get<User[]>(`${this.apiURL}`).toPromise();
+  }
+
+  getUserById(id: string): Promise<User> {
+    return this.httpClient.get<User>(`${this.apiURL}/${id}`).toPromise();
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { AuthService } from "../auth.service";
-import { LoginData } from "../authData.model";
+import { LoginData } from "../../interfaces/auth.model";
 
 @Component({
   templateUrl: "./login.component.html"

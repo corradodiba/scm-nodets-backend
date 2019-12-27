@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 
-import { UsersListService } from "./users-list.service";
+import { environment } from "src/environments/environment";
+
 import { UsersService } from "../users.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-users-lists",
@@ -10,18 +12,17 @@ import { UsersService } from "../users.service";
 })
 export class UsersListsComponent implements OnInit {
   users: any = [];
+  usersPath = `${environment.usersPath}`;
 
-  constructor(
-    private userService: UsersListService,
-    private usersService: UsersService
-  ) {}
+  constructor(private router: Router, private usersService: UsersService) {}
 
   async ngOnInit() {
-    this.users = await this.userService.getUsers();
+    this.users = await this.usersService.getUsers();
   }
 
   onShowUser(id: string) {
-    console.log(id);
-    this.usersService.showUser(id);
+    this.usersService.getUserById(id);
+
+    this.router.navigate([`${this.usersPath}/${id}`]);
   }
 }

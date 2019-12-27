@@ -4,7 +4,7 @@ import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth.service";
 
-import { SignupData, LoginData } from "../authData.model";
+import { SignupData, LoginData } from "../../interfaces/auth.model";
 import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 
 @Component({

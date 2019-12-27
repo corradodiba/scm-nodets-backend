@@ -6,6 +6,7 @@ import usersRoutes from "./routes/users";
 import subjectsRoutes from "./routes/subjects";
 import authRoutes from "./routes/auth";
 import coursesRoutes from "./routes/courses";
+import { isAuth } from "./middlewares/isAuth";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -29,8 +30,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/courses", coursesRoutes);
-app.use("/users", usersRoutes);
+app.use("/courses", isAuth, coursesRoutes);
+app.use("/users", isAuth, usersRoutes);
 app.use("/subjects", subjectsRoutes);
 app.use("/auth", authRoutes);
 

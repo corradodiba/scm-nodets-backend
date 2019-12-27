@@ -12,11 +12,12 @@ import {
   getAllGrades,
   editGradeById,
   deleteGradeById
-} from "./controllers/user.controller";
+} from "./controllers/users.controller";
+import { isAuth } from "../middlewares/isAuth";
 
 const router = express();
 
-router.get("/", getAllUsers);
+router.get("/", isAuth, getAllUsers);
 
 router.get("/:id", getUsersById);
 

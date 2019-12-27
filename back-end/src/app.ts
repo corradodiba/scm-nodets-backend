@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/courses", isAuth, coursesRoutes);
-app.use("/users", isAuth, usersRoutes);
+app.use("/users", usersRoutes);
 app.use("/subjects", subjectsRoutes);
 app.use("/auth", authRoutes);
 

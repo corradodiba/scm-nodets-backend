@@ -5,28 +5,34 @@ import { Subscription } from "rxjs";
 import { AuthService } from "../auth.service";
 
 import { SignupData } from "../authData.model";
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 
 @Component({
-  templateUrl: "./signup.component.html"
+  templateUrl: "./signup.component.html",
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS,
+    useValue: { showError: true }
+  }]
 })
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
-  personalDate: FormGroup;
+  personalData: FormGroup;
   userTypes = ["Student", "Teacher"];
   private authStatusSub: Subscription;
 
   constructor(
     public authService: AuthService,
     private formBuilder: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
+
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(() => {
         this.isLoading = false;
       });
-    this.personalDate = this.formBuilder.group({
+    this.personalData = this.formBuilder.group({
       name: ["", Validators.required],
       surname: ["", Validators.required],
       dateOfBirth: ["", Validators.required],

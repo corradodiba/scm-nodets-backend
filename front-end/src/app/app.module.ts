@@ -24,7 +24,9 @@ import {
   MatInputModule,
   MatTableModule,
   MatMenuModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatDatepickerModule,
+  MatNativeDateModule
 } from "@angular/material";
 
 import { AppComponent } from "./app.component";
@@ -74,11 +76,13 @@ import { AuthInterceptor } from "./auth/auth-interceptor";
     MatInputModule,
     MatTableModule,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

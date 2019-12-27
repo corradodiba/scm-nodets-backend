@@ -3,8 +3,6 @@ import { Component, OnInit } from "@angular/core";
 import { UsersListService } from "./users-list.service";
 import { UsersService } from "../users.service";
 
-import User from "../../interfaces/user.model";
-
 @Component({
   selector: "app-users-lists",
   templateUrl: "./users-lists.component.html",

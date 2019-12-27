@@ -58,68 +58,34 @@ export const add = async (year: Date, token: IToken): Promise<Courses> => {
   }
 };
 
-// export const getAllStudentGrades = async (idStudent: string) => {
-//   try {
-//     const grades: Grades[] = await GradesModel.find({
-//       student: idStudent
-//     }).populate("student subject user");
-//     if (!grades) {
-//       throw "No grades found!";
-//     }
-//     return grades;
-//   } catch (err) {
-//     throw err;
-//   }
-// // };
+export const edit = async (id: string, course: Courses, token: IToken): Promise<Courses> => {
+  try {
+    const { type } = token;
+    if (type !== "Admin") {
+      throw "Operation not permitted!";
+    }
+    const editedCourse = await CoursesModel.findByIdAndUpdate(id, course).populate("user");;
+    if (!editedCourse) {
+      throw "No course found for editing!";
+    }
+    return editedCourse;
+  } catch (err) {
+    throw err;
+  }
+};
 
-// export const add = async (
-//   grade: Number,
-//   student: string,
-//   subject: string,
-//   user: string
-// ) => {
-//   try {
-//     const grades: Grades = CreateGrade({ grade, //student,
-//                                                 subject, user });
-//     return await grades.save();
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-
-// export const deleteById = async (idGrade: string, idUser: string) => {
-//   try {
-//     const gradesDeleted = await GradesModel.findByIdAndRemove({
-//       _id: idGrade,
-//       user: idUser
-//     }).populate("student subject user");
-//     if (!gradesDeleted) {
-//       throw "No grade found for deletion!";
-//     }
-//     return gradesDeleted;
-//   } catch (err) {
-//     throw err;
-//   }
-// };
-
-// export const editGrade = async (
-//   idUser: string,
-//   idGrade: string,
-//   grade: Number
-// ) => {
-//   try {
-//     const updatedGrade = await GradesModel.findOneAndUpdate(
-//       { _id: idGrade, user: idUser },
-//       {
-//         grade
-//       },
-//       { new: true }
-//     ).populate("student subject user");
-//     if (!updatedGrade || updatedGrade instanceof Error) {
-//       throw "No grade found for editing!";
-//     }
-//     return updatedGrade;
-//   } catch (err) {
-//     throw err;
-//   }
-// };
+export const deleteById = async (id: string, token: IToken): Promise<Courses> => {
+  try {
+    const { type } = token;
+    if (type !== "Admin") {
+      throw "Operation not permitted!";
+    }
+    const deletedCourse = await CoursesModel.findByIdAndRemove({ _id: id }).populate("user");;
+    if (!deletedCourse) {
+      throw "No courses found for deletion!";
+    }
+    return deletedCourse;
+  } catch (err) {
+    throw err;
+  }
+};

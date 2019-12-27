@@ -10,8 +10,8 @@ import { isAuth } from "./middlewares/isAuth";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
-  // "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
-  "mongodb://localhost:27017/class-managing";
+  "mongodb+srv://admin_class-managing:QHcojgdSyqrOCb7y@stevejobs-csiyz.mongodb.net/class-managing?retryWrites=true&w=majority";
+//"mongodb://localhost:27017/class-managing";
 
 const app = express();
 

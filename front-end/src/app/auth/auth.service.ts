@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { LoginData, SignupData } from "./authData.model";
 
 import { environment } from "../../environments/environment";
+import User from "../interfaces/user.model";
 
 const URL = `${environment.apiUrl}/auth/`;
 @Injectable({
@@ -38,18 +39,10 @@ export class AuthService {
   }
 
   createUser(authData: SignupData) {
-    this.http
-      .post(URL + "signup", {
-        // TODO
-      })
-      .subscribe(
-        () => {
-          this.router.navigate(["/"]);
-        },
-        err => {
-          this.authStatusListener.next(false);
-        }
-      );
+    const { email, password }: LoginData = authData;
+    this.http.post<User>(URL + "signup", authData).subscribe(() => {
+      this.loginUser({ email, password });
+    });
   }
 
   loginUser(authData: LoginData) {

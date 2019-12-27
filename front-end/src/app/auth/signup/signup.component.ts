@@ -5,14 +5,16 @@ import { Subscription } from "rxjs";
 import { AuthService } from "../auth.service";
 
 import { SignupData } from "../authData.model";
-import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { STEPPER_GLOBAL_OPTIONS } from "@angular/cdk/stepper";
 
 @Component({
   templateUrl: "./signup.component.html",
-  providers: [{
-    provide: STEPPER_GLOBAL_OPTIONS,
-    useValue: { showError: true }
-  }]
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { showError: true }
+    }
+  ]
 })
 export class SignupComponent implements OnInit, OnDestroy {
   isLoading = false;
@@ -23,10 +25,9 @@ export class SignupComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit() {
-
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe(() => {
@@ -47,7 +48,6 @@ export class SignupComponent implements OnInit, OnDestroy {
     if (form.invalid) {
       return;
     }
-    console.log(form.value);
 
     const {
       name,
@@ -67,8 +67,7 @@ export class SignupComponent implements OnInit, OnDestroy {
       email,
       password
     };
-    console.log(authData);
-    // this.authService.createUser(authData);
+    this.authService.createUser(authData);
   }
 
   ngOnDestroy() {

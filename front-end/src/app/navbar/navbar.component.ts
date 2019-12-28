@@ -13,6 +13,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
   isDesktopScreen = false;
 
+  userId: string = undefined;
+
   constructor(
     private authService: AuthService,
     public breakpointObserver: BreakpointObserver
@@ -30,10 +32,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
 
     this.isAuthenticated = this.authService.isAuth();
+    this.userId = this.authService.getAuthStatus().userId;
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
         this.isAuthenticated = isAuthenticated;
+        this.userId = this.authService.getAuthStatus().userId;
       });
   }
 

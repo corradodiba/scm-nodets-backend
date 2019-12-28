@@ -37,4 +37,4 @@ import {
     MatButtonModule
   ]
 })
-export class AuthModule {}
+export class AuthModule { }

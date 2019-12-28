@@ -4,8 +4,8 @@ $tabletViewportMaxWidth: "720px";
 .user-profile-container {
   height: 100vh;
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
+  overflow: hidden;
 }
 
 .card {
@@ -23,19 +23,22 @@ $tabletViewportMaxWidth: "720px";
 @media only screen and (max-device-width: $tabletViewportMaxWidth) {
   .sidebar-1 {
     max-width: 180px;
+    width: unset;
   }
 }
 
 @media only screen and (max-device-width: $mobileViewportMaxWidth) {
-  .sidebar-1 {
-    max-width: 100%;
+  .user-profile-container {
+    height: 100%;
+    justify-content: center;
   }
+
   .user-profile-container {
     flex-direction: column;
   }
-}
 
-// .user-header-image {
-// background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-// background-size: cover;
-// }
+  .sidebar-1 {
+    max-width: unset;
+    width: 100%;
+  }
+}

@@ -4,7 +4,6 @@ import { NgModule } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { FormsModule } from "@angular/forms";
-import { CommonModule } from "@angular/common";
 
 import {
   MatToolbarModule,
@@ -24,6 +23,7 @@ import { UserComponent } from "./users/user/user.component";
 import { SubjectsComponent } from "./subjects/subjects.component";
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { AuthModule } from "./auth/auth.module";
+import { SubjectsModule } from './users/users.module';
 
 @NgModule({
   declarations: [
@@ -49,11 +49,12 @@ import { AuthModule } from "./auth/auth.module";
     MatChipsModule,
     MatIconModule,
     MatTableModule,
-    AuthModule
+    AuthModule,
+    SubjectsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

@@ -11,13 +11,13 @@ import { ParamMap, ActivatedRoute } from "@angular/router";
   styleUrls: ["./subjects.component.scss"]
 })
 export class SubjectsComponent implements OnInit {
-  subjects: Subject[] = [];
+  subjects: Subject[];
   userId: string;
 
   constructor(
     private subjectsService: SubjectsService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
   async ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has("userId")) {

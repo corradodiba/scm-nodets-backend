@@ -9,7 +9,7 @@ import Subject from "../interfaces/subject.model";
   providedIn: "root"
 })
 export class SubjectsService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
   apiURL = `${environment.apiUrl}`;
   usersPath = `${environment.usersPath}`;
   subjectsPath = `${environment.subjectsPath}`;

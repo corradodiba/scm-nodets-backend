@@ -7,7 +7,11 @@
         </a>
       </header>
     </mat-toolbar-row>
-
+    <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
+      <div class="navbar-items">
+        <a mat-button href="courses">Courses</a>
+      </div>
+    </mat-toolbar-row>
     <mat-toolbar-row class="item-spacer">
       <div class="navbar-items">
         <a mat-button href="users">Users</a>

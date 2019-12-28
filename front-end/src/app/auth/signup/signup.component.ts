@@ -59,8 +59,10 @@ export class SignupComponent implements OnInit, OnDestroy {
       dateOfBirth,
       fiscalCode,
       type
-    }: SignupData = this.personalData.value;
+    } = this.personalData.value;
+
     const { email, password }: LoginData = this.authData.value;
+
     const authData: SignupData = {
       name,
       surname,

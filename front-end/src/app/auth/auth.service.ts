@@ -20,7 +20,7 @@ export class AuthService {
   private tokenDetails: { token: string; expiresIn: Date };
   private userId: string;
 
-  constructor(public http: HttpClient, private router: Router) { }
+  constructor(public http: HttpClient, private router: Router) {}
 
   getToken() {
     return this.token;
@@ -39,16 +39,29 @@ export class AuthService {
   }
 
   createUser(authData: SignupData) {
-    const { email, password }: LoginData = authData;
-    this.http.post<User>(URL + "signup", {
-      fiscalCode: authData.fiscalCode,
-      name: authData.name,
-      surname: authData.surname,
-      dateOfBirth: authData.dateOfBirth,
-      type: authData.type
-    }).subscribe(() => {
-      this.loginUser({ email, password });
-    });
+    const {
+      fiscalCode,
+      name,
+      surname,
+      dateOfBirth,
+      type,
+      email,
+      password
+    } = authData;
+
+    this.http
+      .post<User>(URL + "signup", {
+        fiscalCode,
+        name,
+        surname,
+        dateOfBirth,
+        type,
+        email,
+        password
+      })
+      .subscribe(test => {
+        this.loginUser({ email, password });
+      });
   }
 
   loginUser(authData: LoginData) {

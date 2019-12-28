@@ -28,8 +28,7 @@ export class UsersListsComponent implements OnInit {
         _id: user._id,
         title: user.name,
         subtitle: user.surname,
-        description: user.fiscalCode,
-        action: this.onShowUser
+        description: user.fiscalCode
       };
     });
     return usersMapped;

@@ -9,7 +9,7 @@ export const environment = {
     "http://localhost:3000" ||
     "http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com",
   usersPath: "users",
-  subjectsPath: "/subjects"
+  subjectsPath: "subjects"
 };
 
 /*

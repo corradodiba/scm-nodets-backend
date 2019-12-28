@@ -9,13 +9,20 @@ import Subject from "../interfaces/subject.model";
   providedIn: "root"
 })
 export class SubjectsService {
-  constructor(private httpClient: HttpClient) { }
-  apiURL = `${environment.apiUrl}${environment.subjectsPath}`;
+  constructor(private httpClient: HttpClient) {}
+  apiURL = `${environment.apiUrl}`;
+  usersPath = `${environment.usersPath}`;
+  subjectsPath = `${environment.subjectsPath}`;
 
   getSubjects() {
-    return this.httpClient.get<Subject[]>(`${this.apiURL}`).toPromise();
+    const subjectsApiPath = `${this.apiURL}/${this.usersPath}/${this.subjectsPath}`;
+    return this.httpClient.get<Subject[]>(subjectsApiPath).toPromise();
   }
-  getSubjectsById(id: String) {
-    return this.httpClient.get<Subject[]>(`${this.apiURL}/${id}/subjects`).toPromise();
+  getSubjectsById(id: string) {
+    return this.httpClient
+      .get<Subject[]>(
+        `${this.apiURL}/${this.usersPath}/${id}/${this.subjectsPath}`
+      )
+      .toPromise();
   }
 }

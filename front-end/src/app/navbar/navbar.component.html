@@ -61,32 +61,38 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <a [href]="'users/' + userId">
+          <button *ngIf="isAuthenticated" mat-menu-item>
+            <mat-icon> account_circle</mat-icon>
+            <span>My Profile</span>
+          </button>
+        </a>
         <a href="courses">
           <button *ngIf="isAuthenticated" mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
+            <mat-icon>book</mat-icon>
             <span>Courses</span>
           </button>
         </a>
         <a href="users">
           <button *ngIf="isAuthenticated" mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
+            <mat-icon>supervisor_account</mat-icon>
             <span>Users</span>
           </button>
         </a>
         <a href="auth/signup">
           <button *ngIf="!isAuthenticated" mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
+            <mat-icon>assignment</mat-icon>
             <span>Signup</span>
           </button>
         </a>
         <a href="auth/login">
           <button *ngIf="!isAuthenticated" mat-menu-item>
-            <mat-icon>dialpad</mat-icon>
+            <mat-icon>exit_to_app</mat-icon>
             <span>Login</span>
           </button>
         </a>
         <button *ngIf="isAuthenticated" (click)="onLogout()" mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
+          <mat-icon>exit_to_app</mat-icon>
           <span>Logout</span>
         </button>
       </mat-menu>

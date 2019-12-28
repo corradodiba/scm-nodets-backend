@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
-import { IList } from "../interfaces/list.model";
-import { CoursesService } from "./courses.service";
-import Course from "../interfaces/course.model";
+import { IList } from "../../interfaces/list.model";
+import { CoursesService } from "../courses.service";
+import Course from "../../interfaces/course.model";
 
 @Component({
-  selector: "app-courses",
-  templateUrl: "./courses.component.html",
-  styleUrls: ["./courses.component.scss"]
+  selector: "app-courses-list",
+  templateUrl: "./courses-list.component.html",
+  styleUrls: ["./courses-list.component.scss"]
 })
-export class CoursesComponent implements OnInit {
+export class CoursesListComponent implements OnInit {
   courses: Course[] = [];
 
   constructor(private coursesService: CoursesService) {}

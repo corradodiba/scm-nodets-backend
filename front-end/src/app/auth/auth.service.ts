@@ -71,7 +71,7 @@ export class AuthService {
             timeStamp.getTime() + response.expiresIn * 1000
           );
           this.storeAuthData(token, expirationDate, this.userId);
-          this.router.navigate(["/users"]);
+          this.router.navigate([`/users/${response.id}`]);
         }
       });
   }

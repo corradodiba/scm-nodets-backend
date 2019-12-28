@@ -15,4 +15,7 @@ export class SubjectsService {
   getSubjects() {
     return this.httpClient.get<Subject[]>(`${this.apiURL}`).toPromise();
   }
+  getSubjectsById(id: String) {
+    return this.httpClient.get<Subject[]>(`${this.apiURL}/${id}/subjects`).toPromise();
+  }
 }

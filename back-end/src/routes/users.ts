@@ -21,7 +21,7 @@ router.get("/", isAuth, getAllUsers);
 
 router.get("/:id", getUsersById);
 
-// router.get("/:id/subjects", getSubjectsOfUser);
+router.get("/:id/subjects", getSubjectsOfUser);
 
 // router.get("/:id/grades", getAllGrades);
 

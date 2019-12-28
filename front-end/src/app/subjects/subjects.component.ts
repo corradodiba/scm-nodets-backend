@@ -1,10 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { COMMA, ENTER } from "@angular/cdk/keycodes";
-import { MatSnackBar } from "@angular/material";
 
 import Subject from "../interfaces/subject.model";
 
 import { SubjectsService } from "./subjects.service";
+import { ParamMap, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-subjects",
@@ -13,9 +12,19 @@ import { SubjectsService } from "./subjects.service";
 })
 export class SubjectsComponent implements OnInit {
   subjects: Subject[] = [];
+  userId: String;
 
-  constructor(private subjectsService: SubjectsService) { }
+  constructor(
+    private subjectsService: SubjectsService,
+    private route: ActivatedRoute
+  ) { }
   async ngOnInit() {
-    this.subjects = await this.subjectsService.getSubjects();
+
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has("userId")) {
+        this.userId = paramMap.get("userId");
+      }
+    });
+    this.subjects = await this.subjectsService.getSubjectsById(this.userId);
   }
 }

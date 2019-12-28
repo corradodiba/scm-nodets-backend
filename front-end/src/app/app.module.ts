@@ -20,22 +20,11 @@ import { UsersModule } from "./users/users.module";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { UsersListsComponent } from "./users/users-lists/users-lists.component";
-import { UserComponent } from "./users/user/user.component";
-import { SubjectsComponent } from "./subjects/subjects.component";
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { AuthModule } from "./auth/auth.module";
-import { ListComponent } from "./helpers/list/list.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    UsersListsComponent,
-    UserComponent,
-    SubjectsComponent,
-    ListComponent
-  ],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

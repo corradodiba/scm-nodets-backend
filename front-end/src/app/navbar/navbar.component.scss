@@ -9,6 +9,11 @@
 .navbar-container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.toggle-menu-container {
+  justify-content: flex-end;
 }
 
 .navbar-items {

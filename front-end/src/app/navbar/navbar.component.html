@@ -1,4 +1,4 @@
-<section>
+<nav *ngIf="isDesktopScreen">
   <mat-toolbar color="primary" class="navbar-container">
     <mat-toolbar-row class="logo-spacer">
       <header>
@@ -12,7 +12,7 @@
         <a mat-button href="courses">Courses</a>
       </div>
     </mat-toolbar-row>
-    <mat-toolbar-row class="item-spacer">
+    <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
       <div class="navbar-items">
         <a mat-button href="users">Users</a>
       </div>
@@ -33,4 +33,58 @@
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
-</section>
+</nav>
+
+<nav *ngIf="!isDesktopScreen">
+  <mat-toolbar
+    color="primary"
+    class="navbar-container navbar-responsive-container"
+  >
+    <mat-toolbar-row class="logo-spacer">
+      <header>
+        <a href="">
+          <img src="../../assets/images/logo-its.svg" />
+        </a>
+      </header>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="toggle-menu-container">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a href="/courses">
+          <button *ngIf="isAuthenticated" mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Courses</span>
+          </button>
+        </a>
+        <a href="courses">
+          <button *ngIf="isAuthenticated" mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Users</span>
+          </button>
+        </a>
+        <a href="auth/signup">
+          <button *ngIf="!isAuthenticated" mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Signup</span>
+          </button>
+        </a>
+        <a href="auth/login">
+          <button *ngIf="!isAuthenticated" mat-menu-item>
+            <mat-icon>dialpad</mat-icon>
+            <span>Login</span>
+          </button>
+        </a>
+        <button *ngIf="isAuthenticated" (click)="onLogout()" mat-menu-item>
+          <mat-icon>dialpad</mat-icon>
+          <span>Logout</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</nav>

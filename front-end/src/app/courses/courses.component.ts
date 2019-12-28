@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { IList } from '../interfaces/list.model';
-import { CoursesService } from './courses.service';
+import { Component, OnInit } from "@angular/core";
+import { IList } from "../interfaces/list.model";
+import { CoursesService } from "./courses.service";
 
 @Component({
-  selector: 'app-courses',
-  templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  selector: "app-courses",
+  templateUrl: "./courses.component.html",
+  styleUrls: ["./courses.component.scss"]
 })
 export class CoursesComponent implements OnInit {
-  course = [];
+  courses = [];
 
-  constructor(private coursesService: CoursesService, ) { }
+  constructor(private coursesService: CoursesService) {}
 
   async ngOnInit() {
-    this.course = await this.coursesService.getCourses();
+    this.courses = await this.coursesService.getCourses();
+    console.log(this.courses);
   }
-
 }

@@ -12,16 +12,11 @@ import {
 import { UsersRoutingModule } from "./users-routing.module";
 import { UsersListsComponent } from "./users-lists/users-lists.component";
 import { UserComponent } from "./user/user.component";
-import { ListComponent } from "../helpers/list/list.component";
 import { SubjectsComponent } from "../subjects/subjects.component";
+import { ListModule } from "../helpers/list/list.module";
 
 @NgModule({
-  declarations: [
-    UsersListsComponent,
-    UserComponent,
-    ListComponent,
-    SubjectsComponent
-  ],
+  declarations: [UsersListsComponent, UserComponent, SubjectsComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -30,7 +25,8 @@ import { SubjectsComponent } from "../subjects/subjects.component";
     UsersRoutingModule,
     MatOptionModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    ListModule
   ]
 })
 export class UsersModule {}

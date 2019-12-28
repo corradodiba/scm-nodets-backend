@@ -1,1 +1,4 @@
-<p>courses works!</p>
+<app-list
+  [items]="mapCoursesListDetails()"
+  (showItem)="onShowCourse($event)"
+></app-list>

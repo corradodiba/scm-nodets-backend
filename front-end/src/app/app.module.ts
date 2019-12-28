@@ -18,7 +18,6 @@ import { AuthModule } from "./auth/auth.module";
 import { CoursesModule } from "./courses/courses.module";
 import { UsersModule } from "./users/users.module";
 import { AppRoutingModule } from "./app-routing.module";
-import { CoursesRoutingModule } from "./courses/courses-routing.module";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -32,7 +31,6 @@ import { CoursesRoutingModule } from "./courses/courses-routing.module";
     AppRoutingModule,
     AuthModule,
     UsersModule,
-    CoursesRoutingModule,
     CoursesModule,
     MatMenuModule,
     MatIconModule

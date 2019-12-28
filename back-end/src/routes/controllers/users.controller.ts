@@ -14,6 +14,7 @@ import {
 } from "../../models/user/user.model";
 
 import * as GradesModel from "../../models/grades/grades.model";
+import { mapUsersData, mapUserData } from "../../helpers/mapUserData.helper";
 
 const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
 
@@ -21,7 +22,7 @@ export const getAllUsers = async (req: Request | any, res: Response) => {
   try {
     const { type } = req.userData;
     const users = await getAll(type);
-    return res.status(200).json(users);
+    return res.status(200).json(mapUsersData(users));
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -31,7 +32,7 @@ export const getUsersById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const user = await getById(id);
-    return res.status(200).json(user);
+    return res.status(200).json(mapUserData(user));
   } catch (err) {
     return res.status(404).json({ message: err });
   }

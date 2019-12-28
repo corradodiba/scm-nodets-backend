@@ -30,6 +30,6 @@ export interface Courses extends Document {
 
 export const CoursesModel = mongoose.model<Courses>("Courses", CoursesSchema);
 
-export { getAll, add, deleteById, edit } from "./courses.methods";
+export { getAll, getById, add, deleteById, edit } from "./courses.methods";
 
 export { CreateCourse } from "./courses.costructor";

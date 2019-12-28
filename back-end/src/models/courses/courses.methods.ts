@@ -45,6 +45,49 @@ export const getAll = async (type: typeUser, userId: string) => {
   }
 };
 
+export const getById = async (type: typeUser, userId: string, id: String) => {
+  try {
+    if (type === "Admin") {
+      const course = await CoursesModel.findOne({ _id: id }).populate(
+        "students subjects"
+      );
+      return course;
+    }
+
+    if (type === "Teacher") {
+      const courses = await CoursesModel.findOne({
+        _id: id,
+        teachers: {
+          $in: [
+            {
+              _id: userId,
+              type
+            }
+          ]
+        }
+      });
+      return courses;
+    }
+
+    if (type === "Student") {
+      const courses = await CoursesModel.findOne({
+        _id: id,
+        students: {
+          $in: [
+            {
+              _id: userId,
+              type
+            }
+          ]
+        }
+      });
+      return courses;
+    }
+  } catch (err) {
+    throw err;
+  }
+};
+
 export const add = async (year: Date, token: IToken): Promise<Courses> => {
   try {
     const { type } = token;

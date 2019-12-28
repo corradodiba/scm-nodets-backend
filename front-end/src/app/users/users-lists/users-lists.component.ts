@@ -26,11 +26,11 @@ export class UsersListsComponent implements OnInit {
     const usersMapped: IList[] = this.users.map(user => {
       return {
         _id: user._id,
-        title: user.name,
-        subtitle: user.surname,
+        title: `${user.name} ${user.surname}`,
         description: user.fiscalCode
       };
     });
+    console.log(usersMapped);
     return usersMapped;
   }
 

@@ -32,7 +32,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
 
     this.isAuthenticated = this.authService.isAuth();
-    this.userId = this.authService.getAuthStatus().userId;
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {

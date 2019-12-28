@@ -5,15 +5,11 @@ $tabletViewportMaxWidth: "720px";
   height: 100vh;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
 }
 
 .card {
   display: block;
-}
-
-.user-profile-container {
-  display: flex;
-  justify-content: flex-start;
 }
 
 .sidebar-1 {
@@ -21,9 +17,7 @@ $tabletViewportMaxWidth: "720px";
 }
 
 .sidebar-2 {
-  max-width: 100%;
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 @media only screen and (max-device-width: $tabletViewportMaxWidth) {

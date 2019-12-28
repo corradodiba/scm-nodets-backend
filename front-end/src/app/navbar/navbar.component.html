@@ -9,7 +9,7 @@
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
       <div class="navbar-items">
-        <a mat-button [href]="'users/' + userId">My Profile</a>
+        <a mat-button [href]="getUserId()">My Profile</a>
       </div>
     </mat-toolbar-row>
     <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
@@ -61,7 +61,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <a [href]="'users/' + userId">
+        <a [href]="getUserId()">
           <button *ngIf="isAuthenticated" mat-menu-item>
             <mat-icon> account_circle</mat-icon>
             <span>My Profile</span>

@@ -9,12 +9,15 @@ const routes: Routes = [
     loadChildren: "./users/users.module#UsersModule",
     canActivate: [AuthGuard]
   },
-  { path: "courses", loadChildren: "./courses/courses.module#CoursesModule" }
-
+  {
+    path: "courses",
+    loadChildren: "./courses/courses.module#CoursesModule",
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

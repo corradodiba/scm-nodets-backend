@@ -30,7 +30,6 @@ export class UsersListsComponent implements OnInit {
         description: user.fiscalCode
       };
     });
-    console.log(usersMapped);
     return usersMapped;
   }
 

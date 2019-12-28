@@ -56,13 +56,13 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <a href="/courses">
+        <a href="courses">
           <button *ngIf="isAuthenticated" mat-menu-item>
             <mat-icon>dialpad</mat-icon>
             <span>Courses</span>
           </button>
         </a>
-        <a href="courses">
+        <a href="users">
           <button *ngIf="isAuthenticated" mat-menu-item>
             <mat-icon>dialpad</mat-icon>
             <span>Users</span>

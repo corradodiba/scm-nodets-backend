@@ -11,7 +11,7 @@ import User from "../../interfaces/user.model";
   styleUrls: ["./user.component.scss"]
 })
 export class UserComponent implements OnInit {
-  private userId: string = undefined;
+  userId: string = undefined;
   user: User;
 
   constructor(

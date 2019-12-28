@@ -36,9 +36,6 @@ export class UsersListsComponent implements OnInit {
   }
 
   onShowUser(id: string) {
-    console.log("ciao");
-    console.log(id);
-    this.usersService.getUserById(id);
-    this.router.navigate([`${this.usersPath}/${id}`]);
+    this.router.navigate([`/${this.usersPath}/${id}`]);
   }
 }

@@ -33,7 +33,6 @@ import { AuthModule } from "./auth/auth.module";
     FormsModule,
     MatToolbarModule,
     MatCardModule,
-    MatButtonModule,
     MatSelectModule,
     HttpClientModule,
     MatButtonModule,

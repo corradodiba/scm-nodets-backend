@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import {
   MatProgressSpinnerModule,
   MatCardModule,
-  MatButtonModule,
+  MatButtonModule
 } from "@angular/material";
 
 @NgModule({
@@ -15,4 +15,4 @@ import {
     MatButtonModule
   ]
 })
-export class SubjectsModule { }
+export class UsersModule {}

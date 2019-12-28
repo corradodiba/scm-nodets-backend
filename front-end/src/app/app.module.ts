@@ -16,7 +16,7 @@ import {
   MatSelectModule
 } from "@angular/material";
 
-import { SubjectsModule } from "./users/users.module";
+import { UsersModule } from "./users/users.module";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -53,7 +53,7 @@ import { ListComponent } from "./helpers/list/list.component";
     MatIconModule,
     MatTableModule,
     AuthModule,
-    SubjectsModule
+    UsersModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

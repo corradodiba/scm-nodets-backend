@@ -25,6 +25,5 @@ export class SubjectsComponent implements OnInit {
       }
     });
     this.subjects = await this.subjectsService.getSubjectsById(this.userId);
-    console.log(this.subjects);
   }
 }

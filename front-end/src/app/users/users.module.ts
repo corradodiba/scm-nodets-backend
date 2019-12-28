@@ -14,6 +14,7 @@ import { UsersListsComponent } from "./users-lists/users-lists.component";
 import { UserComponent } from "./user/user.component";
 import { SubjectsComponent } from "../subjects/subjects.component";
 import { ListModule } from "../helpers/list/list.module";
+import { CoursesModule } from "../courses/courses.module";
 
 @NgModule({
   declarations: [UsersListsComponent, UserComponent, SubjectsComponent],
@@ -26,7 +27,8 @@ import { ListModule } from "../helpers/list/list.module";
     MatOptionModule,
     MatFormFieldModule,
     MatSelectModule,
-    ListModule
+    ListModule,
+    CoursesModule
   ]
 })
 export class UsersModule {}

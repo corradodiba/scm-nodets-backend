@@ -7,6 +7,7 @@ import { ListModule } from "../helpers/list/list.module";
 
 @NgModule({
   declarations: [CoursesComponent],
-  imports: [CommonModule, CoursesRoutingModule, ListModule]
+  imports: [CommonModule, CoursesRoutingModule, ListModule],
+  exports: [CoursesComponent]
 })
 export class CoursesModule {}

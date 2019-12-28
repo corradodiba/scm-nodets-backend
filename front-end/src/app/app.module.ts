@@ -15,7 +15,6 @@ import { NavbarComponent } from "./navbar/navbar.component";
 
 import { AuthInterceptor } from "./auth/auth-interceptor";
 import { AuthModule } from "./auth/auth.module";
-import { CoursesModule } from "./courses/courses.module";
 import { UsersModule } from "./users/users.module";
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -31,7 +30,6 @@ import { AppRoutingModule } from "./app-routing.module";
     AppRoutingModule,
     AuthModule,
     UsersModule,
-    CoursesModule,
     MatMenuModule,
     MatIconModule
   ],

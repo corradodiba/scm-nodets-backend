@@ -1,14 +1,44 @@
-.example-card {
-  max-width: 250px;
+$mobileViewportMaxWidth: "480px";
+$tabletViewportMaxWidth: "720px";
+
+.user-profile-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.card {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
 }
 
 .user-profile-container {
   display: flex;
   justify-content: flex-start;
+}
+
+.sidebar-1 {
+  max-width: 250px;
+}
+
+.sidebar-2 {
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media only screen and (max-device-width: $tabletViewportMaxWidth) {
+  .sidebar-1 {
+    max-width: 180px;
+  }
+}
+
+@media only screen and (max-device-width: $mobileViewportMaxWidth) {
+  .sidebar-1 {
+    max-width: 100%;
+  }
+  .user-profile-container {
+    flex-direction: column;
+  }
 }
 
 // .user-header-image {

@@ -1,4 +1,4 @@
 export default interface Course {
-  _id: string;
-  year: number;
-}
+    _id: string;
+    year: number;
+  }

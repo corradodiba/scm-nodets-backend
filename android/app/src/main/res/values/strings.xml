@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Steve Jobs Class Managing</string>
+    <string name="get3">List teachers</string>
+    <string name="get3a">List students</string>
+    <string name="steve_jobs">Steve Jobs class managing</string>
+    <string name="username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="login">Login</string>
+    <string name="create_new">Click here for register</string>
+    <string name="not_register">Not Register?</string>
+    <string name="username_error">Please enter your userneme</string>
+    <string name="error_invalid_username">This username is invalid</string>
+    <string name="password_error">Please enter a password</string>
+    <string name="error_invalid_password">Please enter a minimum password of 6 characters</string>
+    <string name="error_incorrect_password">Plese enter a correct password</string>
+    <string name="loading">loading</string>
+</resources>

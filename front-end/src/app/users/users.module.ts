@@ -29,6 +29,7 @@ import { CoursesModule } from "../courses/courses.module";
     MatSelectModule,
     ListModule,
     CoursesModule
-  ]
+  ],
+  exports: [UsersListsComponent]
 })
 export class UsersModule {}

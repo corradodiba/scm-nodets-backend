@@ -4,7 +4,6 @@ $tabletViewportMaxWidth: "720px";
 .user-profile-container {
   height: 100vh;
   display: flex;
-  justify-content: flex-start;
   overflow: hidden;
 }
 
@@ -18,12 +17,28 @@ $tabletViewportMaxWidth: "720px";
 
 .sidebar-2 {
   width: 100%;
+  padding: 0;
+}
+
+:host ::ng-deep app-list {
+  display: flex;
+}
+
+:host ::ng-deep app-list mat-card {
+  margin: 0.5% !important;
+}
+
+mat-card {
+  box-sizing: border-box;
 }
 
 @media only screen and (max-device-width: $tabletViewportMaxWidth) {
   .sidebar-1 {
     max-width: 180px;
     width: unset;
+  }
+  :host ::ng-deep app-list {
+    flex-direction: column;
   }
 }
 

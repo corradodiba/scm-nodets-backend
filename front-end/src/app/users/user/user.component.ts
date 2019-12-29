@@ -17,7 +17,7 @@ export class UserComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   async ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {

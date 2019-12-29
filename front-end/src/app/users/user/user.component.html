@@ -22,6 +22,15 @@
           </mat-card-actions> -->
   </mat-card>
   <mat-card class="card full-width sidebar-2">
-    <app-courses-list></app-courses-list>
+    <mat-card class="card full-width">
+      <div class="courses">
+        <h2>Courses</h2>
+        <app-courses-list></app-courses-list>
+      </div>
+      <div class="users-list">
+        <h2>Users</h2>
+        <app-users-lists></app-users-lists>
+      </div>
+    </mat-card>
   </mat-card>
 </section>

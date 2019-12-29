@@ -3,10 +3,13 @@ import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 
-import { LoginData, SignupData } from "../interfaces/auth.model";
+import { ITokenData } from "../interfaces/tokenData.model";
+import { IUserType } from "../interfaces/userType.model";
+import User from "../interfaces/user.model";
 
 import { environment } from "../../environments/environment";
-import User from "../interfaces/user.model";
+
+import { LoginData, SignupData } from "../interfaces/auth.model";
 
 const URL = `${environment.apiUrl}/auth/`;
 @Injectable({
@@ -65,28 +68,23 @@ export class AuthService {
   }
 
   loginUser(authData: LoginData) {
-    this.http
-      .post<{ token: string; expiresIn: number; id: string }>(
-        URL + "login",
-        authData
-      )
-      .subscribe(response => {
-        const token = response.token;
-        this.token = token;
+    this.http.post<ITokenData>(URL + "login", authData).subscribe(response => {
+      const token = response.token;
+      this.token = token;
+      this.authStatusListener.next(true);
+      if (token) {
+        this.getTokenTimeout(response.expiresIn);
+        this.isAuthenticated = true;
+        this.userId = response.id;
         this.authStatusListener.next(true);
-        if (token) {
-          this.getTokenTimeout(response.expiresIn);
-          this.isAuthenticated = true;
-          this.userId = response.id;
-          this.authStatusListener.next(true);
-          const timeStamp = new Date();
-          const expirationDate = new Date(
-            timeStamp.getTime() + response.expiresIn * 1000
-          );
-          this.storeAuthData(token, expirationDate, this.userId);
-          this.router.navigate([`/users/${response.id}`]);
-        }
-      });
+        const timeStamp = new Date();
+        const expirationDate = new Date(
+          timeStamp.getTime() + response.expiresIn * 1000
+        );
+        this.storeAuthData(token, expirationDate, this.userId, response.type);
+        this.router.navigate([`/users/${response.id}`]);
+      }
+    });
   }
 
   getTokenTimeout(expiresIn: number) {
@@ -125,16 +123,23 @@ export class AuthService {
     }
   }
 
-  storeAuthData(token: string, expiresIn: Date, userId: string) {
+  storeAuthData(
+    token: string,
+    expiresIn: Date,
+    userId: string,
+    type: IUserType
+  ) {
     localStorage.setItem("token", token);
     localStorage.setItem("expiresIn", expiresIn.toISOString());
     localStorage.setItem("userId", userId);
+    localStorage.setItem("type", type);
   }
 
   clearAuthData() {
     localStorage.removeItem("token");
     localStorage.removeItem("expiresIn");
     localStorage.removeItem("userId");
+    localStorage.removeItem("type");
   }
 
   logoutUser() {

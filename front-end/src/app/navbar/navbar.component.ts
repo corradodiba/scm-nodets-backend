@@ -6,6 +6,7 @@ import { AuthService } from "../auth/auth.service";
 
 import { environment } from "../../environments/environment";
 import { Router } from "@angular/router";
+import { IToggleItem } from "../interfaces/toggle-item.model";
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -19,6 +20,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   isDesktopScreen = false;
 
   userId: string = undefined;
+
+  toggleItems: IToggleItem[] = [];
 
   constructor(
     private authService: AuthService,
@@ -36,7 +39,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
           this.isDesktopScreen = false;
         }
       });
-
     this.isAuthenticated = this.authService.isAuth();
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
@@ -45,13 +47,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
       });
   }
 
-  getUserId() {
+  onClickToggle() {
+    this.toggleItems = this.getMenuItems();
+  }
+  getPathUserId() {
     this.userId = this.authService.getAuthStatus().userId;
     if (this.userId === undefined) {
-      this.router.navigate(["/"]);
       return;
     }
-
     return `${this.usersPath}/${this.userId}`;
   }
 
@@ -61,5 +64,64 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();
+  }
+
+  private getUserId() {
+    return this.authService.getAuthStatus()
+      ? this.authService.getAuthStatus().userId
+      : "";
+  }
+
+  private getMenuItems() {
+    return [
+      {
+        matIcon: "account_circle",
+        isVisible: this.isAuthenticated,
+        text: "MyProfile",
+        href: `/users/${this.getUserId()}`
+      },
+      {
+        matIcon: "book",
+        isVisible: this.isAuthenticated,
+        text: "Courses",
+        href: "/courses"
+      },
+      {
+        matIcon: "supervisor_account",
+        isVisible: this.isAuthenticated,
+        text: "Users",
+        href: "/users"
+      },
+      {
+        matIcon: "assignment",
+        isVisible: !this.isAuthenticated,
+        text: "Signup",
+        href: "/auth/signup"
+      },
+      {
+        matIcon: "exit_to_app",
+        isVisible: !this.isAuthenticated,
+        text: "Login",
+        href: "/auth/login"
+      },
+      {
+        matIcon: "exit_to_app",
+        isVisible: this.isAuthenticated,
+        text: "Logout",
+        href: undefined
+      }
+    ];
+  }
+
+  getDefaultItems(items: IToggleItem[]) {
+    return items.map(item => {
+      if (item.text === "Login" || item.text === "Signup") {
+        item.isVisible = true;
+      } else {
+        item.isVisible = false;
+      }
+      console.log(item);
+      return item;
+    });
   }
 }

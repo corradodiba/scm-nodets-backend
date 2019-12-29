@@ -12,11 +12,14 @@ import {
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { ToggleComponent } from "./helpers/toggle/toggle.component";
 
 import { AuthInterceptor } from "./auth/auth-interceptor";
+
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
 import { AppRoutingModule } from "./app-routing.module";
+import { ToggleModule } from "./helpers/toggle/toggle.module";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -30,6 +33,7 @@ import { AppRoutingModule } from "./app-routing.module";
     AppRoutingModule,
     AuthModule,
     UsersModule,
+    ToggleModule,
     MatMenuModule,
     MatIconModule
   ],

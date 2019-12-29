@@ -1,38 +1,23 @@
-.home-banner-area {
-  color: #777777;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.625em;
-  background: url(/assets/images/homepage/header-bg.png) no-repeat top center;
+$assetsPath: "/assets/images/homepage";
+
+.header-banner-area {
+  background: url($assetsPath+"/header-bg.png") no-repeat top center;
   background-size: cover;
 }
 
-@media (max-width: 1440px) {
-  .banner-content {
-    margin-top: 0;
-  }
-
-  .banner-content {
-    text-align: center;
-    margin-top: 100px;
-  }
+.banner-wrapper {
+  height: 92vh;
+  align-items: center;
 }
 
-@media (max-width: 991.98px) {
-  .banner-content h1 {
-    font-size: 35px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .banner-content h1 {
-    font-size: 38px;
-  }
+.banner-content,
+.banner-content h1 {
+  text-align: center;
+  color: #fff !important;
 }
 
 .banner-content h1 {
-  color: #fff;
-  font-size: 48px;
+  font-size: 38px;
   font-weight: 700;
   line-height: 1em;
   margin-bottom: 20px;
@@ -43,15 +28,14 @@
   margin: auto;
 }
 
-.banner-content .input-wrap {
-  margin-top: 40px;
-  margin-bottom: 50px;
+.input-wrap {
+  margin: 4% 0;
 }
 
-.banner-content .input-wrap .form-box {
+.form-box {
   background: #fff;
   max-width: 556px;
-  padding: 5px 0px 5px 5px;
+  padding: 5px 0 5px 5px;
   margin: 0 auto;
 }
 
@@ -62,7 +46,8 @@
   border: 0;
 }
 
-.banner-content .input-wrap .search-btn {
+.search-btn {
+  background: linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
   border-radius: 0;
   color: #fff;
   position: relative;
@@ -70,36 +55,11 @@
   font-size: 14px;
   padding: 10px 31px;
   border: 0;
-  background: -webkit-linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
-  background: -moz-linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
-  background: -o-linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
-  background: -ms-linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
-  background: linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
 }
 
-.banner-content h4 {
-  font-weight: 300;
-  letter-spacing: 1px;
-}
-
-.banner-content .courses {
+.tags {
   max-width: 430px;
   margin: 0 auto;
-}
-
-.pt-20 {
-  padding-top: 20px;
-}
-
-.primary-btn.transparent {
-  background: transparent;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid #fff;
-  border-radius: 0px;
-  padding: 0 18px;
-  margin: 1%;
-  font-size: 12px;
 }
 
 .primary-btn {
@@ -119,20 +79,13 @@
   transition: 0.5s all ease-in;
 }
 
-a,
-a:focus,
-a:hover {
-  text-decoration: none;
-  outline: 0;
-}
-
-.rocket-img {
-  position: absolute;
-  bottom: -22px;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-  -moz-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  -o-transform: translate(-50%);
-  transform: translate(-50%);
+.transparent-btn {
+  background: 0 0;
+  height: 30px;
+  line-height: 30px;
+  border: 1px solid #fff;
+  border-radius: 0;
+  padding: 0 18px;
+  font-size: 12px;
+  margin: 0 10px 10px 0;
 }

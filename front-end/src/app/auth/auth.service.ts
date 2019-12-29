@@ -22,6 +22,7 @@ export class AuthService {
   private tokenTimeout: any;
   private tokenDetails: { token: string; expiresIn: Date };
   private userId: string;
+  private typeUser: IUserType;
 
   constructor(public http: HttpClient, private router: Router) {}
 
@@ -69,20 +70,20 @@ export class AuthService {
 
   loginUser(authData: LoginData) {
     this.http.post<ITokenData>(URL + "login", authData).subscribe(response => {
-      const token = response.token;
+      const { token, id, type, expiresIn } = response;
+
       this.token = token;
       this.authStatusListener.next(true);
       if (token) {
-        this.getTokenTimeout(response.expiresIn);
+        this.getTokenTimeout(expiresIn);
         this.isAuthenticated = true;
-        this.userId = response.id;
+        this.userId = id;
+        this.typeUser = type;
         this.authStatusListener.next(true);
         const timeStamp = new Date();
-        const expirationDate = new Date(
-          timeStamp.getTime() + response.expiresIn * 1000
-        );
-        this.storeAuthData(token, expirationDate, this.userId, response.type);
-        this.router.navigate([`/users/${response.id}`]);
+        const expirationDate = new Date(timeStamp.getTime() + expiresIn * 1000);
+        this.storeAuthData(token, expirationDate, this.userId, type);
+        this.router.navigate([`/users/${id}`]);
       }
     });
   }
@@ -110,15 +111,17 @@ export class AuthService {
   }
 
   getAuthStatus() {
-    const usertoken = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const tokenExpirationDate = localStorage.getItem("expiresIn");
-    const id = localStorage.getItem("userId");
+    const userId = localStorage.getItem("userId");
+    const type = localStorage.getItem("type");
 
-    if (usertoken && tokenExpirationDate) {
+    if (token && tokenExpirationDate) {
       return {
-        token: usertoken,
+        token,
         expiresIn: new Date(tokenExpirationDate),
-        userId: id
+        userId,
+        type
       };
     }
   }

@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".VolleyActivity16"/>
+        <activity android:name=".ThirdActivity"/>
         <activity android:name=".activities.UserActivity"/>
+        <activity android:name=".activities.SubjectsActivity"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
         <activity android:name=".MenuActivity"/>

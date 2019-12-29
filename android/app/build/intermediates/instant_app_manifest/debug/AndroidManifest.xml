@@ -23,7 +23,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity android:name="com.demo.stevejobsclassmanaging.VolleyActivity16" />
+        <activity android:name="com.demo.stevejobsclassmanaging.ThirdActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.activities.UserActivity" />
+        <activity android:name="com.demo.stevejobsclassmanaging.activities.SubjectsActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.MainActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.SecondActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.MenuActivity" />

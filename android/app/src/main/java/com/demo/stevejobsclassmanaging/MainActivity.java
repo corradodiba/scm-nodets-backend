@@ -28,7 +28,7 @@ import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String URLSTUDENTS = "http://192.168.1.252:3000/students";
+    private final String URLSTUDENTS = "http://192.168.43.156:3000/users";
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
     private List<User> lstUser;
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                         user.setFiscalCode(jsonObject.getString("fiscalCode"));
                         user.setSurname(jsonObject.getString("surname"));
                         user.setDateOfBirth(jsonObject.getString("dateOfBirth"));
+                        user.setType(jsonObject.getString("type"));
                         //user.setImage_url(jsonObject.getString("img"));
                         lstUser.add( user );
                         bar.setVisibility(GONE);//dismiss progress

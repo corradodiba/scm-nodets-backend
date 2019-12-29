@@ -1,7 +1,7 @@
-#Sat Dec 28 23:13:37 CET 2019
-base.0=/Users/zagarellagabriele/Desktop/stevejobsclassmanaging/app/build/intermediates/dex/debug/mergeExtDexDebug/out
+#Sun Dec 29 01:11:17 CET 2019
+base.0=/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/dex/debug/mergeExtDexDebug/out
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=/Users/zagarellagabriele/Desktop/stevejobsclassmanaging/app/build/intermediates/dex/debug/mergeProjectDexDebug/out
+base.1=/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/out

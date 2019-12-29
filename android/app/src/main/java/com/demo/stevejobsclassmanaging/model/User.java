@@ -1,33 +1,39 @@
 package com.demo.stevejobsclassmanaging.model;
 
-/**
- * Created by Aws on 11/03/2018.
- */
-
 public class User {
 
     private String _id;
     private String fiscalCode;
     private String name ;
     private String surname;
-    private String dateOfBirth ;
+    private String dateOfBirth;
+    private String type;
     //private String image_url;
 
     public User() {
     }
 
-    public User(String _id, String fiscalCode, String name, String surname, String dateOfBirth) {
+    public User(String _id, String fiscalCode, String name, String surname, String dateOfBirth, String type) {
 
         this._id = _id;
         this.fiscalCode = fiscalCode;
         this.name = name;
         this.surname = surname;
         this.dateOfBirth = dateOfBirth;
+        this.type = type;
         //this.image_url = image_url;
     }
 
     public String get_id() {
         return _id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public void set_id(String _id) {

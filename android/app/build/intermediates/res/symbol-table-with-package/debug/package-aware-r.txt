@@ -1050,6 +1050,7 @@ id META
 id SHIFT
 id SYM
 id _id
+id _idSub
 id aa_thumbnail
 id action0
 id action_bar
@@ -1126,8 +1127,9 @@ id filled
 id fiscalCode
 id fixed
 id forever
-id get4
-id get4a
+id getStudents
+id getSubjects
+id getTeachers
 id ghost_view
 id glide_custom_view_target_tag
 id gone
@@ -1135,6 +1137,7 @@ id group_divider
 id groups
 id home
 id homeAsUp
+id hoursSub
 id icon
 id icon_group
 id ifRoom
@@ -1161,6 +1164,8 @@ id mtrl_child_content_container
 id mtrl_internal_children_alpha_tag
 id multiply
 id name
+id nameSub
+id nameSubjects
 id navigation_header_container
 id never
 id none
@@ -1176,7 +1181,6 @@ id parentPanel
 id parent_matrix
 id passError
 id password
-id passwordinput
 id percent
 id pin
 id profile
@@ -1186,6 +1190,7 @@ id progressbar
 id progressbar1111
 id radio
 id recyclerviewid
+id recyclerviewidSubjects
 id register
 id right
 id right_icon
@@ -1261,13 +1266,13 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id type
 id uniform
 id unlabeled
 id up
 id useLogo
 id username
 id usernameError
-id usernameinput
 id view_offset_helper
 id visible
 id withText
@@ -1323,8 +1328,9 @@ layout abc_tooltip
 layout activity_main
 layout activity_menu
 layout activity_second
+layout activity_subjects
+layout activity_third
 layout activity_user
-layout activity_volley16
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1361,6 +1367,7 @@ layout row_progress
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout subjects_row_item
 layout support_simple_spinner_dropdown_item
 layout user_row_item
 mipmap ic_launcher
@@ -1417,8 +1424,8 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string get3
 string get3a
+string getSubjects
 string hide_bottom_view_on_scroll_behavior
-string loading
 string login
 string mtrl_chip_close_icon_content_description
 string not_register

@@ -50,6 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 i.putExtra("anime_name",mData.get(viewHolder.getAdapterPosition()).getName());
                 i.putExtra("anime_surname",mData.get(viewHolder.getAdapterPosition()).getSurname());
                 i.putExtra("anime_dateOfBirth",mData.get(viewHolder.getAdapterPosition()).getDateOfBirth());
+                i.putExtra("anime_type",mData.get(viewHolder.getAdapterPosition()).getType());
                 //i.putExtra("anime_img",mData.get(viewHolder.getAdapterPosition()).getImage_url());
                 mContext.startActivity(i);
             }
@@ -90,7 +91,5 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         }
     }
-
-
 
 }

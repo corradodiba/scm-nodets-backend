@@ -114,6 +114,14 @@
                     android:textSize="20dp"
                     android:layout_marginTop="2dp"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="type :"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_marginTop="2dp"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -163,6 +171,15 @@
                     android:layout_height="wrap_content"
                     tools:text="_id"
                     android:id="@+id/_id"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    tools:text="type"
+                    android:id="@+id/type"
                     android:textSize="18dp"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"/>

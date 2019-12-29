@@ -14,29 +14,39 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="520dp"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/get4"
+            android:id="@+id/getStudents"
             android:layout_width="135dp"
             android:layout_height="match_parent"
             android:layout_marginRight="05dp"
             android:background="@drawable/button_gradient"
             android:padding="05dp"
             android:text="@string/get3a"
-            android:textColor="@color/colortext" />
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
 
         <Button
-            android:id="@+id/get4a"
+            android:id="@+id/getTeachers"
             android:layout_width="135dp"
             android:layout_height="match_parent"
             android:background="@drawable/button_gradient"
             android:padding="05dp"
             android:text="@string/get3"
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/getSubjects"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_gradient"
+            android:padding="05dp"
+            android:text="@string/getSubjects"
             android:textColor="@color/colortext" />
 
     </LinearLayout>

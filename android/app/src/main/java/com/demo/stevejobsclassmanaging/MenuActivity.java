@@ -8,14 +8,15 @@ import android.widget.Button;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private Button getStudents, getTeachers;
+    private Button getStudents, getTeachers, getSubjects;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_menu );
-        getStudents = findViewById( R.id.get4 );
-        getTeachers = findViewById( R.id.get4a);
+        getStudents = findViewById( R.id.getStudents );
+        getTeachers = findViewById( R.id.getTeachers);
+        getSubjects = findViewById( R.id.getSubjects );
 
         getStudents.setOnClickListener( new View.OnClickListener() {
             @Override
@@ -29,6 +30,14 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent next4 = new Intent( MenuActivity.this, SecondActivity.class );
+                startActivity( next4 );
+            }
+        });
+
+        getSubjects.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next4 = new Intent( MenuActivity.this, ThirdActivity.class );
                 startActivity( next4 );
             }
         });

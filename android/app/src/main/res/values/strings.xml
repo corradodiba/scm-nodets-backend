@@ -13,5 +13,5 @@
     <string name="password_error">Please enter a password</string>
     <string name="error_invalid_password">Please enter a minimum password of 6 characters</string>
     <string name="error_incorrect_password">Plese enter a correct password</string>
-    <string name="loading">loading</string>
+    <string name="getSubjects">List subjects</string>
 </resources>

@@ -1,3 +1,11 @@
+nav {
+  width: 100%;
+  position: fixed;
+  position: -webkit-fixed; /* For macOS/iOS Safari */
+  top: 0;
+  z-index: 1000;
+}
+
 .item-icon {
   padding: 0 14px;
 }

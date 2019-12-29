@@ -34,7 +34,8 @@ export const generateToken = async (user: User) => {
     return {
       token: token,
       expiresIn: 3600,
-      id: user.id
+      id: user.id,
+      type: user.type
     };
   } catch (error) {
     throw "token not generated";

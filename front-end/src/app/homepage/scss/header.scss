@@ -6,7 +6,7 @@ $assetsPath: "/assets/images/homepage";
 }
 
 .banner-wrapper {
-  height: 92vh;
+  height: 91.6vh;
   align-items: center;
 }
 
@@ -46,46 +46,18 @@ $assetsPath: "/assets/images/homepage";
   border: 0;
 }
 
-.search-btn {
-  background: linear-gradient(90deg, #39cfca 0%, #3279bb 100%);
-  border-radius: 0;
-  color: #fff;
-  position: relative;
-  left: -4px;
-  font-size: 14px;
-  padding: 10px 31px;
-  border: 0;
-}
-
 .tags {
   max-width: 430px;
   margin: 0 auto;
 }
 
-.primary-btn {
-  line-height: 42px;
-  padding: 0 36px;
-  border-radius: 5px;
-  color: #fff;
-  display: inline-block;
-  font-size: 14px;
-  font-weight: 500;
-  position: relative;
-  cursor: pointer;
-  text-transform: capitalize;
-  -webkit-transition: 0.5s all ease-in;
-  -moz-transition: 0.5s all ease-in;
-  -o-transition: 0.5s all ease-in;
-  transition: 0.5s all ease-in;
-}
-
-.transparent-btn {
-  background: 0 0;
-  height: 30px;
-  line-height: 30px;
-  border: 1px solid #fff;
-  border-radius: 0;
-  padding: 0 18px;
-  font-size: 12px;
-  margin: 0 10px 10px 0;
+.rocket-img {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  -webkit-transform: translate(-50%);
+  -moz-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  -o-transform: translate(-50%);
+  transform: translate(-50%);
 }

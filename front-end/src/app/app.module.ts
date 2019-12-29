@@ -12,7 +12,6 @@ import {
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { ToggleComponent } from "./helpers/toggle/toggle.component";
 
 import { AuthInterceptor } from "./auth/auth-interceptor";
 
@@ -20,6 +19,7 @@ import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { ToggleModule } from "./helpers/toggle/toggle.module";
+import { HomepageModule } from "./homepage/homepage.module";
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -35,7 +35,8 @@ import { ToggleModule } from "./helpers/toggle/toggle.module";
     UsersModule,
     ToggleModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
+    HomepageModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

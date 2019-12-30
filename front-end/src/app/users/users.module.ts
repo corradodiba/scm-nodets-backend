@@ -30,6 +30,6 @@ import { CoursesModule } from "../courses/courses.module";
     ListModule,
     CoursesModule
   ],
-  exports: [UsersListsComponent]
+  exports: [UsersListsComponent, UserComponent]
 })
 export class UsersModule {}

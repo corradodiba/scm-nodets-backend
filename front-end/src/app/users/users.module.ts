@@ -11,13 +11,13 @@ import {
 
 import { UsersRoutingModule } from "./users-routing.module";
 import { UsersListsComponent } from "./users-lists/users-lists.component";
-import { UserComponent } from "./user/user.component";
+import { AdminComponent } from "./admin/admin.component";
 import { SubjectsComponent } from "../subjects/subjects.component";
 import { ListModule } from "../helpers/list/list.module";
 import { CoursesModule } from "../courses/courses.module";
 
 @NgModule({
-  declarations: [UsersListsComponent, UserComponent, SubjectsComponent],
+  declarations: [UsersListsComponent, AdminComponent, SubjectsComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -30,6 +30,6 @@ import { CoursesModule } from "../courses/courses.module";
     ListModule,
     CoursesModule
   ],
-  exports: [UsersListsComponent, UserComponent]
+  exports: [UsersListsComponent, AdminComponent]
 })
-export class UsersModule { }
+export class UsersModule {}

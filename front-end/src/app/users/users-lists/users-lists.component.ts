@@ -22,7 +22,7 @@ export class UsersListsComponent implements OnInit {
   }>();
   @Input() isNavigable = true;
 
-  constructor(private usersService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router) {}
 
   async ngOnInit() {
     this.users = await this.usersService.getUsers();
@@ -45,8 +45,7 @@ export class UsersListsComponent implements OnInit {
       this.router.navigate([`/${this.usersPath}/${action._id}`]);
     } else if (action.action === "Show") {
       this.showUserById.emit(action);
-    }
-    else if (action.action === "Delete") {
+    } else if (action.action === "Delete") {
       await this.usersService.deleteUserById(action._id);
     }
   }

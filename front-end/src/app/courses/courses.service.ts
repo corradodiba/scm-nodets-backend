@@ -19,4 +19,8 @@ export class CoursesService {
       .get<Course>(`${this.apiURL}/${courseId}`)
       .toPromise();
   }
+
+  deleteCourseById(courseId: string) {
+    return this.httpClient.delete<Course>(`${this.apiURL}/${courseId}`).toPromise();
+  }
 }

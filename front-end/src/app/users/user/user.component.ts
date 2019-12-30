@@ -39,4 +39,10 @@ export class UserComponent implements OnInit {
       this.courseSelected = await this.coursesService.getCourseById(action._id);
     }
   }
+  async onActionToUser(action: { _id: string; action: string }) {
+    if (action.action === "Show") {
+      this.user = await this.usersService.getUserById(action._id);
+    }
+
+  }
 }

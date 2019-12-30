@@ -4,11 +4,7 @@
       <mat-card-title>{{ user?.name }} {{ user?.surname }}</mat-card-title>
       <mat-card-subtitle>{{ user?.type }}</mat-card-subtitle>
     </mat-card-header>
-    <img
-      mat-card-image
-      src="https://material.angular.io/assets/img/examples/shiba1.jpg"
-      alt="Photo of a Shiba Inu"
-    />
+    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="Photo of a Shiba Inu" />
     <mat-card-content>
       <p>Fiscalcode: {{ user?.fiscalCode }}</p>
       <p>Name: {{ user?.name }}</p>
@@ -22,11 +18,8 @@
         <h2>Courses</h2>
       </mat-card-header>
       <mat-card-content class="courses">
-        <app-courses-list
-          [isNavigable]="false"
-          (showCourseById)="onActionToCourse($event)"
-          *ngIf="isHidden"
-        ></app-courses-list>
+        <app-courses-list [isNavigable]="false" (showCourseById)="onActionToCourse($event)" *ngIf="isHidden">
+        </app-courses-list>
         <div *ngIf="!isHidden">
           <button (click)="isHidden = !isHidden">
             Show List
@@ -41,7 +34,8 @@
         <h2>Users</h2>
       </mat-card-header>
       <mat-card-content class="users-list">
-        <app-users-lists></app-users-lists>
+        <app-users-lists [isNavigable]="false" (showUserById)="onActionToUser($event)">
+        </app-users-lists>
       </mat-card-content>
     </mat-card>
   </mat-card>

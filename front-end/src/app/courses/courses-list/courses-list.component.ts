@@ -38,12 +38,14 @@ export class CoursesListComponent implements OnInit {
     return coursesMapped;
   }
 
-  onActionToCourse(action: { _id: string; action: string }) {
+  async onActionToCourse(action: { _id: string; action: string }) {
     this.isHidden = false;
     if (this.isNavigable) {
       this.router.navigate([`${this.apiUrl}/${action._id}`]);
     } else if (action.action === "Show") {
-      this.showCourseById.emit(action); //BOH
+      this.showCourseById.emit(action);
+    } else if (action.action === "Delete") {
+      await this.coursesService.deleteCourseById(action._id);
     }
   }
 

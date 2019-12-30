@@ -41,9 +41,12 @@ export class UsersListsComponent implements OnInit {
   }
 
   async onActionToUser(action: { _id: string; action: string }) {
-    if (action.action === "Show") {
+    if (this.isNavigable) {
       this.router.navigate([`/${this.usersPath}/${action._id}`]);
-    } else if (action.action === "Delete") {
+    } else if (action.action === "Show") {
+      this.showUserById.emit(action);
+    }
+    else if (action.action === "Delete") {
       await this.usersService.deleteUserById(action._id);
     }
   }

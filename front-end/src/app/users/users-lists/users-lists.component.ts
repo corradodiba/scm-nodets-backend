@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 
 import { environment } from "src/environments/environment";
@@ -13,10 +13,16 @@ import { IList } from "src/app/interfaces/list.model";
   styleUrls: ["./users-lists.component.scss"]
 })
 export class UsersListsComponent implements OnInit {
+  isHidden = true;
   users: User[] = [];
   usersPath = `${environment.usersPath}`;
+  @Output() showUserById = new EventEmitter <{
+    _id: string;
+    action: string;
+  }>();
+  @Input() isNavigable = true;
 
-  constructor(private router: Router, private usersService: UsersService) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   async ngOnInit() {
     this.users = await this.usersService.getUsers();
@@ -27,16 +33,30 @@ export class UsersListsComponent implements OnInit {
       return {
         _id: user._id,
         title: `${user.name} ${user.surname}`,
-        description: user.fiscalCode
+        description: user.fiscalCode,
+        buttons: ["Show", "Delete", "Edit"]
       };
     });
     return usersMapped;
   }
 
-  onShowUser(id: string) {
-    this.router.navigate([`/${this.usersPath}/${id}`]);
+  onActionToUser(action: {_id: string; action: string}) {
+    this.isHidden = false;
+    if (this.isNavigable) {
+      this.router.navigate([`/${this.usersPath}/${action._id}`]);
+    } else if (action.action === "Show") {
+      this.showUserById.emit(action);
+    }
   }
+
+  /* onShowUser(id: string) {
+    this.router.navigate([`/${this.usersPath}/${id}`]);
+  } */
   async onDeleteUser(id: string) {
     await this.usersService.deleteUserById(id);
+  }
+
+  onShowList() {
+    this.isHidden = true;
   }
 }

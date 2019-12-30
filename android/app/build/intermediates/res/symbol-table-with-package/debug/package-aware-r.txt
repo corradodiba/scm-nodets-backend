@@ -1083,6 +1083,7 @@ id barrier
 id beginning
 id blocking
 id bottom
+id btn
 id buttonPanel
 id cancel_action
 id center
@@ -1117,6 +1118,8 @@ id end
 id end_padder
 id enterAlways
 id enterAlwaysCollapsed
+id ethours
+id etname
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -1183,6 +1186,8 @@ id passError
 id password
 id percent
 id pin
+id post
+id postSubject
 id profile
 id progress_circular
 id progress_horizontal
@@ -1327,6 +1332,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_menu
+layout activity_post_subjects
 layout activity_second
 layout activity_subjects
 layout activity_third
@@ -1435,6 +1441,7 @@ string path_password_eye
 string path_password_eye_mask_strike_through
 string path_password_eye_mask_visible
 string path_password_strike_through
+string postSubjects
 string prompt_password
 string search_menu_title
 string status_bar_notification_info_overflow

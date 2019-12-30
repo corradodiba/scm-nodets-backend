@@ -30,7 +30,7 @@ import static android.view.View.VISIBLE;
 
 public class ThirdActivity extends AppCompatActivity {
 
-    private final String URLTSUBJECTS = "http://192.168.43.156:3000/subjects";
+    private final String URLSUBJECTS = "http://192.168.43.156:3000/subjects";
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
     private List<Subjects> lstSubjects;
@@ -52,7 +52,7 @@ public class ThirdActivity extends AppCompatActivity {
 
     private void jsonrequestSubjects() {
 
-        request = new JsonArrayRequest(URLTSUBJECTS, new Response.Listener<JSONArray>() {
+        request = new JsonArrayRequest(URLSUBJECTS, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 

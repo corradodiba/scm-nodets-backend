@@ -14,4 +14,5 @@
     <string name="error_invalid_password">Please enter a minimum password of 6 characters</string>
     <string name="error_incorrect_password">Plese enter a correct password</string>
     <string name="getSubjects">List subjects</string>
+    <string name="postSubjects">Add Subjects</string>
 </resources>

@@ -16,7 +16,7 @@ export class UsersListsComponent implements OnInit {
   isHidden = true;
   users: User[] = [];
   usersPath = `${environment.usersPath}`;
-  @Output() showUserById = new EventEmitter <{
+  @Output() showUserById = new EventEmitter<{
     _id: string;
     action: string;
   }>();
@@ -40,23 +40,11 @@ export class UsersListsComponent implements OnInit {
     return usersMapped;
   }
 
-  onActionToUser(action: {_id: string; action: string}) {
-    this.isHidden = false;
-    if (this.isNavigable) {
+  async onActionToUser(action: { _id: string; action: string }) {
+    if (action.action === "Show") {
       this.router.navigate([`/${this.usersPath}/${action._id}`]);
-    } else if (action.action === "Show") {
-      this.showUserById.emit(action);
+    } else if (action.action === "Delete") {
+      await this.usersService.deleteUserById(action._id);
     }
-  }
-
-  /* onShowUser(id: string) {
-    this.router.navigate([`/${this.usersPath}/${id}`]);
-  } */
-  async onDeleteUser(id: string) {
-    await this.usersService.deleteUserById(id);
-  }
-
-  onShowList() {
-    this.isHidden = true;
   }
 }

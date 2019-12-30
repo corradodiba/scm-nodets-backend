@@ -20,7 +20,7 @@ export class CoursesListComponent implements OnInit {
   @Input() isNavigable = true;
   apiUrl = `${environment.coursesPath}`;
 
-  constructor(private coursesService: CoursesService, private router: Router) {}
+  constructor(private coursesService: CoursesService, private router: Router) { }
 
   async ngOnInit() {
     this.courses = await this.coursesService.getCourses();
@@ -43,11 +43,8 @@ export class CoursesListComponent implements OnInit {
     if (this.isNavigable) {
       this.router.navigate([`${this.apiUrl}/${action._id}`]);
     } else if (action.action === "Show") {
-      this.showCourseById.emit(action);
+      this.showCourseById.emit(action); //BOH
     }
   }
 
-  onShowList() {
-    this.isHidden = true;
-  }
 }

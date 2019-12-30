@@ -32,4 +32,4 @@ import { CoursesModule } from "../courses/courses.module";
   ],
   exports: [UsersListsComponent, UserComponent]
 })
-export class UsersModule {}
+export class UsersModule { }

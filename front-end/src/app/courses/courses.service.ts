@@ -9,7 +9,7 @@ import Course from "../interfaces/course.model";
 export class CoursesService {
   apiURL = `${environment.apiUrl}/${environment.coursesPath}`;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
   getCourses() {
     return this.httpClient.get<Course[]>(`${this.apiURL}`).toPromise();
   }

@@ -22,7 +22,7 @@ export class UserComponent implements OnInit {
     private usersService: UsersService,
     private coursesService: CoursesService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   async ngOnInit() {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {

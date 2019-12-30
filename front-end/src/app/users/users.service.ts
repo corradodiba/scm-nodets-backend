@@ -8,7 +8,7 @@ import { Injectable } from "@angular/core";
 })
 export class UsersService {
   apiURL = `${environment.apiUrl}/${environment.usersPath}`;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getUsers(): Promise<User[]> {
     return this.httpClient.get<User[]>(`${this.apiURL}`).toPromise();
@@ -16,5 +16,8 @@ export class UsersService {
 
   getUserById(id: string): Promise<User> {
     return this.httpClient.get<User>(`${this.apiURL}/${id}`).toPromise();
+  }
+  deleteUserById(id: string) {
+    return this.httpClient.delete<User>(`${this.apiURL}/${id}`).toPromise();
   }
 }

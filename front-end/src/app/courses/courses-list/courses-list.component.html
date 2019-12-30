@@ -1,4 +1,6 @@
-<app-list
-  [items]="mapCoursesListDetails()"
-  (showItem)="onShowCourse($event)"
-></app-list>
+<app-list *ngIf="isHidden" [items]="mapCoursesListDetails()" (showItem)="onShowCourse($event)"></app-list>
+<div *ngIf="!isHidden">{{course.year}}
+  <button (click)="onShowList()">
+    Show List
+  </button>
+</div>

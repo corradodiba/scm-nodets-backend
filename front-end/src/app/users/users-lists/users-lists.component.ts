@@ -16,7 +16,7 @@ export class UsersListsComponent implements OnInit {
   users: User[] = [];
   usersPath = `${environment.usersPath}`;
 
-  constructor(private router: Router, private usersService: UsersService) {}
+  constructor(private router: Router, private usersService: UsersService) { }
 
   async ngOnInit() {
     this.users = await this.usersService.getUsers();
@@ -35,5 +35,8 @@ export class UsersListsComponent implements OnInit {
 
   onShowUser(id: string) {
     this.router.navigate([`/${this.usersPath}/${id}`]);
+  }
+  async onDeleteUser(id: string) {
+    await this.usersService.deleteUserById(id);
   }
 }

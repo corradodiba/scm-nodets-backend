@@ -9,9 +9,11 @@ import Course from "../../interfaces/course.model";
   styleUrls: ["./courses-list.component.scss"]
 })
 export class CoursesListComponent implements OnInit {
+  isHidden = true;
   courses: Course[] = [];
+  course: Course;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(private coursesService: CoursesService) { }
 
   async ngOnInit() {
     this.courses = await this.coursesService.getCourses();
@@ -28,5 +30,13 @@ export class CoursesListComponent implements OnInit {
     return coursesMapped;
   }
 
-  onShowCourse() {}
+  onShowCourse(id: string) {
+    this.isHidden = false;
+    this.course = this.courses.find((course) => {
+      return course._id === id
+    })
+  }
+  onShowList() {
+    this.isHidden = true;
+  }
 }

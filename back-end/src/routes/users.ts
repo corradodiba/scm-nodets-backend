@@ -13,13 +13,14 @@ import {
   editGradeById,
   deleteGradeById
 } from "./controllers/users.controller";
-import { isAuth } from "../middlewares/isAuth";
+
+import { isAuth, isAdmin, isCurrentUser } from "../middlewares/auth.middleware";
 
 const router = express();
 
-router.get("/", isAuth, getAllUsers);
+router.get("/", isAuth, isAdmin, getAllUsers);
 
-router.get("/:id", getUsersById);
+router.get("/:id", isAuth, isCurrentUser, getUsersById);
 
 router.get("/:id/subjects", getSubjectsOfUser);
 

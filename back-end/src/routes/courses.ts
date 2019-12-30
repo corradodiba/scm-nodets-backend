@@ -1,4 +1,5 @@
 import express from "express";
+
 import {
   getAllCourses,
   getCourseById,
@@ -6,14 +7,19 @@ import {
   editCourseById,
   deleteCourseById
 } from "./controllers/courses.controller";
-import { isAuth } from "../middlewares/isAuth";
-import { isAuthorizate } from "../middlewares/isAuthorizate";
+
+import { isAuth, isAdmin } from "../middlewares/auth.middleware";
 
 const router = express.Router();
-router.get("/", isAuth, isAuthorizate, getAllCourses);
-router.get("/:id", isAuth, isAuthorizate, getCourseById);
-router.post("/", isAuth, isAuthorizate, addCourse);
-router.delete("/:id", isAuth, isAuthorizate, deleteCourseById);
-router.put("/:id", isAuth, isAuthorizate, editCourseById);
+
+router.get("/", isAuth, isAdmin, getAllCourses);
+
+router.get("/:id", isAuth, getCourseById);
+
+router.post("/", isAuth, isAdmin, addCourse);
+
+router.delete("/:id", isAuth, isAdmin, deleteCourseById);
+
+router.put("/:id", isAuth, isAdmin, editCourseById);
 
 export default router;

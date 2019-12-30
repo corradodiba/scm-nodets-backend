@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-export const isAuthorizate = async (
+export const isAdmin = async (
   req: Request | any,
   res: Response,
   next: NextFunction

@@ -5,8 +5,11 @@
     <mat-card-subtitle>{{ item?.description }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-actions
-    ><button (click)="onSelectedItem(item._id)">
-      Show
+    ><button
+      *ngFor="let button of item.buttons"
+      (click)="onSelectedItem(item._id, button)"
+    >
+      {{ button }}
     </button></mat-card-actions
   >
 </mat-card>

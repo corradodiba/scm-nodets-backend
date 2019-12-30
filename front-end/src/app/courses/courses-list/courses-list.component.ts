@@ -11,9 +11,9 @@ import Course from "../../interfaces/course.model";
 export class CoursesListComponent implements OnInit {
   isHidden = true;
   courses: Course[] = [];
-  course: Course;
+  courseSelected: Course;
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService) {}
 
   async ngOnInit() {
     this.courses = await this.coursesService.getCourses();
@@ -24,17 +24,20 @@ export class CoursesListComponent implements OnInit {
       return {
         _id: course._id,
         title: `Corso ${course.year}`,
-        description: "Catania"
+        description: "Catania",
+        buttons: ["Show", "Delete", "Edit"]
       };
     });
     return coursesMapped;
   }
 
-  onShowCourse(id: string) {
+  onShowCourse(action: { _id: string; action: string }) {
     this.isHidden = false;
-    this.course = this.courses.find((course) => {
-      return course._id === id
-    })
+    if (action.action === "Show") {
+      this.courseSelected = this.courses.find(course => {
+        return course._id === action._id;
+      });
+    }
   }
   onShowList() {
     this.isHidden = true;

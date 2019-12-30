@@ -12,12 +12,22 @@ $tabletViewportMaxWidth: "720px";
 }
 
 .sidebar-1 {
-  max-width: 250px;
+  max-width: 22%;
 }
 
 .sidebar-2 {
-  width: 100%;
+  max-width: 78%;
   padding: 0;
+}
+
+.sidebar-2-top {
+  height: 50%;
+  border-radius: 0;
+}
+
+.sidebar-2-bottom {
+  height: 50%;
+  border-radius: 0;
 }
 
 :host ::ng-deep app-list {

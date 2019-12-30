@@ -8,9 +8,9 @@ import { IList } from "src/app/interfaces/list.model";
 })
 export class ListComponent {
   @Input() items: IList[] = [];
-  @Output() showItem = new EventEmitter<string>();
+  @Output() showItem = new EventEmitter<{ _id: string; action: string }>();
 
-  onSelectedItem(id: string) {
-    this.showItem.emit(id);
+  onSelectedItem(id: string, action: string) {
+    this.showItem.emit({ _id: id, action });
   }
 }

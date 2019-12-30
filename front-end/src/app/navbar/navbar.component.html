@@ -1,3 +1,77 @@
+<!-- <nav *ngIf="isDesktopScreen">
+  <mat-toolbar color="primary" class="navbar-container">
+    <mat-toolbar-row class="logo-spacer">
+      <header>
+        <a href="">
+          <img src="../../assets/images/logo-its.svg" />
+        </a>
+      </header>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
+      <div class="navbar-items">
+        <a mat-button [href]="getPathUserId()">My Profile</a>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
+      <div class="navbar-items">
+        <a mat-button href="courses">Courses</a>
+      </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row *ngIf="isAuthenticated" class="item-spacer">
+      <div class="navbar-items">
+        <a mat-button href="users">Users</a>
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row *ngIf="!isAuthenticated" class="item-spacer">
+      <div class="navbar-items">
+        <a mat-button href="auth/signup">Signup</a>
+      </div>
+    </mat-toolbar-row>
+
+    <mat-toolbar-row class="item-spacer">
+      <div *ngIf="!isAuthenticated" class="navbar-items">
+        <a mat-button href="auth/login">Login</a>
+      </div>
+      <div *ngIf="isAuthenticated" class="navbar-items">
+        <button mat-button (click)="onLogout()">Logout</button>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</nav>
+
+<nav *ngIf="!isDesktopScreen">
+  <mat-toolbar
+    (click)="onClickToggle()"
+    color="primary"
+    class="navbar-container navbar-responsive-container"
+  >
+    <mat-toolbar-row class="logo-spacer">
+      <header>
+        <a href="">
+          <img src="../../assets/images/logo-its.svg" />
+        </a>
+      </header>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="toggle-menu-container">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Example icon-button with a menu"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <app-toggle
+          *ngFor="let item of toggleItems"
+          [item]="item"
+          (logout)="onLogout()"
+        ></app-toggle>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</nav> -->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="">
@@ -21,24 +95,24 @@
       id="navbarResponsive"
     >
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li *ngIf="isAuthenticated" class="nav-item">
           <a class="nav-link js-scroll-trigger" [href]="getPathUserId()"
             >MyProfile</a
           >
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAuthenticated" class="nav-item">
           <a class="nav-link js-scroll-trigger" [href]="coursesPath">Courses</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAuthenticated" class="nav-item">
           <a class="nav-link js-scroll-trigger" [href]="usersPath">Users</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!isAuthenticated" class="nav-item">
           <a class="nav-link js-scroll-trigger" [href]="signupPath">Signup</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="!isAuthenticated" class="nav-item">
           <a class="nav-link js-scroll-trigger" [href]="loginPath">Login</a>
         </li>
-        <li class="nav-item">
+        <li *ngIf="isAuthenticated" class="nav-item">
           <button class="nav-link js-scroll-trigger" (click)="onLogout()">
             Logout
           </button>

@@ -14,10 +14,14 @@ import { IToggleItem } from "../interfaces/toggle-item.model";
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   usersPath = environment.usersPath;
+  coursesPath = environment.coursesPath;
+  loginPath = environment.loginPath;
+  signupPath = environment.signupPath;
 
   private authListenerSubs = new Subscription();
   isAuthenticated = false;
   isDesktopScreen = false;
+  isCollapsed = true;
 
   userId: string = undefined;
 

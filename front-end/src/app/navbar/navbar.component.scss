@@ -1,29 +1,9 @@
+@import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
 nav {
   width: 100%;
   position: fixed;
   position: -webkit-fixed; /* For macOS/iOS Safari */
   top: 0;
   z-index: 1000;
-}
-
-.item-icon {
-  padding: 0 14px;
-}
-
-.item-spacer {
-  width: max-content;
-}
-
-.navbar-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.toggle-menu-container {
-  justify-content: flex-end;
-}
-
-.navbar-items {
-  width: 80%;
 }

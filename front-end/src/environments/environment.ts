@@ -10,7 +10,9 @@ export const environment = {
     "http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com",
   usersPath: "users",
   subjectsPath: "subjects",
-  coursesPath: "courses"
+  coursesPath: "courses",
+  loginPath: "auth/login",
+  signupPath: "auth/signup"
 };
 
 /*

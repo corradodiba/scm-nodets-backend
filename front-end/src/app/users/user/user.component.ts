@@ -4,6 +4,8 @@ import { ParamMap, ActivatedRoute } from "@angular/router";
 import { UsersService } from "../users.service";
 
 import User from "../../interfaces/user.model";
+import { CoursesService } from "src/app/courses/courses.service";
+import Course from "src/app/interfaces/course.model";
 
 @Component({
   selector: "app-user",
@@ -11,11 +13,14 @@ import User from "../../interfaces/user.model";
   styleUrls: ["./user.component.scss"]
 })
 export class UserComponent implements OnInit {
+  isHidden = true;
   userId: string = undefined;
   user: User;
+  courseSelected: Course;
 
   constructor(
     private usersService: UsersService,
+    private coursesService: CoursesService,
     private route: ActivatedRoute
   ) {}
 
@@ -26,5 +31,12 @@ export class UserComponent implements OnInit {
       }
     });
     this.user = await this.usersService.getUserById(this.userId);
+  }
+
+  async onActionToCourse(action: { _id: string; action: string }) {
+    this.isHidden = false;
+    if (action.action === "Show") {
+      this.courseSelected = await this.coursesService.getCourseById(action._id);
+    }
   }
 }

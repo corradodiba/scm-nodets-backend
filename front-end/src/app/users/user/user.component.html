@@ -22,7 +22,17 @@
         <h2>Courses</h2>
       </mat-card-header>
       <mat-card-content class="courses">
-        <app-courses-list></app-courses-list>
+        <app-courses-list
+          [isNavigable]="false"
+          (showCourseById)="onActionToCourse($event)"
+          *ngIf="isHidden"
+        ></app-courses-list>
+        <div *ngIf="!isHidden">
+          <button (click)="isHidden = !isHidden">
+            Show List
+          </button>
+          <app-course [courseId]="courseSelected._id"></app-course>
+        </div>
       </mat-card-content>
     </mat-card>
 

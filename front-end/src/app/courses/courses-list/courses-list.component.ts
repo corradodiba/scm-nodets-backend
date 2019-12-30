@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { IList } from "../../interfaces/list.model";
 import { CoursesService } from "../courses.service";
 import Course from "../../interfaces/course.model";
+import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-courses-list",
@@ -11,9 +13,14 @@ import Course from "../../interfaces/course.model";
 export class CoursesListComponent implements OnInit {
   isHidden = true;
   courses: Course[] = [];
-  courseSelected: Course;
+  @Output() showCourseById = new EventEmitter<{
+    _id: string;
+    action: string;
+  }>();
+  @Input() isNavigable = true;
+  apiUrl = `${environment.coursesPath}`;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(private coursesService: CoursesService, private router: Router) {}
 
   async ngOnInit() {
     this.courses = await this.coursesService.getCourses();
@@ -31,14 +38,15 @@ export class CoursesListComponent implements OnInit {
     return coursesMapped;
   }
 
-  onShowCourse(action: { _id: string; action: string }) {
+  onActionToCourse(action: { _id: string; action: string }) {
     this.isHidden = false;
-    if (action.action === "Show") {
-      this.courseSelected = this.courses.find(course => {
-        return course._id === action._id;
-      });
+    if (this.isNavigable) {
+      this.router.navigate([`${this.apiUrl}/${action._id}`]);
+    } else if (action.action === "Show") {
+      this.showCourseById.emit(action);
     }
   }
+
   onShowList() {
     this.isHidden = true;
   }

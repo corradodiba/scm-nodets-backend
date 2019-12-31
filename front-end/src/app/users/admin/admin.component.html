@@ -1,12 +1,13 @@
 <section class="container-fluid">
   <div class="row">
-    <div class="col col-md-4 vh-100">
+    <div class="col-12 col-md-4 vh-100 p-0">
       <app-user-profile [user]="user"></app-user-profile>
     </div>
     <div class="col">
       <div class="row flex-column h-100">
-        <div class="col">
+        <div class="col p-4">
           <h4>Courses</h4>
+          <hr />
           <!-- <app-courses-list
             [isNavigable]="false"
             (showCourseById)="onActionToCourse($event)"
@@ -18,7 +19,9 @@
           >
           </app-users-lists>
         </div>
-        <div class="col">
+        <div class="col p-4">
+          <h4>Users</h4>
+          <hr />
           <app-users-lists
             [isNavigable]="false"
             (showUserById)="onActionToUser($event)"

@@ -1,26 +1,32 @@
-<div class="row">
-  <div class="col" *ngFor="let item of items">
-    <div class="card">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-2">
-            <div mat-card-avatar class="items-list-header-image"></div>
+<div class="container h-100">
+  <div class="row h-100">
+    <div class="col" *ngFor="let item of items">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-2">
+              <div mat-card-avatar class="items-list-header-image"></div>
+            </div>
+            <div class="col">
+              <h5 class="card-title">{{ item?.title }}</h5>
+              <p class="card-text">
+                {{ item?.description }}
+              </p>
+            </div>
           </div>
-          <div class="col">
-            <h5 class="card-title">{{ item?.title }}</h5>
-            <p class="card-text">
-              {{ item?.description }}
-            </p>
+          <hr />
+          <div class="row">
+            <div class="col text-center">
+              <button
+                class="btn btn-outline-primary btn-sm m-1"
+                *ngFor="let button of item.buttons"
+                (click)="onSelectedItem(item._id, button)"
+              >
+                {{ button }}
+              </button>
+            </div>
           </div>
         </div>
-
-        <button
-          class="btn btn-outline-primary btn-sm"
-          *ngFor="let button of item.buttons"
-          (click)="onSelectedItem(item._id, button)"
-        >
-          {{ button }}
-        </button>
       </div>
     </div>
   </div>

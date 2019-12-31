@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 import { IList } from "../../interfaces/list.model";
 import { IListCardModel } from "../../interfaces/list-card.model";
+import { ActionButton } from "src/app/interfaces/action-button.model";
 
 @Component({
   selector: "app-list",
@@ -11,14 +12,13 @@ import { IListCardModel } from "../../interfaces/list-card.model";
 export class ListComponent {
   @Input() items: IList[] = [];
   @Input() listCardsTemplate: IListCardModel;
-  @Output() showItem = new EventEmitter<{ _id: string; action: string }>();
+  @Output() actionButton = new EventEmitter<ActionButton>();
 
-  onSelectedItem(id: string, action: string) {
-    this.showItem.emit({ _id: id, action });
+  onActionButton(action: ActionButton) {
+    this.actionButton.emit(action);
   }
 
   getButtonColor(color: string) {
-    console.log(color);
     return `btn btn-sm m-1 btn-outline-${color}`;
   }
 }

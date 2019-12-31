@@ -40,14 +40,14 @@ export class AdminComponent implements OnInit {
     this.user = await this.usersService.getUserById(this.userId);
   }
 
-  async onActionToCourse(action: { _id: string; action: string }) {
+  async onActionToCourse(action: { _id: string; text: string }) {
     this.isHidden = false;
-    if (action.action === "Show") {
+    if (action.text === "Show") {
       this.courseSelected = await this.coursesService.getCourseById(action._id);
     }
   }
-  async onActionToUser(action: { _id: string; action: string }) {
-    if (action.action === "Show") {
+  async onActionToUser(action: { _id: string; text: string }) {
+    if (action.text === "Show") {
       this.user = await this.usersService.getUserById(action._id);
       this.router.navigate([`${this.apiUrl}/${action._id}`]);
     }

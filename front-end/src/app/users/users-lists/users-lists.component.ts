@@ -8,6 +8,7 @@ import { UsersService } from "../users.service";
 import User from "src/app/interfaces/user.model";
 import { IList } from "src/app/interfaces/list.model";
 import { IListCardModel } from "src/app/interfaces/list-card.model";
+import { ActionButton } from "src/app/interfaces/action-button.model";
 
 @Component({
   selector: "app-users-lists",
@@ -18,10 +19,7 @@ export class UsersListsComponent implements OnInit {
   isHidden = true;
   users: User[] = [];
   usersPath = `${environment.usersPath}`;
-  @Output() showUserById = new EventEmitter<{
-    _id: string;
-    action: string;
-  }>();
+  @Output() showUserById = new EventEmitter<ActionButton>();
   @Input() isNavigable = true;
   @Input() listTemplate: IListCardModel;
 
@@ -52,19 +50,19 @@ export class UsersListsComponent implements OnInit {
     return usersMapped;
   }
 
-  async onActionToUser(action: { _id: string; action: string }) {
-    console.log(action.action);
+  async onActionToUser(action: ActionButton) {
+    console.log(action);
     if (this.isNavigable) {
       this.router.navigate([`/${this.usersPath}/${action._id}`]);
-    } else if (action.action === "Show") {
+    } else if (action.text === "Show") {
       this.showUserById.emit(action);
-    } else if (action.action === "Delete") {
-      await this.usersService.deleteUserById(action._id);
+    } else if (action.text === "Delete") {
       this.users.map((user, index) => {
         if (user._id === action._id) {
           this.users.splice(index, 1);
         }
       });
+      await this.usersService.deleteUserById(action._id);
     }
   }
 }

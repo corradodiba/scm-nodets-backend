@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 import { IListCardModel } from "src/app/interfaces/list-card.model";
 import Course from "../../interfaces/course.model";
 import { IList } from "../../interfaces/list.model";
+import { ActionButton } from "src/app/interfaces/action-button.model";
 
 @Component({
   selector: "app-courses-list",
@@ -15,10 +16,7 @@ import { IList } from "../../interfaces/list.model";
   styleUrls: ["./courses-list.component.scss"]
 })
 export class CoursesListComponent implements OnInit {
-  @Output() showCourseById = new EventEmitter<{
-    _id: string;
-    action: string;
-  }>();
+  @Output() showCourseById = new EventEmitter<ActionButton>();
   @Input() listTemplate: IListCardModel;
   @Input() isNavigable = true;
 
@@ -43,6 +41,10 @@ export class CoursesListComponent implements OnInit {
           {
             text: "Show",
             color: "primary"
+          },
+          {
+            text: "Delete",
+            color: "danger"
           }
         ]
       };
@@ -50,13 +52,19 @@ export class CoursesListComponent implements OnInit {
     return coursesMapped;
   }
 
-  async onActionToCourse(action: { _id: string; action: string }) {
+  async onActionToCourse(action: ActionButton) {
+    console.log(action);
     this.isHidden = false;
     if (this.isNavigable) {
       this.router.navigate([`${this.apiUrl}/${action._id}`]);
-    } else if (action.action === "Show") {
+    } else if (action.text === "Show") {
       this.showCourseById.emit(action);
-    } else if (action.action === "Delete") {
+    } else if (action.text === "Delete") {
+      this.courses.map((course, index) => {
+        if (course._id === action._id) {
+          this.courses.splice(index, 1);
+        }
+      });
       await this.coursesService.deleteCourseById(action._id);
     }
   }

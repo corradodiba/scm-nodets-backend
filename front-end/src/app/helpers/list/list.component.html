@@ -22,7 +22,7 @@
               <button
                 [class]="getButtonColor(button.color)"
                 *ngFor="let button of item.buttons"
-                (click)="onSelectedItem(item._id, button)"
+                (click)="onActionButton({ _id: item._id, text: button.text })"
               >
                 {{ button.text }}
               </button>

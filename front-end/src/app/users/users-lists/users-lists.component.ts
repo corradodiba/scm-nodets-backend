@@ -41,12 +41,18 @@ export class UsersListsComponent implements OnInit {
   }
 
   async onActionToUser(action: { _id: string; action: string }) {
+    console.log(action.action);
     if (this.isNavigable) {
       this.router.navigate([`/${this.usersPath}/${action._id}`]);
     } else if (action.action === "Show") {
       this.showUserById.emit(action);
     } else if (action.action === "Delete") {
       await this.usersService.deleteUserById(action._id);
+      this.users.map((user, index) => {
+        if (user._id === action._id) {
+          this.users.splice(index, 1);
+        }
+      });
     }
   }
 }

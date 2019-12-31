@@ -26,7 +26,7 @@ router.get("/:id/subjects", getSubjectsOfUser);
 
 // router.get("/:id/grades", getAllGrades);
 
-// router.delete("/:id", deleteUserById);
+router.delete("/:id", isAuth, isAdmin, deleteUserById);
 
 // router.delete("/:id/subjects/:idSubject", deleteSubjectsOfUser);
 

@@ -15,9 +15,15 @@ import { AdminComponent } from "./admin/admin.component";
 import { SubjectsComponent } from "../subjects/subjects.component";
 import { ListModule } from "../helpers/list/list.module";
 import { CoursesModule } from "../courses/courses.module";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 
 @NgModule({
-  declarations: [UsersListsComponent, AdminComponent, SubjectsComponent],
+  declarations: [
+    UsersListsComponent,
+    AdminComponent,
+    SubjectsComponent,
+    UserProfileComponent
+  ],
   imports: [
     CommonModule,
     MatCardModule,
@@ -30,6 +36,6 @@ import { CoursesModule } from "../courses/courses.module";
     ListModule,
     CoursesModule
   ],
-  exports: [UsersListsComponent, AdminComponent]
+  exports: [UsersListsComponent, AdminComponent, UserProfileComponent]
 })
 export class UsersModule {}

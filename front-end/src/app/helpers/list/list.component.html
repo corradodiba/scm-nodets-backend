@@ -1,15 +1,27 @@
-<mat-card class="mat-card" *ngFor="let item of items">
-  <mat-card-header>
-    <div mat-card-avatar class="items-list-header-image"></div>
-    <mat-card-title>{{ item?.title }}</mat-card-title>
-    <mat-card-subtitle>{{ item?.description }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-actions
-    ><button
-      *ngFor="let button of item.buttons"
-      (click)="onSelectedItem(item._id, button)"
-    >
-      {{ button }}
-    </button></mat-card-actions
-  >
-</mat-card>
+<div class="row">
+  <div class="col" *ngFor="let item of items">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-2">
+            <div mat-card-avatar class="items-list-header-image"></div>
+          </div>
+          <div class="col">
+            <h5 class="card-title">{{ item?.title }}</h5>
+            <p class="card-text">
+              {{ item?.description }}
+            </p>
+          </div>
+        </div>
+
+        <button
+          class="btn btn-outline-primary btn-sm"
+          *ngFor="let button of item.buttons"
+          (click)="onSelectedItem(item._id, button)"
+        >
+          {{ button }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,14 +3,14 @@ import { RouterModule, Routes } from "@angular/router";
 import { AdminComponent } from "./admin/admin.component";
 import { UsersListsComponent } from "./users-lists/users-lists.component";
 import { IsAdminGuard } from "../auth/permissions/isAdmin.guard";
-import { MasterPermission } from "../auth/permissions/master-permission.guard";
+import { CustomPermission } from "../auth/permissions/custom-permission.guard";
 
 const routes: Routes = [
   { path: "", component: UsersListsComponent, canActivate: [IsAdminGuard] },
   {
     path: ":userId",
     component: AdminComponent,
-    canActivate: [MasterPermission],
+    canActivate: [CustomPermission],
     data: {
       guards: ["Admin", "Student", "Teacher"]
     }

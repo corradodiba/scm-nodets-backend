@@ -1,0 +1,31 @@
+<!-- <mat-card-header>
+  <mat-card-title>{{ user?.name }} {{ user?.surname }}</mat-card-title>
+  <mat-card-subtitle>{{ user?.type }}</mat-card-subtitle>
+</mat-card-header>
+<img
+  mat-card-image
+  src="https://material.angular.io/assets/img/examples/shiba1.jpg"
+  alt="Photo of a Shiba Inu"
+/>
+<mat-card-content>
+  <p>Fiscalcode: {{ user?.fiscalCode }}</p>
+  <p>Name: {{ user?.name }}</p>
+  <p>Surname: {{ user?.surname }}</p>
+  <p>Date of birthday: {{ user?.dateOfBirth }}</p>
+</mat-card-content> -->
+
+<div class="card h-100">
+  <div class="card-header">
+    <h4>{{ user?.name }}</h4>
+    <p class="m-0">{{ user?.type }}</p>
+  </div>
+  <img
+    src="https://images.unsplash.com/photo-1477862096227-3a1bb3b08330?ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60"
+    alt=""
+    class="card-img-top"
+  />
+  <div class="card-body">
+    <h5 class="card-title">Informazioni</h5>
+    <p class="card-text">null for now</p>
+  </div>
+</div>

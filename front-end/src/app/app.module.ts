@@ -18,7 +18,6 @@ import { AuthInterceptor } from "./auth/auth-interceptor";
 import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
 import { AppRoutingModule } from "./app-routing.module";
-import { ToggleModule } from "./helpers/toggle/toggle.module";
 import { HomepageModule } from "./homepage/homepage.module";
 
 @NgModule({
@@ -33,7 +32,6 @@ import { HomepageModule } from "./homepage/homepage.module";
     AppRoutingModule,
     AuthModule,
     UsersModule,
-    ToggleModule,
     MatMenuModule,
     MatIconModule,
     HomepageModule

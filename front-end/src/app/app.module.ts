@@ -3,12 +3,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import {
-  MatToolbarModule,
-  MatButtonModule,
-  MatMenuModule,
-  MatIconModule
-} from "@angular/material";
 
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./navbar/navbar.component";
@@ -27,13 +21,9 @@ import { HomepageModule } from "./homepage/homepage.module";
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    MatToolbarModule,
-    MatButtonModule,
     AppRoutingModule,
     AuthModule,
     UsersModule,
-    MatMenuModule,
-    MatIconModule,
     HomepageModule
   ],
   providers: [

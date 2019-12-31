@@ -1,13 +1,5 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import {
-  MatProgressSpinnerModule,
-  MatCardModule,
-  MatButtonModule,
-  MatOptionModule,
-  MatFormFieldModule,
-  MatSelectModule
-} from "@angular/material";
 
 import { UsersRoutingModule } from "./users-routing.module";
 import { UsersListsComponent } from "./users-lists/users-lists.component";
@@ -24,18 +16,7 @@ import { UserProfileComponent } from "./user-profile/user-profile.component";
     SubjectsComponent,
     UserProfileComponent
   ],
-  imports: [
-    CommonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    UsersRoutingModule,
-    MatOptionModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    ListModule,
-    CoursesModule
-  ],
+  imports: [CommonModule, UsersRoutingModule, ListModule, CoursesModule],
   exports: [UsersListsComponent, AdminComponent, UserProfileComponent]
 })
 export class UsersModule {}

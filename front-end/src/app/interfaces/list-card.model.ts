@@ -1,1 +1,1 @@
-export type IListCardModel = "innerBox";
+export type IListCardModel = "innerBox" | "fullwidth";

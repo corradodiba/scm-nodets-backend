@@ -27,6 +27,9 @@ export class UsersListsComponent implements OnInit {
 
   async ngOnInit() {
     this.users = await this.usersService.getUsers();
+    if (!this.listTemplate) {
+      this.listTemplate = "fullwidth";
+    }
   }
 
   mapUserListDetails() {

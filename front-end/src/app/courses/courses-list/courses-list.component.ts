@@ -29,6 +29,9 @@ export class CoursesListComponent implements OnInit {
 
   async ngOnInit() {
     this.courses = await this.coursesService.getCourses();
+    if (!this.listTemplate) {
+      this.listTemplate = "fullwidth";
+    }
   }
 
   mapCoursesListDetails() {

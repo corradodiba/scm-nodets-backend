@@ -13,22 +13,22 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 
-        EditText password, username;
+        EditText email, password;
         Button login;
         TextView register;
         boolean isUsernameValid, isPasswordValid;
-        TextInputLayout usernameError, passError;
+        TextInputLayout emailError, passError;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.login);
 
-            username = findViewById(R.id.username);
+            email = findViewById(R.id.email);
             password = findViewById(R.id.password);
             login = findViewById(R.id.login);
             register = findViewById(R.id.register);
-            usernameError = findViewById(R.id.usernameError);
+            emailError = findViewById(R.id.emailError);
             passError = findViewById(R.id.passError);
 
             login.setOnClickListener(new View.OnClickListener() {
@@ -41,23 +41,24 @@ public class Login extends AppCompatActivity {
             register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(getApplicationContext(), "Impossible to make a new registration, protected area, exit immediately", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                    startActivity(intent);
                 }
             });
         }
         public void LoginValidation() {
-            String name = "gabriele";
+            String emails = "gabriele";
             String pass = "gabrielezagarella";
 
-            if (username.getText().toString().isEmpty()) {
-                usernameError.setError(getResources().getString(R.string.username_error));
+            if (email.getText().toString().isEmpty()) {
+                emailError.setError(getResources().getString(R.string.email_error));
                 isUsernameValid = false;
-            } else if (!username.getText().toString().equals(name)){
-                usernameError.setError(getResources().getString(R.string.error_invalid_username));
+            } else if (!email.getText().toString().equals(emails)){
+                emailError.setError(getResources().getString(R.string.error_invalid_email));
                 isUsernameValid = false;
             } else  {
                 isUsernameValid = true;
-                usernameError.setErrorEnabled(false);
+                emailError.setErrorEnabled(false);
             }
 
             if (password.getText().toString().isEmpty()) {

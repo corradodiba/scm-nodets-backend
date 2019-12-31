@@ -30,18 +30,12 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btn"
+        android:id="@+id/btnPost"
         android:text="Register"
         android:background="@color/colorPrimary"
         android:textColor="#fff"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"/>
-
-    <TextView
-        android:id="@+id/post"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="TextView" />
 
 </LinearLayout>

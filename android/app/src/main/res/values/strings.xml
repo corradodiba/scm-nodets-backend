@@ -8,11 +8,20 @@
     <string name="login">Login</string>
     <string name="create_new">Click here for register</string>
     <string name="not_register">Not Register?</string>
-    <string name="username_error">Please enter your userneme</string>
-    <string name="error_invalid_username">This username is invalid</string>
-    <string name="password_error">Please enter a password</string>
+    <string name="error_invalid_email">This email is invalid</string>
     <string name="error_invalid_password">Please enter a minimum password of 6 characters</string>
     <string name="error_incorrect_password">Plese enter a correct password</string>
     <string name="getSubjects">List subjects</string>
     <string name="postSubjects">Add Subjects</string>
+    <string name="deleteSubjects">Delete subject</string>
+    <string name="email">Email</string>
+    <string name="sign_up">Sign up</string>
+
+    <string name="password_error">Please enter a password</string>
+    <string name="email_error">Please enter your email</string>
+    <string name="fiscalCode_error">Please enter your fiscalCode</string>
+    <string name="name_error">Please enter your name</string>
+    <string name="surname_error">Please enter your surname</string>
+    <string name="dateOfBirth_error">Please enter your dateOfBirth</string>
+    <string name="type_error">Please enter a type</string>
 </resources>

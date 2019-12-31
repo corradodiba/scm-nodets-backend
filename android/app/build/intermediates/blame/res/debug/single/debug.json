@@ -596,6 +596,10 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_activity_register.xml.flat",
+        "source": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/src/main/res/layout/activity_register.xml"
+    },
+    {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_abc_ratingbar_material.xml.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable/abc_ratingbar_material.xml"
     },
@@ -974,6 +978,10 @@
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_star_black_36dp.png.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xhdpi-v4/abc_ic_star_black_36dp.png"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_activity_sign_up.xml.flat",
+        "source": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/src/main/res/layout/activity_sign_up.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
@@ -1946,6 +1954,10 @@
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_abc_activity_chooser_view_list_item.xml.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/layout/abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_activity_delete_subjects.xml.flat",
+        "source": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/src/main/res/layout/activity_delete_subjects.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",

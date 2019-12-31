@@ -42,8 +42,7 @@ public class PostSubjectsActivity extends AppCompatActivity {
 
     private RequestQueue requestQueue;
     private EditText etname, ethours;
-    private Button btnenter;
-    private TextView text;
+    private Button btnPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +50,15 @@ public class PostSubjectsActivity extends AppCompatActivity {
         setContentView( R.layout.activity_post_subjects );
         etname = findViewById( R.id.etname );
         ethours = findViewById( R.id.ethours );
-        btnenter = findViewById( R.id.btn );
-        text = findViewById( R.id.post );
+        btnPost = findViewById( R.id.btnPost );
 
-        btnenter.setOnClickListener( new View.OnClickListener() {
+        btnPost.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 jsonrequestSubjects();
             }
-        } );
+        });
     }
 
     private void jsonrequestSubjects() {
@@ -88,7 +86,7 @@ public class PostSubjectsActivity extends AppCompatActivity {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                text.setText( "Post: Response failled" );
+                //text.setText( "Post: Response failled" );
                 VolleyLog.d( "Error: ", error.getMessage() );
                 error.printStackTrace();
                 Toast.makeText( PostSubjectsActivity.this, error.getMessage(), Toast.LENGTH_SHORT ).show();
@@ -97,3 +95,4 @@ public class PostSubjectsActivity extends AppCompatActivity {
         requestQueue.add( subject );
     }
 }
+

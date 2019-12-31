@@ -21,6 +21,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.demo.stevejobsclassmanaging.SignUpActivity" />
+        <activity android:name="com.demo.stevejobsclassmanaging.DeleteSubjectsActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.PostSubjectsActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.ThirdActivity" />
         <activity android:name="com.demo.stevejobsclassmanaging.activities.UserActivity" />

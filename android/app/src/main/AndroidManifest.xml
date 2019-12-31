@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PostSubjectsActivity"/>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".DeleteSubjectsActivity" />
+        <activity android:name=".PostSubjectsActivity" />
         <activity android:name=".ThirdActivity" />
         <activity android:name=".activities.UserActivity" />
         <activity android:name=".activities.SubjectsActivity" />

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import com.bumptech.glide.request.RequestOptions;
 import com.demo.stevejobsclassmanaging.R;
 import com.demo.stevejobsclassmanaging.activities.UserActivity;
@@ -45,12 +44,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View v) {
 
                 Intent i = new Intent(mContext, UserActivity.class);
-                i.putExtra("anime__id",mData.get(viewHolder.getAdapterPosition()).get_id());
-                i.putExtra("anime_fiscalCode",mData.get(viewHolder.getAdapterPosition()).getFiscalCode());
-                i.putExtra("anime_name",mData.get(viewHolder.getAdapterPosition()).getName());
-                i.putExtra("anime_surname",mData.get(viewHolder.getAdapterPosition()).getSurname());
-                i.putExtra("anime_dateOfBirth",mData.get(viewHolder.getAdapterPosition()).getDateOfBirth());
-                i.putExtra("anime_type",mData.get(viewHolder.getAdapterPosition()).getType());
+                i.putExtra("user__id",mData.get(viewHolder.getAdapterPosition()).get_id());
+                i.putExtra("user_fiscalCode",mData.get(viewHolder.getAdapterPosition()).getFiscalCode());
+                i.putExtra("user_name",mData.get(viewHolder.getAdapterPosition()).getName());
+                i.putExtra("user_surname",mData.get(viewHolder.getAdapterPosition()).getSurname());
+                i.putExtra("user_dateOfBirth",mData.get(viewHolder.getAdapterPosition()).getDateOfBirth());
+                i.putExtra("user_type",mData.get(viewHolder.getAdapterPosition()).getType());
                 //i.putExtra("anime_img",mData.get(viewHolder.getAdapterPosition()).getImage_url());
                 mContext.startActivity(i);
             }
@@ -88,7 +87,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             name = itemView.findViewById(R.id.name);
             surname = itemView.findViewById(R.id.surname);
             //img_thumbnail = itemView.findViewById(R.id.thumbnail);
-
         }
     }
 

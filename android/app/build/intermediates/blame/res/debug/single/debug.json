@@ -8,12 +8,12 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_light.png"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/anim_abc_slide_in_top.xml.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/anim/abc_slide_in_top.xml"
-    },
-    {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_spinner_mtrl_am_alpha.9.png.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxhdpi-v4/abc_spinner_mtrl_am_alpha.9.png"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/anim_abc_slide_in_top.xml.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/anim/abc_slide_in_top.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_navigation_empty_icon.xml.flat",
@@ -48,12 +48,12 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-hdpi-v4/abc_ic_star_half_black_36dp.png"
-    },
-    {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_abc_tooltip.xml.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/layout/abc_tooltip.xml"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-hdpi-v4/abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_menu_hardkey_panel_mtrl_mult.9.png.flat",
@@ -120,16 +120,16 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/anim/abc_slide_out_bottom.xml"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable/tooltip_frame_light.xml"
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_mtrl_tabs_default_indicator.xml.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/c78e3a0953b76a2c2a9099318e14536f/res/drawable/mtrl_tabs_default_indicator.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-mdpi-v4/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_mtrl_tabs_default_indicator.xml.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/c78e3a0953b76a2c2a9099318e14536f/res/drawable/mtrl_tabs_default_indicator.xml"
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_tooltip_frame_light.xml.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable/tooltip_frame_light.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_menu_selectall_mtrl_alpha.png.flat",
@@ -160,12 +160,12 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/layout/abc_select_dialog_material.xml"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
-    },
-    {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-hdpi-v4/abc_btn_radio_to_on_mtrl_000.png"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_mtrl_layout_snackbar_include.xml.flat",
@@ -200,12 +200,12 @@
         "source": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/src/main/res/layout/activity_second.xml"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
-    },
-    {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/color_abc_search_url_text.xml.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/color/abc_search_url_text.xml"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxhdpi-v4/abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-xxxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
@@ -400,16 +400,16 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/color/abc_background_cache_hint_selector_material_light.xml"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-mdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-ldrtl-hdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-ldrtl-hdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-ldrtl-hdpi-v17/abc_ic_menu_cut_mtrl_alpha.png"
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-mdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-mdpi-v4/abc_scrubber_control_off_mtrl_alpha.png"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_design_bottom_navigation_item.xml.flat",
@@ -532,16 +532,16 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxxhdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_thumb_material.xml.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable/abc_seekbar_thumb_material.xml"
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/animator_mtrl_chip_state_list_anim.xml.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/c78e3a0953b76a2c2a9099318e14536f/res/animator/mtrl_chip_state_list_anim.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_tick_mark_material.xml.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable/abc_seekbar_tick_mark_material.xml"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/animator_mtrl_chip_state_list_anim.xml.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/c78e3a0953b76a2c2a9099318e14536f/res/animator/mtrl_chip_state_list_anim.xml"
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_abc_seekbar_thumb_material.xml.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -552,12 +552,12 @@
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/color-v23/abc_tint_edittext.xml"
     },
     {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/anim_abc_fade_in.xml.flat",
-        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/anim/abc_fade_in.xml"
-    },
-    {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xhdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xhdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png"
+    },
+    {
+        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/anim_abc_fade_in.xml.flat",
+        "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/anim/abc_fade_in.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/interpolator_mtrl_linear.xml.flat",
@@ -594,10 +594,6 @@
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
         "source": "/Users/zagarellagabriele/.gradle/caches/transforms-2/files-2.1/62140c4318d1e125c2e3b7fb23f63157/res/drawable-xxxhdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png"
-    },
-    {
-        "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/layout_activity_register.xml.flat",
-        "source": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/src/main/res/layout/activity_register.xml"
     },
     {
         "merged": "/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/res/merged/debug/drawable_abc_ratingbar_material.xml.flat",

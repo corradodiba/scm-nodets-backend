@@ -27,12 +27,12 @@ public class UserActivity extends AppCompatActivity {
             }
         // Recieve data
 
-        String _id  = getIntent().getExtras().getString("anime__id");
-        String fiscalCode = getIntent().getExtras().getString("anime_fiscalCode");
-        String name = getIntent().getExtras().getString("anime_name") ;
-        String surname = getIntent().getExtras().getString("anime_surname");
-        String dateOfBirth = getIntent().getExtras().getString("anime_dateOfBirth");
-        String type = getIntent().getExtras().getString("anime_type");
+        String _id  = getIntent().getExtras().getString("user__id");
+        String fiscalCode = getIntent().getExtras().getString("user_fiscalCode");
+        String name = getIntent().getExtras().getString("user_name") ;
+        String surname = getIntent().getExtras().getString("user_surname");
+        String dateOfBirth = getIntent().getExtras().getString("user_dateOfBirth");
+        String type = getIntent().getExtras().getString("user_type");
         //String image_url = getIntent().getExtras().getString("anime_img") ;
 
         // ini views

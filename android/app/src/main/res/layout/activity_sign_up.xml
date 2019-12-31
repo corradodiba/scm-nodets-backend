@@ -7,7 +7,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/colorbackground"
 android:padding="16dp"
-android:scrollbarThumbVertical="@null"
+android:scrollbarThumbVertical="@color/colorAccent"
 tools:context=".SignUpActivity">
 
 
@@ -15,17 +15,15 @@ tools:context=".SignUpActivity">
     xmlns:Card_View="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:layout_margin="5dp"
     android:padding="10dp"
-    Card_View:cardCornerRadius="5dp"
+    Card_View:cardCornerRadius="10dp"
     Card_View:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
         android:orientation="vertical">
 
         <android.support.design.widget.TextInputLayout
@@ -51,7 +49,8 @@ tools:context=".SignUpActivity">
             android:id="@+id/passError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            app:passwordToggleEnabled="true">
 
             <EditText
                 android:id="@+id/passwordsignup"
@@ -79,7 +78,6 @@ tools:context=".SignUpActivity">
                 android:layout_marginTop="10dp"
                 android:hint="Enter fiscalCode"
                 android:maxLength="16"
-                android:minLength="16"
                 android:inputType="text"
                 android:maxLines="1"
                 android:paddingStart="5dp"
@@ -149,7 +147,7 @@ tools:context=".SignUpActivity">
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/passErro"
+            android:id="@+id/typeError"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true"

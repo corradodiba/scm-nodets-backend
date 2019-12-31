@@ -6,18 +6,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.demo.stevejobsclassmanaging.adapters.RecyclerViewAdapter;
 import com.demo.stevejobsclassmanaging.adapters.RecyclerViewAdapterSubjects;
 import com.demo.stevejobsclassmanaging.model.Subjects;
-import com.demo.stevejobsclassmanaging.model.User;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,7 +43,6 @@ public class ThirdActivity extends AppCompatActivity {
         jsonrequestSubjects();
         bar = findViewById(R.id.progressbar);
         bar.setVisibility(VISIBLE);
-
     }
 
     private void jsonrequestSubjects() {

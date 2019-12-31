@@ -12,7 +12,10 @@ export const environment = {
   subjectsPath: "subjects",
   coursesPath: "courses",
   loginPath: "auth/login",
-  signupPath: "auth/signup"
+  signupPath: "auth/signup",
+  defaultImage:
+    // tslint:disable-next-line: max-line-length
+    "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/59435668_10214563408978447_3548318657866104832_o.jpg?_nc_cat=109&_nc_oc=AQlsf2B8r9EzGvlFae0N-kY5FRxC7gRd0NS4kz70WjeSOywLxSeC2GcpdjzM0BxGMVI&_nc_ht=scontent-mxp1-1.xx&oh=a6ab8f69a7cd274c7cb5ad4110bbb020&oe=5EAA2BD3"
 };
 
 /*

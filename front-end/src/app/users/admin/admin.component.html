@@ -6,24 +6,32 @@
     <div class="col">
       <div class="row flex-column">
         <div class="col p-4">
-          <h4>Courses</h4>
-          <hr />
-          <app-courses-list
-            [listTemplate]="listTemplate"
-            [isNavigable]="false"
-            (showCourseById)="onActionToCourse($event)"
-            *ngIf="isHidden"
-          ></app-courses-list>
+          <div class="row">
+            <div class="col">
+              <h4>Courses</h4>
+              <hr />
+              <app-courses-list
+                [listTemplate]="listTemplate"
+                [isNavigable]="false"
+                (showCourseById)="onActionToCourse($event)"
+                *ngIf="isHidden"
+              ></app-courses-list>
+            </div>
+          </div>
         </div>
         <div class="col p-4">
-          <h4>Users</h4>
-          <hr />
-          <app-users-lists
-            [listTemplate]="listTemplate"
-            [isNavigable]="false"
-            (showUserById)="onActionToUser($event)"
-          >
-          </app-users-lists>
+          <div class="row">
+            <div class="col">
+              <h4>Users</h4>
+              <hr />
+              <app-users-lists
+                [listTemplate]="listTemplate"
+                [isNavigable]="false"
+                (showUserById)="onActionToUser($event)"
+              >
+              </app-users-lists>
+            </div>
+          </div>
         </div>
       </div>
     </div>

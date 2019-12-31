@@ -1,28 +1,30 @@
 <div *ngIf="listCardsTemplate === 'innerBox'" class="container-fluid h-100">
-  <div class="row h-100">
+  <div class="row h-100 align-items-center">
     <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let item of items">
       <div class="card">
         <div class="card-body">
-          <div class="row">
-            <div class="col-2">
-              <div class="items-list-header-image"></div>
-            </div>
+          <div class="row justify-center">
             <div class="col">
-              <h5 class="card-title">{{ item?.title }}</h5>
-              <p class="card-text">
-                {{ item?.description }}
-              </p>
+              <div class="items-list-header-image mx-auto"></div>
+            </div>
+            <div class="col-8 p-0">
+              <header>
+                <h5 class="card-title">{{ item?.title }}</h5>
+                <p class="card-text">
+                  {{ item?.description }}
+                </p>
+              </header>
             </div>
           </div>
           <hr />
           <div class="row">
             <div class="col text-center">
               <button
-                class="btn btn-outline-primary btn-sm m-1"
+                [class]="getButtonColor(button.color)"
                 *ngFor="let button of item.buttons"
                 (click)="onSelectedItem(item._id, button)"
               >
-                {{ button }}
+                {{ button.text }}
               </button>
             </div>
           </div>

@@ -16,4 +16,9 @@ export class ListComponent {
   onSelectedItem(id: string, action: string) {
     this.showItem.emit({ _id: id, action });
   }
+
+  getButtonColor(color: string) {
+    console.log(color);
+    return `btn btn-sm m-1 btn-outline-${color}`;
+  }
 }

@@ -37,7 +37,16 @@ export class UsersListsComponent implements OnInit {
         _id: user._id,
         title: `${user.name} ${user.surname}`,
         description: user.fiscalCode,
-        buttons: ["Show", "Delete", "Edit"]
+        buttons: [
+          {
+            text: "Show",
+            color: "primary"
+          },
+          {
+            text: "Delete",
+            color: "danger"
+          }
+        ]
       };
     });
     return usersMapped;

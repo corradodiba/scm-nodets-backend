@@ -39,7 +39,12 @@ export class CoursesListComponent implements OnInit {
         _id: course._id,
         title: `Corso ${course.year}`,
         description: "Catania",
-        buttons: ["Show", "Delete", "Edit"]
+        buttons: [
+          {
+            text: "Show",
+            color: "primary"
+          }
+        ]
       };
     });
     return coursesMapped;

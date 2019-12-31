@@ -1,9 +1,13 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
-import { IList } from "../../interfaces/list.model";
-import { CoursesService } from "../courses.service";
-import Course from "../../interfaces/course.model";
 import { Router } from "@angular/router";
+
+import { CoursesService } from "../courses.service";
+
 import { environment } from "src/environments/environment";
+
+import { IListCardModel } from "src/app/interfaces/list-card.model";
+import Course from "../../interfaces/course.model";
+import { IList } from "../../interfaces/list.model";
 
 @Component({
   selector: "app-courses-list",
@@ -11,16 +15,19 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./courses-list.component.scss"]
 })
 export class CoursesListComponent implements OnInit {
-  isHidden = true;
-  courses: Course[] = [];
   @Output() showCourseById = new EventEmitter<{
     _id: string;
     action: string;
   }>();
+  @Input() listTemplate: IListCardModel;
   @Input() isNavigable = true;
+
   apiUrl = `${environment.coursesPath}`;
 
-  constructor(private coursesService: CoursesService, private router: Router) { }
+  isHidden = true;
+  courses: Course[] = [];
+
+  constructor(private coursesService: CoursesService, private router: Router) {}
 
   async ngOnInit() {
     this.courses = await this.coursesService.getCourses();
@@ -48,5 +55,4 @@ export class CoursesListComponent implements OnInit {
       await this.coursesService.deleteCourseById(action._id);
     }
   }
-
 }

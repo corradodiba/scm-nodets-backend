@@ -4,8 +4,10 @@ import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
 
 import { UsersService } from "../users.service";
+
 import User from "src/app/interfaces/user.model";
 import { IList } from "src/app/interfaces/list.model";
+import { IListCardModel } from "src/app/interfaces/list-card.model";
 
 @Component({
   selector: "app-users-lists",
@@ -21,6 +23,7 @@ export class UsersListsComponent implements OnInit {
     action: string;
   }>();
   @Input() isNavigable = true;
+  @Input() listTemplate: IListCardModel;
 
   constructor(private usersService: UsersService, private router: Router) {}
 

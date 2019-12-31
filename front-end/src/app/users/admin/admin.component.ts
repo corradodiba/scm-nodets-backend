@@ -3,10 +3,12 @@ import { ParamMap, ActivatedRoute, Router } from "@angular/router";
 
 import { UsersService } from "../users.service";
 
+import { environment } from "src/environments/environment";
+
 import User from "../../interfaces/user.model";
 import { CoursesService } from "src/app/courses/courses.service";
 import Course from "src/app/interfaces/course.model";
-import { environment } from "src/environments/environment";
+import { IListCardModel } from "src/app/interfaces/list-card.model";
 
 @Component({
   selector: "app-user",
@@ -18,6 +20,7 @@ export class AdminComponent implements OnInit {
   userId: string = undefined;
   user: User;
   courseSelected: Course;
+  listTemplate: IListCardModel = "innerBox";
 
   apiUrl = `${environment.usersPath}`;
 

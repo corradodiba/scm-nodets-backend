@@ -1,5 +1,7 @@
-<app-list 
-    *ngIf="isHidden"
-    [items]="mapUserListDetails()"
-    (showItem)="onActionToUser($event)">
+<app-list
+  *ngIf="isHidden"
+  [listCardsTemplate]="listTemplate"
+  [items]="mapUserListDetails()"
+  (showItem)="onActionToUser($event)"
+>
 </app-list>

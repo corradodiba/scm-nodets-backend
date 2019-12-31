@@ -1,11 +1,11 @@
-<div class="container h-100">
+<div *ngIf="listCardsTemplate === 'innerBox'" class="container-fluid h-100">
   <div class="row h-100">
-    <div class="col-6" *ngFor="let item of items">
+    <div class="col-12 col-md-6 col-lg-4 col-xl-3" *ngFor="let item of items">
       <div class="card">
         <div class="card-body">
           <div class="row">
             <div class="col-2">
-              <div mat-card-avatar class="items-list-header-image"></div>
+              <div class="items-list-header-image"></div>
             </div>
             <div class="col">
               <h5 class="card-title">{{ item?.title }}</h5>

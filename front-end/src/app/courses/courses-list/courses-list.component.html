@@ -1,5 +1,6 @@
 <app-list
   *ngIf="isHidden"
+  [listCardsTemplate]="listTemplate"
   [items]="mapCoursesListDetails()"
   (showItem)="onActionToCourse($event)"
 ></app-list>

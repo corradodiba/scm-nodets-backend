@@ -1,6 +1,14 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-main {
-  margin-top: 3.3rem !important;
+.wrapper {
+  margin: 0 !important;
   padding: 0 !important;
+  position: relative !important;
+  height: 100vh !important;
+}
+
+.content {
+  position: absolute !important;
+  padding-top: 3rem;
+  height: 100%;
 }

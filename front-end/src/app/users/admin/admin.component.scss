@@ -1,16 +1,1 @@
 @import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-:host ::ng-deep app-users-lists app-list .container,
-:host ::ng-deep app-courses-list app-list .container {
-  padding: 4% 1%;
-}
-
-:host ::ng-deep app-users-lists app-list .card-title,
-:host ::ng-deep app-courses-list app-list .card-title {
-  margin: 0;
-}
-
-:host ::ng-deep app-users-lists app-list .card,
-:host ::ng-deep app-courses-list app-list .card {
-  min-width: 17rem;
-}

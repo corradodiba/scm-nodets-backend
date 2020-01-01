@@ -14,6 +14,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.demo.stevejobsclassmanaging.model.URLs;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -44,9 +46,6 @@ public class DeleteSubjectsActivity extends AppCompatActivity {
 
     private void jsonrequestSubjectsDelete() {
 
-
-        String URLSUBJECTS = "http://192.168.43.156:3000/subjects";
-
         requestQueue = Volley.newRequestQueue( DeleteSubjectsActivity.this);
         final JSONObject jsonObject = new JSONObject();
         try {
@@ -56,7 +55,7 @@ public class DeleteSubjectsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        JsonObjectRequest subject = new JsonObjectRequest( Request.Method.DELETE, URLSUBJECTS, jsonObject,
+        JsonObjectRequest subject = new JsonObjectRequest( Request.Method.DELETE, URLs.URL_SUBJECTS, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

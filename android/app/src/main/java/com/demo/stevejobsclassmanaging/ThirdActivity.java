@@ -6,6 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -14,19 +16,18 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.demo.stevejobsclassmanaging.adapters.RecyclerViewAdapterSubjects;
 import com.demo.stevejobsclassmanaging.model.Subjects;
+import com.demo.stevejobsclassmanaging.model.URLs;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class ThirdActivity extends AppCompatActivity {
 
-    private final String URLSUBJECTS = "http://192.168.43.156:3000/subjects";
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
     private List<Subjects> lstSubjects;
@@ -47,7 +48,7 @@ public class ThirdActivity extends AppCompatActivity {
 
     private void jsonrequestSubjects() {
 
-        request = new JsonArrayRequest(URLSUBJECTS, new Response.Listener<JSONArray>() {
+        request = new JsonArrayRequest(  Request.Method.GET, URLs.URL_SUBJECTS, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 

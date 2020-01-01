@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -13,19 +14,18 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.demo.stevejobsclassmanaging.adapters.RecyclerViewAdapter;
+import com.demo.stevejobsclassmanaging.model.URLs;
 import com.demo.stevejobsclassmanaging.model.User;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
-
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String URLSTUDENTS = "http://192.168.43.156:3000/users";
     private JsonArrayRequest request;
     private RequestQueue requestQueue;
     private List<User> lstUser;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void jsonrequestStudents() {
 
-        request = new JsonArrayRequest(URLSTUDENTS, new Response.Listener<JSONArray>() {
+        request = new JsonArrayRequest( Request.Method.GET, URLs.URL_USERS, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
 

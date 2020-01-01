@@ -13,6 +13,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.demo.stevejobsclassmanaging.model.URLs;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -50,11 +52,9 @@ public class PostSubjectsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String URLSUBJECTS = "http://192.168.43.156:3000/subjects";
-
         requestQueue = Volley.newRequestQueue( PostSubjectsActivity.this);
 
-        JsonObjectRequest subject = new JsonObjectRequest( Request.Method.POST, URLSUBJECTS, jsonObject,
+        JsonObjectRequest subject = new JsonObjectRequest( Request.Method.POST, URLs.URL_SUBJECTS, jsonObject,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

@@ -17,6 +17,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.demo.stevejobsclassmanaging.model.URLs;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -154,11 +156,9 @@ import org.json.JSONObject;
                 e.printStackTrace();
             }
 
-            String URLSIGNUP = "http://192.168.43.156:3000/auth/signup";
-
             requestQueue = Volley.newRequestQueue( SignUpActivity.this);
 
-            JsonObjectRequest subject = new JsonObjectRequest( Request.Method.POST, URLSIGNUP, jsonObject,
+            JsonObjectRequest subject = new JsonObjectRequest( Request.Method.POST, URLs.URL_SIGNUP, jsonObject,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

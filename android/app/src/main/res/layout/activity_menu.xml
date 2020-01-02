@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@color/colorbackground">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/getStudents"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="05dp"
+            android:background="@drawable/button_gradient"
+            android:padding="05dp"
+            android:text="@string/get3a"
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/getTeachers"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_gradient"
+            android:padding="05dp"
+            android:text="@string/get3"
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/getSubjects"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_gradient"
+            android:padding="05dp"
+            android:text="@string/getSubjects"
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/postSubject"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_gradient"
+            android:padding="05dp"
+            android:text="@string/postSubjects"
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
+
+        <Button
+            android:id="@+id/deleteSubjects"
+            android:layout_width="135dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_gradient"
+            android:padding="05dp"
+            android:text="@string/deleteSubjects"
+            android:textColor="@color/colortext"
+            android:layout_marginBottom="10dp"/>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

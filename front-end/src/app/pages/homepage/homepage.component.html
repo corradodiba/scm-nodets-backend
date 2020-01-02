@@ -1,0 +1,3 @@
+<app-sidenav *ngIf="isAuthenticated"></app-sidenav>
+<app-admin-dashboards *ngIf="isAuthenticated"></app-admin-dashboards>
+<app-guest-homepage *ngIf="!isAuthenticated"></app-guest-homepage>

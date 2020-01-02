@@ -13,9 +13,10 @@ import { AuthModule } from "./auth/auth.module";
 import { UsersModule } from "./users/users.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { HomepageModule } from "./homepage/homepage.module";
+import { TeachersComponent } from './teachers/teachers.component';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
+  declarations: [AppComponent, NavbarComponent, TeachersComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

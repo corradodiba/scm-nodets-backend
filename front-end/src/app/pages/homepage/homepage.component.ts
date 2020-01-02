@@ -14,6 +14,7 @@ import Course from "src/app/interfaces/course.model";
 export class HomepageComponent implements OnInit, OnDestroy {
   private authListenerSubs = new Subscription();
   isAuthenticated = false;
+  type = "Guest";
   constructor(private authService: AuthService) {}
 
   async ngOnInit() {
@@ -23,6 +24,10 @@ export class HomepageComponent implements OnInit, OnDestroy {
       .subscribe(isAuthenticated => {
         this.isAuthenticated = isAuthenticated;
       });
+    if (this.isAuthenticated) {
+      this.type = this.authService.getAuthStatus().type;
+    }
+    console.log(this.type);
   }
   ngOnDestroy() {
     this.authListenerSubs.unsubscribe();

@@ -1,0 +1,126 @@
+<nav
+  id="navbar-main"
+  class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light"
+>
+  <div class="container">
+    <a class="navbar-brand" href="#">
+      <img src="/assets/img/brand/logo-its-white.svg" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-collapse"
+      aria-controls="navbar-collapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="navbar-collapse navbar-custom-collapse collapse"
+      id="navbar-collapse"
+    >
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a href="#">
+              <img src="./assets/img/brand/logo-its.svg" />
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button
+              type="button"
+              class="navbar-toggler"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+              aria-controls="navbar-collapse"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a href="" class="nav-link">
+            <i class="fa fa-home"></i>
+            <span class="nav-link-inner--text">Homepage</span>
+          </a>
+        </li>
+        <li *ngIf="!isAuthenticated" class="nav-item">
+          <a href="/auth/login" class="nav-link">
+            <i class="fas fa-sign-in-alt"></i>
+            <span class="nav-link-inner--text">Login</span>
+          </a>
+        </li>
+        <li *ngIf="!isAuthenticated" class="nav-item">
+          <a href="/auth/signup" class="nav-link">
+            <i class="ni ni-spaceship"></i>
+            <span class="nav-link-inner--text">Sign-up</span>
+          </a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <button type="button" class="nav-link" (click)="onLogout()">
+            <i class="ni ni-spaceship"></i>
+            <span class="ni ni-user-run">Logout</span>
+          </button>
+        </li>
+      </ul>
+      <hr class="d-lg-none" />
+      <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-icon"
+            href="https://www.facebook.com/stevejobsacademy/"
+            target="_blank"
+            data-toggle="tooltip"
+            data-original-title="facebook"
+          >
+            <i class="fab fa-facebook-square"></i>
+            <span class="nav-link-inner--text d-lg-none">Facebook</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-icon"
+            href="https://www.instagram.com/stevejobsacademy/"
+            target="_blank"
+            data-toggle="tooltip"
+            data-original-title="Instagram"
+          >
+            <i class="fab fa-instagram"></i>
+            <span class="nav-link-inner--text d-lg-none">Instagram</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link nav-link-icon"
+            href="https://github.com/SteveJobsAcademy"
+            target="_blank"
+            data-toggle="tooltip"
+            data-original-title="Instagram"
+          >
+            <i class="fab fa-github"></i>
+            <span class="nav-link-inner--text d-lg-none">Github</span>
+          </a>
+        </li>
+        <li class="nav-item d-none d-lg-block ml-lg-4">
+          <a
+            href="https://stevejobs.academy"
+            target="_blank"
+            class="btn btn-info btn-icon"
+          >
+            <span class="btn-inner--icon">
+              <i class="ni ni-world-2 mr-2"></i>
+            </span>
+            <span class="nav-link-inner--text">stevejobs.academy</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

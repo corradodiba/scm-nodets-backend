@@ -1,0 +1,35 @@
+<div [class]="getBackgroundClass()">
+  <!-- Card body -->
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+        <h5 class="card-title text-uppercase text-muted mb-0 text-white">
+          {{ card?.title }}
+        </h5>
+        <span class="h2 font-weight-bold mb-0 text-white">{{
+          card?.counter
+        }}</span>
+      </div>
+      <div class="col-auto">
+        <button
+          *ngIf="card?.actions"
+          type="button"
+          class="btn btn-sm btn-neutral mr-0"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          <i class="fas fa-ellipsis-h"></i>
+        </button>
+        <div *ngIf="card?.actions" class="dropdown-menu dropdown-menu-right">
+          <a
+            *ngFor="let action of card?.actions"
+            class="dropdown-item"
+            [href]="action.href"
+            >{{ action.text }}</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

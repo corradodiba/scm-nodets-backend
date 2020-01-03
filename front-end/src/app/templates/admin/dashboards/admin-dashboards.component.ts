@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 
 import { ICard } from "src/app/interfaces/card.model";
@@ -16,16 +16,18 @@ import { SubjectsService } from "src/app/pages/subjects/subjects.service";
   templateUrl: "./admin-dashboards.component.html",
   styleUrls: ["./admin-dashboards.component.scss"]
 })
-export class AdminDashboardsComponent implements OnInit {
+export class AdminDashboardsComponent implements OnInit, OnDestroy {
   private authListenerSubs = new Subscription();
   isAuthenticated = false;
 
   coursesCard: ICard;
-  usersCard: ICard;
+  studentsCard: ICard;
+  teachersCard: ICard;
   subjectsCard: ICard;
 
   courses: Course[];
-  users: User[];
+  students: User[];
+  teachers: User[];
   subjects: Subject[];
 
   loggedUser: User;
@@ -45,18 +47,20 @@ export class AdminDashboardsComponent implements OnInit {
         this.isAuthenticated = isAuthenticated;
       });
     if (this.isAuthenticated) {
-      const [courses, users, subjects] = await Promise.all([
+      const [courses, students, teachers, subjects] = await Promise.all([
         this.coursesService.getCourses(),
-        this.usersService.getUsers(),
+        this.usersService.getUsersByType("Student"),
+        this.usersService.getUsersByType("Teacher"),
         this.subjectsService.getSubjects()
       ]);
-
       this.courses = courses;
-      this.users = users;
+      this.students = students;
+      this.teachers = teachers;
       this.subjects = subjects;
 
       this.coursesCard = this.getCoursesAssets(this.courses.length);
-      this.usersCard = this.getUsersAssets(this.users.length);
+      this.studentsCard = this.getStudentAssets(this.students.length);
+      this.teachersCard = this.getTeacherAssets(this.courses.length);
       this.subjectsCard = this.getSubjectsAssets(this.subjects.length);
     }
   }
@@ -79,17 +83,31 @@ export class AdminDashboardsComponent implements OnInit {
     };
   }
 
-  getUsersAssets(counter: number): ICard {
+  getStudentAssets(counter: number): ICard {
     return {
-      title: "Users",
+      title: "Students",
       counter,
       actions: [
         {
           href: "#",
-          text: "Add User"
+          text: "Add Student"
         }
       ],
       background: "bg-gradient-info"
+    };
+  }
+
+  getTeacherAssets(counter: number): ICard {
+    return {
+      title: "Teachers",
+      counter,
+      actions: [
+        {
+          href: "#",
+          text: "Add Teacher"
+        }
+      ],
+      background: "bg-gradient-primary"
     };
   }
 
@@ -105,5 +123,9 @@ export class AdminDashboardsComponent implements OnInit {
       ],
       background: "bg-gradient-success"
     };
+  }
+
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
   }
 }

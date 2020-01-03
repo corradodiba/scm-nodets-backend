@@ -14,11 +14,7 @@ import { StudentDashboardsComponent } from "src/app/templates/student/dashboards
 import { TeacherDashboardsComponent } from "src/app/templates/teacher/teacher-dashboards/teacher-dashboards.component";
 
 @NgModule({
-  declarations: [
-    HomepageComponent,
-    StudentDashboardsComponent,
-    TeacherDashboardsComponent
-  ],
+  declarations: [HomepageComponent],
   imports: [
     CommonModule,
     HttpClientModule,

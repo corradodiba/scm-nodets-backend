@@ -9,6 +9,7 @@ export const environment = {
     "http://localhost:3000" ||
     "http://stevejobs-class-managment.us-east-2.elasticbeanstalk.com",
   usersPath: "users",
+  userTypeQuery: "?type=",
   subjectsPath: "subjects",
   coursesPath: "courses",
   loginPath: "auth/login",

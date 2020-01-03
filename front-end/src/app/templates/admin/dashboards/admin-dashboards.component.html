@@ -6,10 +6,10 @@
       <app-card [card]="coursesCard"></app-card>
     </div>
     <div class="col-xl-3 col-md-6">
-      <app-card [card]="usersCard"></app-card>
+      <app-card [card]="studentsCard"></app-card>
     </div>
     <div class="col-xl-3 col-md-6">
-      <app-card [card]="usersCard"></app-card>
+      <app-card [card]="teachersCard"></app-card>
     </div>
     <div class="col-xl-3 col-md-6">
       <app-card [card]="subjectsCard"></app-card>
@@ -40,7 +40,7 @@
                 <th scope="row">
                   <div class="media align-items-center">
                     <a href="#" class="avatar rounded-circle mr-3">
-                      {{ course?.year }}
+                      {{ course?.name }}
                     </a>
                   </div>
                 </th>
@@ -50,7 +50,7 @@
                 <td>
                   <span class="badge badge-dot mr-4">
                     <i class="bg-warning"></i>
-                    <span class="status">pending</span>
+                    <span class="status">{{ course?.status }}</span>
                   </span>
                 </td>
                 <td>

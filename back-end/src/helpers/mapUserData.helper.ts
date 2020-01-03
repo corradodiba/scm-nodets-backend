@@ -3,7 +3,6 @@ import { getDateToString } from "./getDateToString.helper";
 
 export const mapUserData = (user: User) => {
   const { _id, name, surname, dateOfBirth, fiscalCode, type } = user;
-  console.log(getDateToString(dateOfBirth));
   return {
     _id,
     name,

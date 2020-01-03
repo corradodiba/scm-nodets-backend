@@ -5,4 +5,5 @@ export interface ISimpleList {
     avatar: string;
     text: string;
   }[];
+  cover?: string;
 }

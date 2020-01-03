@@ -4,7 +4,8 @@ import { User } from "../user/user.model";
 const CoursesSchema: Schema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   status: {
     type: String,

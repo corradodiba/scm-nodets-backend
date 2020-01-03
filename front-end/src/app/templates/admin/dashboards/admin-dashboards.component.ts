@@ -60,13 +60,24 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
       this.students = students;
       this.teachers = teachers;
       this.subjects = subjects;
-
       this.coursesCard = this.getCoursesAssets(this.courses.length);
       this.studentsCard = this.getStudentAssets(this.students.length);
-      this.teachersCard = this.getTeacherAssets(this.courses.length);
+      this.teachersCard = this.getTeacherAssets(this.teachers.length);
       this.subjectsCard = this.getSubjectsAssets(this.subjects.length);
       this.subjectsSimpleList = this.getSubjectsSimpleListAssets(0);
     }
+  }
+
+  onCourseSelected(index: number) {
+    this.subjectsSimpleList = this.getSubjectsSimpleListAssets(index);
+  }
+
+  getCSSForCourseStatus(status: string) {
+    return status === "pending"
+      ? "bg-warning"
+      : status === "complete"
+      ? "bg-success"
+      : "bg-danger";
   }
 
   getCoursesAssets(counter: number): ICard {
@@ -136,7 +147,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
       subtitle: `${course.subjects.length} subjects into course ${course.name}`,
       items: course.subjects.map(subject => {
         return { avatar: `${subject.name.charAt(0)}`, text: subject.name };
-      })
+      }),
+      cover: "bg-gradient-success"
     };
   }
 

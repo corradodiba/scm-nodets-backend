@@ -21,6 +21,7 @@ export const getByType = async (type: typeUser) => {
     if (!users) {
       throw `No user with this type(${type}) found!`;
     }
+    console.log(users);
     return users;
   } catch (err) {
     throw err;

@@ -23,65 +23,58 @@
           <h3 class="mb-0">Courses</h3>
         </div>
         <!-- Light table -->
-        <div class="table-responsive">
+        <div
+          class="table-responsive"
+          data-toggle="list"
+          data-list-values='["number", "year", "status"]'
+        >
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Number</th>
-                <th scope="col">Year</th>
-                <th scope="col">Status</th>
+                <th scope="col" class="sort" data-sort="number">Number</th>
+                <th scope="col" class="sort" data-sort="year">Year</th>
+                <th scope="col" class="sort" data-sort="status">Status</th>
                 <th scope="col">Users</th>
-                <th scope="col"></th>
                 <th scope="col"></th>
               </tr>
             </thead>
             <tbody class="list">
-              <tr *ngFor="let course of courses">
+              <tr *ngFor="let course of courses; let i = index">
                 <th scope="row">
                   <div class="media align-items-center">
-                    <a href="#" class="avatar rounded-circle mr-3">
+                    <button
+                      (click)="onCourseSelected(i)"
+                      class="avatar bg-gradient-danger rounded-circle mr-3"
+                    >
                       {{ course?.name }}
-                    </a>
+                    </button>
                   </div>
                 </th>
-                <td class="budget">
+                <td class="year">
                   {{ course?.year }}
                 </td>
                 <td>
                   <span class="badge badge-dot mr-4">
-                    <i class="bg-warning"></i>
+                    <i [class]="getCSSForCourseStatus(course?.status)"></i>
                     <span class="status">{{ course?.status }}</span>
                   </span>
                 </td>
                 <td>
                   <div class="avatar-group">
-                    <a href="#" class="avatar avatar-sm rounded-circle">
+                    <a
+                      *ngFor="let student of course.students"
+                      href="#"
+                      class="avatar avatar-sm rounded-circle"
+                      data-toggle="tooltip"
+                      data-original-title=""
+                    >
                       <img
-                        alt="Image placeholder"
-                        src="/assets/img/theme/image-profile.jpeg"
-                      />
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle">
-                      <img
-                        alt="Image placeholder"
-                        src="/assets/img/theme/image-profile.jpeg"
-                      />
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle">
-                      <img
-                        alt="Image placeholder"
-                        src="/assets/img/theme/image-profile.jpeg"
-                      />
-                    </a>
-                    <a href="#" class="avatar avatar-sm rounded-circle">
-                      <img
-                        alt="Image placeholder"
+                        [alt]="student?.name + ' ' + student?.surname"
                         src="/assets/img/theme/image-profile.jpeg"
                       />
                     </a>
                   </div>
                 </td>
-                <td></td>
                 <td class="text-right">
                   <div class="dropdown">
                     <a
@@ -97,9 +90,9 @@
                     <div
                       class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
                     >
-                      <a class="dropdown-item" href="#">Add User</a>
-                      <a class="dropdown-item" href="#">Edit</a>
-                      <a class="dropdown-item" href="#">Delete</a>
+                      <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">Another action</a>
+                      <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                   </div>
                 </td>

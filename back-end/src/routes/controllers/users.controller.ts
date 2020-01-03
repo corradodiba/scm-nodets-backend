@@ -22,8 +22,8 @@ const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
 export const getAllUsers = async (req: Request | any, res: Response) => {
   try {
     let users: User[];
-    const type = req.query;
-    if (type === {}) {
+    const { type } = req.query;
+    if (type) {
       users = await getByType(type);
     } else {
       users = await getAll();

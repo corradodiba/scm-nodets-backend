@@ -56,20 +56,33 @@ export const addSubjectIntoCourse = async (
   name: string,
   hours: number
 ) => {
-  const subject = CreateSubject({ name, hours });
-  const subjectInstance = await addSubject(subject);
-  const addedSubject = await CoursesModel.findOneAndUpdate(
+  try {
+    let subjectInstance: any = CreateSubject({ name, hours });
+    let subject: Subject | null;
+    if (await SubjectModel.exists({ name })) {
+      subject = await SubjectModel.findOne({ name });
+    } else {
+      subject = await addSubject(subjectInstance);
+    }
+    await addedSubject(_id, subject?._id);
+    return subject;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const addedSubject = async (_id: string, subjectId: string) => {
+  await CoursesModel.findOneAndUpdate(
     { _id },
     {
       $addToSet: {
         subjects: {
-          $each: [subjectInstance._id]
+          $each: [subjectId]
         }
       }
     },
     { new: true }
   ).populate("subjects students teachers");
-  return addedSubject;
 };
 
 export const edit = async (

@@ -20,7 +20,7 @@ export class UsersService {
 
   getUsersByType(type: IUserType) {
     return this.httpClient
-      .get<User[]>(`${this.usersTypeQuery}=${type}`)
+      .get<User[]>(`${this.usersTypeQuery}${type}`)
       .toPromise();
   }
 

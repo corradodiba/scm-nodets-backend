@@ -10,9 +10,6 @@ import { GuestHomepageModule } from "src/app/templates/guest/guest-homepage/gues
 import { StudentDashboardsModule } from "src/app/templates/student/dashboards/student-dashboards.module";
 import { TeacherDashboardsModule } from "src/app/templates/teacher/teacher-dashboards/teacher-dashboards.module";
 
-import { StudentDashboardsComponent } from "src/app/templates/student/dashboards/student-dashboards.component";
-import { TeacherDashboardsComponent } from "src/app/templates/teacher/teacher-dashboards/teacher-dashboards.component";
-
 @NgModule({
   declarations: [HomepageComponent],
   imports: [

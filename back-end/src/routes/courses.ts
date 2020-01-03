@@ -5,7 +5,8 @@ import {
   getCourseById,
   addCourse,
   editCourseById,
-  deleteCourseById
+  deleteCourseById,
+  addSubjectIntoCourse
 } from "./controllers/courses.controller";
 
 import { isAuth, isAdmin } from "../middlewares/auth.middleware";
@@ -17,6 +18,8 @@ router.get("/", isAuth, isAdmin, getAllCourses);
 router.get("/:id", isAuth, getCourseById);
 
 router.post("/", isAuth, isAdmin, addCourse);
+
+router.post("/:id/subjects", isAuth, addSubjectIntoCourse);
 
 router.delete("/:id", isAuth, isAdmin, deleteCourseById);
 

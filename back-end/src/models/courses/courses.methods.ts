@@ -4,11 +4,17 @@ import { typeUser } from "../../interfaces/typeUser.type";
 import { IToken } from "../../interfaces/token.interface";
 import { CreateCourse } from "./courses.costructor";
 import { mapCoursesData } from "../../helpers/mapCourseData.helper";
+import {
+  Subject,
+  SubjectModel,
+  add as addSubject,
+  CreateSubject
+} from "../subject/subject.model";
 
-export const getAll = async (type: typeUser, userId: string) => {
+export const getAll = async () => {
   try {
     const courses: Courses[] = await CoursesModel.find().populate(
-      "students subjects"
+      "teachers students subjects"
     );
     return mapCoursesData(courses);
   } catch (err) {
@@ -75,6 +81,28 @@ export const add = async (
   } catch (err) {
     throw err;
   }
+};
+
+export const addSubjectIntoCourse = async (
+  _id: string,
+  name: string,
+  hours: number
+) => {
+  const subject = CreateSubject({ name, hours });
+  const subjectInstance = await addSubject(subject);
+  const addedSubject = await CoursesModel.findOneAndUpdate(
+    { _id },
+    {
+      $addToSet: {
+        subjects: {
+          $each: [subjectInstance._id]
+        }
+      }
+    },
+    { new: true }
+  ).populate("subjects students teachers");
+  console.log(addedSubject);
+  return addedSubject;
 };
 
 export const edit = async (

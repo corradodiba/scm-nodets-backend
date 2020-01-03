@@ -27,6 +27,13 @@ const CoursesSchema: Schema = new Schema({
       ref: "User",
       default: []
     }
+  ],
+  subjects: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Subject",
+      default: []
+    }
   ]
 });
 
@@ -36,10 +43,18 @@ export interface Courses extends Document {
   year: Date;
   students?: User["_id"];
   teachers?: User["_id"];
+  subjects?: User["_id"];
 }
 
 export const CoursesModel = mongoose.model<Courses>("Courses", CoursesSchema);
 
-export { getAll, getById, add, deleteById, edit } from "./courses.methods";
+export {
+  getAll,
+  getById,
+  add,
+  addSubjectIntoCourse,
+  deleteById,
+  edit
+} from "./courses.methods";
 
 export { CreateCourse } from "./courses.costructor";

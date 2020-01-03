@@ -23,7 +23,7 @@ export const getAllUsers = async (req: Request | any, res: Response) => {
   try {
     let users: User[];
     const type = req.query;
-    if (type) {
+    if (type === {}) {
       users = await getByType(type);
     } else {
       users = await getAll();

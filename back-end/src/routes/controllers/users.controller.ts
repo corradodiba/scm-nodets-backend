@@ -2,6 +2,7 @@ import { Response, Request } from "express";
 
 import {
   getAll,
+  getByType,
   getById,
   getSubjects,
   add,
@@ -20,8 +21,13 @@ const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
 
 export const getAllUsers = async (req: Request | any, res: Response) => {
   try {
-    const { type } = req.userData;
-    const users = await getAll(type);
+    let users: User[];
+    const type = req.query;
+    if (type) {
+      users = await getByType(type);
+    } else {
+      users = await getAll();
+    }
     return res.status(200).json(mapUsersData(users));
   } catch (err) {
     return res.status(404).json({ message: err });

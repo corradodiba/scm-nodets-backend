@@ -65,6 +65,7 @@ export const UserModel = mongoose.model<User>("User", userSchema);
 
 export {
   getAll,
+  getByType,
   getById,
   getSubjects,
   add,

@@ -132,7 +132,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   getSubjectsSimpleListAssets(index: number) {
     const course = this.courses[index];
     return {
-      title: "Courses",
+      title: "Subjects",
       subtitle: `${course.subjects.length} subjects into course ${course.name}`,
       items: course.subjects.map(subject => {
         return { avatar: `${subject.name.charAt(0)}`, text: subject.name };

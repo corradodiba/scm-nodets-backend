@@ -1,101 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from "rxjs";
 
-import { ICard } from 'src/app/interfaces/card.model';
-import Course from 'src/app/interfaces/course.model';
-import User from 'src/app/interfaces/user.model';
-import Subject from 'src/app/interfaces/subject.model';
+import Course from "src/app/interfaces/course.model";
+import { ISimpleList } from "src/app/interfaces/new/simple-list.model";
 
-import { CoursesService } from 'src/app/pages/courses/courses.service';
-import { UsersService } from 'src/app/pages/users/users.service';
-import { AuthService } from 'src/app/pages/auth/auth.service';
-import { SubjectsService } from 'src/app/pages/subjects/subjects.service';
-
+import { CoursesService } from "src/app/pages/courses/courses.service";
+import { AuthService } from "src/app/pages/auth/auth.service";
 @Component({
-  selector: 'app-teacher-dashboards',
-  templateUrl: './teacher-dashboards.component.html',
-  styleUrls: ['./teacher-dashboards.component.scss']
+  selector: "app-teacher-dashboards",
+  templateUrl: "./teacher-dashboards.component.html",
+  styleUrls: ["./teacher-dashboards.component.scss"]
 })
-export class TeacherDashboardsComponent implements OnInit {
+export class TeacherDashboardsComponent implements OnInit, OnDestroy {
   private authListenerSubs = new Subscription();
   isAuthenticated = false;
 
-  courseCard: ICard;
-  usersCard: ICard;
-  subjectsCard: ICard;
+  subjectsSimpleList: ISimpleList;
 
-  courses: Course[];
-  users: User[];
-  subjects: Subject[];
+  course: Course;
 
-  loggedUser: User;
-
-  constructor(private coursesService: CoursesService, private usersService: UsersService, private authService: AuthService, private subjectsService: SubjectsService) { }
+  constructor(
+    private authService: AuthService,
+    private coursesService: CoursesService
+  ) {}
 
   async ngOnInit() {
     this.isAuthenticated = this.authService.isAuth();
-    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuthenticated => {
-      this.isAuthenticated = isAuthenticated;
-    });
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe(isAuthenticated => {
+        this.isAuthenticated = isAuthenticated;
+      });
     if (this.isAuthenticated) {
-      const [courses, users, subjects] = await Promise.all([
-        this.coursesService.getCourses(),
-        this.usersService.getUsers(),
-        this.subjectsService.getSubjects()
-      ]);
-      this.courses = courses;
-      this.users = users;
-      this.subjects = subjects;
-      this.courseCard = this.getCoursesAssets(this.courses.length);
-      this.usersCard = this.getUsersAssets(this.users.length);
-      this.subjectsCard = this.getSubjectsAssets(this.subjects.length);
+      this.course = await this.coursesService.getCourseById(
+        "5e0e6fa9fa991b5764169042"
+      );
+      this.subjectsSimpleList = this.getSubjectsSimpleListAssets();
     }
   }
 
-  getCoursesAssets(counter: number): ICard {
-    return {
-      title: "Courses",
-      counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add Course"
-        },
-        {
-          href: "#",
-          text: "Add User Into This Course"
-        }
-      ],
-      background: "bg-gradient-danger"
-    };
-  }
-
-  getUsersAssets(counter: number): ICard {
-    return {
-      title: "Users",
-      counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add User"
-        }
-      ],
-      background: "bg-gradient-info"
-    };
-  }
-
-  getSubjectsAssets(counter: number): ICard {
+  getSubjectsSimpleListAssets() {
     return {
       title: "Subjects",
-      counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add Subject"
-        }
-      ],
-      background: "bg-gradient-success"
+      subtitle: `${this.course.subjects.length} subjects into course ${this.course.name}`,
+      items: this.course.subjects.map(subject => {
+        return { avatar: `${subject.name.charAt(0)}`, text: subject.name };
+      })
     };
   }
 
+  ngOnDestroy() {
+    this.authListenerSubs.unsubscribe();
+  }
 }

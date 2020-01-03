@@ -4,9 +4,9 @@
     <div class="row align-items-center">
       <div class="col-8">
         <!-- Title -->
-        <h5 class="h3 mb-0">{{ assets.title }}</h5>
+        <h5 class="h3 mb-0">{{ assets?.title }}</h5>
         <!-- Surtitle -->
-        <h6 class="surtitle">{{ assets.subtitle }}</h6>
+        <h6 class="surtitle">{{ assets?.subtitle }}</h6>
       </div>
       <div class="col-4 text-right">
         <a href="#!" class="btn btn-sm btn-neutral">Action</a>
@@ -17,16 +17,16 @@
   <div class="card-body">
     <!-- List group -->
     <ul class="list-group list-group-flush list my--3">
-      <li *ngFor="let item of assets.items" class="list-group-item px-0">
+      <li *ngFor="let item of assets?.items" class="list-group-item px-0">
         <div class="row align-items-center">
           <div class="col-auto">
             <!-- Avatar -->
             <a href="#" class="avatar rounded-circle">
-              {{ item.avatar }}
+              {{ item?.avatar }}
             </a>
           </div>
           <div class="col">
-            <h5>{{ item.text }}</h5>
+            <h5>{{ item?.text }}</h5>
             <div class="progress progress-xs mb-0">
               <div
                 class="progress-bar bg-orange"

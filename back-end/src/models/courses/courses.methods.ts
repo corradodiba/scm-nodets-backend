@@ -101,7 +101,6 @@ export const addSubjectIntoCourse = async (
     },
     { new: true }
   ).populate("subjects students teachers");
-  console.log(addedSubject);
   return addedSubject;
 };
 

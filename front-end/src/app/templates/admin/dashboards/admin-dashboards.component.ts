@@ -10,6 +10,7 @@ import { CoursesService } from "src/app/pages/courses/courses.service";
 import { UsersService } from "src/app/pages/users/users.service";
 import { AuthService } from "src/app/pages/auth/auth.service";
 import { SubjectsService } from "src/app/pages/subjects/subjects.service";
+import { ISimpleList } from "src/app/interfaces/new/simple-list.model";
 
 @Component({
   selector: "app-admin-dashboards",
@@ -24,6 +25,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   studentsCard: ICard;
   teachersCard: ICard;
   subjectsCard: ICard;
+
+  subjectsSimpleList: ISimpleList;
 
   courses: Course[];
   students: User[];
@@ -62,6 +65,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
       this.studentsCard = this.getStudentAssets(this.students.length);
       this.teachersCard = this.getTeacherAssets(this.courses.length);
       this.subjectsCard = this.getSubjectsAssets(this.subjects.length);
+      this.subjectsSimpleList = this.getSubjectsSimpleListAssets(0);
     }
   }
 
@@ -122,6 +126,17 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
         }
       ],
       background: "bg-gradient-success"
+    };
+  }
+
+  getSubjectsSimpleListAssets(index: number) {
+    const course = this.courses[index];
+    return {
+      title: "Courses",
+      subtitle: `${course.subjects.length} subjects into course ${course.name}`,
+      items: course.subjects.map(subject => {
+        return { avatar: `${subject.name.charAt(0)}`, text: subject.name };
+      })
     };
   }
 

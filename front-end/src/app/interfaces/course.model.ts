@@ -1,4 +1,5 @@
 import User from "./user.model";
+import Subject from "../interfaces/subject.model";
 
 export default interface Course {
   _id: string;
@@ -7,4 +8,5 @@ export default interface Course {
   status: string;
   students: User[];
   teachers: User[];
+  subjects: Subject[];
 }

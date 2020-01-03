@@ -25,9 +25,9 @@ export const getCourseById = async (req: Request | any, res: Response) => {
 
 export const addCourse = async (req: Request | any, res: Response) => {
   try {
-    const { year } = req.body;
+    const { name, status, year } = req.body;
     const token: IToken = req.userData;
-    const result: Courses = await add(year, token);
+    const result: Courses = await add(name, status, year, token);
 
     return res.status(201).json(result);
   } catch (err) {
@@ -37,9 +37,9 @@ export const addCourse = async (req: Request | any, res: Response) => {
 
 export const editCourseById = async (req: Request | any, res: Response) => {
   try {
-    const { year } = req.body;
+    const { name, status, year } = req.body;
     const token: IToken = req.userData;
-    const course = { year };
+    const course = { name, status, year };
     const result: Courses = await edit(req.params.id, course as Courses, token);
     return res.status(200).json({
       message: "Course successfully edited!",

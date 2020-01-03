@@ -2,6 +2,14 @@ import mongoose, { Document, Schema } from "mongoose";
 import { User } from "../user/user.model";
 
 const CoursesSchema: Schema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  status: {
+    type: String,
+    required: true
+  },
   year: {
     type: Date,
     required: true
@@ -23,6 +31,8 @@ const CoursesSchema: Schema = new Schema({
 });
 
 export interface Courses extends Document {
+  name: String;
+  status: String;
   year: Date;
   students?: User["_id"];
   teachers?: User["_id"];

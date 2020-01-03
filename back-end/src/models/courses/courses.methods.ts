@@ -88,13 +88,13 @@ export const getById = async (type: typeUser, userId: string, id: String) => {
   }
 };
 
-export const add = async (year: Date, token: IToken): Promise<Courses> => {
+export const add = async (name: String, status: String, year: Date, token: IToken): Promise<Courses> => {
   try {
     const { type } = token;
     if (type !== "Admin") {
       throw "Operation not permitted!";
     }
-    const course = CreateCourse({ year });
+    const course = CreateCourse({ name, status, year });
     return await course.save();
   } catch (err) {
     throw err;

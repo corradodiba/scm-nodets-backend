@@ -28,6 +28,10 @@ export class UsersService {
     return this.httpClient.get<User>(`${this.apiURL}/${id}`).toPromise();
   }
 
+  editUserById(id: string, body: {}) {
+    return this.httpClient.put<User>(`${this.apiURL}/${id}`, body).toPromise();
+  }
+
   deleteUserById(id: string) {
     return this.httpClient.delete<User>(`${this.apiURL}/${id}`).toPromise();
   }

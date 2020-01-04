@@ -36,7 +36,7 @@ router.delete("/:id", isAuth, isAdmin, deleteUserById);
 
 // router.post("/:id/grades", addGradeOfUser);
 
-// router.put("/:id", editUserById);
+router.put("/:id", editUserById);
 
 // router.put("/:id/grades/:idGrade", editGradeById);
 

@@ -21,7 +21,6 @@ export const getByType = async (type: typeUser) => {
     if (!users) {
       throw `No user with this type(${type}) found!`;
     }
-    console.log(users);
     return users;
   } catch (err) {
     throw err;
@@ -123,9 +122,13 @@ export const deleteSubjects = async (idUser: string, idSubject: string) => {
 
 export const edit = async (id: string, user: User): Promise<User> => {
   try {
-    const updatedUser = await UserModel.findByIdAndUpdate(id, user).populate(
-      "subjects"
-    );
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      id,
+      {
+        ...user
+      },
+      { new: true }
+    ).populate("subjects");
     if (!updatedUser || updatedUser instanceof Error) {
       throw "No user or subjects found for editing!";
     }

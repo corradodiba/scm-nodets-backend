@@ -13,8 +13,16 @@
         <p class="text-white mt-0 mb-5">
           This is your profile page. You can edited your informations
         </p>
-        <button href="#!" class="btn btn-neutral" (click)="onEditMode()">
-          Edit profile
+        <button
+          [ngClass]="{
+            'btn-success': editMode,
+            'btn-secondary': !editMode
+          }"
+          href="#!"
+          class="btn"
+          (click)="onEditMode()"
+        >
+          Edit Mode
         </button>
       </div>
     </div>

@@ -16,7 +16,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col col-md-8">
+    <div class="col col-md-6">
       <div class="card">
         <!-- Card header -->
         <div class="card-header border-0">
@@ -130,16 +130,143 @@
         </div>
       </div>
     </div>
-    <div class="col col-md-4">
-      <div class="row flex-column">
-        <div class="col">
-          <app-simple-list [assets]="subjectsSimpleList"></app-simple-list>
+    <div class="col">
+      <div class="col">
+        <app-simple-list [assets]="subjectsSimpleList"></app-simple-list>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <!-- Title -->
+          <h5 class="h3 mb-0">Students</h5>
+          <h6 class="surtitle">
+            {{ selectedCourse?.students.length }} students in course
+            {{ selectedCourse?.name }}
+          </h6>
         </div>
-        <div class="col">
-          <app-simple-list></app-simple-list>
+        <!-- Card search -->
+        <div class="card-header py-0">
+          <!-- Search form -->
+          <form>
+            <div class="form-group mb-0">
+              <div class="input-group input-group-lg input-group-flush">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fas fa-search"></span>
+                  </div>
+                </div>
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+          <!-- List group -->
+          <ul class="list-group list-group-flush list my--3">
+            <li
+              *ngFor="let student of selectedCourse.students"
+              class="list-group-item px-0"
+            >
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <!-- Avatar -->
+                  <a href="#" class="avatar rounded-circle bg-gradient-info">
+                    {{ student?.name.charAt(0) }}
+                    {{ student?.surname.charAt(0) }}
+                  </a>
+                </div>
+                <div class="col ml--2">
+                  <h4 class="mb-0">
+                    <a href="#!">{{ student?.name }} {{ student?.surname }}</a>
+                  </h4>
+                  <span class="text-success">●</span>
+                  <small>Online</small>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-sm btn-primary">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <!-- Title -->
+          <h5 class="h3 mb-0">Teachers</h5>
+          <h6 class="surtitle">
+            {{ selectedCourse?.teachers.length }} teachers in course
+            {{ selectedCourse?.name }}
+          </h6>
+        </div>
+        <!-- Card search -->
+        <div class="card-header py-0">
+          <!-- Search form -->
+          <form>
+            <div class="form-group mb-0">
+              <div class="input-group input-group-lg input-group-flush">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fas fa-search"></span>
+                  </div>
+                </div>
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+          <!-- List group -->
+          <ul class="list-group list-group-flush list my--3">
+            <li
+              *ngFor="let student of selectedCourse.teachers"
+              class="list-group-item px-0"
+            >
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <!-- Avatar -->
+                  <a href="#" class="avatar rounded-circle bg-gradient-primary">
+                    {{ student?.name.charAt(0) }}
+                    {{ student?.surname.charAt(0) }}
+                  </a>
+                </div>
+                <div class="col ml--2">
+                  <h4 class="mb-0">
+                    <a href="#!">{{ student?.name }} {{ student?.surname }}</a>
+                  </h4>
+                  <span class="text-success">●</span>
+                  <small>Online</small>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-sm btn-primary">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

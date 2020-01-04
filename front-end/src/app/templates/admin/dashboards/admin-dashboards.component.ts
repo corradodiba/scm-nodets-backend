@@ -33,6 +33,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   teachers: User[];
   subjects: Subject[];
 
+  selectedCourse: Course;
+
   loggedUser: User;
 
   constructor(
@@ -60,6 +62,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
       this.students = students;
       this.teachers = teachers;
       this.subjects = subjects;
+      this.selectedCourse = this.courses[0];
       this.coursesCard = this.getCoursesAssets(this.courses.length);
       this.studentsCard = this.getStudentAssets(this.students.length);
       this.teachersCard = this.getTeacherAssets(this.teachers.length);
@@ -70,6 +73,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
 
   onCourseSelected(index: number) {
     this.subjectsSimpleList = this.getSubjectsSimpleListAssets(index);
+    this.selectedCourse = this.courses[index];
   }
 
   getCSSForCourseStatus(status: string) {
@@ -148,7 +152,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
       items: course.subjects.map(subject => {
         return { avatar: `${subject.name.charAt(0)}`, text: subject.name };
       }),
-      cover: "bg-gradient-success"
+      cover: "bg-success"
     };
   }
 

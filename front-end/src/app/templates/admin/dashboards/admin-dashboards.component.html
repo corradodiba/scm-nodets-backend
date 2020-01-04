@@ -62,7 +62,7 @@
                 <td>
                   <div class="avatar-group">
                     <a
-                      *ngFor="let student of course.students"
+                      *ngFor="let student of course?.students"
                       href="#"
                       class="avatar avatar-sm rounded-circle"
                       data-toggle="tooltip"
@@ -173,7 +173,7 @@
           <!-- List group -->
           <ul class="list-group list-group-flush list my--3">
             <li
-              *ngFor="let student of selectedCourse.students"
+              *ngFor="let student of selectedCourse?.students"
               class="list-group-item px-0"
             >
               <div class="row align-items-center">
@@ -238,7 +238,7 @@
           <!-- List group -->
           <ul class="list-group list-group-flush list my--3">
             <li
-              *ngFor="let student of selectedCourse.teachers"
+              *ngFor="let student of selectedCourse?.teachers"
               class="list-group-item px-0"
             >
               <div class="row align-items-center">
@@ -268,5 +268,4 @@
       </div>
     </div>
   </div>
-  <app-footer></app-footer>
 </div>

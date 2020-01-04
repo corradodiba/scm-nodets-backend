@@ -2,16 +2,13 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 
 import { AuthService } from "../auth/auth.service";
-import { CoursesService } from "../courses/courses.service";
-
-import Course from "src/app/interfaces/course.model";
 
 @Component({
-  selector: "app-homepage",
-  templateUrl: "./homepage.component.html",
-  styleUrls: ["./homepage.component.scss"]
+  selector: "app-my-profile",
+  templateUrl: "./my-profile.component.html",
+  styleUrls: ["./my-profile.component.scss"]
 })
-export class HomepageComponent implements OnInit, OnDestroy {
+export class MyProfileComponent implements OnInit, OnDestroy {
   private authListenerSubs = new Subscription();
   isAuthenticated = false;
   type = "Guest";
@@ -25,7 +22,8 @@ export class HomepageComponent implements OnInit, OnDestroy {
         this.isAuthenticated = isAuthenticated;
       });
     if (this.isAuthenticated) {
-      this.type = this.authService.getAuthStatus().type;
+      const { type } = this.authService.getAuthStatus();
+      this.type = type;
     }
   }
   ngOnDestroy() {

@@ -1,0 +1,4 @@
+<app-sidenav *ngIf="isAuthenticated"></app-sidenav>
+<app-admin-my-profile
+  *ngIf="isAuthenticated && type === 'Admin'"
+></app-admin-my-profile>

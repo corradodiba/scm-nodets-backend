@@ -18,10 +18,117 @@
   </div>
   <div class="row">
     <div class="col-md-6">
-      <app-simple-list [assets]="subjectsSimpleList"></app-simple-list>
+      <div class="card">
+        <!-- Card Name -->
+        <div class="card-header border-0">
+          <h3 class="mb-0">Courses</h3>
+        </div>
+        <!-- Table courses -->
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Year</th>
+                <th scope="col">Status</th>
+                <th scope="col">Users</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <tr *ngFor="let course of courses">
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <a href="#" class="avatar rounded-circle mr-3" (click)="onClick($event)">
+                      {{ course?.name }}
+                    </a>
+                  </div>
+                </th>
+                <td class="budget">
+                  {{ course?.year }}
+                </td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    <i class="bg-warning"></i>
+                    <span class="status">{{course?.status}}</span>
+                  </span>
+                </td>
+                <td>
+                  <div class="avatar-group">
+                    <a href="#" class="avatar avatar-sm rounded-circle">
+                      <img
+                        alt="Image placeholder"
+                        src="/assets/img/theme/image-profile.jpeg"
+                      />
+                    </a>
+                    <a href="#" class="avatar avatar-sm rounded-circle">
+                      <img
+                        alt="Image placeholder"
+                        src="/assets/img/theme/image-profile.jpeg"
+                      />
+                    </a>
+                    <a href="#" class="avatar avatar-sm rounded-circle">
+                      <img
+                        alt="Image placeholder"
+                        src="/assets/img/theme/image-profile.jpeg"
+                      />
+                    </a>
+                    <a href="#" class="avatar avatar-sm rounded-circle">
+                      <img
+                        alt="Image placeholder"
+                        src="/assets/img/theme/image-profile.jpeg"
+                      />
+                    </a>
+                  </div>
+                </td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <!-- Card Name -->
+          <div class="card-header border-0">
+            <h3 class="mb-0">Students</h3>
+          </div>
+          <!-- Table courses -->
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col">Surname</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <tr *ngFor="let user of users">
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <a href="#" class="avatar rounded-circle mr-3">
+                        {{ user?.surname }}
+                      </a>
+                    </div>
+                  </th>
+                  <td class="budget">
+                    {{ user?.name }}
+                  </td>
+                  <td>
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-warning"></i>
+                      <span class="status">{{user?.email}}</span>
+                    </span>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      <!-- <app-simple-list [assets]="subjectsSimpleList"></app-simple-list> -->
     </div>
     <div class="col-md-6">
-      <app-simple-list [assets]="subjectsSimpleList"></app-simple-list>
+      <!-- <app-simple-list [assets]="subjectsSimpleList"></app-simple-list> -->
     </div>
   </div>
 </div>

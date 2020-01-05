@@ -1,26 +1,10 @@
 # Stevejobs Class Managing
+It's a platform created by Steve Jobs Academy's students for The Steve Jobs Academy™️
+### What can you do? 
+You can either login as a Student or as a Teacher.
+You can see your profile with all your data and change it whenever you want.
+### Student 
+You can access your Grades on each Subject of your Course.
+### Teacher
+You can access your Subject(s) and give Grades to each Student of your Course for your Subject(s)
 
-<!-- ## Attori
- Sheila crea la lista di Insegnanti, Materie, Corsi e Studenti
- I corsi hanno n materie, le materie hanno 1 insegnante ma 1 insegnante può insegnare n materie.
- Gli studenti possono appartenere ad 1 solo corso.
- Gli insegnanti assegnano n voti a n studenti in n materie.
-
-## Schermata 1
-### Login
-Studente - Insegnante - Sheila
-
-## Schermata 2
-### Portale
-#### Studenti
-Solo lettura
-#### Insegnante
-Vede le proprie materie e assegna voti
-#### Sheila
-Tutte le operazioni
-## Schermata 3
-### Profilo
-Visualizzazione dei propri dati
-## Schermata 4
-### Impostazioni
-Vari ed eventuali -->

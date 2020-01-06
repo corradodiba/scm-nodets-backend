@@ -9,6 +9,7 @@ import { HeaderNavModule } from "src/app/components/header-nav/header-nav.module
 import { CardModule } from "src/app/components/card/card.module";
 import { SimpleListModule } from "src/app/components/simple-list/simple-list.module";
 import { FooterModule } from "src/app/shared/footer/footer.module";
+import { AdminModalsModule } from "../modals/admin-modals.module";
 
 @NgModule({
   declarations: [AdminDashboardsComponent],
@@ -19,7 +20,8 @@ import { FooterModule } from "src/app/shared/footer/footer.module";
     HeaderNavModule,
     CardModule,
     SimpleListModule,
-    FooterModule
+    FooterModule,
+    AdminModalsModule
   ],
   exports: [AdminDashboardsComponent]
 })

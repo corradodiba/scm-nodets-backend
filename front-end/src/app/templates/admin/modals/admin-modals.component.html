@@ -1,0 +1,115 @@
+<div
+  class="modal fade"
+  id="modal-form"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modal-form"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal- modal-dialog-centered modal-sm"
+    role="document"
+  >
+    <div class="modal-content">
+      <div class="modal-body p-0">
+        <div class="card bg-secondary border-0 mb-0">
+          <div class="card-header">
+            <div class="row align-items-center">
+              <div class="col">
+                <h3 class="card-title text-uppercase text-muted mb-0">
+                  Course
+                </h3>
+              </div>
+              <div class="col-auto">
+                <div
+                  class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"
+                >
+                  <i class="fas fa-plus"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body px-lg-5 py-lg-5">
+            <form
+              role="form"
+              (submit)="onCreateCourse(createCourseForm)"
+              #createCourseForm="ngForm"
+            >
+              <div class="form-group mb-3">
+                <div
+                  class="input-group input-group-merge input-group-alternative"
+                >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-email-83"></i
+                    ></span>
+                  </div>
+                  <input
+                    name="courseName"
+                    class="form-control"
+                    placeholder="name"
+                    type="text"
+                    #nameField="ngModel"
+                    ngModel
+                    required
+                    courseName
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <div
+                  class="input-group input-group-merge input-group-alternative"
+                >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-email-83"></i
+                    ></span>
+                  </div>
+
+                  <input
+                    name="year"
+                    class="form-control datepicker"
+                    type="date"
+                    #yearField="ngModel"
+                    ngModel
+                    required
+                    year
+                  />
+                </div>
+              </div>
+              <div class="form-group mb-3">
+                <div
+                  class="input-group input-group-merge input-group-alternative"
+                >
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"
+                      ><i class="ni ni-email-83"></i
+                    ></span>
+                  </div>
+                  <select
+                    name="status"
+                    class="form-control"
+                    #statusField="ngModel"
+                    ngModel
+                    required
+                    status
+                  >
+                    <option value="" disabled selected>Select a status</option>
+                    <option>starting</option
+                    ><option>in progress</option
+                    ><option>complete</option>
+                  </select>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-outline-danger my-4">
+                  Create
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

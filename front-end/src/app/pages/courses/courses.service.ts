@@ -25,4 +25,8 @@ export class CoursesService {
       .delete<Course>(`${this.apiURL}/${courseId}`)
       .toPromise();
   }
+
+  addCourse(course: Course) {
+    return this.httpClient.post<Course>(`${this.apiURL}`, course).toPromise();
+  }
 }

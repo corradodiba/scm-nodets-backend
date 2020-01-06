@@ -4,7 +4,7 @@ import Subject from "../interfaces/subject.model";
 export default interface Course {
   _id?: string;
   name: string;
-  year: string;
+  year: Date;
   status: string;
   students?: User[];
   teachers?: User[];

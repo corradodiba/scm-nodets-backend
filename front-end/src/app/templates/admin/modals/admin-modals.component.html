@@ -15,17 +15,27 @@
         <div class="card bg-secondary border-0 mb-0">
           <div class="card-header">
             <div class="row align-items-center">
-              <div class="col">
-                <h3 class="card-title text-uppercase text-muted mb-0">
+              <div class="col-3">
+                <div
+                  class="icon icon-shape bg-danger text-white rounded-circle shadow"
+                >
+                  <i class="ni ni-hat-3 "></i>
+                </div>
+              </div>
+              <div class="col text-center">
+                <h3 class="card-title text-uppercase  text-danger mb-0">
                   Course
                 </h3>
               </div>
-              <div class="col-auto">
-                <div
-                  class="icon icon-shape bg-gradient-red text-white rounded-circle shadow"
+              <div class="col-3">
+                <button
+                  type="button"
+                  class="close"
+                  data-toggle="modal"
+                  data-target="#modal-form"
                 >
-                  <i class="fas fa-plus"></i>
-                </div>
+                  <span aria-hidden="true">×</span>
+                </button>
               </div>
             </div>
           </div>
@@ -74,9 +84,8 @@
                     *ngIf="isEditMode"
                     name="year"
                     class="form-control datepicker"
-                    [type]="course ? 'number' : 'date'"
+                    type="date"
                     #yearField="ngModel"
-                    [value]="course?.year"
                     ngModel
                     required
                     year
@@ -120,14 +129,17 @@
                   *ngIf="isEditMode && !course"
                   type="submit"
                   class="btn btn-outline-danger my-4"
+                  data-toggle="modal"
+                  data-target="#modal-form"
                 >
                   Create
                 </button>
                 <button
-                  type="button"
+                  type="submit"
                   *ngIf="isEditMode && course"
-                  (click)="onCreateCourse(createCourseForm)"
                   class="btn btn-outline-danger my-4"
+                  data-toggle="modal"
+                  data-target="#modal-form"
                 >
                   Update
                 </button>

@@ -96,7 +96,6 @@
                     >
                       <button
                         class="dropdown-item"
-                        href="#"
                         data-toggle="modal"
                         data-target="#modal-form"
                         (click)="onViewCourse(course)"
@@ -105,12 +104,17 @@
                       </button>
                       <button
                         class="dropdown-item"
-                        href="#"
                         data-toggle="modal"
                         data-target="#modal-form"
                         (click)="onEditCourse(course)"
                       >
                         Edit course
+                      </button>
+                      <button
+                        class="dropdown-item"
+                        (click)="onDeleteCourse(course._id, i)"
+                      >
+                        Delete course
                       </button>
                     </div>
                   </div>

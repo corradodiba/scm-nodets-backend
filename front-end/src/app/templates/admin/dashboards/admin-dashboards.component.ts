@@ -11,6 +11,7 @@ import { UsersService } from "src/app/pages/users/users.service";
 import { AuthService } from "src/app/pages/auth/auth.service";
 import { SubjectsService } from "src/app/pages/subjects/subjects.service";
 import { ISimpleList } from "src/app/interfaces/new/simple-list.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-admin-dashboards",
@@ -43,7 +44,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
     private coursesService: CoursesService,
     private usersService: UsersService,
     private authService: AuthService,
-    private subjectsService: SubjectsService
+    private subjectsService: SubjectsService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -81,10 +83,15 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   onEditCourse(course: Course) {
     this.courseToModal = course;
     this.isCourseModalEditMode = true;
+    this.router.navigate([""]);
   }
   onViewCourse(course: Course) {
     this.courseToModal = course;
     this.isCourseModalEditMode = false;
+  }
+  async onDeleteCourse(id: string, index: number) {
+    await this.coursesService.deleteCourseById(id);
+    this.courses.splice(index, 1);
   }
 
   getCSSForCourseStatus(status: string) {

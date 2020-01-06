@@ -18,21 +18,30 @@ export class AdminModalsComponent implements OnInit {
   ngOnInit() {}
 
   async onCreateCourse(form: NgForm) {
-    const { courseName, year, status } = form.value;
+    if (this.course && this.isEditMode) {
+      for (const key in form.value) {
+        if (form.value[key] !== "") {
+          if (key === "courseName") {
+            // tslint:disable-next-line: no-string-literal
+            this.course["name"] = form.value[key];
+          }
+          this.course[key] = form.value[key];
+        }
+      }
+      console.log(this.course);
+      this.course = await this.coursesService.editCourse(this.course._id, {
+        name: this.course.name,
+        year: this.course.year,
+        status: this.course.status
+      });
+    }
     if (!this.course && this.isEditMode) {
+      const { courseName, year, status } = form.value;
       this.course = await this.coursesService.addCourse({
         name: courseName,
         year,
         status
       });
-    }
-    if (this.course && this.isEditMode) {
-      this.course = await this.coursesService.editCourse(this.course._id, {
-        name: courseName,
-        year: new Date(year).toISOString(),
-        status
-      });
-      console.log(this.course);
     }
   }
 }

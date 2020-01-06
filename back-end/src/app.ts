@@ -37,7 +37,7 @@ app.use("/users", usersRoutes);
 app.use("/subjects", subjectsRoutes);
 app.use("/auth", authRoutes);
 
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, async () => {
   console.log(`🚀 Server ready at http://localhost:${PORT} 🚀`);

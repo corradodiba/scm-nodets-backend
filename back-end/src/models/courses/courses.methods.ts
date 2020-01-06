@@ -95,10 +95,9 @@ export const edit = async (
     if (type !== "Admin") {
       throw "Operation not permitted!";
     }
-    const editedCourse = await CoursesModel.findByIdAndUpdate(
-      id,
-      course
-    ).populate("user");
+    const editedCourse = await CoursesModel.findByIdAndUpdate(id, course, {
+      new: true
+    }).populate("user");
     if (!editedCourse) {
       throw "No course found for editing!";
     }

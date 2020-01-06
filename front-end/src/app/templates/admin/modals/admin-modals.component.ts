@@ -28,7 +28,6 @@ export class AdminModalsComponent implements OnInit {
           this.course[key] = form.value[key];
         }
       }
-      console.log(this.course);
       this.course = await this.coursesService.editCourse(this.course._id, {
         name: this.course.name,
         year: this.course.year,

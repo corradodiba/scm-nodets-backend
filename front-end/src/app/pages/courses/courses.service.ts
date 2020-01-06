@@ -29,4 +29,10 @@ export class CoursesService {
   addCourse(course: Course) {
     return this.httpClient.post<Course>(`${this.apiURL}`, course).toPromise();
   }
+
+  editCourse(id: string, course: Course) {
+    return this.httpClient
+      .put<Course>(`${this.apiURL}/${id}`, { ...course })
+      .toPromise();
+  }
 }

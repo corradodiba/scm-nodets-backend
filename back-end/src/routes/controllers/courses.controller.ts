@@ -67,11 +67,7 @@ export const editCourseById = async (req: Request | any, res: Response) => {
     const token: IToken = req.userData;
     const course = { name, status, year };
     const result: Courses = await edit(req.params.id, course as Courses, token);
-    return res.status(200).json({
-      message: "Course successfully edited!",
-      before: result,
-      after: { year }
-    });
+    return res.status(200).json(result);
   } catch (err) {
     return res.status(404).json({ message: err });
   }

@@ -44,7 +44,11 @@
                   <div class="media align-items-center">
                     <button
                       (click)="onCourseSelected(i)"
-                      class="avatar bg-gradient-danger rounded-circle mr-3"
+                      [ngClass]="{
+                        'bg-gradient-danger': selectedCourse !== courses[i],
+                        'bg-selected': selectedCourse === courses[i]
+                      }"
+                      class="avatar rounded-circle mr-3"
                     >
                       {{ course?.name }}
                     </button>
@@ -95,8 +99,18 @@
                         href="#"
                         data-toggle="modal"
                         data-target="#modal-form"
+                        (click)="onViewCourse(course)"
                       >
-                        Add course
+                        View course
+                      </button>
+                      <button
+                        class="dropdown-item"
+                        href="#"
+                        data-toggle="modal"
+                        data-target="#modal-form"
+                        (click)="onEditCourse(course)"
+                      >
+                        Edit course
                       </button>
                     </div>
                   </div>
@@ -275,4 +289,7 @@
   </div>
 </div>
 
-<app-admin-modals></app-admin-modals>
+<app-admin-modals
+  [isEditMode]="isCourseModalEditMode"
+  [course]="courseToModal"
+></app-admin-modals>

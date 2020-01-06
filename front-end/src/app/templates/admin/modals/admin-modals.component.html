@@ -45,15 +45,19 @@
                     ></span>
                   </div>
                   <input
+                    *ngIf="isEditMode"
                     name="courseName"
                     class="form-control"
                     placeholder="name"
-                    type="text"
                     #nameField="ngModel"
+                    [value]="course?.name"
                     ngModel
                     required
                     courseName
                   />
+                  <p class="form-control" *ngIf="!isEditMode">
+                    {{ course?.name }}
+                  </p>
                 </div>
               </div>
               <div class="form-group mb-3">
@@ -67,14 +71,19 @@
                   </div>
 
                   <input
+                    *ngIf="isEditMode"
                     name="year"
                     class="form-control datepicker"
-                    type="date"
+                    [type]="course ? 'number' : 'date'"
                     #yearField="ngModel"
+                    [value]="course?.year"
                     ngModel
                     required
                     year
                   />
+                  <p class="form-control" *ngIf="!isEditMode">
+                    {{ course?.year }}
+                  </p>
                 </div>
               </div>
               <div class="form-group mb-3">
@@ -87,9 +96,11 @@
                     ></span>
                   </div>
                   <select
+                    *ngIf="isEditMode"
                     name="status"
                     class="form-control"
                     #statusField="ngModel"
+                    [value]="course?.status"
                     ngModel
                     required
                     status
@@ -99,11 +110,26 @@
                     ><option>in progress</option
                     ><option>complete</option>
                   </select>
+                  <p class="form-control" *ngIf="!isEditMode">
+                    {{ course?.status }}
+                  </p>
                 </div>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-outline-danger my-4">
+                <button
+                  *ngIf="isEditMode && !course"
+                  type="submit"
+                  class="btn btn-outline-danger my-4"
+                >
                   Create
+                </button>
+                <button
+                  type="button"
+                  *ngIf="isEditMode && course"
+                  (click)="onCreateCourse(createCourseForm)"
+                  class="btn btn-outline-danger my-4"
+                >
+                  Update
                 </button>
               </div>
             </form>

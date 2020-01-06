@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { CoursesService } from "src/app/pages/courses/courses.service";
 import { NgForm } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -10,22 +10,29 @@ import Course from "src/app/interfaces/course.model";
   styleUrls: ["./admin-modals.component.scss"]
 })
 export class AdminModalsComponent implements OnInit {
-  addedCourse: Course;
+  @Input() course: Course;
+  @Input() isEditMode = true;
+
   constructor(private coursesService: CoursesService, private router: Router) {}
 
   ngOnInit() {}
 
   async onCreateCourse(form: NgForm) {
-    if (form.invalid) {
-      return;
-    }
     const { courseName, year, status } = form.value;
-    console.log(form.value);
-    this.addedCourse = await this.coursesService.addCourse({
-      name: courseName,
-      year,
-      status
-    });
-    this.router.navigate([""]);
+    if (!this.course && this.isEditMode) {
+      this.course = await this.coursesService.addCourse({
+        name: courseName,
+        year,
+        status
+      });
+    }
+    if (this.course && this.isEditMode) {
+      this.course = await this.coursesService.editCourse(this.course._id, {
+        name: courseName,
+        year: new Date(year).toISOString(),
+        status
+      });
+      console.log(this.course);
+    }
   }
 }

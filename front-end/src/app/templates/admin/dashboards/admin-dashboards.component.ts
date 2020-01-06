@@ -34,6 +34,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   subjects: Subject[];
 
   selectedCourse: Course;
+  courseToModal: Course;
+  isCourseModalEditMode = true;
 
   loggedUser: User;
 
@@ -74,6 +76,15 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   onCourseSelected(index: number) {
     this.subjectsSimpleList = this.getSubjectsSimpleListAssets(index);
     this.selectedCourse = this.courses[index];
+  }
+
+  onEditCourse(course: Course) {
+    this.courseToModal = course;
+    this.isCourseModalEditMode = true;
+  }
+  onViewCourse(course: Course) {
+    this.courseToModal = course;
+    this.isCourseModalEditMode = false;
   }
 
   getCSSForCourseStatus(status: string) {

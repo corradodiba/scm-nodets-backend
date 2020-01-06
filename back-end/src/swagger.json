@@ -138,6 +138,18 @@
         "summary" : "Add subject",
         "description" : "Allows you to add a subject",
         "operationId" : "addSubject",
+        "requestBody": {
+          "description": "Add new subject",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": [ "application/json" ],
         "responses" : {
           "201" : {
             "description" : "Created"
@@ -190,6 +202,18 @@
             "type" : "string"
           }
         } ],
+        "requestBody": {
+          "description": "Modify new subject",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": [ "application/json" ],
         "responses" : {
           "200" : {
             "description" : "OK"
@@ -245,6 +269,18 @@
         "summary" : "Add course",
         "description" : "Allows you to add a course",
         "operationId" : "addCourse",
+        "requestBody": {
+          "description": "Add new course",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/course"
+              }
+            }
+          }
+        },
+        "produces": [ "application/json" ],
         "responses" : {
           "201" : {
             "description" : "Created"
@@ -358,6 +394,87 @@
           "200" : {
             "description" : "OK"
           }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "proprieties": {
+        "_id": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "password": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "fiscalCode": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "maxlength": "16",
+          "minlength": "16"
+        },
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "surname": {
+          "type": "string",
+          "required": true
+        },
+        "DateOfBirth": {
+          "type": "Date",
+          "required": true
+        },
+        "imagePath": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": "Admin | Student | Teacher",
+          "required": true, 
+          "index": true
+        }
+      }
+    },
+    "subject": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "hours": {
+          "type": "string",
+          "default": "undefined"
+        }
+      }
+    },
+    "course": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "status": {
+          "type": "string",
+          "required": true
+        },
+        "year": {
+          "type": "Date",
+          "required": true
         }
       }
     }

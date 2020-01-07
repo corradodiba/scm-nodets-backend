@@ -416,6 +416,20 @@
             }
           }
         ],
+        "requestBody": {
+          "description": "Modify new subject",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -463,6 +477,20 @@
         "summary": "Signup user",
         "description": "Allows you to signup user",
         "operationId": "signUpUser",
+        "requestBody": {
+          "description": "Add new users",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "User Created"
@@ -492,6 +520,9 @@
             }
           }
         },
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "User logged in"

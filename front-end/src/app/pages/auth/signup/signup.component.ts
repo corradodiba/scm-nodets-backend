@@ -38,7 +38,6 @@ export class SignupComponent implements OnInit, OnDestroy {
       fiscalCode,
       type
     } = form.value;
-
     const authData: SignupData = {
       name: userName,
       surname,

@@ -1,8 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { environment } from "../../../environments/environment";
-
 import User from "src/app/interfaces/user.model";
 
 import { Subscription } from "rxjs";
@@ -15,8 +13,6 @@ import { UsersService } from "src/app/pages/users/users.service";
   styleUrls: ["./profile-navbar.component.scss"]
 })
 export class ProfileNavbarComponent implements OnInit, OnDestroy {
-  usersPath = `${environment.apiUrl}/${environment.usersPath}`;
-
   private authListenerSubs = new Subscription();
   isAuthenticated = false;
 
@@ -50,6 +46,6 @@ export class ProfileNavbarComponent implements OnInit, OnDestroy {
   }
 
   onShowProfile() {
-    this.router.navigate([`${this.usersPath}/${this.userId}`]);
+    this.router.navigate([`profile`]);
   }
 }

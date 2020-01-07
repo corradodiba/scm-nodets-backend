@@ -1,0 +1,650 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SJ Management API",
+    "description": "Management Steve Jobs Academy",
+    "version": "1.0.0",
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://opensource.org/licenses/gpl-3.0"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "users",
+      "description": "Management user API"
+    },
+    {
+      "name": "subjects",
+      "description": "Management subject API"
+    },
+    {
+      "name": "courses",
+      "description": "Management course API"
+    },
+    {
+      "name": "auth",
+      "description": "Management auth API"
+    }
+  ],
+  "securityDefinitions": {
+    "JWT": {
+      "description": "",
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header"
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "description": "This is the authentication token you need to insert:  ",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "JWT": []
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Return all users",
+        "description": "The whole list returns with the users present in the database",
+        "operationId": "findUsers",
+        "responses": {
+          "200": {
+            "description": "List of all users"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Not a single user to be found"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Return user by ID",
+        "description": "Returns a single user based on the ID",
+        "operationId": "findUsersById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single course"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Course not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Return user deleted",
+        "description": "Returns the single user deleted by ID",
+        "operationId": "deleteUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to delete",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/{id}/subjects": {
+      "get": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Return all subjects for user by ID",
+        "description": "Back to the list of all the subjects of the individual user",
+        "operationId": "getSubjectForUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the subjects of a User"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Subjects Not Found"
+          }
+        }
+      }
+    },
+    "/subjects": {
+      "get": {
+        "tags": [
+          "subjects"
+        ],
+        "summary": "Return all subjects",
+        "description": "Back to the list of all the subjects in the database",
+        "operationId": "findSubjects",
+        "responses": {
+          "200": {
+            "description": "All subjects"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Subjects Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "subjects"
+        ],
+        "summary": "Add subject",
+        "description": "Allows you to add a subject",
+        "operationId": "addSubject",
+        "requestBody": {
+          "description": "Add new subject",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/subjects/{id}": {
+      "get": {
+        "tags": [
+          "subjects"
+        ],
+        "summary": "Return subject by ID",
+        "description": "Returns a subject by id",
+        "operationId": "findSubjectById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single subject"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Subject Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "subjects"
+        ],
+        "summary": "Edit subject by ID",
+        "description": "Allows you to edit a subject by id",
+        "operationId": "modifySubjectById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Modify new subject",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "subjects"
+        ],
+        "summary": "Delete subject by ID",
+        "description": "Returns a subject deleted by id",
+        "operationId": "deleteSubjectById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/courses": {
+      "get": {
+        "tags": [
+          "courses"
+        ],
+        "summary": "Return all courses",
+        "description": "Back to the list of all courses in the database",
+        "operationId": "findCourses",
+        "responses": {
+          "200": {
+            "description": "List of all courses"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "There isn't a single course to be found"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "courses"
+        ],
+        "summary": "Add course",
+        "description": "Allows you to add a course",
+        "operationId": "addCourse",
+        "requestBody": {
+          "description": "Add new course",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/course"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/courses/{id}": {
+      "get": {
+        "tags": [
+          "courses"
+        ],
+        "summary": "Return course by ID",
+        "description": "Returns a course by id",
+        "operationId": "findCourseById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of course to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single course"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Course Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "courses"
+        ],
+        "summary": "Edit course by ID",
+        "description": "Allows you to edit a course by id",
+        "operationId": "modifyCourseById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Modify new subject",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "courses"
+        ],
+        "summary": "Delete course by ID",
+        "description": "Returns a course deleted by id",
+        "operationId": "deleteCourseById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Signup user",
+        "description": "Allows you to signup user",
+        "operationId": "signUpUser",
+        "requestBody": {
+          "description": "Add new users",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User Created"
+          },
+          "400": {
+            "description": "Bad request, couldn't sign up"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "auth"
+        ],
+        "summary": "Login user",
+        "description": "Allows you to login user",
+        "operationId": "loginUser",
+        "requestBody": {
+          "description": "Do login",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/login"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User logged in"
+          },
+          "400": {
+            "description": "Bad request, couldn't log in"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "id": {
+      "proprieties": {
+        "_id": {
+          "type": "string"
+        }
+      }
+    },
+    "user": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "password": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "fiscalCode": {
+          "type": "string",
+          "required": true,
+          "unique": true,
+          "maxlength": "16",
+          "minlength": "16"
+        },
+        "name": {
+          "type": "string",
+          "required": true
+        },
+        "surname": {
+          "type": "string",
+          "required": true
+        },
+        "DateOfBirth": {
+          "type": "Date",
+          "required": true
+        },
+        "imagePath": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": "Admin | Student | Teacher",
+          "required": true,
+          "index": true
+        }
+      }
+    },
+    "subject": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "hours": {
+          "type": "string",
+          "default": "undefined"
+        }
+      }
+    },
+    "course": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "required": true,
+          "unique": true
+        },
+        "status": {
+          "type": "string",
+          "required": true
+        },
+        "year": {
+          "type": "Date",
+          "required": true
+        }
+      }
+    },
+    "login": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "required": true
+        },
+        "password": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}

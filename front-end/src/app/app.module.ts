@@ -9,6 +9,7 @@ import { AppComponent } from "./app.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { AuthModule } from "./pages/auth/auth.module";
 import { HomepageModule } from "./pages/homepage/homepage.module";
+import { MyProfileModule } from "./pages/my-profile/my-profile.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,7 +18,8 @@ import { HomepageModule } from "./pages/homepage/homepage.module";
     HttpClientModule,
     AppRoutingModule,
     AuthModule,
-    HomepageModule
+    HomepageModule,
+    MyProfileModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

@@ -3,43 +3,20 @@ import { Courses, CoursesModel } from "./courses.model";
 import { typeUser } from "../../interfaces/typeUser.type";
 import { IToken } from "../../interfaces/token.interface";
 import { CreateCourse } from "./courses.costructor";
+import { mapCoursesData } from "../../helpers/mapCourseData.helper";
+import {
+  Subject,
+  SubjectModel,
+  add as addSubject,
+  CreateSubject
+} from "../subject/subject.model";
 
-export const getAll = async (type: typeUser, userId: string) => {
+export const getAll = async () => {
   try {
-    if (type === "Admin") {
-      const courses: Courses[] = await CoursesModel.find().populate(
-        "students subjects"
-      );
-      return courses;
-    }
-
-    if (type === "Teacher") {
-      const courses: Courses[] = await CoursesModel.find({
-        teachers: {
-          $in: [
-            {
-              _id: userId,
-              type
-            }
-          ]
-        }
-      });
-      return courses;
-    }
-
-    if (type === "Student") {
-      const courses: Courses[] = await CoursesModel.find({
-        students: {
-          $in: [
-            {
-              _id: userId,
-              type
-            }
-          ]
-        }
-      });
-      return courses;
-    }
+    const courses: Courses[] = await CoursesModel.find().populate(
+      "teachers students subjects"
+    );
+    return mapCoursesData(courses);
   } catch (err) {
     throw err;
   }
@@ -47,67 +24,80 @@ export const getAll = async (type: typeUser, userId: string) => {
 
 export const getById = async (type: typeUser, userId: string, id: String) => {
   try {
-    if (type === "Admin") {
-      const course = await CoursesModel.findOne({ _id: id }).populate(
-        "students subjects"
-      );
-      return course;
-    }
-
-    if (type === "Teacher") {
-      const courses = await CoursesModel.findOne({
-        _id: id,
-        teachers: {
-          $in: [
-            {
-              _id: userId,
-              type
-            }
-          ]
-        }
-      });
-      return courses;
-    }
-
-    if (type === "Student") {
-      const courses = await CoursesModel.findOne({
-        _id: id,
-        students: {
-          $in: [
-            {
-              _id: userId,
-              type
-            }
-          ]
-        }
-      });
-      return courses;
-    }
+    const course = await CoursesModel.findOne({ _id: id }).populate(
+      "students subjects"
+    );
+    return course;
   } catch (err) {
     throw err;
   }
 };
 
-export const add = async (year: Date, token: IToken): Promise<Courses> => {
+export const add = async (
+  name: String,
+  status: String,
+  year: Date,
+  token: IToken
+): Promise<Courses> => {
   try {
     const { type } = token;
     if (type !== "Admin") {
       throw "Operation not permitted!";
     }
-    const course = CreateCourse({ year });
+    const course = CreateCourse({ name, status, year });
     return await course.save();
   } catch (err) {
     throw err;
   }
 };
 
-export const edit = async (id: string, course: Courses, token: IToken): Promise<Courses> => {
+export const addSubjectIntoCourse = async (
+  _id: string,
+  name: string,
+  hours: number
+) => {
+  try {
+    let subjectInstance: any = CreateSubject({ name, hours });
+    let subject: Subject | null;
+    if (await SubjectModel.exists({ name })) {
+      subject = await SubjectModel.findOne({ name });
+    } else {
+      subject = await addSubject(subjectInstance);
+    }
+    await addedSubject(_id, subject?._id);
+    return subject;
+  } catch (err) {
+    throw err;
+  }
+};
+
+export const addedSubject = async (_id: string, subjectId: string) => {
+  await CoursesModel.findOneAndUpdate(
+    { _id },
+    {
+      $addToSet: {
+        subjects: {
+          $each: [subjectId]
+        }
+      }
+    },
+    { new: true }
+  ).populate("subjects students teachers");
+};
+
+export const edit = async (
+  id: string,
+  course: Courses,
+  token: IToken
+): Promise<Courses> => {
   try {
     const { type } = token;
     if (type !== "Admin") {
       throw "Operation not permitted!";
     }
-    const editedCourse = await CoursesModel.findByIdAndUpdate(id, course).populate("user");;
+    const editedCourse = await CoursesModel.findByIdAndUpdate(id, course, {
+      new: true
+    }).populate("user");
     if (!editedCourse) {
       throw "No course found for editing!";
     }
@@ -117,13 +107,18 @@ export const edit = async (id: string, course: Courses, token: IToken): Promise<
   }
 };
 
-export const deleteById = async (id: string, token: IToken): Promise<Courses> => {
+export const deleteById = async (
+  id: string,
+  token: IToken
+): Promise<Courses> => {
   try {
     const { type } = token;
     if (type !== "Admin") {
       throw "Operation not permitted!";
     }
-    const deletedCourse = await CoursesModel.findByIdAndRemove({ _id: id }).populate("user");;
+    const deletedCourse = await CoursesModel.findByIdAndRemove({
+      _id: id
+    }).populate("user");
     if (!deletedCourse) {
       throw "No courses found for deletion!";
     }

@@ -1,0 +1,10 @@
+<app-sidenav *ngIf="isAuthenticated"></app-sidenav>
+<app-admin-my-profile
+  *ngIf="isAuthenticated && type === 'Admin'"
+></app-admin-my-profile>
+<app-teacher-my-profile
+  *ngIf="isAuthenticated && type === 'Teacher'"
+></app-teacher-my-profile>
+<app-student-my-profile
+  *ngIf="isAuthenticated && type === 'Student'"
+></app-student-my-profile>

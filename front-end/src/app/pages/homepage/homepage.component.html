@@ -1,3 +1,11 @@
 <app-sidenav *ngIf="isAuthenticated"></app-sidenav>
-<app-admin-dashboards *ngIf="isAuthenticated"></app-admin-dashboards>
+<app-admin-dashboards
+  *ngIf="isAuthenticated && type === 'Admin'"
+></app-admin-dashboards>
+<app-student-dashboards
+  *ngIf="isAuthenticated && type === 'Student'"
+></app-student-dashboards>
+<app-teacher-dashboards
+  *ngIf="isAuthenticated && type === 'Teacher'"
+></app-teacher-dashboards>
 <app-guest-homepage *ngIf="!isAuthenticated"></app-guest-homepage>

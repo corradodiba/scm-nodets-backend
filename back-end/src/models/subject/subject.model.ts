@@ -8,7 +8,7 @@ const SubjectSchema: Schema = new Schema({
     unique: true
   },
   hours: {
-    type: Number,
+    type: String,
     default: undefined
   }
 });
@@ -17,7 +17,7 @@ SubjectSchema.plugin(uniqueValidator);
 
 export interface Subject extends Document {
   name: string;
-  hours: Number;
+  hours: number;
 }
 
 export const SubjectModel = mongoose.model<Subject>("Subject", SubjectSchema);

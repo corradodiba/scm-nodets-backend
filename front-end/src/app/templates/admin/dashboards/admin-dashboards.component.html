@@ -6,29 +6,280 @@
       <app-card [card]="coursesCard"></app-card>
     </div>
     <div class="col-xl-3 col-md-6">
-      <app-card [card]="usersCard"></app-card>
+      <app-card [card]="studentsCard"></app-card>
     </div>
     <div class="col-xl-3 col-md-6">
-      <app-card [card]="usersCard"></app-card>
+      <app-card [card]="teachersCard"></app-card>
     </div>
     <div class="col-xl-3 col-md-6">
       <app-card [card]="subjectsCard"></app-card>
     </div>
   </div>
   <div class="row">
-    <div class="col col-md-8">
-      <app-table-sortable></app-table-sortable>
-    </div>
-    <div class="col col-md-4">
-      <div class="row flex-column">
-        <div class="col">
-          <app-simple-list></app-simple-list>
+    <div class="col col-md-6">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header border-0">
+          <h3 class="mb-0">Courses</h3>
         </div>
-        <div class="col">
-          <app-simple-list></app-simple-list>
+        <!-- Light table -->
+        <div
+          class="table-responsive"
+          data-toggle="list"
+          data-list-values='["number", "date", "status"]'
+        >
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col" class="sort" data-sort="number">Number</th>
+                <th scope="col" class="sort" data-sort="date">Date</th>
+                <th scope="col" class="sort" data-sort="status">Status</th>
+                <th scope="col">Users</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <tr *ngFor="let course of courses; let i = index">
+                <th scope="row">
+                  <div class="media align-items-center">
+                    <button
+                      (click)="onCourseSelected(i)"
+                      [ngClass]="{
+                        'bg-gradient-danger': selectedCourse !== courses[i],
+                        'bg-selected': selectedCourse === courses[i]
+                      }"
+                      class="avatar rounded-circle mr-3"
+                    >
+                      {{ course?.name }}
+                    </button>
+                  </div>
+                </th>
+                <td class="year">
+                  {{ course?.year }}
+                </td>
+                <td>
+                  <span class="badge badge-dot mr-4">
+                    <i [class]="getCSSForCourseStatus(course?.status)"></i>
+                    <span class="status">{{ course?.status }}</span>
+                  </span>
+                </td>
+                <td>
+                  <div class="avatar-group">
+                    <a
+                      *ngFor="let student of course?.students"
+                      href="#"
+                      class="avatar avatar-sm rounded-circle"
+                      data-toggle="tooltip"
+                      data-original-title=""
+                    >
+                      <img
+                        [alt]="student?.name + ' ' + student?.surname"
+                        src="/assets/img/theme/image-profile.jpeg"
+                      />
+                    </a>
+                  </div>
+                </td>
+                <td class="text-right">
+                  <div class="dropdown">
+                    <a
+                      class="btn btn-sm btn-icon-only text-light"
+                      href="#"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-right dropdown-menu-arrow"
+                    >
+                      <button
+                        class="dropdown-item"
+                        data-toggle="modal"
+                        data-target="#modal-form"
+                        (click)="onViewCourse(course)"
+                      >
+                        View course
+                      </button>
+                      <button
+                        class="dropdown-item"
+                        data-toggle="modal"
+                        data-target="#modal-form"
+                        (click)="onEditCourse(course)"
+                      >
+                        Edit course
+                      </button>
+                      <button
+                        (click)="onDeleteCourse(course)"
+                        data-toggle="modal"
+                        data-target="#modal-notification"
+                        class="dropdown-item"
+                      >
+                        Delete course
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col">
+        <app-simple-list [assets]="subjectsSimpleList"></app-simple-list>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <!-- Title -->
+          <h5 class="h3 mb-0">Students</h5>
+          <h6 class="surtitle">
+            {{ selectedCourse?.students.length }} students in course
+            {{ selectedCourse?.name }}
+          </h6>
+        </div>
+        <!-- Card search -->
+        <div class="card-header py-0">
+          <!-- Search form -->
+          <form>
+            <div class="form-group mb-0">
+              <div class="input-group input-group-lg input-group-flush">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fas fa-search"></span>
+                  </div>
+                </div>
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+          <!-- List group -->
+          <ul class="list-group list-group-flush list my--3">
+            <li
+              *ngFor="let student of selectedCourse?.students"
+              class="list-group-item px-0"
+            >
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <!-- Avatar -->
+                  <a href="#" class="avatar rounded-circle bg-gradient-info">
+                    {{ student?.name.charAt(0) }}
+                    {{ student?.surname.charAt(0) }}
+                  </a>
+                </div>
+                <div class="col ml--2">
+                  <h4 class="mb-0">
+                    <a href="#!">{{ student?.name }} {{ student?.surname }}</a>
+                  </h4>
+                  <span class="text-success">●</span>
+                  <small>Online</small>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-sm btn-primary">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <!-- Card header -->
+        <div class="card-header">
+          <!-- Title -->
+          <h5 class="h3 mb-0">Teachers</h5>
+          <h6 class="surtitle">
+            {{ selectedCourse?.teachers.length }} teachers in course
+            {{ selectedCourse?.name }}
+          </h6>
+        </div>
+        <!-- Card search -->
+        <div class="card-header py-0">
+          <!-- Search form -->
+          <form>
+            <div class="form-group mb-0">
+              <div class="input-group input-group-lg input-group-flush">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">
+                    <span class="fas fa-search"></span>
+                  </div>
+                </div>
+                <input
+                  type="search"
+                  class="form-control"
+                  placeholder="Search"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- Card body -->
+        <div class="card-body">
+          <!-- List group -->
+          <ul class="list-group list-group-flush list my--3">
+            <li
+              *ngFor="let student of selectedCourse?.teachers"
+              class="list-group-item px-0"
+            >
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <!-- Avatar -->
+                  <a href="#" class="avatar rounded-circle bg-gradient-primary">
+                    {{ student?.name.charAt(0) }}
+                    {{ student?.surname.charAt(0) }}
+                  </a>
+                </div>
+                <div class="col ml--2">
+                  <h4 class="mb-0">
+                    <a href="#!">{{ student?.name }} {{ student?.surname }}</a>
+                  </h4>
+                  <span class="text-success">●</span>
+                  <small>Online</small>
+                </div>
+                <div class="col-auto">
+                  <button type="button" class="btn btn-sm btn-primary">
+                    Edit
+                  </button>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<!-- <app-admin-modals
+  *ngIf="courseToModal"
+  [modality]="courseModalMode"
+  [course]="courseToModal"
+  [courses]="courseModalMode === 'Delete' ? courses : undefined"
+></app-admin-modals> -->
+<app-delete-modal
+  *ngIf="courseToModal"
+  [modality]="courseModalMode"
+  [course]="courseToModal"
+  [courses]="courseModalMode === 'Delete' ? courses : undefined"
+></app-delete-modal>
+<app-add-edit-modal
+  *ngIf="courseToModal"
+  [modality]="courseModalMode"
+  [course]="courseToModal"
+></app-add-edit-modal>

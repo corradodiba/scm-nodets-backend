@@ -1,27 +1,25 @@
 import { UserModel, User } from "./user.model";
 import { Subject } from "../subject/subject.model";
 
-export const getAll = async (typeUser: "Admin" | "Student" | "Teacher") => {
-  let type = undefined;
-  let users = undefined;
+import { typeUser } from "../../interfaces/typeUser.type";
 
-  if (typeUser === "Admin") {
-    users = await UserModel.find().populate("subjects");
+export const getAll = async () => {
+  try {
+    const users = await UserModel.find().populate("subjects");
+    if (!users) {
+      throw "No subject found!";
+    }
     return users;
+  } catch (err) {
+    throw err;
   }
+};
 
-  if (typeUser === "Teacher") {
-    type = "Student";
-  }
-
-  if (typeUser === "Student") {
-    type = undefined;
-  }
-
+export const getByType = async (type: typeUser) => {
   try {
     const users = await UserModel.find({ type }).populate("subjects");
     if (!users) {
-      throw "No subject found!";
+      throw `No user with this type(${type}) found!`;
     }
     return users;
   } catch (err) {
@@ -124,9 +122,13 @@ export const deleteSubjects = async (idUser: string, idSubject: string) => {
 
 export const edit = async (id: string, user: User): Promise<User> => {
   try {
-    const updatedUser = await UserModel.findByIdAndUpdate(id, user).populate(
-      "subjects"
-    );
+    const updatedUser = await UserModel.findByIdAndUpdate(
+      id,
+      {
+        ...user
+      },
+      { new: true }
+    ).populate("subjects");
     if (!updatedUser || updatedUser instanceof Error) {
       throw "No user or subjects found for editing!";
     }

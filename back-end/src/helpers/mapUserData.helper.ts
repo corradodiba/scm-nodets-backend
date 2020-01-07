@@ -2,11 +2,14 @@ import { User } from "../models/user/user.model";
 import { getDateToString } from "./getDateToString.helper";
 
 export const mapUserData = (user: User) => {
-  const { _id, name, surname, dateOfBirth, fiscalCode, type } = user;
+  
+  const { _id, name, surname, email, dateOfBirth, fiscalCode, type } = user;
+
   return {
     _id,
     name,
     surname,
+    email,
     dateOfBirth: getDateToString(dateOfBirth),
     fiscalCode,
     type

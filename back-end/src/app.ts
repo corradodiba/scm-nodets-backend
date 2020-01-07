@@ -1,11 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
+import swaggerUi from "swagger-ui-express";
 
 import usersRoutes from "./routes/users";
 import subjectsRoutes from "./routes/subjects";
 import authRoutes from "./routes/auth";
 import coursesRoutes from "./routes/courses";
+
+import * as swaggerDocument from "./swagger.json";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -33,6 +36,8 @@ app.use("/courses", coursesRoutes);
 app.use("/users", usersRoutes);
 app.use("/subjects", subjectsRoutes);
 app.use("/auth", authRoutes);
+
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, async () => {
   console.log(`🚀 Server ready at http://localhost:${PORT} 🚀`);

@@ -1,12 +1,20 @@
 import { Request, Response } from "express";
-import { getAll, getById, Courses, add, edit, deleteById } from "../../models/courses/courses.model";
+import {
+  getAll,
+  getById,
+  Courses,
+  add,
+  edit,
+  deleteById,
+  addSubjectIntoCourse as addSubject
+} from "../../models/courses/courses.model";
 import { IToken } from "../../interfaces/token.interface";
+import { Subject, CreateSubject } from "../../models/subject/subject.model";
 
 export const getAllCourses = async (req: Request | any, res: Response) => {
   try {
-    const { _id, type } = req.userData;
-    const result = await getAll(type, _id);
-    return res.status(200).json(result);
+    const courses = await getAll();
+    return res.status(200).json(courses);
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -25,9 +33,9 @@ export const getCourseById = async (req: Request | any, res: Response) => {
 
 export const addCourse = async (req: Request | any, res: Response) => {
   try {
-    const { year } = req.body;
+    const { name, status, year } = req.body;
     const token: IToken = req.userData;
-    const result: Courses = await add(year, token);
+    const result: Courses = await add(name, status, year, token);
 
     return res.status(201).json(result);
   } catch (err) {
@@ -35,17 +43,31 @@ export const addCourse = async (req: Request | any, res: Response) => {
   }
 };
 
+export const addSubjectIntoCourse = async (
+  req: Request | any,
+  res: Response
+) => {
+  try {
+    const { name, hours } = req.body;
+    const { id } = req.params;
+    if (!id) {
+      throw "Course id not found!";
+    }
+    const addedSubject = await addSubject(id, name, hours);
+
+    return res.status(201).json(addedSubject);
+  } catch (err) {
+    return res.status(404).json({ message: err });
+  }
+};
+
 export const editCourseById = async (req: Request | any, res: Response) => {
   try {
-    const { year } = req.body;
+    const { name, status, year } = req.body;
     const token: IToken = req.userData;
-    const course = { year };
+    const course = { name, status, year };
     const result: Courses = await edit(req.params.id, course as Courses, token);
-    return res.status(200).json({
-      message: "Course successfully edited!",
-      before: result,
-      after: { year }
-    });
+    return res.status(200).json(result);
   } catch (err) {
     return res.status(404).json({ message: err });
   }

@@ -1,9 +1,7 @@
 export interface ICard {
   title: string;
   counter: number;
-  actions?: {
-    href: string;
-    text: string;
-  }[];
+  textColor: string;
+  icon: string;
   background?: string;
 }

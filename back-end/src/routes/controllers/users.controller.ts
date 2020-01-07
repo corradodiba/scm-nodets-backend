@@ -2,6 +2,7 @@ import { Response, Request } from "express";
 
 import {
   getAll,
+  getByType,
   getById,
   getSubjects,
   add,
@@ -20,8 +21,13 @@ const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
 
 export const getAllUsers = async (req: Request | any, res: Response) => {
   try {
-    const { type } = req.userData;
-    const users = await getAll(type);
+    let users: User[];
+    const { type } = req.query;
+    if (type) {
+      users = await getByType(type);
+    } else {
+      users = await getAll();
+    }
     return res.status(200).json(mapUsersData(users));
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -106,28 +112,8 @@ export const addGradeOfUser = async (req: Request, res: Response) => {
 export const editUserById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
-    const {
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects,
-      imagePath
-    } = req.body;
-    const modifiedUser = {
-      fiscalCode,
-      name,
-      surname,
-      dateOfBirth,
-      subjects,
-      imagePath
-    };
-    const updatedUser: User = await edit(id, modifiedUser as User);
-    return res.status(200).json({
-      message: "User successfully edited!",
-      before: updatedUser,
-      after: modifiedUser
-    });
+    const updatedUser: User = await edit(id, req.body as User);
+    return res.status(200).json(mapUserData(updatedUser));
   } catch (err) {
     return res.status(404).json({ message: err });
   }

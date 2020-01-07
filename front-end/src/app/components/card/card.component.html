@@ -10,24 +10,14 @@
           card?.counter
         }}</span>
       </div>
+
       <div class="col-auto">
-        <button
-          *ngIf="card?.actions"
-          type="button"
-          class="btn btn-sm btn-neutral mr-0"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+        <div
+          [class]="
+            card?.textColor + ' icon icon-shape bg-white rounded-circle shadow'
+          "
         >
-          <i class="fas fa-ellipsis-h"></i>
-        </button>
-        <div *ngIf="card?.actions" class="dropdown-menu dropdown-menu-right">
-          <a
-            *ngFor="let action of card?.actions"
-            class="dropdown-item"
-            [href]="action.href"
-            >{{ action.text }}</a
-          >
+          <i [class]="'ni ' + card?.icon"></i>
         </div>
       </div>
     </div>

@@ -481,6 +481,17 @@
         "summary": "Login user",
         "description": "Allows you to login user",
         "operationId": "loginUser",
+        "requestBody": {
+          "description": "Do login",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/login"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "User logged in"
@@ -568,6 +579,18 @@
         },
         "year": {
           "type": "Date",
+          "required": true
+        }
+      }
+    },
+    "login": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "required": true
+        },
+        "password": {
+          "type": "string",
           "required": true
         }
       }

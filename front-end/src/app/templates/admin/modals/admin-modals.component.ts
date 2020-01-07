@@ -12,6 +12,7 @@ import Course from "src/app/interfaces/course.model";
 export class AdminModalsComponent implements OnInit {
   @Input() course: Course;
   @Input() modality = "View";
+  @Input() courses: Course[] = undefined;
 
   constructor(private coursesService: CoursesService, private router: Router) {}
 
@@ -40,6 +41,17 @@ export class AdminModalsComponent implements OnInit {
         name: courseName,
         year,
         status
+      });
+    }
+  }
+
+  async onDeleteCourse() {
+    await this.coursesService.deleteCourseById(this.course._id);
+    if (this.courses) {
+      this.courses.find((course, index) => {
+        if (course === this.course) {
+          this.courses.splice(index, 1);
+        }
       });
     }
   }

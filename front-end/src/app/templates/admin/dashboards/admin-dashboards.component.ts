@@ -79,18 +79,16 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   }
 
   onEditCourse(course: Course) {
-    console.log(course);
     this.courseModalMode = "Edit";
     this.courseToModal = course;
   }
   onViewCourse(course: Course) {
-    console.log(course);
     this.courseModalMode = "View";
     this.courseToModal = course;
   }
-  async onDeleteCourse(id: string, index: number) {
-    await this.coursesService.deleteCourseById(id);
-    this.courses.splice(index, 1);
+  async onDeleteCourse(course: Course) {
+    this.courseModalMode = "Delete";
+    this.courseToModal = course;
   }
 
   getCSSForCourseStatus(status: string) {

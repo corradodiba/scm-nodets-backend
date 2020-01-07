@@ -3,7 +3,11 @@
   "info": {
     "title": "SJ Management API",
     "description": "Management Steve Jobs Academy",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "license": {
+      "name": "GPL-3.0",
+      "url": "https://opensource.org/licenses/gpl-3.0"
+    }
   },
   "servers": [
     {

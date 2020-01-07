@@ -51,9 +51,9 @@
       }
     }
   },
-  "security": {
+  "security": [{
     "JWT": []
-  },
+  }],
   "paths": {
     "/users": {
       "get": {

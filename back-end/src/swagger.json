@@ -34,11 +34,25 @@
     }
   ],
   "securityDefinitions": {
-    "bearer": {
+    "JWT": {
+      "description": "",
       "type": "apiKey",
       "name": "Authorization",
       "in": "header"
     }
+  },
+  "components": {
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "description": "This is the authentication token you need to insert:  ",
+        "name": "ADMIN-API-KEY",
+        "in": "header"
+      }
+    }
+  },
+  "security": {
+    "JWT": []
   },
   "paths": {
     "/users": {

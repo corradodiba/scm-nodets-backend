@@ -11,7 +11,6 @@ import { UsersService } from "src/app/pages/users/users.service";
 import { AuthService } from "src/app/pages/auth/auth.service";
 import { SubjectsService } from "src/app/pages/subjects/subjects.service";
 import { ISimpleList } from "src/app/interfaces/new/simple-list.model";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-admin-dashboards",
@@ -44,8 +43,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
     private coursesService: CoursesService,
     private usersService: UsersService,
     private authService: AuthService,
-    private subjectsService: SubjectsService,
-    private router: Router
+    private subjectsService: SubjectsService
   ) {}
 
   async ngOnInit() {
@@ -107,16 +105,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
     return {
       title: "Courses",
       counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add Course"
-        },
-        {
-          href: "#",
-          text: "Add User Into This Course"
-        }
-      ],
+      textColor: "text-danger",
+      icon: "ni-hat-3",
       background: "bg-gradient-danger"
     };
   }
@@ -125,12 +115,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
     return {
       title: "Students",
       counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add Student"
-        }
-      ],
+      textColor: "text-info",
+      icon: "ni-single-02",
       background: "bg-gradient-info"
     };
   }
@@ -139,12 +125,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
     return {
       title: "Teachers",
       counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add Teacher"
-        }
-      ],
+      textColor: "text-primary",
+      icon: "ni-single-02",
       background: "bg-gradient-primary"
     };
   }
@@ -153,12 +135,8 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
     return {
       title: "Subjects",
       counter,
-      actions: [
-        {
-          href: "#",
-          text: "Add Subject"
-        }
-      ],
+      textColor: "text-success",
+      icon: "ni-ruler-pencil",
       background: "bg-gradient-success"
     };
   }

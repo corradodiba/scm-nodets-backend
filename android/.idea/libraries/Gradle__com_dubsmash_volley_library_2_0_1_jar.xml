@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.dubsmash.volley:library:2.0.1@jar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.dubsmash.volley/library/2.0.1/8b2572dd32db404209ac150a0a0ef38bc45316cc/library-2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.dubsmash.volley/library/2.0.1/248b11a110ded39bfe319dfbfa5a25366f059509/library-2.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.dubsmash.volley/library/2.0.1/f5413806075f9dc0ce87c68ccb4fd5420b848e5e/library-2.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

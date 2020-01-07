@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Sat Dec 28 23:38:36 CET 2019
+1.base=/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/dex/debug/mergeProjectDexDebug/out
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=DEX
+0.path=classes.dex
+0.set=DEX
+0.base=/Users/zagarellagabriele/Desktop/clone/stevejobs-class-managing/android/app/build/intermediates/dex/debug/mergeExtDexDebug/out
+1.path=classes.dex

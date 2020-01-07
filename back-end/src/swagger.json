@@ -46,14 +46,16 @@
       "JWT": {
         "type": "apiKey",
         "description": "This is the authentication token you need to insert:  ",
-        "name": "ADMIN-API-KEY",
+        "name": "Authorization",
         "in": "header"
       }
     }
   },
-  "security": [{
-    "JWT": []
-  }],
+  "security": [
+    {
+      "JWT": []
+    }
+  ],
   "paths": {
     "/users": {
       "get": {

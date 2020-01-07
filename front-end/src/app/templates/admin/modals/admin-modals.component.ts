@@ -11,14 +11,14 @@ import Course from "src/app/interfaces/course.model";
 })
 export class AdminModalsComponent implements OnInit {
   @Input() course: Course;
-  @Input() isEditMode = true;
+  @Input() modality = "View";
 
   constructor(private coursesService: CoursesService, private router: Router) {}
 
   ngOnInit() {}
 
   async onCreateCourse(form: NgForm) {
-    if (this.course && this.isEditMode) {
+    if (this.modality === "Edit") {
       for (const key in form.value) {
         if (form.value[key] !== "") {
           if (key === "courseName") {
@@ -34,7 +34,7 @@ export class AdminModalsComponent implements OnInit {
         status: this.course.status
       });
     }
-    if (!this.course && this.isEditMode) {
+    if (this.modality === "Add") {
       const { courseName, year, status } = form.value;
       this.course = await this.coursesService.addCourse({
         name: courseName,

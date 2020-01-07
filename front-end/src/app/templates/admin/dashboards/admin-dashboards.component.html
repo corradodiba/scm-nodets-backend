@@ -294,6 +294,7 @@
 </div>
 
 <app-admin-modals
-  [isEditMode]="isCourseModalEditMode"
+  *ngIf="courseToModal"
+  [modality]="courseModalMode"
   [course]="courseToModal"
 ></app-admin-modals>

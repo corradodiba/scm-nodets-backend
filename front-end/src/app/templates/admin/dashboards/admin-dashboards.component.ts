@@ -36,7 +36,7 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
 
   selectedCourse: Course;
   courseToModal: Course;
-  isCourseModalEditMode = true;
+  courseModalMode = "Edit";
 
   loggedUser: User;
 
@@ -81,13 +81,14 @@ export class AdminDashboardsComponent implements OnInit, OnDestroy {
   }
 
   onEditCourse(course: Course) {
+    console.log(course);
+    this.courseModalMode = "Edit";
     this.courseToModal = course;
-    this.isCourseModalEditMode = true;
-    this.router.navigate([""]);
   }
   onViewCourse(course: Course) {
+    console.log(course);
+    this.courseModalMode = "View";
     this.courseToModal = course;
-    this.isCourseModalEditMode = false;
   }
   async onDeleteCourse(id: string, index: number) {
     await this.coursesService.deleteCourseById(id);

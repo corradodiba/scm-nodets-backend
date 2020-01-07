@@ -55,17 +55,17 @@
                     ></span>
                   </div>
                   <input
-                    *ngIf="isEditMode"
+                    *ngIf="modality !== 'View'"
                     name="courseName"
                     class="form-control"
                     placeholder="name"
                     #nameField="ngModel"
                     [value]="course?.name"
-                    ngModel
+                    [(ngModel)]="course.name"
                     required
                     courseName
                   />
-                  <p class="form-control" *ngIf="!isEditMode">
+                  <p class="form-control" *ngIf="modality === 'View'">
                     {{ course?.name }}
                   </p>
                 </div>
@@ -81,16 +81,16 @@
                   </div>
 
                   <input
-                    *ngIf="isEditMode"
+                    *ngIf="modality !== 'View'"
                     name="year"
                     class="form-control datepicker"
                     type="date"
                     #yearField="ngModel"
-                    ngModel
+                    [(ngModel)]="course.year"
                     required
                     year
                   />
-                  <p class="form-control" *ngIf="!isEditMode">
+                  <p class="form-control" *ngIf="modality === 'View'">
                     {{ course?.year }}
                   </p>
                 </div>
@@ -105,12 +105,12 @@
                     ></span>
                   </div>
                   <select
-                    *ngIf="isEditMode"
+                    *ngIf="modality !== 'View'"
                     name="status"
                     class="form-control"
                     #statusField="ngModel"
                     [value]="course?.status"
-                    ngModel
+                    [(ngModel)]="course.status"
                     required
                     status
                   >
@@ -119,14 +119,14 @@
                     ><option>in progress</option
                     ><option>complete</option>
                   </select>
-                  <p class="form-control" *ngIf="!isEditMode">
+                  <p class="form-control" *ngIf="modality === 'View'">
                     {{ course?.status }}
                   </p>
                 </div>
               </div>
               <div class="text-center">
                 <button
-                  *ngIf="isEditMode && !course"
+                  *ngIf="modality === 'Add'"
                   type="submit"
                   class="btn btn-outline-danger my-4"
                   data-toggle="modal"
@@ -136,7 +136,7 @@
                 </button>
                 <button
                   type="submit"
-                  *ngIf="isEditMode && course"
+                  *ngIf="modality === 'Edit'"
                   class="btn btn-outline-danger my-4"
                   data-toggle="modal"
                   data-target="#modal-form"

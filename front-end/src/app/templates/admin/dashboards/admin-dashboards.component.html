@@ -26,13 +26,13 @@
         <div
           class="table-responsive"
           data-toggle="list"
-          data-list-values='["number", "year", "status"]'
+          data-list-values='["number", "date", "status"]'
         >
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
               <tr>
                 <th scope="col" class="sort" data-sort="number">Number</th>
-                <th scope="col" class="sort" data-sort="year">Year</th>
+                <th scope="col" class="sort" data-sort="date">Date</th>
                 <th scope="col" class="sort" data-sort="status">Status</th>
                 <th scope="col">Users</th>
                 <th scope="col"></th>
@@ -266,9 +266,20 @@
     </div>
   </div>
 </div>
-<app-admin-modals
+<!-- <app-admin-modals
   *ngIf="courseToModal"
   [modality]="courseModalMode"
   [course]="courseToModal"
   [courses]="courseModalMode === 'Delete' ? courses : undefined"
-></app-admin-modals>
+></app-admin-modals> -->
+<app-delete-modal
+  *ngIf="courseToModal"
+  [modality]="courseModalMode"
+  [course]="courseToModal"
+  [courses]="courseModalMode === 'Delete' ? courses : undefined"
+></app-delete-modal>
+<app-add-edit-modal
+  *ngIf="courseToModal"
+  [modality]="courseModalMode"
+  [course]="courseToModal"
+></app-add-edit-modal>

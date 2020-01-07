@@ -1,5 +1,5 @@
 import { Courses } from "../models/courses/courses.model";
-import { getYearOfDate } from "./getDateToString.helper";
+import { getDateToString } from "./getDateToString.helper";
 
 export const mapCourseData = (course: Courses) => {
   const { _id, name, status, year, students, teachers, subjects } = course;
@@ -7,7 +7,7 @@ export const mapCourseData = (course: Courses) => {
     _id,
     name,
     status,
-    year: getYearOfDate(year),
+    year: getDateToString(year),
     students,
     teachers,
     subjects

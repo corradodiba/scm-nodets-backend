@@ -1,11 +1,12 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { AdminModalsComponent } from "./admin-modals.component";
 import { FormsModule } from "@angular/forms";
 
+import { AddEditModalComponent } from "./add-edit-modal.component";
+
 @NgModule({
-  declarations: [AdminModalsComponent],
+  declarations: [AddEditModalComponent],
   imports: [CommonModule, FormsModule],
-  exports: [AdminModalsComponent]
+  exports: [AddEditModalComponent]
 })
-export class AdminModalsModule {}
+export class AddEditModalModule {}

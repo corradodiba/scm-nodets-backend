@@ -10,16 +10,13 @@ import {
   edit,
   deleteById,
   deleteSubjects,
-  User,
-  CreateUser
+  User
 } from "../../models/user/user.model";
 
 import * as GradesModel from "../../models/grades/grades.model";
 import { mapUsersData, mapUserData } from "../../helpers/mapUserData.helper";
 
-const hashKey = "rvF%gAJ5!&PUN9Drsc4h";
-
-export const getAllUsers = async (req: Request | any, res: Response) => {
+export const getAllUsers = async (req: Request, res: Response) => {
   try {
     let users: User[];
     const { type } = req.query;

@@ -11,7 +11,7 @@ import {
 import { IToken } from "../../interfaces/token.interface";
 import { Subject, CreateSubject } from "../../models/subject/subject.model";
 
-export const getAllCourses = async (req: Request | any, res: Response) => {
+export const getAllCourses = async (req: Request, res: Response) => {
   try {
     const courses = await getAll();
     return res.status(200).json(courses);
@@ -33,10 +33,9 @@ export const getCourseById = async (req: Request | any, res: Response) => {
 
 export const addCourse = async (req: Request | any, res: Response) => {
   try {
+    // manc la validazione del body
     const { name, status, year } = req.body;
-    const token: IToken = req.userData;
-    const result: Courses = await add(name, status, year, token);
-
+    const result: Courses = await add(name, status, year, req.userData);
     return res.status(201).json(result);
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -44,13 +43,15 @@ export const addCourse = async (req: Request | any, res: Response) => {
 };
 
 export const addSubjectIntoCourse = async (
-  req: Request | any,
+  req: Request,
   res: Response
 ) => {
   try {
+    // manca la validazione del body
     const { name, hours } = req.body;
     const { id } = req.params;
-    if (!id) {
+    if (!id) { 
+      // l'id esiste sicuro, non va verificata l'esistenza bensì la forma
       throw "Course id not found!";
     }
     const addedSubject = await addSubject(id, name, hours);
@@ -63,10 +64,11 @@ export const addSubjectIntoCourse = async (
 
 export const editCourseById = async (req: Request | any, res: Response) => {
   try {
+    // manca la validazione del body
     const { name, status, year } = req.body;
     const token: IToken = req.userData;
     const course = { name, status, year };
-    const result: Courses = await edit(req.params.id, course as Courses, token);
+    const result: Courses = await edit(req.params.id, { name, status, year } as Courses, token);
     return res.status(200).json(result);
   } catch (err) {
     return res.status(404).json({ message: err });

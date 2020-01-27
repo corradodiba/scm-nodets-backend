@@ -41,6 +41,7 @@ export const deleteSubjectById = async (req: Request, res: Response) => {
 
 export const addSubject = async (req: Request, res: Response) => {
   try {
+    // manca la validazione del body
     const { name, hours } = req.body;
     const subj: Subject = CreateSubject({ name, hours });
     const result: Subject = await add(subj);

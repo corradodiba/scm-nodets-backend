@@ -1,11 +1,7 @@
-import { Courses, CoursesModel } from "./courses.model";
+import { Courses, CoursesModel, CreateCourse } from "./courses.model";
 
-import { typeUser } from "../../interfaces/typeUser.type";
 import { IToken } from "../../interfaces/token.interface";
-import { CreateCourse } from "./courses.costructor";
-import { mapCoursesData } from "../../helpers/mapCourseData.helper";
 import {
-  Subject,
   SubjectModel,
   add as addSubject,
   CreateSubject
@@ -16,17 +12,20 @@ export const getAll = async () => {
     const courses: Courses[] = await CoursesModel.find().populate(
       "teachers students subjects"
     );
-    return mapCoursesData(courses);
+    return courses;
   } catch (err) {
     throw err;
   }
 };
 
-export const getById = async (type: typeUser, userId: string, id: String) => {
+export const getById = async (_id: String) => {
   try {
-    const course = await CoursesModel.findOne({ _id: id }).populate(
-      "students subjects"
+    const course = await CoursesModel.findOne({ _id }).populate(
+      "teachers students subjects"
     );
+    if (!course) {
+      throw "course not found";
+    }
     return course;
   } catch (err) {
     throw err;
@@ -57,22 +56,21 @@ export const addSubjectIntoCourse = async (
   hours: number
 ) => {
   try {
-    let subjectInstance: any = CreateSubject({ name, hours });
-    let subject: Subject | null;
-    if (await SubjectModel.exists({ name })) {
-      subject = await SubjectModel.findOne({ name });
-    } else {
-      subject = await addSubject(subjectInstance);
+    let subject = await SubjectModel.findOne({ name });
+
+    if (!subject) {
+      subject = await addSubject(CreateSubject({ name, hours }));
     }
-    await addedSubject(_id, subject?._id);
-    return subject;
+
+    const courseAfterUpdating: Courses = await updateSubjects(_id, subject._id);
+    return courseAfterUpdating;
   } catch (err) {
     throw err;
   }
 };
 
-export const addedSubject = async (_id: string, subjectId: string) => {
-  await CoursesModel.findOneAndUpdate(
+const updateSubjects = async (_id: string, subjectId: string) => {
+  const course = await CoursesModel.findOneAndUpdate(
     { _id },
     {
       $addToSet: {
@@ -83,21 +81,18 @@ export const addedSubject = async (_id: string, subjectId: string) => {
     },
     { new: true }
   ).populate("subjects students teachers");
+
+  if (!course) {
+    throw "course not found";
+  }
+  return course;
 };
 
-export const edit = async (
-  id: string,
-  course: Courses,
-  token: IToken
-): Promise<Courses> => {
+export const edit = async (_id: string, course: Courses): Promise<Courses> => {
   try {
-    const { type } = token;
-    if (type !== "Admin") {
-      throw "Operation not permitted!";
-    }
-    const editedCourse = await CoursesModel.findByIdAndUpdate(id, course, {
+    const editedCourse = await CoursesModel.findOneAndUpdate(_id, course, {
       new: true
-    }).populate("user");
+    }).populate("subjects students teachers");
     if (!editedCourse) {
       throw "No course found for editing!";
     }
@@ -107,18 +102,11 @@ export const edit = async (
   }
 };
 
-export const deleteById = async (
-  id: string,
-  token: IToken
-): Promise<Courses> => {
+export const deleteById = async (_id: string): Promise<Courses> => {
   try {
-    const { type } = token;
-    if (type !== "Admin") {
-      throw "Operation not permitted!";
-    }
     const deletedCourse = await CoursesModel.findByIdAndRemove({
-      _id: id
-    }).populate("user");
+      _id
+    }).populate("subjects students teachers");
     if (!deletedCourse) {
       throw "No courses found for deletion!";
     }

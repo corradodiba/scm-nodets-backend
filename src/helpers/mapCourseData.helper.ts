@@ -1,16 +1,19 @@
 import { Courses } from "../models/courses/courses.model";
+
 import { getDateToString } from "./getDateToString.helper";
+import { mapSubjectsData } from "./mapSubjectData.helper";
+import { mapUsersData } from "./mapUserData.helper";
 
 export const mapCourseData = (course: Courses) => {
   const { _id, name, status, year, students, teachers, subjects } = course;
   return {
-    _id,
+    id: _id,
     name,
     status,
     year: getDateToString(year),
-    students,
-    teachers,
-    subjects
+    students: mapUsersData(students),
+    teachers: mapUsersData(teachers),
+    subjects: mapSubjectsData(subjects)
   };
 };
 

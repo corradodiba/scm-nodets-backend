@@ -46,6 +46,6 @@ export const userLogin = async (req: Request, res: Response) => {
     const token = await generateToken(userAuthenticated);
     return res.status(200).json(token);
   } catch (err) {
-    throw "Not authenticated!";
+    return res.status(400).json({ message: err });
   }
 };

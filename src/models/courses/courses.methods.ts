@@ -35,14 +35,9 @@ export const getById = async (_id: String) => {
 export const add = async (
   name: String,
   status: String,
-  year: Date,
-  token: IToken
+  year: Date
 ): Promise<Courses> => {
   try {
-    const { type } = token;
-    if (type !== "Admin") {
-      throw "Operation not permitted!";
-    }
     const course = CreateCourse({ name, status, year });
     return await course.save();
   } catch (err) {

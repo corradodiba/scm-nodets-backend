@@ -24,7 +24,7 @@ export const getAllCourses = async (req: Request, res: Response) => {
   }
 };
 
-export const getCourseById = async (req: Request | any, res: Response) => {
+export const getCourseById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const course: Courses = await getById(id);
@@ -34,11 +34,11 @@ export const getCourseById = async (req: Request | any, res: Response) => {
   }
 };
 
-export const addCourse = async (req: Request | any, res: Response) => {
+export const addCourse = async (req: Request, res: Response) => {
   try {
     // manc la validazione del body
     const { name, status, year } = req.body;
-    const course: Courses = await add(name, status, year, req.userData);
+    const course: Courses = await add(name, status, year);
     return res.status(201).json(mapCourseData(course));
   } catch (err) {
     return res.status(401).json({ message: err });
@@ -65,14 +65,13 @@ export const editCourseById = async (req: Request, res: Response) => {
     const { name, status, year } = req.body;
     const course = { name, status, year };
     const editedCourse: Courses = await edit(req.params.id, course as Courses);
-    console.log(req.params.id);
     return res.status(200).json(mapCourseData(editedCourse));
   } catch (err) {
     return res.status(404).json({ message: err });
   }
 };
 
-export const deleteCourseById = async (req: Request | any, res: Response) => {
+export const deleteCourseById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const deletedCourse: Courses = await deleteById(id);

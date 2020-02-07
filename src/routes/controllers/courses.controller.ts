@@ -15,6 +15,8 @@ import {
   mapCoursesData
 } from "../../helpers/mapCourseData.helper";
 
+import { validationResult } from "express-validator";
+
 export const getAllCourses = async (req: Request, res: Response) => {
   try {
     const courses = await getAll();
@@ -36,8 +38,14 @@ export const getCourseById = async (req: Request, res: Response) => {
 
 export const addCourse = async (req: Request, res: Response) => {
   try {
-    // manc la validazione del body
     const { name, status, year } = req.body;
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
     const course: Courses = await add(name, status, year);
     return res.status(201).json(mapCourseData(course));
   } catch (err) {
@@ -47,9 +55,14 @@ export const addCourse = async (req: Request, res: Response) => {
 
 export const addSubjectIntoCourse = async (req: Request, res: Response) => {
   try {
-    // manca la validazione del body
     const { name, hours } = req.body;
     const { id } = req.params;
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
 
     const course = await addSubject(id, name, hours);
 
@@ -61,10 +74,16 @@ export const addSubjectIntoCourse = async (req: Request, res: Response) => {
 
 export const editCourseById = async (req: Request, res: Response) => {
   try {
-    // manca la validazione del body
     const { name, status, year } = req.body;
+    const { id } = req.params;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
+
     const course = { name, status, year };
-    const editedCourse: Courses = await edit(req.params.id, course as Courses);
+    const editedCourse: Courses = await edit(id, course as Courses);
     return res.status(200).json(mapCourseData(editedCourse));
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -74,6 +93,12 @@ export const editCourseById = async (req: Request, res: Response) => {
 export const deleteCourseById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
     const deletedCourse: Courses = await deleteById(id);
 
     return res.status(200).json(mapCourseData(deletedCourse));

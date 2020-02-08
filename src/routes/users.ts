@@ -18,11 +18,11 @@ import { isAuth, isAdmin, isCurrentUser } from "../middlewares/auth.middleware";
 
 const router = express();
 
-router.get("/", getAllUsers);
+router.get("/", isAuth, isAdmin, getAllUsers);
 
-router.get("/:id", getUsersById);
+router.get("/:id", isAuth, isCurrentUser, getUsersById);
 
-router.get("/:id/subjects", getSubjectsOfUser);
+router.get("/:id/subjects", isAuth, isCurrentUser, getSubjectsOfUser);
 
 // router.get("/:id/grades", getAllGrades);
 
@@ -36,7 +36,7 @@ router.delete("/:id", isAuth, isAdmin, deleteUserById);
 
 // router.post("/:id/grades", addGradeOfUser);
 
-router.put("/:id", editUserById);
+router.put("/:id", isAuth, isCurrentUser, editUserById);
 
 // router.put("/:id/grades/:idGrade", editGradeById);
 

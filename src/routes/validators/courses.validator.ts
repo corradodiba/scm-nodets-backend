@@ -29,7 +29,9 @@ export const addSubjectValidator = [
 ];
 
 export const addValidator = [
-  body("name").exists(),
+  body("name")
+    .exists()
+    .isString(),
   body("status")
     .exists()
     .isBoolean(),

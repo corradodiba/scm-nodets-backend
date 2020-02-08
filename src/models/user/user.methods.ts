@@ -27,11 +27,11 @@ export const getByType = async (type: typeUser) => {
   }
 };
 
-export const getById = async (id: string) => {
+export const getById = async (_id: string) => {
   try {
-    const user = await UserModel.findOne({ _id: id }).populate("subjects");
+    const user = await UserModel.findOne({ _id }).populate("subjects");
     if (!user) {
-      throw `No user with this id(${id}) found!`;
+      throw `No user with this id(${_id}) found!`;
     }
     return user;
   } catch (err) {
@@ -39,9 +39,9 @@ export const getById = async (id: string) => {
   }
 };
 
-export const getSubjects = async (id: string): Promise<Subject[]> => {
+export const getSubjects = async (_id: string): Promise<Subject[]> => {
   try {
-    const user = await UserModel.findOne({ _id: id }).populate("subjects");
+    const user = await UserModel.findOne({ _id }).populate("subjects");
     if (!user || user instanceof Error) {
       throw "No user found!";
     }
@@ -63,10 +63,10 @@ export const add = async (user: User) => {
   }
 };
 
-export const addSubject = async (id: string, subject: string[]) => {
+export const addSubject = async (_id: string, subject: string[]) => {
   try {
     const user = await UserModel.findOneAndUpdate(
-      { _id: id },
+      { _id },
       {
         $addToSet: {
           subjects: {
@@ -85,10 +85,10 @@ export const addSubject = async (id: string, subject: string[]) => {
   }
 };
 
-export const deleteById = async (id: string) => {
+export const deleteById = async (_id: string) => {
   try {
     const userToDelete = await UserModel.findByIdAndRemove({
-      _id: id
+      _id
     }).populate("subjects");
     if (!userToDelete) {
       throw "No user found for deletion!";
@@ -120,10 +120,10 @@ export const deleteSubjects = async (idUser: string, idSubject: string) => {
   }
 };
 
-export const edit = async (id: string, user: User): Promise<User> => {
+export const edit = async (_id: string, user: User): Promise<User> => {
   try {
     const updatedUser = await UserModel.findByIdAndUpdate(
-      id,
+      _id,
       {
         ...user
       },

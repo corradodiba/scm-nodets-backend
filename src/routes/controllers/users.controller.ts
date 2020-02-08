@@ -32,7 +32,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 };
 
 export const getUsersById = async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const { id } = req.params;
   try {
     const user = await getById(id);
     return res.status(200).json(mapUserData(user));
@@ -66,10 +66,10 @@ export const getAllGrades = async (req: Request, res: Response) => {
 };
 
 export const deleteUserById = async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const { id } = req.params;
   try {
     const user = await deleteById(id);
-    return res.status(200).json(user);
+    return res.status(200).json(mapUserData(user));
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -107,7 +107,7 @@ export const addGradeOfUser = async (req: Request, res: Response) => {
 };
 
 export const editUserById = async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const { id } = req.params;
   try {
     const updatedUser: User = await edit(id, req.body as User);
     return res.status(200).json(mapUserData(updatedUser));

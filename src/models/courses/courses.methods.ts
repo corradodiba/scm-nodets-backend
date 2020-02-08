@@ -84,10 +84,16 @@ const updateSubjects = async (_id: string, subjectId: string) => {
 };
 
 export const edit = async (_id: string, course: Courses): Promise<Courses> => {
+  for (let field in course)
+    if (!(course as any)[field]) delete (course as any)[field];
   try {
-    const editedCourse = await CoursesModel.findOneAndUpdate(_id, course, {
-      new: true
-    }).populate("subjects students teachers");
+    const editedCourse = await CoursesModel.findOneAndUpdate(
+      { _id },
+      { $set: course },
+      {
+        new: true
+      }
+    ).populate("subjects students teachers");
     if (!editedCourse) {
       throw "No course found for editing!";
     }

@@ -18,9 +18,9 @@ import { isAuth, isAdmin, isCurrentUser } from "../middlewares/auth.middleware";
 
 const router = express();
 
-router.get("/", isAuth, isAdmin, getAllUsers);
+router.get("/", getAllUsers);
 
-router.get("/:id", isAuth, isCurrentUser, getUsersById);
+router.get("/:id", getUsersById);
 
 router.get("/:id/subjects", getSubjectsOfUser);
 

@@ -35,11 +35,11 @@ router.delete(
   deleteSubjectsOfUser
 );
 
-// router.delete("/:id/grades/:idGrade", deleteGradeById);
+router.delete("/:id/grades/:idGrade", deleteGradeById);
 
 router.post("/:id/subjects", addSubjectsOfUser);
 
-// router.post("/:id/grades", addGradeOfUser);
+router.post("/:id/grades", isAuth, addGradeOfUser);
 
 router.put("/:id", isAuth, isCurrentUser, editUserById);
 

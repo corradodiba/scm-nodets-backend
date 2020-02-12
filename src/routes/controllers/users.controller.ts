@@ -14,8 +14,10 @@ import {
 } from "../../models/user/user.model";
 
 import * as GradesModel from "../../models/grades/grades.model";
+
 import { mapUsersData, mapUserData } from "../../helpers/mapUserData.helper";
 import { mapSubjectsData } from "../../helpers/mapSubjectData.helper";
+import { mapGradeData, mapGradesData } from "../../helpers/mapGradeData.helper";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -58,7 +60,7 @@ export const getAllGrades = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const grades: GradesModel.Grades[] = await GradesModel.getAll(id);
-    return res.status(200).json(grades);
+    return res.status(200).json(mapGradesData(grades));
   } catch (err) {
     return res.json(404).json({
       message: err
@@ -91,17 +93,12 @@ export const addSubjectsOfUser = async (req: Request, res: Response) => {
 
 export const addGradeOfUser = async (req: Request, res: Response) => {
   try {
-    const { grade, student, subject } = req.body;
+    const { grade, subject } = req.body;
     const { id } = req.params;
-    const addedGrade = await GradesModel.add(
-      Number(grade),
-      student,
-      subject,
-      id
-    );
-    return res.status(201).json(addedGrade);
+    const addedGrade = await GradesModel.add(Number(grade), subject, id);
+    return res.status(201).json(mapGradeData(addedGrade));
   } catch (err) {
-    return res.json(404).json({
+    return res.status(404).json({
       message: err
     });
   }
@@ -126,7 +123,7 @@ export const editGradeById = async (req: Request, res: Response) => {
       idGrade,
       Number(grade)
     );
-    return res.status(201).json(updatedGrade);
+    return res.status(201).json(mapGradeData(updatedGrade));
   } catch (err) {
     return res.status(404).json({
       message: err
@@ -151,7 +148,7 @@ export const deleteGradeById = async (req: Request, res: Response) => {
   try {
     const { idGrade, idUser } = req.params;
     const deletedGrade = await GradesModel.deleteById(idGrade, idUser);
-    return res.status(201).json(deletedGrade);
+    return res.status(201).json(mapGradeData(deletedGrade));
   } catch (err) {
     return res.status(404).json({
       message: err

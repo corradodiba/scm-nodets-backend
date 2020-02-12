@@ -10,11 +10,6 @@ const GradesSchema: Schema = new Schema({
     minlength: 0,
     maxlength: 10
   },
-  // student: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Student",
-  //   required: true
-  // },
   subject: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Subject",
@@ -29,14 +24,12 @@ const GradesSchema: Schema = new Schema({
 
 export interface Grades extends Document {
   grade: Number;
-  //student: Student["_id"];
   subject: Subject["_id"];
   user: User["_id"];
 }
 
 export const GradesModel = mongoose.model<Grades>("Grades", GradesSchema);
 
-export { getAll, //getAllStudentGrades, 
-                 add, deleteById, editGrade } from "./grades.methods";
+export { getAll, add, deleteById, editGrade } from "./grades.methods";
 
 export { CreateGrade } from "./grades.costructor";

@@ -4,7 +4,7 @@ export const getAll = async (idUser: string) => {
   try {
     const grades: Grades[] = await GradesModel.find({
       user: idUser
-    }).populate("student subject user");
+    }).populate("subject user");
     if (!grades) {
       throw "No grade found for deletion!";
     }
@@ -17,7 +17,7 @@ export const getAll = async (idUser: string) => {
 //   try {
 //     const grades: Grades[] = await GradesModel.find({
 //       student: idStudent
-//     }).populate("student subject user");
+//     }).populate("subject user");
 //     if (!grades) {
 //       throw "No grades found!";
 //     }
@@ -27,16 +27,10 @@ export const getAll = async (idUser: string) => {
 //   }
 // };
 
-export const add = async (
-  grade: Number,
-  student: string,
-  subject: string,
-  user: string
-) => {
+export const add = async (grade: Number, subject: string, user: string) => {
   try {
-    const grades: Grades = CreateGrade({ grade, //student, 
-                                                subject, user });
-    return await grades.save();
+    const createdGrade: Grades = CreateGrade({ grade, subject, user });
+    return await createdGrade.save();
   } catch (err) {
     throw err;
   }
@@ -47,7 +41,7 @@ export const deleteById = async (idGrade: string, idUser: string) => {
     const gradesDeleted = await GradesModel.findByIdAndRemove({
       _id: idGrade,
       user: idUser
-    }).populate("student subject user");
+    }).populate("subject user");
     if (!gradesDeleted) {
       throw "No grade found for deletion!";
     }
@@ -69,7 +63,7 @@ export const editGrade = async (
         grade
       },
       { new: true }
-    ).populate("student subject user");
+    ).populate("subject user");
     if (!updatedGrade || updatedGrade instanceof Error) {
       throw "No grade found for editing!";
     }

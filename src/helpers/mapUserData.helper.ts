@@ -1,7 +1,17 @@
 import { User } from "../models/user/user.model";
+import { mapSubjectsData } from "./mapSubjectData.helper";
 
 export const mapUserData = (user: User) => {
-  const { _id, email, fiscalCode, name, surname, dateOfBirth, type } = user;
+  const {
+    _id,
+    email,
+    fiscalCode,
+    name,
+    surname,
+    dateOfBirth,
+    type,
+    subjects
+  } = user;
   return {
     id: _id,
     name,
@@ -9,7 +19,8 @@ export const mapUserData = (user: User) => {
     email,
     fiscalCode,
     dateOfBirth,
-    type
+    type,
+    subjects: subjects ? mapSubjectsData(subjects) : []
   };
 };
 

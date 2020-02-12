@@ -130,13 +130,13 @@ export const deleteSubjects = async (idUser: string, idSubject: string) => {
   }
 };
 
-export const edit = async (id: string, user: User): Promise<User> => {
+export const edit = async (_id: string, user: User): Promise<User> => {
   try {
+    for (let field in user)
+      if (!(user as any)[field]) delete (user as any)[field];
     const updatedUser = await UserModel.findByIdAndUpdate(
-      id,
-      {
-        ...user
-      },
+      { _id },
+      { $set: user },
       { new: true }
     ).populate("subjects");
     if (!updatedUser || updatedUser instanceof Error) {

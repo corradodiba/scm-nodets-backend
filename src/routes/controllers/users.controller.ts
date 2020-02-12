@@ -15,6 +15,7 @@ import {
 
 import * as GradesModel from "../../models/grades/grades.model";
 import { mapUsersData, mapUserData } from "../../helpers/mapUserData.helper";
+import { mapSubjectsData } from "../../helpers/mapSubjectData.helper";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -45,7 +46,7 @@ export const getSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const subjects = await getSubjects(id);
-    return res.status(200).json(subjects);
+    return res.status(200).json(mapSubjectsData(subjects));
   } catch (err) {
     return res.status(404).json({
       messagge: err
@@ -69,7 +70,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const user = await deleteById(id);
-    return res.status(200).json(user);
+    return res.status(200).json(mapUserData(user));
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -80,7 +81,7 @@ export const addSubjectsOfUser = async (req: Request, res: Response) => {
     const { id } = req.params;
     const subject = req.body;
     const user = await addSubject(id, subject);
-    return res.status(201).json(user);
+    return res.status(201).json(mapUserData(user));
   } catch (err) {
     return res.status(500).json({
       message: err
@@ -140,7 +141,7 @@ export const deleteSubjectsOfUser = async (req: Request, res: Response) => {
     if (!subjects) {
       throw "No user for deleting!";
     }
-    res.json(subjects);
+    res.status(201).json(mapSubjectsData(subjects));
   } catch (err) {
     return res.status(404).json({ message: err });
   }

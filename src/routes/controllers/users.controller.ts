@@ -13,7 +13,7 @@ import {
   User
 } from "../../models/user/user.model";
 
-import * as GradesModel from "../../models/grades/grades.model";
+import * as GradesModel from "../../models/grade/grade.model";
 
 import { mapUsersData, mapUserData } from "../../helpers/mapUserData.helper";
 import { mapSubjectsData } from "../../helpers/mapSubjectData.helper";
@@ -60,7 +60,7 @@ export const getAllGrades = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
 
-    const grades: GradesModel.Grades[] = await GradesModel.getAll(id);
+    const grades: GradesModel.Grade[] = await GradesModel.getAll(id);
     return res.status(200).json(mapGradesData(grades));
   } catch (err) {
     return res.json(404).json({
@@ -72,7 +72,7 @@ export const getAllGrades = async (req: Request, res: Response) => {
 export const getGradeById = async (req: Request, res: Response) => {
   try {
     const { idGrade } = req.params;
-    const grade: GradesModel.Grades = await GradesModel.getById(idGrade);
+    const grade: GradesModel.Grade = await GradesModel.getById(idGrade);
     return res.status(200).json(mapGradeData(grade));
   } catch (err) {
     return res.json(404).json({
@@ -129,13 +129,9 @@ export const editUserById = async (req: Request, res: Response) => {
 
 export const editGradeById = async (req: Request, res: Response) => {
   try {
-    const { id, idGrade } = req.params;
+    const { idGrade } = req.params;
     const { grade } = req.body;
-    const updatedGrade = await GradesModel.editGrade(
-      id,
-      idGrade,
-      Number(grade)
-    );
+    const updatedGrade = await GradesModel.editGrade(idGrade, Number(grade));
     return res.status(201).json(mapGradeData(updatedGrade));
   } catch (err) {
     return res.status(404).json({

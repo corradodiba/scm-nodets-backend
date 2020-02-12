@@ -3,12 +3,12 @@ import { Request, Response } from "express";
 import {
   getAll,
   getById,
-  Courses,
+  Course,
   add,
   edit,
   deleteById,
   addSubjectIntoCourse as addSubject
-} from "../../models/courses/courses.model";
+} from "../../models/course/course.model";
 
 import {
   mapCourseData,
@@ -29,7 +29,7 @@ export const getAllCourses = async (req: Request, res: Response) => {
 export const getCourseById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const course: Courses = await getById(id);
+    const course: Course = await getById(id);
     return res.status(200).json(mapCourseData(course));
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -46,7 +46,7 @@ export const addCourse = async (req: Request, res: Response) => {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    const course: Courses = await add(name, status, year);
+    const course: Course = await add(name, status, year);
     return res.status(201).json(mapCourseData(course));
   } catch (err) {
     return res.status(401).json({ message: err });
@@ -83,7 +83,7 @@ export const editCourseById = async (req: Request, res: Response) => {
     }
 
     const course = { name, status, year };
-    const editedCourse: Courses = await edit(id, course as Courses);
+    const editedCourse: Course = await edit(id, course as Course);
     return res.status(200).json(mapCourseData(editedCourse));
   } catch (err) {
     return res.status(404).json({ message: err });
@@ -99,7 +99,7 @@ export const deleteCourseById = async (req: Request, res: Response) => {
       return res.status(422).json({ errors: errors.array() });
     }
 
-    const deletedCourse: Courses = await deleteById(id);
+    const deletedCourse: Course = await deleteById(id);
 
     return res.status(200).json(mapCourseData(deletedCourse));
   } catch (err) {

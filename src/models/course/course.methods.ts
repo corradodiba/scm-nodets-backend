@@ -1,4 +1,4 @@
-import { Courses, CoursesModel, CreateCourse } from "./courses.model";
+import { Course, CourseModel, CreateCourse } from "./course.model";
 
 import { IToken } from "../../interfaces/token.interface";
 import {
@@ -9,7 +9,7 @@ import {
 
 export const getAll = async () => {
   try {
-    const courses: Courses[] = await CoursesModel.find().populate(
+    const courses: Course[] = await CourseModel.find().populate(
       "teachers students subjects"
     );
     return courses;
@@ -20,7 +20,7 @@ export const getAll = async () => {
 
 export const getById = async (_id: String) => {
   try {
-    const course = await CoursesModel.findOne({ _id }).populate(
+    const course = await CourseModel.findOne({ _id }).populate(
       "teachers students subjects"
     );
     if (!course) {
@@ -36,7 +36,7 @@ export const add = async (
   name: String,
   status: String,
   year: Date
-): Promise<Courses> => {
+): Promise<Course> => {
   try {
     const course = CreateCourse({ name, status, year });
     return await course.save();
@@ -54,10 +54,10 @@ export const addSubjectIntoCourse = async (
     let subject = await SubjectModel.findOne({ name });
 
     if (!subject) {
-      subject = await addSubject(CreateSubject({ name, hours }));
+      subject = await addSubject(name, hours);
     }
 
-    const courseAfterUpdating: Courses = await updateSubjects(_id, subject._id);
+    const courseAfterUpdating: Course = await updateSubjects(_id, subject._id);
     return courseAfterUpdating;
   } catch (err) {
     throw err;
@@ -65,7 +65,7 @@ export const addSubjectIntoCourse = async (
 };
 
 const updateSubjects = async (_id: string, subjectId: string) => {
-  const course = await CoursesModel.findOneAndUpdate(
+  const course = await CourseModel.findOneAndUpdate(
     { _id },
     {
       $addToSet: {
@@ -83,11 +83,11 @@ const updateSubjects = async (_id: string, subjectId: string) => {
   return course;
 };
 
-export const edit = async (_id: string, course: Courses): Promise<Courses> => {
+export const edit = async (_id: string, course: Course): Promise<Course> => {
   for (let field in course)
     if (!(course as any)[field]) delete (course as any)[field];
   try {
-    const editedCourse = await CoursesModel.findOneAndUpdate(
+    const editedCourse = await CourseModel.findOneAndUpdate(
       { _id },
       { $set: course },
       {
@@ -103,9 +103,9 @@ export const edit = async (_id: string, course: Courses): Promise<Courses> => {
   }
 };
 
-export const deleteById = async (_id: string): Promise<Courses> => {
+export const deleteById = async (_id: string): Promise<Course> => {
   try {
-    const deletedCourse = await CoursesModel.findByIdAndRemove({
+    const deletedCourse = await CourseModel.findByIdAndRemove({
       _id
     }).populate("subjects students teachers");
     if (!deletedCourse) {

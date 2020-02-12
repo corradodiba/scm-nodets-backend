@@ -1,8 +1,8 @@
-import { Grades, GradesModel, CreateGrade } from "./grades.model";
+import { Grade, GradeModel, CreateGrade } from "./grade.model";
 
 export const getAll = async (user: string) => {
   try {
-    const grades: Grades[] = await GradesModel.find({
+    const grades: Grade[] = await GradeModel.find({
       user
     }).populate("subject user");
     if (!grades) {
@@ -16,7 +16,7 @@ export const getAll = async (user: string) => {
 
 export const getById = async (_id: string) => {
   try {
-    const grade: Grades | null = await GradesModel.findById({ _id }).populate(
+    const grade: Grade | null = await GradeModel.findById({ _id }).populate(
       "subject user"
     );
     if (!grade) {
@@ -30,7 +30,7 @@ export const getById = async (_id: string) => {
 
 export const add = async (grade: Number, subject: string, user: string) => {
   try {
-    const createdGrade: Grades = CreateGrade({ grade, subject, user });
+    const createdGrade: Grade = CreateGrade({ grade, subject, user });
     return await createdGrade.save();
   } catch (err) {
     throw err;
@@ -39,7 +39,7 @@ export const add = async (grade: Number, subject: string, user: string) => {
 
 export const deleteById = async (_id: string, user: string) => {
   try {
-    const gradesDeleted = await GradesModel.findByIdAndRemove({
+    const gradesDeleted = await GradeModel.findByIdAndRemove({
       _id,
       user
     }).populate("subject user");
@@ -52,9 +52,9 @@ export const deleteById = async (_id: string, user: string) => {
   }
 };
 
-export const editGrade = async (user: string, _id: string, grade: Number) => {
+export const editGrade = async (_id: string, grade: Number) => {
   try {
-    const updatedGrade = await GradesModel.findOneAndUpdate(
+    const updatedGrade = await GradeModel.findOneAndUpdate(
       { _id },
       {
         grade

@@ -1,7 +1,7 @@
 import mongoose, { Document, Schema } from "mongoose";
 import { User } from "../user/user.model";
 
-const CoursesSchema: Schema = new Schema({
+const CourseSchema: Schema = new Schema({
   name: {
     type: String,
     required: true,
@@ -38,7 +38,7 @@ const CoursesSchema: Schema = new Schema({
   ]
 });
 
-export interface Courses extends Document {
+export interface Course extends Document {
   name: String;
   status: String;
   year: Date;
@@ -47,7 +47,7 @@ export interface Courses extends Document {
   subjects?: User["_id"];
 }
 
-export const CoursesModel = mongoose.model<Courses>("Courses", CoursesSchema);
+export const CourseModel = mongoose.model<Course>("Course", CourseSchema);
 
 export {
   getAll,
@@ -56,6 +56,6 @@ export {
   addSubjectIntoCourse,
   deleteById,
   edit
-} from "./courses.methods";
+} from "./course.methods";
 
-export { CreateCourse } from "./courses.costructor";
+export { CreateCourse } from "./course.costructor";

@@ -1,4 +1,4 @@
-import { SubjectModel, Subject } from "./subject.model";
+import { SubjectModel, Subject, CreateSubject } from "./subject.model";
 
 export const getAll = async (): Promise<Subject[]> => {
   try {
@@ -12,11 +12,11 @@ export const getAll = async (): Promise<Subject[]> => {
   }
 };
 
-export const getById = async (id: string): Promise<Subject> => {
+export const getById = async (_id: string): Promise<Subject> => {
   try {
-    const subject = await SubjectModel.findOne({ _id: id });
+    const subject = await SubjectModel.findOne({ _id });
     if (!subject) {
-      throw `No subject with this id(${id}) found!`;
+      throw `No subject with this id(${_id}) found!`;
     }
     return subject;
   } catch (err) {
@@ -24,9 +24,10 @@ export const getById = async (id: string): Promise<Subject> => {
   }
 };
 
-export const add = async (subj: Subject): Promise<Subject> => {
+export const add = async (name: string, hours: number): Promise<Subject> => {
   try {
-    return await subj.save();
+    const subject = CreateSubject({ name, hours });
+    return await subject.save();
   } catch (err) {
     throw err;
   }
@@ -44,9 +45,18 @@ export const deleteById = async (id: string): Promise<Subject> => {
   }
 };
 
-export const edit = async (id: string, subject: Subject): Promise<Subject> => {
+export const edit = async (_id: string, subject: Subject): Promise<Subject> => {
   try {
-    const editedSubject = await SubjectModel.findByIdAndUpdate(id, subject);
+    for (let field in subject)
+      if (!(subject as any)[field]) delete (subject as any)[field];
+
+    const editedSubject = await SubjectModel.findOneAndUpdate(
+      { _id },
+      { $set: subject },
+      {
+        new: true
+      }
+    );
     if (!editedSubject) {
       throw "No subject found for editing!";
     }

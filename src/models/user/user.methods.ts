@@ -73,7 +73,7 @@ export const addSubject = async (_id: string, subject: Subject) => {
   try {
     const subjectExists = await SubjectModel.exists({ _id });
     if (!subjectExists) {
-      createdSubject = await addingSubject(CreateSubject(subject));
+      createdSubject = await addingSubject(subject.name, subject.hours);
     }
     const user = await UserModel.findOneAndUpdate(
       { _id },

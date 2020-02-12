@@ -51,14 +51,10 @@ export const deleteById = async (idGrade: string, idUser: string) => {
   }
 };
 
-export const editGrade = async (
-  idUser: string,
-  idGrade: string,
-  grade: Number
-) => {
+export const editGrade = async (user: string, _id: string, grade: Number) => {
   try {
     const updatedGrade = await GradesModel.findOneAndUpdate(
-      { _id: idGrade, user: idUser },
+      { _id },
       {
         grade
       },

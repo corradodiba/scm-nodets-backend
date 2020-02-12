@@ -14,7 +14,12 @@ import {
   deleteGradeById
 } from "./controllers/users.controller";
 
-import { isAuth, isAdmin, isCurrentUser } from "../middlewares/auth.middleware";
+import {
+  isAuth,
+  isAdmin,
+  isCurrentUser,
+  isAtLeastTeacher
+} from "../middlewares/auth.middleware";
 
 const router = express();
 
@@ -35,14 +40,19 @@ router.delete(
   deleteSubjectsOfUser
 );
 
-router.delete("/:id/grades/:idGrade", deleteGradeById);
+router.delete(
+  "/:id/grades/:idGrade",
+  isAuth,
+  isAtLeastTeacher,
+  deleteGradeById
+);
 
 router.post("/:id/subjects", addSubjectsOfUser);
 
-router.post("/:id/grades", isAuth, addGradeOfUser);
+router.post("/:id/grades", isAuth, isAdmin, addGradeOfUser);
 
 router.put("/:id", isAuth, isCurrentUser, editUserById);
 
-// router.put("/:id/grades/:idGrade", editGradeById);
+router.put("/:id/grades/:idGrade", editGradeById);
 
 export default router;

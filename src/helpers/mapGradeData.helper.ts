@@ -7,7 +7,8 @@ export const mapGradeData = (grade: Grades) => {
   return {
     id: _id,
     subject: mapSubjectData(subject),
-    user: mapUserData(user)
+    user: mapUserData(user),
+    grade: grade.grade
   };
 };
 

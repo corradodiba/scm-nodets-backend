@@ -1,9 +1,9 @@
 import { Grades, GradesModel, CreateGrade } from "./grades.model";
 
-export const getAll = async (idUser: string) => {
+export const getAll = async (user: string) => {
   try {
     const grades: Grades[] = await GradesModel.find({
-      user: idUser
+      user
     }).populate("subject user");
     if (!grades) {
       throw "No grade found for deletion!";
@@ -13,19 +13,20 @@ export const getAll = async (idUser: string) => {
     throw err;
   }
 };
-// export const getAllStudentGrades = async (idStudent: string) => {
-//   try {
-//     const grades: Grades[] = await GradesModel.find({
-//       student: idStudent
-//     }).populate("subject user");
-//     if (!grades) {
-//       throw "No grades found!";
-//     }
-//     return grades;
-//   } catch (err) {
-//     throw err;
-//   }
-// };
+
+export const getById = async (_id: string) => {
+  try {
+    const grade: Grades | null = await GradesModel.findById({ _id }).populate(
+      "subject user"
+    );
+    if (!grade) {
+      throw "No grade found for deletion!";
+    }
+    return grade;
+  } catch (err) {
+    throw err;
+  }
+};
 
 export const add = async (grade: Number, subject: string, user: string) => {
   try {
@@ -36,11 +37,11 @@ export const add = async (grade: Number, subject: string, user: string) => {
   }
 };
 
-export const deleteById = async (idGrade: string, idUser: string) => {
+export const deleteById = async (_id: string, user: string) => {
   try {
     const gradesDeleted = await GradesModel.findByIdAndRemove({
-      _id: idGrade,
-      user: idUser
+      _id,
+      user
     }).populate("subject user");
     if (!gradesDeleted) {
       throw "No grade found for deletion!";

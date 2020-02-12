@@ -59,8 +59,21 @@ export const getSubjectsOfUser = async (req: Request, res: Response) => {
 export const getAllGrades = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
+
     const grades: GradesModel.Grades[] = await GradesModel.getAll(id);
     return res.status(200).json(mapGradesData(grades));
+  } catch (err) {
+    return res.json(404).json({
+      message: err
+    });
+  }
+};
+
+export const getGradeById = async (req: Request, res: Response) => {
+  try {
+    const { idGrade } = req.params;
+    const grade: GradesModel.Grades = await GradesModel.getById(idGrade);
+    return res.status(200).json(mapGradeData(grade));
   } catch (err) {
     return res.json(404).json({
       message: err

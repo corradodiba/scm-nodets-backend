@@ -30,6 +30,6 @@ export interface Grades extends Document {
 
 export const GradesModel = mongoose.model<Grades>("Grades", GradesSchema);
 
-export { getAll, add, deleteById, editGrade } from "./grades.methods";
+export { getAll, getById, add, deleteById, editGrade } from "./grades.methods";
 
 export { CreateGrade } from "./grades.costructor";

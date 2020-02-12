@@ -11,7 +11,8 @@ import {
   addGradeOfUser,
   getAllGrades,
   editGradeById,
-  deleteGradeById
+  deleteGradeById,
+  getGradeById
 } from "./controllers/users.controller";
 
 import {
@@ -29,7 +30,9 @@ router.get("/:id", isAuth, isCurrentUser, getUsersById);
 
 router.get("/:id/subjects", isAuth, isCurrentUser, getSubjectsOfUser);
 
-// router.get("/:id/grades", getAllGrades);
+router.get("/:id/grades", isAuth, isCurrentUser, getAllGrades);
+
+router.get("/:id/grades/:idGrade", isAuth, isCurrentUser, getGradeById);
 
 router.delete("/:id", isAuth, isAdmin, deleteUserById);
 
@@ -53,6 +56,6 @@ router.post("/:id/grades", isAuth, isAdmin, addGradeOfUser);
 
 router.put("/:id", isAuth, isCurrentUser, editUserById);
 
-router.put("/:id/grades/:idGrade", editGradeById);
+router.put("/:id/grades/:idGrade", isAuth, isAtLeastTeacher, editGradeById);
 
 export default router;

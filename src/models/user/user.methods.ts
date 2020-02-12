@@ -1,5 +1,10 @@
 import { UserModel, User } from "./user.model";
-import { Subject } from "../subject/subject.model";
+import {
+  Subject,
+  SubjectModel,
+  add as addingSubject,
+  CreateSubject
+} from "../subject/subject.model";
 
 import { typeUser } from "../../interfaces/typeUser.type";
 
@@ -63,14 +68,19 @@ export const add = async (user: User) => {
   }
 };
 
-export const addSubject = async (id: string, subject: string[]) => {
+export const addSubject = async (_id: string, subject: Subject) => {
+  let createdSubject: Subject = subject;
   try {
+    const subjectExists = await SubjectModel.exists({ _id });
+    if (!subjectExists) {
+      createdSubject = await addingSubject(CreateSubject(subject));
+    }
     const user = await UserModel.findOneAndUpdate(
-      { _id: id },
+      { _id },
       {
         $addToSet: {
           subjects: {
-            $each: subject
+            $each: [createdSubject.id]
           }
         }
       },

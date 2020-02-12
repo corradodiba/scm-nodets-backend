@@ -78,8 +78,8 @@ export const deleteUserById = async (req: Request, res: Response) => {
 export const addSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { subjects } = req.body;
-    const user = await addSubject(id, subjects);
+    const subject = req.body;
+    const user = await addSubject(id, subject);
     return res.status(201).json(user);
   } catch (err) {
     return res.status(500).json({

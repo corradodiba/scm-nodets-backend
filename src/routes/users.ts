@@ -32,7 +32,7 @@ router.delete("/:id", isAuth, isAdmin, deleteUserById);
 
 // router.delete("/:id/grades/:idGrade", deleteGradeById);
 
-// router.post("/:id/subjects", addSubjectsOfUser);
+router.post("/:id/subjects", addSubjectsOfUser);
 
 // router.post("/:id/grades", addGradeOfUser);
 

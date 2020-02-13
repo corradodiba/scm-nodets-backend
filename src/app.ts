@@ -50,8 +50,7 @@ const server = app.listen(PORT, async () => {
       useCreateIndex: true,
       useFindAndModify: false
     });
-    const websocketConnection = socketConnection.init(server);
-    websocketConnection.on("connection", (event) => {
+    socketConnection.init(server).on("connection", (event) => {
       console.log(event);
     });
     console.log("Database: connected successfully!");

@@ -34,7 +34,10 @@ export const addValidator = [
     .isString(),
   body("status")
     .exists()
-    .isBoolean(),
+    .custom(
+      (value) =>
+        value === "pending" || value === "complete" || value === "in progress"
+    ),
   body("year")
     .exists()
     .isString()

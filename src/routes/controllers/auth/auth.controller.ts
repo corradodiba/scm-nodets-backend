@@ -48,6 +48,9 @@ export const userLogin = async (req: Request, res: Response) => {
     const token = await generateToken(userAuthenticated);
     const io = websocketConnection.getIO();
     io.emit("login", { status: true, user: userAuthenticated });
+    setTimeout(() => {
+      io.emit("logout", { status: false, user: userAuthenticated });
+    }, 10000);
     return res.status(200).json(token);
   } catch (err) {
     return res.status(400).json({ message: err });

@@ -59,7 +59,7 @@ const server = app.listen(PORT, async () => {
           const user: User = await getUserById(userId);
           socketConnection
             .getIO()
-            .emit("logout", { status: true, user: mapUserData(user) });
+            .emit("logout", { status: false, user: mapUserData(user) });
         } catch (err) {
           socketConnection
             .getIO()

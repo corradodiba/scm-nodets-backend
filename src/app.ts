@@ -11,6 +11,8 @@ import coursesRoutes from "./routes/courses";
 import socketConnection from "./websocket/socket";
 
 import * as swaggerDocument from "./swagger.json";
+import { getById as getUserById, User } from "./models/user/user.model";
+import { mapUserData } from "./helpers/mapUserData.helper";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -50,8 +52,20 @@ const server = app.listen(PORT, async () => {
       useCreateIndex: true,
       useFindAndModify: false
     });
-    socketConnection.init(server).on("connection", (event) => {
-      console.log(event);
+    socketConnection.init(server).on("connection", (socket) => {
+      socket.on("logout", async (userId: string) => {
+        if (!userId) return;
+        try {
+          const user: User = await getUserById(userId);
+          socketConnection
+            .getIO()
+            .emit("logout", { status: true, user: mapUserData(user) });
+        } catch (err) {
+          socketConnection
+            .getIO()
+            .emit("logout", { message: "user not found", status: 404 });
+        }
+      });
     });
     console.log("Database: connected successfully!");
   } catch (err) {

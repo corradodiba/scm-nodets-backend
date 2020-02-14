@@ -53,17 +53,17 @@ const server = app.listen(PORT, async () => {
       useFindAndModify: false
     });
     socketConnection.init(server).on("connection", (socket) => {
-      socket.on("logout", async (userId: string) => {
+      socket.on("auth", async (userId: string) => {
         if (!userId) return;
         try {
           const user: User = await getUserById(userId);
           socketConnection
             .getIO()
-            .emit("logout", { status: false, user: mapUserData(user) });
+            .emit("auth", { status: false, user: mapUserData(user) });
         } catch (err) {
           socketConnection
             .getIO()
-            .emit("logout", { message: "user not found", status: 404 });
+            .emit("auth", { message: "user not found", status: 404 });
         }
       });
     });

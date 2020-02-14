@@ -5,6 +5,7 @@ import { User, CreateUser, add } from "../../../models/user/user.model";
 import { authentication, generateToken } from "./authentication";
 
 import websocketConnection from "../../../websocket/socket";
+import { mapUserData } from "../../../helpers/mapUserData.helper";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
@@ -47,10 +48,10 @@ export const userLogin = async (req: Request, res: Response) => {
     const userAuthenticated = await authentication(email, password);
     const token = await generateToken(userAuthenticated);
     const io = websocketConnection.getIO();
-    io.emit("login", { status: true, user: userAuthenticated });
+    io.emit("auth", { status: true, user: mapUserData(userAuthenticated) });
     setTimeout(() => {
-      io.emit("logout", { status: false, user: userAuthenticated });
-    }, 10000);
+      io.emit("auth", { status: false, user: mapUserData(userAuthenticated) });
+    }, token.expiresIn * 10);
     return res.status(200).json(token);
   } catch (err) {
     return res.status(400).json({ message: err });

@@ -6,16 +6,19 @@ import {
   addSubject,
   editSubjectById
 } from "./controllers/subjects.controller";
+import { isAuth } from "../middlewares/auth/isAuth";
+import { isAdmin } from "../middlewares/auth/isAdmin";
+import { isCurrentUser } from "../middlewares/auth.middleware";
 
 const router = express.Router();
-router.get("/", getAllSubjects);
+router.get("/", isAuth, isAdmin, getAllSubjects);
 
-router.get("/:id", getSubjectById);
+router.get("/:id", isAuth, isCurrentUser, getSubjectById);
 
-router.delete("/:id", deleteSubjectById);
+router.delete("/:id", isAuth, isAdmin, deleteSubjectById);
 
-router.post("/", addSubject);
+router.post("/", isAuth, isAdmin, addSubject);
 
-router.put("/:id", editSubjectById);
+router.put("/:id", isAuth, isAdmin, editSubjectById);
 
 export default router;

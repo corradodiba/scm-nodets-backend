@@ -13,8 +13,11 @@ import {
   User
 } from "../../models/user/user.model";
 
-import * as GradesModel from "../../models/grades/grades.model";
+import * as GradesModel from "../../models/grade/grade.model";
+
 import { mapUsersData, mapUserData } from "../../helpers/mapUserData.helper";
+import { mapSubjectsData } from "../../helpers/mapSubjectData.helper";
+import { mapGradeData, mapGradesData } from "../../helpers/mapGradeData.helper";
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
@@ -45,7 +48,7 @@ export const getSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const subjects = await getSubjects(id);
-    return res.status(200).json(subjects);
+    return res.status(200).json(mapSubjectsData(subjects));
   } catch (err) {
     return res.status(404).json({
       messagge: err
@@ -56,8 +59,21 @@ export const getSubjectsOfUser = async (req: Request, res: Response) => {
 export const getAllGrades = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const grades: GradesModel.Grades[] = await GradesModel.getAll(id);
-    return res.status(200).json(grades);
+
+    const grades: GradesModel.Grade[] = await GradesModel.getAll(id);
+    return res.status(200).json(mapGradesData(grades));
+  } catch (err) {
+    return res.json(404).json({
+      message: err
+    });
+  }
+};
+
+export const getGradeById = async (req: Request, res: Response) => {
+  try {
+    const { idGrade } = req.params;
+    const grade: GradesModel.Grade = await GradesModel.getById(idGrade);
+    return res.status(200).json(mapGradeData(grade));
   } catch (err) {
     return res.json(404).json({
       message: err
@@ -69,7 +85,7 @@ export const deleteUserById = async (req: Request, res: Response) => {
   const id = req.params.id;
   try {
     const user = await deleteById(id);
-    return res.status(200).json(user);
+    return res.status(200).json(mapUserData(user));
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -78,9 +94,9 @@ export const deleteUserById = async (req: Request, res: Response) => {
 export const addSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    const { subjects } = req.body;
-    const user = await addSubject(id, subjects);
-    return res.status(201).json(user);
+    const subject = req.body;
+    const user = await addSubject(id, subject);
+    return res.status(201).json(mapUserData(user));
   } catch (err) {
     return res.status(500).json({
       message: err
@@ -90,17 +106,12 @@ export const addSubjectsOfUser = async (req: Request, res: Response) => {
 
 export const addGradeOfUser = async (req: Request, res: Response) => {
   try {
-    const { grade, student, subject } = req.body;
+    const { grade, subject } = req.body;
     const { id } = req.params;
-    const addedGrade = await GradesModel.add(
-      Number(grade),
-      student,
-      subject,
-      id
-    );
-    return res.status(201).json(addedGrade);
+    const addedGrade = await GradesModel.add(Number(grade), subject, id);
+    return res.status(201).json(mapGradeData(addedGrade));
   } catch (err) {
-    return res.json(404).json({
+    return res.status(404).json({
       message: err
     });
   }
@@ -118,14 +129,10 @@ export const editUserById = async (req: Request, res: Response) => {
 
 export const editGradeById = async (req: Request, res: Response) => {
   try {
-    const { id, idGrade } = req.params;
+    const { idGrade } = req.params;
     const { grade } = req.body;
-    const updatedGrade = await GradesModel.editGrade(
-      id,
-      idGrade,
-      Number(grade)
-    );
-    return res.status(201).json(updatedGrade);
+    const updatedGrade = await GradesModel.editGrade(idGrade, Number(grade));
+    return res.status(201).json(mapGradeData(updatedGrade));
   } catch (err) {
     return res.status(404).json({
       message: err
@@ -140,7 +147,7 @@ export const deleteSubjectsOfUser = async (req: Request, res: Response) => {
     if (!subjects) {
       throw "No user for deleting!";
     }
-    res.json(subjects);
+    res.status(201).json(mapSubjectsData(subjects));
   } catch (err) {
     return res.status(404).json({ message: err });
   }
@@ -150,7 +157,7 @@ export const deleteGradeById = async (req: Request, res: Response) => {
   try {
     const { idGrade, idUser } = req.params;
     const deletedGrade = await GradesModel.deleteById(idGrade, idUser);
-    return res.status(201).json(deletedGrade);
+    return res.status(201).json(mapGradeData(deletedGrade));
   } catch (err) {
     return res.status(404).json({
       message: err

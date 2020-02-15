@@ -36,7 +36,7 @@ export const createUser = async (req: Request, res: Response) => {
     });
 
     const fetchedUser = await add(user);
-    return res.status(200).json(fetchedUser);
+    return res.status(200).json(mapUserData(fetchedUser));
   } catch (err) {
     return res.status(400).json({ message: err });
   }

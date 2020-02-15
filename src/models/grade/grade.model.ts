@@ -3,18 +3,13 @@ import mongoose, { Document, Schema } from "mongoose";
 import { Subject } from "../subject/subject.model";
 import { User } from "../user/user.model";
 
-const GradesSchema: Schema = new Schema({
+const GradeSchema: Schema = new Schema({
   grade: {
     type: Number,
     required: true,
     minlength: 0,
     maxlength: 10
   },
-  // student: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "Student",
-  //   required: true
-  // },
   subject: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Subject",
@@ -27,16 +22,14 @@ const GradesSchema: Schema = new Schema({
   }
 });
 
-export interface Grades extends Document {
+export interface Grade extends Document {
   grade: Number;
-  //student: Student["_id"];
   subject: Subject["_id"];
   user: User["_id"];
 }
 
-export const GradesModel = mongoose.model<Grades>("Grades", GradesSchema);
+export const GradeModel = mongoose.model<Grade>("Grade", GradeSchema);
 
-export { getAll, //getAllStudentGrades, 
-                 add, deleteById, editGrade } from "./grades.methods";
+export { getAll, getById, add, deleteById, editGrade } from "./grade.methods";
 
-export { CreateGrade } from "./grades.costructor";
+export { CreateGrade } from "./grade.costructor";

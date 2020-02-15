@@ -4,6 +4,9 @@ import bcrypt from "bcryptjs";
 import { User, CreateUser, add } from "../../../models/user/user.model";
 import { authentication, generateToken } from "./authentication";
 
+import websocketConnection from "../../../websocket/socket";
+import { mapUserData } from "../../../helpers/mapUserData.helper";
+
 export const createUser = async (req: Request, res: Response) => {
   try {
     const {
@@ -44,6 +47,8 @@ export const userLogin = async (req: Request, res: Response) => {
     const { email, password } = req.body;
     const userAuthenticated = await authentication(email, password);
     const token = await generateToken(userAuthenticated);
+    const io = websocketConnection.getIO();
+    io.emit("auth", { status: true, id: userAuthenticated.id });
     return res.status(200).json(token);
   } catch (err) {
     return res.status(400).json({ message: err });

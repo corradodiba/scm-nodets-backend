@@ -8,7 +8,10 @@ import subjectsRoutes from "./routes/subjects";
 import authRoutes from "./routes/auth";
 import coursesRoutes from "./routes/courses";
 
+import socketConnection from "./websocket/socket";
+
 import * as swaggerDocument from "./swagger.json";
+import { getById as getUserById, User } from "./models/user/user.model";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -39,7 +42,7 @@ app.use("/auth", authRoutes);
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.listen(PORT, async () => {
+const server = app.listen(PORT, async () => {
   console.log(`🚀 Server ready at http://localhost:${PORT} 🚀`);
   try {
     await mongoose.connect(MONGO_CLUSTER_URL, {
@@ -47,6 +50,19 @@ app.listen(PORT, async () => {
       useUnifiedTopology: true,
       useCreateIndex: true,
       useFindAndModify: false
+    });
+    socketConnection.init(server).on("connection", (socket) => {
+      socket.on("auth", async (userId: string) => {
+        if (!userId) return;
+        try {
+          const { id }: User = await getUserById(userId);
+          socketConnection.getIO().emit("auth", { status: false, id });
+        } catch (err) {
+          socketConnection
+            .getIO()
+            .emit("auth", { message: "user not found", status: 404 });
+        }
+      });
     });
     console.log("Database: connected successfully!");
   } catch (err) {

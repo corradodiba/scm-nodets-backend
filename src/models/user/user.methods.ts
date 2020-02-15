@@ -1,5 +1,10 @@
 import { UserModel, User } from "./user.model";
-import { Subject } from "../subject/subject.model";
+import {
+  Subject,
+  SubjectModel,
+  add as addingSubject,
+  CreateSubject
+} from "../subject/subject.model";
 
 import { typeUser } from "../../interfaces/typeUser.type";
 
@@ -63,14 +68,19 @@ export const add = async (user: User) => {
   }
 };
 
-export const addSubject = async (id: string, subject: string[]) => {
+export const addSubject = async (_id: string, subject: Subject) => {
+  let createdSubject: Subject = subject;
   try {
+    const subjectExists = await SubjectModel.exists({ _id });
+    if (!subjectExists) {
+      createdSubject = await addingSubject(subject.name, subject.hours);
+    }
     const user = await UserModel.findOneAndUpdate(
-      { _id: id },
+      { _id },
       {
         $addToSet: {
           subjects: {
-            $each: subject
+            $each: [createdSubject.id]
           }
         }
       },
@@ -120,13 +130,13 @@ export const deleteSubjects = async (idUser: string, idSubject: string) => {
   }
 };
 
-export const edit = async (id: string, user: User): Promise<User> => {
+export const edit = async (_id: string, user: User): Promise<User> => {
   try {
+    for (let field in user)
+      if (!(user as any)[field]) delete (user as any)[field];
     const updatedUser = await UserModel.findByIdAndUpdate(
-      id,
-      {
-        ...user
-      },
+      { _id },
+      { $set: user },
       { new: true }
     ).populate("subjects");
     if (!updatedUser || updatedUser instanceof Error) {

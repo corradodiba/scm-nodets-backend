@@ -12,7 +12,6 @@ import socketConnection from "./websocket/socket";
 
 import * as swaggerDocument from "./swagger.json";
 import { getById as getUserById, User } from "./models/user/user.model";
-import { mapUserData } from "./helpers/mapUserData.helper";
 
 const PORT = 3000 || process.env.PORT;
 const MONGO_CLUSTER_URL =
@@ -56,10 +55,8 @@ const server = app.listen(PORT, async () => {
       socket.on("auth", async (userId: string) => {
         if (!userId) return;
         try {
-          const user: User = await getUserById(userId);
-          socketConnection
-            .getIO()
-            .emit("auth", { status: false, user: mapUserData(user) });
+          const { id }: User = await getUserById(userId);
+          socketConnection.getIO().emit("auth", { status: false, id });
         } catch (err) {
           socketConnection
             .getIO()

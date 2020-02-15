@@ -48,10 +48,7 @@ export const userLogin = async (req: Request, res: Response) => {
     const userAuthenticated = await authentication(email, password);
     const token = await generateToken(userAuthenticated);
     const io = websocketConnection.getIO();
-    io.emit("auth", { status: true, user: mapUserData(userAuthenticated) });
-    setTimeout(() => {
-      io.emit("auth", { status: false, user: mapUserData(userAuthenticated) });
-    }, token.expiresIn * 10);
+    io.emit("auth", { status: true, id: userAuthenticated.id });
     return res.status(200).json(token);
   } catch (err) {
     return res.status(400).json({ message: err });

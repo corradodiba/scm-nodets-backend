@@ -14,6 +14,8 @@ import {
   mapSubjectData
 } from "../../helpers/mapSubjectData.helper";
 
+import { validationResult } from "express-validator";
+
 export const getAllSubjects = async (req: Request, res: Response) => {
   try {
     const subjects: Subject[] = await getAll();
@@ -43,8 +45,11 @@ export const deleteSubjectById = async (req: Request, res: Response) => {
 
 export const addSubject = async (req: Request, res: Response) => {
   try {
-    // manca la validazione del body
     const { name, hours } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
     const subject: Subject = await add(name, hours);
     return res.status(201).json(mapSubjectData(subject));
   } catch (err) {
@@ -56,7 +61,10 @@ export const editSubjectById = async (req: Request, res: Response) => {
   try {
     const { name, hours } = req.body;
     const { id } = req.params;
-
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
     const subject: Subject = await edit(id, { name, hours } as Subject);
     return res.status(200).json(mapSubjectData(subject));
   } catch (err) {

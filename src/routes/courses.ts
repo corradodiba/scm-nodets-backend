@@ -12,7 +12,6 @@ import {
 import { isAuth, isAdmin } from "../middlewares/auth.middleware";
 import {
   editValidator,
-  deleteValidator,
   addSubjectValidator,
   addValidator
 } from "./validators/courses.validator";
@@ -27,7 +26,7 @@ router.post("/", isAuth, isAdmin, addValidator, addCourse);
 
 router.post("/:id/subjects", isAuth, addSubjectValidator, addSubjectIntoCourse);
 
-router.delete("/:id", isAuth, isAdmin, deleteValidator, deleteCourseById);
+router.delete("/:id", isAuth, isAdmin, deleteCourseById);
 
 router.put("/:id", isAuth, isAdmin, editValidator, editCourseById);
 

@@ -22,6 +22,13 @@ import {
   isAtLeastTeacher
 } from "../middlewares/auth.middleware";
 
+import { editValidator } from "./validators/users.validator";
+import { addValidator as addSubjectValidator } from "./validators/subjects.validator";
+import {
+  addValidator as addGradeValidator,
+  editValidator as editGradeValidator
+} from "./validators/grades.validator";
+
 const router = express();
 
 router.get("/", isAuth, isAdmin, getAllUsers);
@@ -50,12 +57,24 @@ router.delete(
   deleteGradeById
 );
 
-router.post("/:id/subjects", addSubjectsOfUser);
+router.post(
+  "/:id/subjects",
+  isAuth,
+  isAdmin,
+  addSubjectValidator,
+  addSubjectsOfUser
+);
 
-router.post("/:id/grades", isAuth, isAdmin, addGradeOfUser);
+router.post("/:id/grades", isAuth, isAdmin, addGradeValidator, addGradeOfUser);
 
-router.put("/:id", isAuth, isCurrentUser, editUserById);
+router.put("/:id", isAuth, isCurrentUser, editValidator, editUserById);
 
-router.put("/:id/grades/:idGrade", isAuth, isAtLeastTeacher, editGradeById);
+router.put(
+  "/:id/grades/:idGrade",
+  isAuth,
+  isAtLeastTeacher,
+  editGradeValidator,
+  editGradeById
+);
 
 export default router;

@@ -1,4 +1,5 @@
 import { Response, Request } from "express";
+import { validationResult } from "express-validator";
 
 import {
   getAll,
@@ -95,6 +96,10 @@ export const addSubjectsOfUser = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const subject = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
     const user = await addSubject(id, subject);
     return res.status(201).json(mapUserData(user));
   } catch (err) {
@@ -108,6 +113,10 @@ export const addGradeOfUser = async (req: Request, res: Response) => {
   try {
     const { grade, subject } = req.body;
     const { id } = req.params;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
     const addedGrade = await GradesModel.add(Number(grade), subject, id);
     return res.status(201).json(mapGradeData(addedGrade));
   } catch (err) {
@@ -118,8 +127,13 @@ export const addGradeOfUser = async (req: Request, res: Response) => {
 };
 
 export const editUserById = async (req: Request, res: Response) => {
-  const id = req.params.id;
+  const { id } = req.params;
+
   try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
     const updatedUser: User = await edit(id, req.body as User);
     return res.status(200).json(mapUserData(updatedUser));
   } catch (err) {
@@ -131,6 +145,10 @@ export const editGradeById = async (req: Request, res: Response) => {
   try {
     const { idGrade } = req.params;
     const { grade } = req.body;
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
     const updatedGrade = await GradesModel.editGrade(idGrade, Number(grade));
     return res.status(201).json(mapGradeData(updatedGrade));
   } catch (err) {

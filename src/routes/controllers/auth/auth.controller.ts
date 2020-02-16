@@ -7,6 +7,8 @@ import { authentication, generateToken } from "./authentication";
 import websocketConnection from "../../../websocket/socket";
 import { mapUserData } from "../../../helpers/mapUserData.helper";
 
+import { validationResult } from "express-validator";
+
 export const createUser = async (req: Request, res: Response) => {
   try {
     const {
@@ -20,6 +22,11 @@ export const createUser = async (req: Request, res: Response) => {
       imagePath,
       type
     } = req.body;
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      throw { errors: errors.array() };
+    }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 

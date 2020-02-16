@@ -1,4 +1,4 @@
-import { body, param, ValidationChain } from "express-validator";
+import { body, ValidationChain } from "express-validator";
 
 export const editValidator: ValidationChain[] = [
   body("name")
@@ -12,11 +12,8 @@ export const editValidator: ValidationChain[] = [
     ),
   body("year")
     .optional()
-    .isString(),
-  param("id").isMongoId()
+    .isString()
 ];
-
-export const deleteValidator = [param("id").isMongoId()];
 
 export const addSubjectValidator = [
   body("name")
@@ -24,8 +21,7 @@ export const addSubjectValidator = [
     .isString(),
   body("hours")
     .exists()
-    .isInt(),
-  param("id").isMongoId()
+    .isInt()
 ];
 
 export const addValidator = [
@@ -42,5 +38,3 @@ export const addValidator = [
     .exists()
     .isString()
 ];
-
-export const getByIdValidator = [param("id").isMongoId()];

@@ -29,10 +29,6 @@
       "description": "Management course API"
     },
     {
-      "name": "grade",
-      "description": "Management grade API"
-    },
-    {
       "name": "auth",
       "description": "Management auth API"
     }
@@ -137,6 +133,45 @@
             "description": "Not Found"
           }
         }
+      },
+      "put": {
+        "tags": ["users"],
+        "summary": "Edit user by ID",
+        "description": "Allows you to edit a user by id",
+        "operationId": "modifyUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Modify new user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
       }
     },
     "/users/{id}/subjects": {
@@ -150,6 +185,264 @@
             "name": "id",
             "in": "path",
             "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the subjects of a User"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Subjects Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["users"],
+        "summary": "Add subject at user by ID",
+        "description": "Allows you to add a subject",
+        "operationId": "addSubjectOnUser",
+        "requestBody": {
+          "description": "Add new subject at user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}/grades": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Return all subjects for user by ID",
+        "description": "Back to the list of all the subjects of the individual user",
+        "operationId": "getSubjectForUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "post": {
+        "tags": ["users"],
+        "summary": "Add grade at user by ID",
+        "description": "Allows you to add a grade",
+        "operationId": "addSubjectOnUser",
+        "requestBody": {
+          "description": "Add new grade at user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/subject"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}/grades/{idGrade}": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Return all subjects for user by ID",
+        "description": "Back to the list of all the subjects of the individual user",
+        "operationId": "getSubjectForUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idGrade",
+            "in": "path",
+            "description": "ID of grade to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the subjects of a User"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Subjects Not Found"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["users"],
+        "summary": "Return all subjects for user by ID",
+        "description": "Back to the list of all the subjects of the individual user",
+        "operationId": "getSubjectForUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idGrade",
+            "in": "path",
+            "description": "ID of grade to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all the subjects of a User"
+          },
+          "401": {
+            "description": "You shouldn't be here"
+          },
+          "404": {
+            "description": "Subjects Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": ["users"],
+        "summary": "Edit user by ID",
+        "description": "Allows you to edit a user by id",
+        "operationId": "modifyUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of subject to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idGrade",
+            "in": "path",
+            "description": "ID of grade to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Modify new user",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/user"
+              }
+            }
+          }
+        },
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/users/{id}/subjects/{idSubject}": {
+      "delete": {
+        "tags": ["users"],
+        "summary": "Return all subjects for user by ID",
+        "description": "Back to the list of all the subjects of the individual user",
+        "operationId": "getSubjectForUserById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID of user to return",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idSubject",
+            "in": "path",
+            "description": "ID of grade to return",
             "required": true,
             "style": "simple",
             "explode": false,
